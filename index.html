@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Muscu">
+<meta name="theme-color" content="#1b2a2f">
+<title>Muscu</title>
+<style>
+:root{--bg:#f3f1ec;--card:#fff;--ink:#1b2a2f;--mut:#6b7a7f;--acc:#c8501e;--ok:#2f8f5b;--line:#ddd8cf;color-scheme:light}
+@media(prefers-color-scheme:dark){:root{--bg:#14201f;--card:#1e2d2c;--ink:#eef0ea;--mut:#92a3a0;--acc:#f08a4b;--ok:#4cc38a;--line:#34464a;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.4 "Avenir Next","Trebuchet MS",system-ui,sans-serif;padding:env(safe-area-inset-top) 12px calc(90px + env(safe-area-inset-bottom))}
+main{max-width:640px;margin:0 auto}
+h1{font:700 26px Georgia,serif;margin:16px 0}
+header{display:flex;align-items:center;justify-content:space-between}
+button,input,select,textarea{font:inherit;color:inherit}
+input,select,textarea{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--card);font-size:16px}
+button{border:0;border-radius:8px;padding:10px 14px;background:var(--line);cursor:pointer}
+.p{background:var(--acc);color:#fff;font-weight:600}
+.big{width:100%;padding:14px;margin:8px 0}
+.card,details{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px;margin:10px 0}
+summary{font-weight:600;cursor:pointer}
+.row{display:flex;gap:8px;align-items:center}
+.row>*{flex:1}
+.it{display:flex;justify-content:space-between;padding:10px 0;border-top:1px solid var(--line);cursor:pointer}
+.mut{color:var(--mut);font-size:14px}
+.ex{border-left:4px solid var(--acc)}
+.ex.ss{margin-left:14px;border-left-color:var(--ok)}
+.num{font:700 22px Georgia,serif;min-width:38px;color:var(--acc)}
+.sr{display:grid;grid-template-columns:44px 1fr 1fr 44px 34px;gap:6px;margin:6px 0;align-items:center}
+.sr input{text-align:center}
+.sr .lab{padding:10px 0;font-weight:700}
+.sr.ok input{border-color:var(--ok)}
+.sr.ok .okb{background:var(--ok);color:#fff}
+.sh{font-size:13px;color:var(--mut);text-align:center}
+.desc{font-size:13px;color:var(--mut);margin:4px 0 8px}
+.stats{display:flex;gap:8px;text-align:center}
+.stats div{flex:1;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px}
+.stats b{display:block;font:700 20px Georgia,serif}
+#timer{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));background:var(--ink);color:var(--bg);border-radius:12px;padding:12px 16px;font:700 20px Georgia,serif;display:flex;justify-content:space-between;align-items:center}
+#timer[hidden]{display:none}
+label.ck{display:flex;gap:8px;align-items:center;font-size:14px;margin:6px 0}
+label.ck input{width:auto}
+.regs{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:6px;margin:0 0 8px}
+.sec{font-weight:700;font-size:15px;margin:12px 0 4px}
+.regs label{font-size:12px;line-height:1.2;color:var(--mut);min-width:0}
+.regs input{margin-top:4px;padding:10px 4px;text-align:center}
+.ex details{background:none;padding:8px 10px;margin:8px 0}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;background:var(--bg)}
+.opt small{display:block;font-size:12px;font-weight:400;color:var(--mut);margin-top:2px}
+.opt.on{outline:2px solid var(--acc)}
+.row2{display:flex;gap:8px}
+.bar2{display:flex;gap:8px;margin:8px 0}
+.bar2>*{flex:1}
+.dng{background:var(--acc);color:#fff;font-weight:600}
+.dng:disabled{opacity:.4}
+.it.sel{background:color-mix(in srgb,var(--acc) 14%,transparent)}
+.bx{font-size:20px;margin-right:8px}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;padding:20px;z-index:10}
+.dlg{background:var(--card);border-radius:12px;padding:18px;max-width:380px;width:100%}
+.dlg p{margin:0 0 14px}
+.menu{display:flex;flex-direction:column;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:6px;margin:0 0 10px}
+.menu button{text-align:left;background:none;padding:12px}
+</style></head><body><main id="app"></main><div id="timer" hidden></div><div id="dlg"></div>
+<script>
+const K='muscu_v1',$=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const uid=()=>Math.random().toString(36).slice(2,10);
+const today=()=>new Date().toLocaleDateString('sv');
+const TECH={'':'Aucune','Dégressif':"Série menée proche de l'échec, puis on baisse la charge et on repart tout de suite (drop-set).",
+'Rest-pause':"Série à l'échec, 15-20 s de pause, puis quelques répétitions de plus.",
+'Cluster':"Série découpée en mini-blocs séparés par 10-20 s de repos, pour garder une charge lourde.",
+'Lesté':"Charge additionnelle (ceinture, gilet) sur un exercice au poids du corps.",
+'Négatives':"Descente lente et contrôlée (3-5 s), avec une charge supérieure à la normale.",
+'Reps partielles':"Répétitions sur une amplitude réduite en fin de série, quand la pleine amplitude n'est plus possible."};
+const NOMS=['Push','Pull','Legs','Upper','Lower','Full body'];
+/* Catalogue : m = modes possibles (le 1er est le défaut) → réglages ; f = muscles ciblés ; a = accessoires suggérés */
+const MODES={g:'Machine guidée',l:'Machine libre',p:'Poulie',s:'Smith machine'},LC=['Profondeur du siège','Rouleau genoux','Rouleau pieds'];
+const CAT={
+'Chest press':{m:{l:['Siège'],g:['Siège','Poignées']}},
+'Low chest press':{m:{l:['Siège'],g:[]}},
+'High chest press':{m:{g:['Siège','Poignées'],l:['Siège']}},
+'Pec fly':{m:{g:['Siège','Angle'],l:[]},a:['Haltère']},
+'Dips':{m:{l:[],g:[]},f:['Pectoraux','Triceps']},
+'Push-up':{m:{l:[]}},
+'Shoulder press':{m:{g:['Siège','Poignées'],l:['Siège'],s:[]}},
+'Lateral raise':{m:{l:[],g:['Siège'],p:['Hauteur']},a:['Sangle de cheville','Poignée simple']},
+'Triceps pushdown':{m:{g:[],p:['Hauteur']},a:['Corde','Barre droite','Barre courbée','Barre triangle','Poignée simple','Sangle de cheville']},
+'Overhead triceps extension':{m:{p:['Hauteur']},a:['Corde','Barre droite','Barre courbée']},
+'Pull-up':{m:{l:[],g:[]}},
+'Chin-up':{m:{l:[],g:[]}},
+'Tirage horizontal':{m:{g:[],l:[],p:[]},f:['Grand dorsal','Trapèzes'],a:['Poignée serrée','Poignée neutre','Poignée large','Poignée simple']},
+'Tirage vertical':{m:{g:[],l:[],p:[]},f:['Grand dorsal','Trapèzes'],a:['Poignée neutre','Poignée large','Poignée serrée','Poignée simple']},
+'Hammer curl':{m:{p:['Hauteur'],l:[]},a:['Corde','Poignée simple']},
+'Reverse fly':{m:{g:['Hauteur'],l:[],p:['Hauteur']},f:['Deltoïdes postérieurs','Trapèzes'],a:['Poignée simple','Sangle de cheville']},
+'Biceps curl':{m:{l:[],g:['Hauteur du siège'],p:['Hauteur de la poulie']},a:['Barre EZ','Barre courbée','Poignée simple','Barre triangle']},
+'Bayesian curl':{m:{p:['Hauteur']},a:['Poignée simple']},
+'Extension 90°':{m:{l:[],g:['Rouleau','Angle']},f:['Lombaires','Fessiers']},
+'Pendulum squat':{m:{g:[]}},
+'Incline leg press':{m:{g:[]},f:['Quadriceps','Fessiers']},
+'Leg extension':{m:{g:LC,l:['Siège']}},
+'Leg curl':{m:{g:LC,l:[]}},
+'Mollets debout':{m:{g:['Hauteur']}},
+'Adducteurs':{m:{g:['Angle']}}};
+const ent=e=>CAT[e.n]||{m:{g:['Hauteur du siège'],l:[]}};
+const modes=e=>Object.keys(ent(e).m);
+const mode=e=>{const k=modes(e),m=e.mo||(e.g?'g':'l');return k.includes(m)?m:k[0]};
+const regs=e=>ent(e).m[mode(e)]||[];
+/* Repos : 3 → 3 min | 1.45, 1,45, 1:45, 1m45, 1'45 → 1 min 45 s | 1.5 → 1 min 30 s | 90 ou 90s → 90 s */
+function parseRep(v){v=String(v).trim().toLowerCase().replace(',','.');if(!v)return 0;let m;
+ if(m=v.match(/^(\d+)\s*(?:min|mn|m|')\s*(\d+)?\s*(?:s|sec|")?$/))return+m[1]*60+(+m[2]||0);
+ if(m=v.match(/^(\d+)\s*:\s*(\d{1,2})$/))return+m[1]*60+ +m[2];
+ if(m=v.match(/^(\d+)\s*(?:s|sec|secs|")$/))return+m[1];
+ if(m=v.match(/^(\d+)\.(\d+)$/)){const a=+m[1],f=m[2];if(f.length===1)return a*60+f*6;return+f<60?a*60+ +f:Math.round(a*60+ +('0.'+f)*60)}
+ if(/^\d+$/.test(v)){const n=+v;return n<=10?n*60:n}
+ return 0}
+const fmtRep=s=>!s?'non défini':s<60?s+' s':Math.floor(s/60)+' min'+(s%60?' '+s%60+' s':'');
+const ACC=['Barre droite','Barre EZ','Haltères','Poignée simple','Poignée triangle','Corde','Sangles','Ceinture'];
+let S=JSON.parse(localStorage.getItem(K)||'null')||{seances:[],acc:[],cfg:{repo:'',token:'',path:'muscu-data.json'},sha:''};
+let V={p:'home'},msg='',T=null,AC=null,SEL=null,OPEN=null;
+const save=()=>localStorage.setItem(K,JSON.stringify(S));
+const live=()=>S.seances.filter(x=>!x.del);
+const cur=()=>S.seances.find(x=>x.id===V.id);
+const touch=s=>{s.u=Date.now();save()};
+const fmt=n=>(Math.round(n*10)/10).toLocaleString('fr-FR');
+const stats=s=>{let r=0,t=0;s.ex.forEach(e=>e.s.forEach(x=>{if(x.t==='T'&&x.r>0){r+=x.r;t+=x.r*(x.c||0)}}));return{r,t,q:r?t/r:0}};
+const nums=s=>{let n=0,k=0;return s.ex.map((e,i)=>{if(e.ss&&i>0)return n+'.'+(++k);k=0;return''+(++n)})};
+const mois=d=>new Date(d+'T00:00').toLocaleDateString('fr-FR',{month:'long',year:'numeric'});
+const jour=d=>new Date(d+'T00:00').toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'short'});
+const newEx=()=>({id:uid(),n:'',ss:false,mo:'',foc:'',regl:{},tech:'',acc:'',rep:0,repTxt:'',s:[{t:'T',r:'',c:'',ok:false}],prev:[]});
+
+const VK=K+'_view';
+function saveView(){try{localStorage.setItem(VK,JSON.stringify({...V,y:Math.round(scrollY)}))}catch{}}
+let ASK=null;
+const ask=(msg,fn)=>{ASK={msg,fn};render()};
+function render(){const y=scrollY;draw();$('#dlg').innerHTML=ASK?`<div class=ov><div class=dlg><p>${esc(ASK.msg)}</p><div class=bar2><button data-a=cno>Annuler</button><button class=dng data-a=cyes>Supprimer</button></div></div></div>`:'';scrollTo(0,y);saveView()}
+const soft=()=>{if(V.p==='edit'||/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement?.tagName))return;render()};
+function draw(){
+ const a=$('#app');
+ if(V.p==='cfg')return a.innerHTML=cfgView();
+ if(V.p==='edit')return a.innerHTML=editView(cur());
+ const g={};live().sort((x,y)=>y.d.localeCompare(x.d)).forEach(s=>(g[s.d.slice(0,7)]??=[]).push(s));
+ if(!OPEN)OPEN=new Set(Object.keys(g).slice(0,1));
+ a.innerHTML=`${SEL?`<header><h1>${SEL.size} sélectionnée${SEL.size>1?'s':''}</h1><button data-a=selcancel>Annuler</button></header>
+ <div class=bar2><button data-a=selall>${SEL.size===live().length?'Tout désélectionner':'Tout sélectionner'}</button><button class=dng data-a=seldel ${SEL.size?'':'disabled'}>Supprimer</button></div>`
+ :`<header><h1>Muscu</h1><div class=row2><button data-a=cfg>Réglages</button><button data-a=selmode aria-label="Sélectionner des séances">☰</button></div></header>
+ <button class="p big" data-a=new>Nouvelle séance</button>`}${msg?`<p class=mut>${esc(msg)}</p>`:''}
+ ${Object.entries(g).map(([k,l])=>`<details data-m=${k} ${OPEN.has(k)?'open':''}><summary>${mois(l[0].d)} · ${l.length} séance${l.length>1?'s':''} · ${fmt(l.reduce((t,s)=>t+stats(s).t,0))} kg</summary>
+ ${l.map(s=>`<div class="it${SEL&&SEL.has(s.id)?' sel':''}" data-a=${SEL?'tgs':'open'} data-id=${s.id}><span>${SEL?`<span class=bx>${SEL.has(s.id)?'☑':'☐'}</span>`:''}${jour(s.d)} — <b>${esc(s.nom||'Séance')}</b></span><span class=mut>${fmt(stats(s).t)} kg</span></div>`).join('')}</details>`).join('')||'<p class=mut>Aucune séance. Commence par en créer une.</p>'}`;
+}
+function sets(e,i){let k=0;return e.s.map((x,j)=>{const lab=x.t==='E'?'É':'S'+(++k),p=e.prev[j]||{};
+ return`<div class="sr${x.ok?' ok':''}"><button class=lab data-a=type data-e=${i} data-s=${j} title="Échauffement / série effective">${lab}</button>
+ <input inputmode=decimal data-e=${i} data-s=${j} data-f=r placeholder="${esc(p.r||'reps')}" value="${esc(x.r)}">
+ <input inputmode=decimal data-e=${i} data-s=${j} data-f=c placeholder="${esc(p.c||'kg')}" value="${esc(x.c)}">
+ <button class=okb data-a=ok data-e=${i} data-s=${j}>✓</button><button data-a=ds data-e=${i} data-s=${j}>×</button></div>`}).join('')}
+function editView(s){
+ const nn=nums(s);
+ const used=[...new Set(live().flatMap(x=>x.ex.map(e=>e.n)).filter(Boolean).concat(Object.keys(CAT)))];
+ return`<header><button data-a=home>← Retour</button><button data-a=dup>Dupliquer</button></header>
+ <datalist id=noms>${NOMS.map(n=>`<option>${n}`).join('')}</datalist><datalist id=exos>${used.map(n=>`<option>${esc(n)}`).join('')}</datalist>
+ <datalist id=accs>${[...new Set(ACC.concat(S.acc))].map(n=>`<option>${esc(n)}`).join('')}</datalist>
+ <div class=row style="margin:12px 0"><input data-f=nom list=noms placeholder="Séance" value="${esc(s.nom)}"><input type=date data-f=d value="${s.d}"></div>
+ ${s.ex.map((e,i)=>`<div class="card ex${e.ss&&i?' ss':''}"><div class=row style="margin-bottom:8px"><span class=num style="flex:0 0 46px">${nn[i]}</span>
+ <input data-e=${i} data-f=n list=exos placeholder="Exercice" value="${esc(e.n)}"><button data-a=dx data-e=${i} style="flex:0 0 44px">✕</button></div>
+ ${i?`<label class=ck><input type=checkbox data-e=${i} data-f=ss ${e.ss?'checked':''}> Superset avec l'exercice précédent</label>`:''}
+ ${e.n?`${modes(e).length>1?`<select data-e=${i} data-f=mo style="margin-bottom:8px">${modes(e).map(k=>`<option value=${k} ${k===mode(e)?'selected':''}>${MODES[k]}</option>`).join('')}</select>`:`<div class=mut style="margin-bottom:8px">${MODES[mode(e)]}</div>`}
+ ${ent(e).f?`<select data-e=${i} data-f=foc style="margin-bottom:8px"><option value="">Muscle ciblé : non précisé</option>${ent(e).f.map(k=>`<option ${k===e.foc?'selected':''}>${esc(k)}</option>`).join('')}</select>`:''}
+ ${regs(e).length?`<div class=sec>Réglages</div><div class=regs>${regs(e).map(k=>`<label>${esc(k)}<input data-e=${i} data-k="${esc(k)}" value="${esc((e.regl||{})[k])}"></label>`).join('')}</div>`:''}`:''}
+ <div class=sec>Technique</div>
+ <details><summary>${e.tech||'Aucune'}</summary>${Object.keys(TECH).map(k=>`<button class="opt${k===e.tech?' on':''}" data-a=tech data-e=${i} data-t="${esc(k)}"><b>${k||'Aucune'}</b><small>${k?esc(TECH[k]):'Série classique, sans intensification.'}</small></button>`).join('')}</details>
+ <div class=sec>Accessoire</div>
+ <datalist id=accs${i}>${[...new Set([...(ent(e).a||[]),...ACC,...S.acc])].map(n=>`<option>${esc(n)}`).join('')}</datalist><input data-e=${i} data-f=acc list=accs${i} placeholder="Choisir ou saisir un accessoire" value="${esc(e.acc)}">
+ <div class=sec>Repos</div>
+ <input inputmode=decimal data-e=${i} data-f=repTxt placeholder="Saisir votre temps de récupération" value="${esc(e.repTxt??(e.rep?e.rep/60:''))}">
+ <div class=desc id=rp${i}>Durée : ${fmtRep(e.rep)}</div>
+ <div class="sr" style="margin-top:10px"><span></span><span class=sh>R (reps)</span><span class=sh>C (kg)</span><span></span><span></span></div>${sets(e,i)}
+ <div class=row><button data-a=as data-e=${i} data-t=E>+ Échauffement</button><button data-a=as data-e=${i} data-t=T>+ Série effective</button></div></div>`).join('')}
+ <button class="p big" data-a=ax>+ Exercice</button>
+ <div class=stats id=st></div>
+ <textarea data-f=com rows=3 placeholder="Notes : forme, fatigue, ressenti…" style="margin-top:12px">${esc(s.com)}</textarea>
+ <button class=big data-a=home>← Retour au menu</button>
+ <button class=big data-a=ds2 style="color:var(--acc)">Supprimer la séance</button>`}
+function upStats(){const el=$('#st');if(!el||!cur())return;const t=stats(cur());el.innerHTML=`<div><b>${fmt(t.r)}</b>répétitions</div><div><b>${fmt(t.t)} kg</b>tonnage</div><div><b>${fmt(t.q)}</b>kg / rép.</div>`}
+function cfgView(){const c=S.cfg;return`<header><button data-a=home>← Retour</button></header><h1>Réglages</h1>
+ <div class=card><b>Synchronisation GitHub</b><p class=mut>Crée un dépôt <b>privé</b> dédié aux données, puis un jeton « fine-grained » limité à ce dépôt (permission Contents : lecture et écriture).</p>
+ <input data-c=repo placeholder="utilisateur/depot-prive" value="${esc(c.repo)}" style="margin-bottom:8px">
+ <input data-c=path placeholder="muscu-data.json" value="${esc(c.path)}" style="margin-bottom:8px">
+ <input data-c=token type=password placeholder="Jeton d'accès (github_pat_…)" value="${esc(c.token)}">
+ <button class="p big" data-a=sync>Synchroniser maintenant</button><p class=mut>${esc(msg)}</p></div>
+ <div class=card><b>Sauvegarde manuelle</b><button class=big data-a=exp>Exporter en JSON</button>
+ <input type=file id=imp accept=".json"></div>`}
+
+/* GitHub */
+const api=()=>`https://api.github.com/repos/${S.cfg.repo}/contents/${S.cfg.path||'muscu-data.json'}`;
+const H=()=>({Authorization:'Bearer '+S.cfg.token,Accept:'application/vnd.github+json'});
+async function pull(){const r=await fetch(api(),{headers:H(),cache:'no-store'});if(r.status===404){S.sha='';return null}
+ if(!r.ok)throw new Error('GitHub '+r.status);const j=await r.json();S.sha=j.sha;
+ return JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(j.content.replace(/\n/g,'')),c=>c.charCodeAt(0))))}
+async function push(){let b='';new TextEncoder().encode(JSON.stringify({seances:S.seances,acc:S.acc},null,1)).forEach(c=>b+=String.fromCharCode(c));
+ const r=await fetch(api(),{method:'PUT',headers:H(),body:JSON.stringify({message:'Sync '+new Date().toISOString(),content:btoa(b),sha:S.sha||undefined})});
+ if(!r.ok)throw new Error('GitHub '+r.status);S.sha=(await r.json()).content.sha}
+async function sync(){if(!S.cfg.repo||!S.cfg.token)return;msg='Synchronisation…';
+ try{const rm=await pull();if(rm){const m=new Map(S.seances.map(x=>[x.id,x]));rm.seances.forEach(x=>{const l=m.get(x.id);if(!l||(x.u||0)>(l.u||0))m.set(x.id,x)});S.seances=[...m.values()];S.acc=[...new Set([...S.acc,...(rm.acc||[])])]}
+ try{await push()}catch{await pull();await push()}msg='Synchronisé à '+new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})}
+ catch(e){msg='Échec de la synchronisation : '+e.message+' (vérifie dépôt, jeton, réseau)'}save()}
+
+/* Chrono de repos */
+function rest(sec){clearInterval(T);AC=AC||new(window.AudioContext||window.webkitAudioContext)();const end=Date.now()+sec*1000,el=$('#timer');
+ const tick=()=>{const l=Math.ceil((end-Date.now())/1000);if(l<=0){clearInterval(T);el.hidden=true;try{const o=AC.createOscillator();o.connect(AC.destination);o.frequency.value=880;o.start();o.stop(AC.currentTime+.5)}catch{}navigator.vibrate?.(400);return}
+ el.hidden=false;el.innerHTML=`<span>Repos ${Math.floor(l/60)}:${String(l%60).padStart(2,'0')}</span><button data-a=st>Passer</button>`};tick();T=setInterval(tick,250)}
+
+/* Préremplissage depuis la dernière séance */
+function prefill(e,s){const k=e.n.trim().toLowerCase();if(!k)return;
+ const l=live().filter(x=>x.id!==s.id&&x.d<=s.d).sort((a,b)=>b.d.localeCompare(a.d)).flatMap(x=>x.ex).find(x=>x.n.trim().toLowerCase()===k);if(!l)return;
+ e.prev=l.s.map(x=>({r:x.r,c:x.c}));
+ if(e.s.every(x=>x.r===''&&x.c===''))e.s=l.s.map(x=>({t:x.t,r:'',c:'',ok:false}));
+ ['tech','acc'].forEach(f=>{if(!e[f])e[f]=l[f]});if(l.mo)e.mo=l.mo;if(l.foc)e.foc=l.foc;if(!Object.values(e.regl||{}).some(Boolean))e.regl={...l.regl};if(l.rep){e.rep=l.rep;e.repTxt=l.repTxt}}
+
+const A=document.addEventListener.bind(document);
+A('input',ev=>{const t=ev.target,d=t.dataset;
+ if(d.c){S.cfg[d.c]=t.value.trim();return save()}
+ if(V.p!=='edit'||(!d.f&&d.k===undefined))return;const s=cur();let o=s;
+ if(d.k!==undefined){const x=s.ex[+d.e];(x.regl??={})[d.k]=t.value;return touch(s)}
+ if(d.e!==undefined){o=s.ex[+d.e];if(d.s!==undefined)o=o.s[+d.s]}
+ let v=t.type==='checkbox'?t.checked:t.value;
+ ;
+ if(d.f==='repTxt'){o.rep=parseRep(v);const r=$('#rp'+d.e);if(r)r.textContent='Durée : '+fmtRep(o.rep)}
+ if(['r','c','rep'].includes(d.f)){v=v===''?'':parseFloat(v.replace(',','.'));if(v!==''&&isNaN(v))v=''}
+ o[d.f]=v;touch(s);upStats()});
+A('change',ev=>{const t=ev.target,d=t.dataset;
+ if(t.id==='imp'){t.files[0]?.text().then(x=>{const r=JSON.parse(x);const m=new Map(S.seances.map(y=>[y.id,y]));r.seances.forEach(y=>{const l=m.get(y.id);if(!l||(y.u||0)>(l.u||0))m.set(y.id,y)});S.seances=[...m.values()];save();msg='Import terminé';render()});return}
+ if(V.p!=='edit'||!d.f)return;const s=cur();
+ if(d.f==='acc'&&t.value&&!ACC.includes(t.value)&&!S.acc.includes(t.value)){S.acc.push(t.value);save()}
+ if(d.f==='n'){const e=s.ex[+d.e];e.mo=modes(e)[0];e.foc='';prefill(e,s);touch(s);render();upStats()}
+ if(d.f==='ss'||d.f==='mo'){render();upStats()}});
+A('click',ev=>{const b=ev.target.closest('[data-a]');if(!b)return;const d=b.dataset;const s=V.p==='edit'?cur():null,e=s&&d.e!==undefined?s.ex[+d.e]:null;
+ switch(d.a){
+ case'new':{const n={id:uid(),nom:'',d:today(),com:'',ex:[newEx()],u:Date.now()};S.seances.push(n);save();V={p:'edit',id:n.id};break}
+ case'open':V={p:'edit',id:d.id};break;
+ case'home':V={p:'home'};sync().then(soft);break;
+ case'selmode':SEL=new Set();break;
+ case'selcancel':SEL=null;break;
+ case'selall':SEL=SEL.size===live().length?new Set():new Set(live().map(x=>x.id));break;
+ case'tgs':SEL.has(d.id)?SEL.delete(d.id):SEL.add(d.id);break;
+ case'seldel':{if(!SEL.size)return;const n=SEL.size;ask(`Supprimer ${n} séance${n>1?'s':''} ? Cette action est irréversible.`,()=>{S.seances.forEach(x=>{if(SEL.has(x.id)){x.del=true;touch(x)}});SEL=null;sync().then(soft)});return}
+ case'cfg':V={p:'cfg'};break;
+ case'ax':s.ex.push(newEx());touch(s);break;
+ case'dx':ask('Supprimer cet exercice ?',()=>{s.ex.splice(+d.e,1);touch(s)});return;
+ case'cno':ASK=null;break;
+ case'cyes':{const f=ASK.fn;ASK=null;f();break}
+ case'as':{const last=e.s.filter(x=>x.t===d.t).pop();e.s.push({t:d.t,r:'',c:d.t==='E'?'':(last?.c??''),ok:false});touch(s);break}
+ case'ds':e.s.splice(+d.s,1);if(!e.s.length)e.s.push({t:'T',r:'',c:'',ok:false});touch(s);break;
+ case'type':{const x=e.s[+d.s];x.t=x.t==='E'?'T':'E';touch(s);break}
+ case'tech':e.tech=d.t;touch(s);break;
+ case'ok':{const x=e.s[+d.s];x.ok=!x.ok;touch(s);if(x.ok&&e.rep>0)rest(e.rep);break}
+ case'dup':{const n=JSON.parse(JSON.stringify(s));n.id=uid();n.d=today();n.u=Date.now();n.ex.forEach(x=>{x.id=uid();x.prev=x.s.map(y=>({r:y.r,c:y.c}));x.s.forEach(y=>{y.r='';y.c='';y.ok=false})});S.seances.push(n);save();V={p:'edit',id:n.id};break}
+ case'ds2':ask('Supprimer cette séance ?',()=>{s.del=true;touch(s);V={p:'home'};sync().then(soft)});return;
+ case'st':clearInterval(T);$('#timer').hidden=true;return;
+ case'sync':sync().then(soft);msg='Synchronisation…';break;
+ case'exp':{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify({seances:S.seances,acc:S.acc},null,1)],{type:'application/json'}));a.download='muscu-sauvegarde.json';a.click();render();return}}
+ render();upStats();if(['open','new','home','cfg','dup'].includes(d.a))window.scrollTo(0,0)});
+A('toggle',ev=>{const d=ev.target;if(d.tagName==='DETAILS'&&d.dataset.m){d.open?OPEN.add(d.dataset.m):OPEN.delete(d.dataset.m)}},true);
+let Y0=0;try{const v=JSON.parse(localStorage.getItem(VK));if(v){if(v.p==='edit'&&S.seances.some(x=>x.id===v.id&&!x.del)){V={p:'edit',id:v.id};Y0=v.y||0}else if(v.p==='cfg')V={p:'cfg'};else if(v.p==='home')Y0=v.y||0}}catch{}
+let tm;addEventListener('scroll',()=>{clearTimeout(tm);tm=setTimeout(saveView,150)},{passive:true});
+render();scrollTo(0,Y0);sync().then(soft);
+</script></body></html>
