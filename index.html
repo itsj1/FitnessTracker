@@ -75,7 +75,7 @@ const TECH={'':'Aucune','Dégressif':"Série menée proche de l'échec, puis on 
 'Reps partielles':"Répétitions sur une amplitude réduite en fin de série, quand la pleine amplitude n'est plus possible."};
 const NOMS=['Push','Pull','Legs','Upper','Lower','Full body'];
 /* Catalogue : m = modes possibles (le 1er est le défaut) → réglages ; f = muscles ciblés ; a = accessoires suggérés */
-const MODES={g:'Guidée',l:'Libre',p:'Poulie',s:'Smith machine'},LC=['Profondeur du siège','Rouleau genoux','Rouleau pieds'];
+const MODES={g:'Machine guidée',l:'Machine libre',p:'Poulie',s:'Smith machine'},LC=['Profondeur du siège','Rouleau genoux','Rouleau pieds'];
 const CAT={
 'Chest press':{m:{l:['Siège'],g:['Siège','Poignées']}},
 'Low chest press':{m:{l:['Siège'],g:[]}},
@@ -166,15 +166,15 @@ function editView(s){
  ${e.n?`${modes(e).length>1?`<select data-e=${i} data-f=mo style="margin-bottom:8px">${modes(e).map(k=>`<option value=${k} ${k===mode(e)?'selected':''}>${MODES[k]}</option>`).join('')}</select>`:`<div class=mut style="margin-bottom:8px">${MODES[mode(e)]}</div>`}
  ${ent(e).f?`<select data-e=${i} data-f=foc style="margin-bottom:8px"><option value="">Muscle ciblé : non précisé</option>${ent(e).f.map(k=>`<option ${k===e.foc?'selected':''}>${esc(k)}</option>`).join('')}</select>`:''}
  ${regs(e).length?`<div class=sec>Réglages</div><div class=regs>${regs(e).map(k=>`<label>${esc(k)}<input data-e=${i} data-k="${esc(k)}" value="${esc((e.regl||{})[k])}"></label>`).join('')}</div>`:''}`:''}
- <div class=sec>Technique</div>
- <details><summary>${e.tech||'Aucune'}</summary>${Object.keys(TECH).map(k=>`<button class="opt${k===e.tech?' on':''}" data-a=tech data-e=${i} data-t="${esc(k)}"><b>${k||'Aucune'}</b><small>${k?esc(TECH[k]):'Série classique, sans intensification.'}</small></button>`).join('')}</details>
  <div class=sec>Accessoire</div>
  <datalist id=accs${i}>${[...new Set([...(ent(e).a||[]),...ACC,...S.acc])].map(n=>`<option>${esc(n)}`).join('')}</datalist><input data-e=${i} data-f=acc list=accs${i} placeholder="Choisir ou saisir un accessoire" value="${esc(e.acc)}">
  <div class=sec>Repos</div>
  <input inputmode=decimal data-e=${i} data-f=repTxt placeholder="Saisir votre temps de récupération" value="${esc(e.repTxt??(e.rep?e.rep/60:''))}">
  <div class=desc id=rp${i}>Durée : ${fmtRep(e.rep)}</div>
  <div class="sr" style="margin-top:10px"><span></span><span class=sh>R (reps)</span><span class=sh>C (kg)</span><span></span><span></span></div>${sets(e,i)}
- <div class=row><button data-a=as data-e=${i} data-t=E>+ Échauffement</button><button data-a=as data-e=${i} data-t=T>+ Série effective</button></div></div>`).join('')}
+ <div class=row><button data-a=as data-e=${i} data-t=E>+ Échauffement</button><button data-a=as data-e=${i} data-t=T>+ Série effective</button></div>
+ <div class=sec>Technique</div>
+ <details><summary>${e.tech||'Aucune'}</summary>${Object.keys(TECH).map(k=>`<button class="opt${k===e.tech?' on':''}" data-a=tech data-e=${i} data-t="${esc(k)}"><b>${k||'Aucune'}</b><small>${k?esc(TECH[k]):'Série classique, sans intensification.'}</small></button>`).join('')}</details></div>`).join('')}
  <button class="p big" data-a=ax>+ Exercice</button>
  <div class=stats id=st></div>
  <textarea data-f=com rows=3 placeholder="Notes : forme, fatigue, ressenti…" style="margin-top:12px">${esc(s.com)}</textarea>
