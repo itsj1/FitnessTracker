@@ -202,6 +202,12 @@ label.ck input{width:auto}
 #mini{position:fixed;left:12px;top:calc(8px + env(safe-area-inset-top));width:min(calc(100vw - 24px),420px);z-index:7;touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab;margin:0;box-shadow:0 8px 24px rgba(0,0,0,.25)}
 #mini[hidden]{display:none}
 #mini.mv{cursor:grabbing;opacity:.92}
+#mini.lvh{padding:10px 12px 12px}
+#mini .lt{font-size:24px}
+#mini .lvs3{margin-top:10px}
+#mini .lvs3>div{padding:7px 6px 10px}
+#mini .lvs3 b{font-size:24px}
+#mini .lpz{pointer-events:none;width:26px;height:26px}
 #mini .lstats{margin-top:8px}
 #mini .lstats div{padding:6px}
 #mini .lstats b{font-size:18px}
@@ -287,6 +293,17 @@ label.ck input{width:auto}
 .xi{width:38px;height:38px;border-radius:50%;padding:0;background:none;display:grid;place-items:center;color:var(--mut);flex:none}
 .xi.on{color:var(--acc)}
 .gbd{display:inline-flex;align-items:center;gap:6px;margin:10px 0 0 4px;background:var(--mint);color:var(--acc2);border-radius:999px;padding:5px 11px;font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em}
+.ssh,.ssc,.av2.ss{--ss:#3b82f6}
+.ssh{display:flex;align-items:center;gap:14px;margin:14px 0 10px;padding:12px 14px;border-radius:24px;background:color-mix(in srgb,var(--ss) 9%,var(--card));border:1px solid color-mix(in srgb,var(--ss) 22%,transparent)}
+.ssh .ssb{width:36px;height:36px;border-radius:11px;background:var(--ss);color:#fff;display:grid;place-items:center;font:800 18px var(--fc);font-style:normal;flex:none}
+.ssh b{flex:1;min-width:0;font:600 18px "Avenir Next",system-ui,sans-serif;color:var(--ink)}
+.ssh span{font:600 12px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:var(--mut);white-space:nowrap}
+.lvc.ssc,.xc.ssc{border-left:6px solid var(--ss)}
+.av2.ss{background:var(--ss);color:#fff;font-size:24px}
+.lve{text-align:center;padding:96px 12px 100px}
+.lve h3{margin:0 0 10px;font:800 24px/1.15 var(--fc);color:var(--ink)}
+.lve p{margin:0;font:400 17px/1.4 "Avenir Next",system-ui,sans-serif;color:var(--mut)}
+.lfin:disabled{background:color-mix(in srgb,var(--ink) 6%,var(--card));color:#fff;box-shadow:none;opacity:1;cursor:default}
 .chips{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 8px;margin:10px 2px 4px}
 .chips{flex-wrap:wrap!important;gap:0 6px!important}.chips button{display:flex;align-items:center;gap:3px;background:none;padding:6px 0;color:var(--mut);white-space:nowrap;min-width:0}.chips button svg{width:13px;height:13px}
 .chips span{font:600 13px ui-monospace,Menlo,monospace;letter-spacing:.08em}
@@ -439,7 +456,10 @@ label.ck input{width:auto}
 /* ===== Séance en direct ===== */
 .lvh{padding:12px 14px 14px;overflow:hidden}
 .lvh .thr{align-items:center}
-.lvh .tk i.dot{width:9px;height:9px;border-radius:50%;background:var(--acc);display:inline-block;flex:none}
+.lvh .tk i.dot{width:9px;height:9px;border-radius:50%;background:var(--acc);display:inline-block;flex:none;animation:lvblink 1.4s ease-in-out infinite}
+@keyframes lvblink{0%,100%{opacity:1}50%{opacity:.2}}
+.lvh.paused .tk i.dot{animation:none;opacity:1}
+@media (prefers-reduced-motion:reduce){.lvh .tk i.dot{animation:none}}
 .lvh.paused .tk{color:#9a4a12}.lvh.paused .tk i.dot{background:#9a4a12}
 .lvh .lt{font:800 30px/1.05 var(--fc);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .lvs3{position:relative;display:grid;grid-template-columns:1fr 1fr 1fr;margin-top:12px;background:var(--bg);border-radius:16px;overflow:hidden}
@@ -460,7 +480,8 @@ label.ck input{width:auto}
 .lvtb .lrw:not(.hh){border-top:1px solid var(--line)}
 .lrw.hh{font:12px ui-monospace,Menlo,monospace;letter-spacing:.12em;color:var(--mut);padding:14px 0 10px!important;text-align:center}
 .lrw.ok{background:color-mix(in srgb,var(--ink) 4%,transparent)}
-.lrw.now{background:color-mix(in srgb,var(--acc) 16%,transparent);box-shadow:inset 4px 0 0 var(--acc)}
+.lrw.now{background:color-mix(in srgb,var(--acc) 16%,transparent)}
+.lrw.now::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:4px;height:36px;border-radius:2px;background:var(--acc)}
 .lrw .ln{background:none;padding:6px 0;text-align:center;font:800 20px var(--fc);color:var(--ink)}
 .lrw .wb{font-style:normal;display:inline-grid;place-items:center;min-width:28px;height:28px;border-radius:8px;background:var(--c,#f5a524);color:#fff;font:800 16px var(--fc)}
 .lrw .lp{text-align:center;color:var(--mut);font:600 17px var(--fc)}
@@ -545,6 +566,10 @@ html[data-vt=back]::view-transition-new(root){animation:vtInL .32s cubic-bezier(
 .dbt{display:block;width:100%;border-radius:999px;padding:15px 12px;margin-top:10px;background:color-mix(in srgb,var(--ink) 7%,var(--card));font:500 17px "Avenir Next","Trebuchet MS",system-ui,sans-serif;color:var(--ink)}
 .dbt.red{color:var(--red)}
 .dpop.ab .dbt{font:500 20px "Avenir Next","Trebuchet MS",system-ui,sans-serif;letter-spacing:0}
+.dpop.ab .dbt.gr{font:700 20px "Avenir Next",system-ui,sans-serif;font-stretch:normal;letter-spacing:normal}
+.dpop.ab .dbt.red,.dpop.ab .dbt.tx{font:500 20px "Avenir Next",system-ui,sans-serif;font-stretch:normal;letter-spacing:normal}
+.dpop.fz:not(.ab) .dbt.gr{font:700 20px "Avenir Next",system-ui,sans-serif;font-stretch:normal;letter-spacing:normal}
+.dpop.fz:not(.ab) .dbt.tx{font:500 20px "Avenir Next",system-ui,sans-serif;font-stretch:normal;letter-spacing:normal}
 .dbr{display:flex;gap:10px;margin-top:10px}.dbr .dbt{margin-top:0;flex:1;width:auto;padding:15px 6px}
 @keyframes popIn{from{transform:scale(1.18);opacity:0}to{transform:none;opacity:1}}
 @keyframes popBg{from{background:rgba(0,0,0,0)}to{background:rgba(0,0,0,.28)}}
@@ -674,7 +699,7 @@ html[data-vt=back]::view-transition-new(root){animation:vtInL .32s cubic-bezier(
 .cxk.go .cxok{background:color-mix(in srgb,var(--acc) 8%,var(--card));border:1px solid color-mix(in srgb,var(--acc) 45%,transparent);color:var(--acc)}
 .cxk.go .cxpz{background:var(--acc);border:1px solid var(--acc);color:#fff}
 .cxk.go .cxrow .cxsoft{flex:1}
-</style></head><body><main id="app"></main><div id="timer" hidden></div><div id="mini" class="lh" hidden></div><div id="dlg"></div>
+</style></head><body><main id="app"></main><div id="timer" hidden></div><div id="mini" class="thd lvh mini2" hidden></div><div id="dlg"></div>
 <script>
 const K='muscu_v1',$=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -762,8 +787,8 @@ let MID=null,MP=null,MD=null;try{MP=JSON.parse(localStorage.getItem(K+'_mini'))}
 function clampMini(m){if(!MP)return;const w=m.offsetWidth,h=m.offsetHeight;MP.x=Math.min(Math.max(0,MP.x),Math.max(0,innerWidth-w));MP.y=Math.min(Math.max(0,MP.y),Math.max(0,innerHeight-h));m.style.left=MP.x+'px';m.style.top=MP.y+'px'}
 function upMini(){const m=$('#mini');if(!m)return;const s=runS();if(!s||V.p==='live'){m.hidden=true;MID=null;return}
  MID=s.id;const t=lvTot(s);m.hidden=false;
- m.innerHTML=`<div class=grab></div><div class=lhd2><span class=cbtn style="transform:rotate(180deg)">${CHEV}</span><div class=grow><div class=live>${s.pa?'EN PAUSE':'LIVE · MAINTENANT'}</div><div class=ltitle>${esc(s.free?'Entraînement libre'+(s.nom?' · '+s.nom:''):(s.nom||'Séance'))}</div></div><button class=cbtn data-a=lm data-id=${s.id} aria-label="Options">${DOTS}</button></div>
- <div class=lstats><div><span>TEMPS</span><b>${clk(elapsed(s))}</b></div><div><span>VOLUME</span><b>${fmt(t.v)} <small>${OPT(s).u}</small></b></div><div><span>SÉRIES</span><b>${t.d} / ${t.n}</b></div></div>`;
+ const pz=!!s.pa,pct=t.n?t.d/t.n*100:0;m.classList.toggle('paused',pz);
+ m.innerHTML=`<div class=thr><span class=cbtn style="transform:rotate(180deg)">${CHEV}</span><div class=grow><div class=tk><i class=dot style="animation-delay:-${Date.now()%1400}ms"></i>${pz?'EN PAUSE':'LIVE · MAINTENANT'}</div><div class=lt>${esc(s.free?'Entraînement libre'+(s.nom?' · '+s.nom:''):(s.nom||'Séance'))}</div></div><button class=cbtn data-a=lm data-id=${s.id} aria-label="Options">${DOTS}</button></div><div class=lvs3><div class=lvtm><span>TEMPS</span><div class=lvtr><b>${clk(elapsed(s))}</b><i class=lpz>${pz?SI('play',20):PAUSE_I}</i></div></div><div><span>VOLUME</span><b>${fmt(t.v)} <small>${OPT(s).u}</small></b></div><div><span>SÉRIES</span><b>${t.d} / ${t.n}</b></div><i class=lvbar style="width:${pct}%"></i></div>`;
  clampMini(m)}
 (()=>{const m=document.getElementById('mini');
  m.addEventListener('pointerdown',ev=>{if(ev.target.closest('[data-a]'))return;const r=m.getBoundingClientRect();MD={sx:ev.clientX,sy:ev.clientY,x:r.left,y:r.top,mv:false};m.setPointerCapture(ev.pointerId)});
@@ -813,23 +838,23 @@ const lvRows=(e,i,s)=>{const pm=lvPrev(s,e);let kE=0,kT=0;const nj=e.s.findIndex
   pt=p?(has(p.c)&&has(p.r)?p.c+'×'+p.r:has(p.c)?p.c:has(p.r)?p.r+' reps':'—'):'—',
   lab=t==='T'?j+1:`<i class=wb${E?'':` style="--c:${STC[t]}"`}>${E?'W':t==='F'?'E':t}</i>`;
   return`<div class="lrw${x.ok?' ok':''}${j===nj?' now':''}"><button class=ln data-a=sty data-e=${i} data-s=${j} aria-label="Type de série">${lab}</button><span class=lp>${pt}</span><input inputmode=decimal data-e=${i} data-s=${j} data-f=c value="${esc(x.c)}" placeholder="—"><input inputmode=decimal data-e=${i} data-s=${j} data-f=r value="${esc(x.r)}" placeholder="—"><button class=lck data-a=ok data-e=${i} data-s=${j} aria-label="Valider la série">${SI('check',20)}</button></div>`}).join('')};
-const lvCard=(e,i,s)=>{const o=OPT(s),tp=tmpS(e.tempo);
- return`<div class="card xc lvc" data-row=xo data-id=${e.id} data-par=${s.id}><div class=xh><span class=hd>${GRIP}</span><span class=av2>${esc(ini(e.n))}</span>${e.n?`<b class=xnm>${esc(e.n)}</b>`:`<button class="xnm ph" data-a=xrep data-e=${i}>Choisir l’exercice</button>`}<button class="xi${e.nt?' on':''}" data-a=xn data-e=${i} aria-label="Note">${SI('note',22)}</button><button class=xi data-a=xm data-e=${i} aria-label="Options">${DOTS}</button></div>
+const lvCard=(e,i,s)=>{const o=OPT(s),tp=tmpS(e.tempo),gm=e.g&&e.gt==='ss'?s.ex.filter(y=>y.g===e.g):[],sg=gm.length>1;
+ return`<div class="card xc lvc${sg?' ssc':''}" data-row=xo data-id=${e.id} data-par=${s.id}><div class=xh><span class=hd>${GRIP}</span><span class="av2${sg?' ss':''}">${sg?String.fromCharCode(65+gm.indexOf(e)):esc(ini(e.n))}</span>${e.n?`<b class=xnm>${esc(e.n)}</b>`:`<button class="xnm ph" data-a=xrep data-e=${i}>Choisir l’exercice</button>`}<button class="xi${e.nt?' on':''}" data-a=xn data-e=${i} aria-label="Note">${SI('note',22)}</button><button class=xi data-a=xm data-e=${i} aria-label="Options">${DOTS}</button></div>
  <div class=chips><button data-a=xr data-e=${i}>${SI('stopwatch',16)}<span>REPOS</span><u>›</u><b>${e.rep?clk(e.rep):'Aucun'}</b></button>${o.tp?`<button data-a=xt data-e=${i}>${SI('tempo',16)}<span>TEMPO</span><u>›</u><b>${tp||'Aucun'}</b></button>`:''}</div>
  ${e.nt?`<button class=nbar data-a=xn data-e=${i}>${esc(e.nt)}</button>`:''}
  <div class="stb lvtb"><div class="lrw hh"><span>#</span><span>PREV</span><span>${o.u.toUpperCase()}</span><span>REPS</span><span></span></div>${lvRows(e,i,s)}<button class=dash data-a=as data-e=${i} data-t=T>+ Ajouter une série</button></div></div>`};
 const lvView=s=>{normLive(s);const t=lvTot(s),pz=!!s.pa,o=OPT(s),pct=t.n?t.d/t.n*100:0;
- return`<div class="thd lvh${pz?' paused':''}"><div class=thr><button class=cbtn data-a=mini aria-label="Réduire">${CHEV}</button><div class=grow><div class=tk><i class=dot></i>${pz?'EN PAUSE':'LIVE · MAINTENANT'}</div><div class=lt>${esc(s.nom||'Séance')}</div></div>${pz?'':`<button class=cbtn data-a=lrest aria-label="Chrono de repos">${SI('stopwatch',20)}</button>`}<button class=cbtn data-a=lset aria-label="Options">${DOTS}</button></div>
+ return`<div class="thd lvh${pz?' paused':''}"><div class=thr><button class=cbtn data-a=mini aria-label="Réduire">${CHEV}</button><div class=grow><div class=tk><i class=dot style="animation-delay:-${Date.now()%1400}ms"></i>${pz?'EN PAUSE':'LIVE · MAINTENANT'}</div><div class=lt>${esc(s.nom||(s.free?'Entraînement libre':'Séance'))}</div></div>${pz?'':`<button class=cbtn data-a=lrest aria-label="Chrono de repos">${SI('stopwatch',20)}</button>`}<button class=cbtn data-a=lset aria-label="Options">${DOTS}</button></div>
  <div class=lvs3><div class=lvtm><span>TEMPS</span><div class=lvtr><b id=lvt>${clk(elapsed(s))}</b><button class=lpz data-a=lpz aria-label="${pz?'Reprendre':'Mettre en pause'}">${pz?SI('play',20):PAUSE_I}</button></div></div><div><span>VOLUME</span><b id=lvv>${fmt(t.v)} <small>${o.u}</small></b></div><div><span>SÉRIES</span><b id=lvs>${t.d} / ${t.n}</b></div><i class=lvbar id=lvbar style="width:${pct}%"></i></div></div>
- <div class="lvb${pz?' frozen':''}">${dls()}${lvList(s)}
+ <div class="lvb${pz?' frozen':''}">${dls()}${lvList(s)}${s.ex.length?'':`<div class=lve><h3>Prêt à t’entraîner ?</h3><p>Ajoute ton premier exercice pour démarrer.</p></div>`}
  <div class=dbar><button class=dash data-a=xadd>+ Exercice</button><button class=dash data-a=xci>+ Circuit</button></div>
- <button class="gbtn lfin" data-a=fin2>Terminer l’entraînement</button>
+ <button class="gbtn lfin" data-a=fin2${s.ex.length?'':' disabled'}>Terminer l’entraînement</button>
  <div class=llinks><button data-a=lset>Paramètres</button><button class=red data-a=lab>Abandonner</button></div></div>
  ${t.n&&t.d===t.n&&!pz?`<button class=lall data-a=fin2>✓ Toutes les séries faites — termine l’entraînement</button>`:''}`};
 /* ===== Circuits en direct : EMOM / AMRAP ===== */
 const cgOf=(s,e)=>e.g&&e.gt==='ci'&&s.cg?s.cg[e.g]:null;
 const cgXs=(s,g)=>s.ex.filter(x=>x.g===g);
-const lvList=s=>{const seen={};return s.ex.map((e,i)=>{const c=cgOf(s,e);if(c){if(seen[e.g])return'';seen[e.g]=1;return c.ct==='round'?rdBlock(s,e.g,c):c.ct==='hiit'?hiBlock(s,e.g,c):cxBlock(s,e.g,c)}return lvCard(e,i,s)}).join('')};
+const lvList=s=>{const seen={};return s.ex.map((e,i)=>{const c=cgOf(s,e);if(c){if(seen[e.g])return'';seen[e.g]=1;return c.ct==='round'?rdBlock(s,e.g,c):c.ct==='hiit'?hiBlock(s,e.g,c):cxBlock(s,e.g,c)}const gm=e.g&&e.gt==='ss'?s.ex.filter(y=>y.g===e.g).length:0,h=gm>1&&!seen['s'+e.g]?(seen['s'+e.g]=1,`<div class=ssh><i class=ssb>S</i><b>Superset · ${gm} exercices</b><span>REPOS ENCHAÎNÉ</span></div>`):'';return h+lvCard(e,i,s)}).join('')};
 function keepSheet(){const sh=document.querySelector('#dlg .sheet'),st=sh?sh.scrollTop:0;render();const n=document.querySelector('#dlg .sheet');if(n)n.scrollTop=st}
 function cgApply(s,g){const c=s.cg[g],xs=cgXs(s,g);
  if(c.ct==='hiit'){const ph=hiPh(c);xs.forEach((x,j)=>x.s.forEach((y,t)=>{const i=ph.findIndex(p=>p.k==='w'&&p.t===t&&p.j===j);y.ok=i>=0&&!(c.sk&&c.sk[t+'-'+j])&&(c.st==='done'||i<(c.pi||0))}))}
@@ -928,7 +953,7 @@ function hiBlock(s,g,c){const xs=cgXs(s,g),k=cxCalc(c),dn=c.st==='done',sp=c.st=
   return`<div class="cxe${on?' on':''}${chk?' dn':''}"${fin?` data-a=cxfix data-g=${g}`:''}><i class="cxn2${chk?' ok':''}">${chk?SI('check',18):j+1}</i><div class=grow><b>${nm(x)}</b><small>${hiW(c,j)} s${(()=>{const y=x.s[tr]||x.s[0]||{};return y.c!==''&&y.c!==undefined&&y.c!==null?' · '+esc(y.c)+' '+OPT(s).u:isBW(x.n)?' · poids du corps':''})()}</small></div>${dots(x)}</div>`}).join('');
  return`<div class=cxc data-cx=${g}><div class=cxh><span class=cxbd>${SI('clock',16)} CIRCUIT · HIIT</span><button class=xi data-a=cxmn data-g=${g} aria-label="Options">${DOTS}</button></div><div class=cxn>Circuit</div><div class=cxmeta>${cxMeta(c,k)}</div>
  <div class=cxint><span>${fin?'PROGRESSION FINALE':'TOUR EN COURS'}</span><b class=cxiv>${k.ilab}</b><i class=cxbar><u class=cxbarf style="width:${k.bar}%"></u></i></div>${box}${fin?cgBil(g,c,xs):''}<div class=cxl>${rows}</div>${fin?`<button class=cxnew data-a=cxnew data-g=${g}>Nouvelle tentative</button>`:''}</div>`}
-const liveView=s=>fv(s)?liveFree(s):lvView(s);
+const liveView=s=>fv(s)&&done(s)?liveFree(s):lvView(s);
 const CHEV='<svg width=16 height=16 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M6 9l6 6 6-6"/></svg>',DOTS='<svg width=16 height=16 viewBox="0 0 24 24" fill=currentColor><circle cx=5 cy=12 r=1.9 /><circle cx=12 cy=12 r=1.9 /><circle cx=19 cy=12 r=1.9 /></svg>';
 const lhBtns=()=>`<button class=cbtn data-a=lm aria-label="Options">${DOTS}</button>`,lhBack=()=>`<button class=cbtn data-a=mini aria-label="Réduire">${CHEV}</button>`;
 const ICN={folder:'<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',dumbbell:'<path d="M6.5 6.5v11M17.5 6.5v11M3 9v6M21 9v6M6.5 12h11"/>',calendar:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',drop:'<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>',bolt:'<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>',target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/>',mountain:'<path d="m3 19 6-10 4 6 2-3 6 7z"/>',heart:'<path d="M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2.5A4.5 4.5 0 0 1 20 9c0 6-8 11-8 11z"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',star:'<path d="m12 3 2.8 5.8 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.7l6.2-.9z"/>',trophy:'<path d="M8 4h8v6a4 4 0 0 1-8 0zM8 6H4v1a4 4 0 0 0 4 4M16 6h4v1a4 4 0 0 1-4 4M12 14v4M8 21h8M10 18h4"/>',layers:'<path d="m12 3 9 5-9 5-9-5zM3 13l9 5 9-5"/>',pulse:'<path d="M3 12h4l3-7 4 14 3-7h4"/>',trend:'<path d="m3 17 6-6 4 4 8-8M15 7h6v6"/>',stopwatch:'<circle cx="12" cy="13" r="8"/><path d="M12 9v4M9 2h6M19 5l1.5 1.5"/>',drop2:'<path d="M12 8s3 3.5 3 6a3 3 0 0 1-6 0c0-2.5 3-6 3-6z"/>',runner:'<circle cx="14" cy="5" r="2"/><path d="m9 21 3-6-3-3 2-4 4 2 3 1M7 12l2-4"/>',repeat:'<path d="M4 9a4 4 0 0 1 4-4h12l-3-3M20 15a4 4 0 0 1-4 4H4l3 3"/>',
@@ -974,7 +999,8 @@ const formHtml=()=>{const f=FORM;const XH=formX(f);if(XH!==null)return XH;
    if(d.subs.length)h+=`<div class=mvk>${d.subs.map(c=>`<div class=mvi>${f.t==='tpl'?row(c.id,c.n,FI(c),c.col||GRN,c.id===cur):ghost(c.n,FI(c),c.col||GRN)}</div>`).join('')}</div>`});
   if(!S.dos.some(d=>!(f.t==='dos'&&d.id===f.id)))h+='<p class=mut>Aucun autre dossier. Crée-en un d\'abord.</p>';
   return`<div class=ov><div class="dlg pkdlg"><b>${ttl}</b><div class=pkl>${h}</div><div class=bar2><button data-a=fno>Annuler</button></div></div></div>`}
- if(f.k==='lm')return`<div class=ov><div class=dlg><b>${esc((S.seances.find(x=>x.id===f.id)?.nom)||'Séance')}</b><div class=menu2>${done(S.seances.find(x=>x.id===f.id))?'':'<button class=p data-a=fin>Terminer la séance</button>'}<button class=dng data-a=ds2>Supprimer la séance</button><button data-a=fno>Annuler</button></div></div></div>`;
+ if(f.k==='lm'){const s0=S.seances.find(x=>x.id===f.id);if(!s0)return'';const t=lvTot(s0);
+  return`<div class="sov pop" data-a=fno><div class="dpop fz ab"><h3>${esc(s0.free?'Entraînement libre'+(s0.nom?' · '+s0.nom:''):(s0.nom||'Séance'))}</h3><div class=fzs><div><b>${t.d}</b><span>${t.d>1?'SÉRIES VALIDÉES':'SÉRIE VALIDÉE'}</span></div></div>${done(s0)?'':'<button class="dbt gr" data-a=fin>Terminer la séance</button>'}<button class="dbt red" data-a=ds2>Supprimer la séance</button><button class="dbt tx" data-a=fno>Annuler</button></div></div>`}
  if(f.k==='run'){const g=S.dos.map(d=>({d,subs:d.subs.map(c=>({c,t:tpls(c.id)})).filter(x=>x.t.length)})).filter(x=>x.subs.length);
   return`<div class=ov><div class="dlg pkdlg"><b>Quelle séance lancer ?</b><div class=mut>Dossier › Sous-dossier › Séance</div><div class=pkl>${g.length?g.map(({d,subs})=>`<div class=pkd><span class=ico>${d.ic}</span>${esc(d.n)}</div>${subs.map(({c,t})=>`<div class=pks>${fsvg(c.col).replace('width=26 height=26','width=20 height=20')}${esc(c.n)}</div>${t.map(x=>`<button class="opt pkt" style="--c:${c.col||GRN}" data-a=runpick data-id=${x.id}><b>${esc(x.nom||'Séance sans nom')}</b><small>${pl(x.ex.length,'exo')}</small></button>`).join('')}`).join('')}`).join(''):'<p class=mut>Aucune séance dans tes dossiers. Crée-en une avec le + d\'un sous-dossier.</p>'}</div><div class=bar2><button data-a=fno>Annuler</button></div></div></div>`}
  return`<div class=ov><div class=dlg style="max-height:92dvh;overflow-y:auto"><b>Nouveau ${f.k==='dos'?'dossier':'sous-dossier'}</b><input id=rnin data-fm=n placeholder="Nom" value="${esc(f.n)}" style="margin:10px 0"><div class=sh-l style="margin-left:0">COULEUR</div><div class=sws style="padding:0">${COLS.map(c=>`<button class="${c===f.col?'on':''}" style="background:${c}" data-a=fcol data-c="${c}">${c===f.col?SI('check',18):''}</button>`).join('')}</div><div class=sh-l style="margin-left:0">ICÔNE</div><div class=igr style="--c:${f.col};padding:0">${ICK.map(k=>`<button class="${k===f.ic?'on':''}" data-a=fic data-ic=${k}>${SI(k,22)}</button>`).join('')}</div><div class=bar2><button data-a=fno>Annuler</button><button class=p data-a=fsave>Créer</button></div></div></div>`};
@@ -1096,10 +1122,10 @@ const tmpS=t=>t==='rapide'?'Rapide':t?String(t).split('').join('-'):'';
 function xRow(e,i,x,j){const t=x.t||'T',noR='EDAF'.includes(t);
  const rc=noR?`<span class="cx${t==='A'?' mx':''}">${t==='A'?'MAX':t==='F'?'ÉCHEC':'—'}</span>`:`<input inputmode=decimal data-e=${i} data-s=${j} data-f=r placeholder="—" value="${esc(x.r)}">`;
  return`<div class=sr2 data-e=${i} data-s=${j}><span class=sn>${j+1}</span><button class=ty style="--c:${STC[t]||STC.T}" data-a=sty data-e=${i} data-s=${j}>${STS[t]||'Normale'}</button><input inputmode=decimal data-e=${i} data-s=${j} data-f=c placeholder="—" value="${esc(x.c)}">${rc}<span class=sg aria-label="Réordonner la série">${SI('bars',20)}</span><button class=swd data-a=sdel data-e=${i} data-s=${j} aria-label="Supprimer la série"><span class=swb>${SI('trash',20)}</span></button></div>`}
-function xCard(e,i,s){if(e.ci)return cCard(e,i);const tp=tmpS(e.tempo),grp=e.g?s.ex.filter(y=>y.g===e.g).length:0;
- return`<div class="card xc" data-row=xo data-id=${e.id} data-par=${s.id}>
- <div class=xh><span class=hd>${GRIP}</span><span class=av2>${esc(ini(e.n))}</span>${e.n?`<b class=xnm>${esc(e.n)}</b>`:`<button class="xnm ph" data-a=xrep data-e=${i}>Choisir l’exercice</button>`}<button class="xi${e.nt?' on':''}" data-a=xn data-e=${i} aria-label="Note">${SI('note',22)}</button><button class=xi data-a=xm data-e=${i} aria-label="Options">${DOTS}</button></div>
- ${grp>1?`<div class=gbd>${SI(e.gt==='ci'?'circuit':'link',14)} ${e.gt==='ci'?'CIRCUIT':'SUPERSET'} · ${grp} EXOS</div>`:''}
+function xCard(e,i,s){if(e.ci)return cCard(e,i);const tp=tmpS(e.tempo),grp=e.g?s.ex.filter(y=>y.g===e.g).length:0,gm=e.g&&e.gt==='ss'?s.ex.filter(y=>y.g===e.g):[],sg=gm.length>1;
+ return`<div class="card xc${sg?' ssc':''}" data-row=xo data-id=${e.id} data-par=${s.id}>
+ <div class=xh><span class=hd>${GRIP}</span><span class="av2${sg?' ss':''}">${sg?String.fromCharCode(65+gm.indexOf(e)):esc(ini(e.n))}</span>${e.n?`<b class=xnm>${esc(e.n)}</b>`:`<button class="xnm ph" data-a=xrep data-e=${i}>Choisir l’exercice</button>`}<button class="xi${e.nt?' on':''}" data-a=xn data-e=${i} aria-label="Note">${SI('note',22)}</button><button class=xi data-a=xm data-e=${i} aria-label="Options">${DOTS}</button></div>
+ ${grp>1&&!sg?`<div class=gbd>${SI(e.gt==='ci'?'circuit':'link',14)} ${e.gt==='ci'?'CIRCUIT':'SUPERSET'} · ${grp} EXOS</div>`:''}
  <div class=chips><button data-a=xr data-e=${i}>${SI('stopwatch',16)}<span>REPOS</span><u>›</u><b class="${e.rep?'':'no'}">${e.rep?clk(e.rep):'Aucun'}</b></button><button data-a=xc data-e=${i}>${SI('bars',16)}<span>SÉRIES</span><u>›</u><b>${e.s.length}</b></button><button data-a=xt data-e=${i}>${SI('tempo',16)}<span>TEMPO</span><u>›</u><b class="${tp?'':'no'}">${tp||'Aucun'}</b></button></div>
  ${e.nt?`<button class=nbar data-a=xn data-e=${i}>${esc(e.nt)}</button>`:''}
  <div class=stb><div class="sr2 sh"><span>#</span><span>PREV</span><span>${OPT(s).u.toUpperCase()}</span><span>REPS</span><span></span></div>${e.s.map((x,j)=>xRow(e,i,x,j)).join('')}<button class=dash data-a=as data-e=${i} data-t=T>+ Ajouter une série</button></div></div>`}
@@ -1108,7 +1134,7 @@ function tplView(s){s.ex.forEach(e=>{if(!e.id)e.id=uid()});
  return`<div class=thd><div class=thr><button class=cbtn data-a=xclose aria-label="Fermer">${SI('close',22)}</button><div class=grow><div class=tk>${SI('pen',14)} SÉANCE · POUR PLUS TARD</div><input id=ttl class=ttl data-f=nom list=noms placeholder="Nom de la séance" value="${esc(s.nom)}" autocomplete=off></div><button class=cbtn data-a=sm aria-label="Options">${DOTS}</button></div>
  <div class=tst><div><span>EXOS</span><b>${exCount(s)}</b></div><div><span>SÉRIES</span><b>${nS}</b></div></div>
  <button class=tdst data-a=dest><span>Enregistrer dans · ${esc(c?c.n:'—')}</span><span>›</span></button></div>
- ${dls()}<div class=tplv>${s.ex.length?s.ex.map((e,i)=>xCard(e,i,s)).join(''):'<p class="mut xempty">Aucun exercice pour le moment.</p>'}
+ ${dls()}<div class=tplv>${s.ex.length?(()=>{const seen={};return s.ex.map((e,i)=>{const gm=e.g&&e.gt==='ss'&&!e.ci?s.ex.filter(y=>y.g===e.g).length:0,h=gm>1&&!seen[e.g]?(seen[e.g]=1,`<div class=ssh><i class=ssb>S</i><b>Superset · ${gm} exercices</b><span>REPOS ENCHAÎNÉ</span></div>`):'';return h+xCard(e,i,s)}).join('')})():'<p class="mut xempty">Aucun exercice pour le moment.</p>'}
  <div class=dbar><button class=dash data-a=xadd>+ Exercice</button><button class=dash data-a=xci>+ Circuit</button></div></div>
  <div class=bbar><button class=obtn data-a=xsave>Enregistrer</button><button class=gbtn data-a=xgo data-id=${s.id}>Démarrer</button></div>`}
 const MI=(a,i,t,sub,x='',cls='')=>`<button class="mi ${cls}" data-a=${a}${x}><i>${SI(i,24)}</i><span><b>${t}</b><small>${sub}</small></span></button>`;
@@ -1331,7 +1357,7 @@ A('click',ev=>{if(LPF){LPF=false;return}const b=ev.target.closest('[data-a]');if
  case'fno':FORM=null;break;
  case'ps':FORM={k:'run'};break;
  case'runpick':FORM=null;startFrom(d.id);break;
- case'free':{const n={id:uid(),nom:'',d:today(),com:'',ex:[newEx()],u:Date.now(),free:true,t0:Date.now()};S.seances.push(n);save();V={p:'live',id:n.id};TOP=1;break}
+ case'free':{const n={id:uid(),nom:'',d:today(),com:'',ex:[],u:Date.now(),free:true,t0:Date.now()};S.seances.push(n);save();V={p:'live',id:n.id};TOP=1;break}
  case'fsave':{const f=FORM;const n=f.n.trim();if(!n)return;
   if(f.k==='dos')S.dos.push({id:uid(),n,ic:f.ic,col:f.col,o:true,subs:[]});
   else{const p=S.dos.find(x=>x.id===f.par);p.subs.push({id:uid(),n,ic:f.ic,col:f.col,o:true});p.o=true}
@@ -1401,7 +1427,7 @@ A('click',ev=>{if(LPF){LPF=false;return}const b=ev.target.closest('[data-a]');if
  case'cxnew':{cgReset(s,d.g);touch(s);break}
  case'fin2':FORM={k:'fz'};break;
  case'lab':FORM={k:'ab'};break;
- case'lend':{FORM=null;clearInterval(T);$('#timer').hidden=true;if(!s.end){s.end=Date.now();if(s.pa){s.pz=(s.pz||0)+s.end-s.pa;s.pa=0}}touch(s);V={p:'home'};sync().then(soft);break}
+ case'lend':{FORM=null;clearInterval(T);if(s.free)s.ex=s.ex.filter(x=>x.ci||(x.n||'').trim()||x.s.some(y=>y.ok));$('#timer').hidden=true;if(!s.end){s.end=Date.now();if(s.pa){s.pz=(s.pz||0)+s.end-s.pa;s.pa=0}}touch(s);V={p:'home'};sync().then(soft);break}
  case'ldel':{FORM=null;clearInterval(T);$('#timer').hidden=true;s.del=true;touch(s);V={p:'home'};sync().then(soft);break}
  case'lrest':{const tm=$('#timer');if(tm&&!tm.hidden){clearInterval(T);tm.hidden=true;return}rest(OPT(s).rep||90,!!OPT(s).snd);return}
  case'lpz':{const n=Date.now();if(s.pa){s.pz=(s.pz||0)+n-s.pa;s.pa=0;if(PRM>0){const tt=PTT;rest(Math.ceil(PRM/1000),!!OPT(s).snd,PNX);TTOT=tt;PRM=0}}else{s.pa=n;const tm=$('#timer');if(tm&&!tm.hidden){PRM=Math.max(0,TEND-n);PTT=TTOT;PNX=TNX;clearInterval(T)}document.activeElement?.blur?.()}touch(s);break}
@@ -1524,3 +1550,4 @@ let tm;addEventListener('scroll',()=>{clearTimeout(tm);tm=setTimeout(saveView,15
 setInterval(cgTick,250);
 applyTheme();render();scrollTo(0,Y0);sync().then(soft);
 </script></body></html>
+ 
