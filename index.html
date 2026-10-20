@@ -226,7 +226,7 @@ label.ck input{width:auto}
 .qadd button{flex:1;border:2px dashed var(--line);background:none;color:var(--mut);font-weight:700;letter-spacing:.04em;border-radius:14px;padding:12px 4px;display:flex;align-items:center;justify-content:center;gap:6px;font-size:13px;white-space:nowrap}
 .sov{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:flex-end;justify-content:center;z-index:10}
 .sheet{background:var(--card);width:100%;max-width:640px;max-height:92dvh;overflow-y:auto;border-radius:28px 28px 0 0;padding:10px 16px calc(24px + env(safe-area-inset-bottom,0px))}
-.grab{width:44px;height:5px;border-radius:3px;background:var(--line);margin:0 auto 14px}
+.grab{width:44px;height:5px;border-radius:3px;background:var(--line);margin:0 auto 14px;position:relative}.grab::after{content:'';position:absolute;inset:-14px -40px -10px}
 .sh-h{display:flex;align-items:center;gap:14px;padding:6px 4px 14px;border-bottom:1px solid var(--line);margin-bottom:8px}
 .sh-h b{font-size:22px;display:block}
 .sh-h .mut{display:block;margin-top:2px}
@@ -318,14 +318,14 @@ label.ck input{width:auto}
 .chips b.no{color:var(--ink);font-weight:800;font-size:15px}.chips b{font-weight:800}
 .nbar{display:block;width:100%;text-align:left;background:var(--bg);border-radius:18px;padding:10px 14px;margin:8px 0 6px;font-size:14px;white-space:pre-wrap}
 .stb{background:var(--bg);border-radius:26px;padding:6px 12px 12px;margin-top:10px}
-.sr2{display:grid;grid-template-columns:30px 96px 1fr 1fr 34px;align-items:center;gap:6px;padding:8px 0;border-bottom:1px solid var(--line)}
-.sr2.sh{font:12px ui-monospace,Menlo,monospace;letter-spacing:.12em;color:var(--mut);padding:14px 0 10px}
+.sr2{display:grid;grid-template-columns:22px 78px 40px 40px 24px;justify-content:space-between;align-items:center;gap:5px;padding:5px 0;border-bottom:1px solid var(--line)}
+.sr2.sh{font:11px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:var(--mut);padding:10px 0 7px}
 .sr2.sh span{text-align:center}
-.sr2 .sn{font:700 15px var(--fc);color:var(--mut);text-align:center}
-.sr2 .ty{--c:var(--mut);width:calc(100% - 2px);justify-self:center;border:1px solid color-mix(in srgb,var(--c) 55%,transparent);color:var(--c);border-radius:14px;padding:6px 8px;background:color-mix(in srgb,var(--c) 10%,transparent);font:600 13px ui-monospace,Menlo,monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.sr2 input{border:0;background:transparent;text-align:center;font:800 24px var(--fc);padding:8px 0;min-width:0;border-radius:8px}
+.sr2 .sn{font:700 14px var(--fc);color:var(--mut);text-align:center}
+.sr2 .ty{--c:var(--mut);width:calc(100% - 2px);justify-self:center;border:1px solid color-mix(in srgb,var(--c) 55%,transparent);color:var(--c);border-radius:11px;padding:3px 6px;background:color-mix(in srgb,var(--c) 10%,transparent);font:600 11px ui-monospace,Menlo,monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sr2 input{border:0;background:transparent;text-align:center;font:800 20px var(--fc);padding:5px 0;min-width:0;border-radius:8px}
 .sr2 input::placeholder{color:var(--mut);opacity:.7}
-.sr2 .cx{text-align:center;font:800 22px var(--fc);color:var(--mut)}
+.sr2 .cx{text-align:center;font:800 19px var(--fc);color:var(--mut)}
 .sr2 .cx.mx{color:var(--ink)}
 .sg{touch-action:none;color:var(--mut);display:grid;place-items:center;cursor:grab;user-select:none;-webkit-user-select:none}
 .stb{overflow-x:clip}
@@ -358,10 +358,12 @@ label.ck input{width:auto}
 .sh2 h2{font:800 30px/1.1 var(--fc);letter-spacing:-.01em;margin:8px 2px 6px}
 .sh2 .sub2{color:var(--mut);font-size:17px;margin:0 2px 14px}
 .mi{display:flex;align-items:center;gap:16px;width:100%;text-align:left;background:color-mix(in srgb,var(--ink) 2.5%,var(--card));border:1px solid var(--line);border-radius:24px;padding:14px 16px;margin:10px 0;color:var(--ink)}
-.mi i{flex:none;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;color:var(--ink)}
+.mi i{flex:none;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;color:var(--ink);}
 .mi b{display:block;font-size:20px;font-weight:600;line-height:1.25}
 .mi small{display:block;color:var(--mut);font-size:15px;margin-top:2px}
 .mi small:empty{display:none}
+.mi.off{opacity:.45}
+.mi.cp{padding:9px 14px;margin:8px 0;border-radius:20px;gap:14px}.mi.cp i{width:40px;height:40px}.mi.cp b{font-size:18px}
 .mi.red b{color:var(--red)}
 .mi.red i{background:color-mix(in srgb,var(--red) 14%,transparent);color:var(--red)}
 .mi.cur{border-color:var(--acc)}.mi.cur>svg{margin-left:auto;color:var(--acc);flex:none}
@@ -669,10 +671,6 @@ html[data-vt=back]::view-transition-new(root){animation:vtInL .32s cubic-bezier(
 .cxin span{color:var(--mut);font:13px ui-monospace,Menlo,monospace;margin-right:8px}
 
 .cxh{display:flex;align-items:center;justify-content:space-between}
-.cxmi{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:16px 22px;margin:12px 0}
-.cxmi b{display:block;font:600 22px "Avenir Next","Trebuchet MS",system-ui,sans-serif;color:#a855f7}
-.cxmi small{display:block;margin-top:6px;font-size:16px;color:var(--mut)}
-.cxmi.red b{color:var(--red)}.cxmi.off{opacity:.4}
 .cxlr{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:12px 10px 12px 4px;margin:10px 0}
 .cxlr.drag{opacity:.6;box-shadow:0 8px 24px rgba(0,0,0,.18)}
 .cxlr b{font:700 18px "Avenir Next","Trebuchet MS",system-ui,sans-serif}
@@ -1018,7 +1016,7 @@ const CHEV='<svg width=16 height=16 viewBox="0 0 24 24" fill=none stroke=current
 const lhBtns=()=>`<button class=cbtn data-a=lm aria-label="Options">${DOTS}</button>`,lhBack=()=>`<button class=cbtn data-a=mini aria-label="Réduire">${CHEV}</button>`;
 const ICN={folder:'<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',dumbbell:'<path d="M6.5 6.5v11M17.5 6.5v11M3 9v6M21 9v6M6.5 12h11"/>',calendar:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',drop:'<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>',bolt:'<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>',target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/>',mountain:'<path d="m3 19 6-10 4 6 2-3 6 7z"/>',heart:'<path d="M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2.5A4.5 4.5 0 0 1 20 9c0 6-8 11-8 11z"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',star:'<path d="m12 3 2.8 5.8 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.7l6.2-.9z"/>',trophy:'<path d="M8 4h8v6a4 4 0 0 1-8 0zM8 6H4v1a4 4 0 0 0 4 4M16 6h4v1a4 4 0 0 1-4 4M12 14v4M8 21h8M10 18h4"/>',layers:'<path d="m12 3 9 5-9 5-9-5zM3 13l9 5 9-5"/>',pulse:'<path d="M3 12h4l3-7 4 14 3-7h4"/>',trend:'<path d="m3 17 6-6 4 4 8-8M15 7h6v6"/>',stopwatch:'<circle cx="12" cy="13" r="8"/><path d="M12 9v4M9 2h6M19 5l1.5 1.5"/>',drop2:'<path d="M12 8s3 3.5 3 6a3 3 0 0 1-6 0c0-2.5 3-6 3-6z"/>',runner:'<circle cx="14" cy="5" r="2"/><path d="m9 21 3-6-3-3 2-4 4 2 3 1M7 12l2-4"/>',repeat:'<path d="M4 9a4 4 0 0 1 4-4h12l-3-3M20 15a4 4 0 0 1-4 4H4l3 3"/>',
 play:'<path d="M7 4v16l13-8z" fill="currentColor"/>',root:'<circle cx="12" cy="5" r="2.5"/><path d="M12 7.5V20M12 13c0 3-4 3-6 7M12 13c0 3 4 3 6 7"/>',gear:'<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>',edit:'<path d="M4 20h4L19 9l-4-4L4 16zM14 6l4 4"/>',pen:'<path d="M4 20h16M5 16 16 5l3 3L8 19H5z"/>',move:'<path d="M12 3v18M3 12h18M12 3 9 6M12 3l3 3M12 21l-3-3M12 21l3-3M3 12l3-3M3 12l3 3M21 12l-3-3M21 12l-3 3"/>',copy:'<rect x="6" y="5" width="12" height="16" rx="2"/><path d="M9 5V3h6v2"/>',trash:'<path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>',plus:'<path d="M12 5v14M5 12h14"/>',fold:'<path d="m7 4 5 4 5-4M7 20l5-4 5 4"/>',unfold:'<path d="m7 9 5-5 5 5M7 15l5 5 5-5"/>',check:'<path d="m5 12 5 5 9-9"/>',folderplus:'<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM12 10v5M9.5 12.5h5"/>'};
-Object.assign(ICN,{close:'<path d="M6 6l12 12M18 6 6 18"/>',note:'<rect x="5" y="3" width="14" height="18" rx="3"/><path d="M9 8h6M9 12h6M9 16h3"/>',swap:'<path d="M7 20V5M7 5 4 8M7 5l3 3M17 4v15M17 19l-3-3M17 19l3-3"/>',link:'<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',circuit:'<path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/>',tempo:'<path d="M9 3h6l4 18H5zM12 16l4-10M9 12h6"/>',bars:'<path d="M5 8h14M5 12h14M5 16h14"/>',minus:'<path d="M5 12h14"/>',back:'<path d="M21 5H9l-6 7 6 7h12zM12 9l5 6M17 9l-5 6"/>'});
+Object.assign(ICN,{close:'<path d="M6 6l12 12M18 6 6 18"/>',note:'<rect x="5" y="3" width="14" height="18" rx="3"/><path d="M9 8h6M9 12h6M9 16h3"/>',swap:'<path d="M7 20V5M7 5 4 8M7 5l3 3M17 4v15M17 19l-3-3M17 19l3-3"/>',link:'<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',circuit:'<path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/>',tempo:'<path d="M9 3h6l4 18H5zM12 16l4-10M9 12h6"/>',bars:'<path d="M5 8h14M5 12h14M5 16h14"/>',minus:'<path d="M5 12h14"/>',lft:'<path d="M15 5l-7 7 7 7"/>',back:'<path d="M21 5H9l-6 7 6 7h12zM12 9l5 6M17 9l-5 6"/>'});
 const ICK=['folder','dumbbell','calendar','drop','bolt','target','mountain','heart','clock','star','trophy','layers','pulse','trend','stopwatch','drop2','runner','repeat'];
 const SI=(n,z=22)=>`<svg viewBox="0 0 24 24" width="${z}" height="${z}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:block">${ICN[n]||ICN.folder}</svg>`;
 const FI=o=>ICN[o.ic]?o.ic:'folder';
@@ -1045,13 +1043,16 @@ const seView=()=>`<header><h1>Séances</h1><button class="pill rnd" data-a=cfg a
  <div class=row2 style="justify-content:space-between;align-items:center;margin-top:18px"><span class=h2>MES DOSSIERS</span><button class=pill data-a=nd>${SI('folderplus',18)} Nouveau</button></div>
  ${S.dos.map(d=>{const col=d.col||COLS[1],nb=d.subs.reduce((t,c)=>t+tpls(c.id).length,0)+tpls(d.id).length;return`<div data-row=dos data-id=${d.id} data-par=0><div class=line style="--c:${col}"><span class=hd>${GRIP}</span><span class=chev data-a=tgo data-k=dos data-id=${d.id}>${d.o?'▾':'▸'}</span><span class="fico dot">${SI(FI(d),22)}</span><div class=grow>${RN===d.id&&RK==='dos'?rnInput('Nom du dossier'):`<b>${esc(d.n)}</b>`}<div class=mut>${pl(d.subs.length,'dossier')} · ${pl(nb,'séance')}</div></div><button class=ib data-a=fm data-k=dos data-id=${d.id}>⋯</button><button class=ib data-a=ns data-par=${d.id}>+</button></div>${d.o?`<div class=kids>`+d.subs.map(c=>cyRow(d,c)).join('')+tpls(d.id).map(t=>tplCard(t,{col})).join('')+`<div class=qadd><button data-a=ns data-par=${d.id}>${SI('folderplus',18)} SOUS-DOSSIER</button><button data-a=nt data-id=${d.id}>${SI('plus',18)} SÉANCE</button></div></div>`:''}</div>`}).join('')||(tpls('root').length?'':'<div class=lve><h3>Aucun dossier</h3><p>Appuie sur « Nouveau » pour créer un dossier.</p></div>')}
  ${tpls('root').length?`<div class=row2 style="margin-top:18px"><span class=h2>À LA RACINE</span></div><div class=rootk>${tpls('root').map(t=>tplCard(t,{col:GRN})).join('')}</div>`:''}`;
+const SIT=(a,i,t,cls,at)=>MI(a,i,t,'',at||'',((cls==='go'?'gr ':'')+(cls==='red'?'red ':'')+'cp').trim());
 const formHtml=()=>{const f=FORM;const XH=formX(f);if(XH!==null)return XH;
- if(f.k==='tm'){const t=S.seances.find(x=>x.id===f.id);if(!t)return'';return sheet(`<span class=sh-bar style="--c:${subCol(t.cy)}"></span><div><b>${esc(t.nom||'Séance sans nom')}</b><span class=mut>Séance · ${pl(exCount(t),'exo')}</span></div>`,sit('go','play','Démarrer','go',` data-id=${t.id}`)+sit('tmo','edit','Modifier')+sit('ren','pen','Renommer')+sit('mv','move','Déplacer')+sit('tmdup','copy','Dupliquer')+sit('tmd','trash','Supprimer','red'))}
+ if(f.k==='tm'){const t=S.seances.find(x=>x.id===f.id);if(!t)return'';return sheet(`<span class=sh-bar style="--c:${subCol(t.cy)}"></span><div><b>${esc(t.nom||'Séance sans nom')}</b><span class=mut>Séance · ${pl(exCount(t),'exo')}</span></div>`,SIT('go','play','Démarrer','go',` data-id=${t.id}`)+SIT('tmo','edit','Modifier')+SIT('ren','pen','Renommer')+SIT('mv','move','Déplacer')+SIT('tmdup','copy','Dupliquer')+SIT('tmd','trash','Supprimer','red'))}
+ if(f.k==='dap'){const o=fo(f);if(!o)return'';const col=o.col||(f.t==='dos'?COLS[1]:GRN);return sh2('Apparence',esc(o.n),`<div class=sh-l>COULEUR</div><div class=sws>${COLS.map(c=>`<button class="${c===col?'on':''}" style="background:${c}" data-a=dcol data-c="${c}">${c===col?SI('check',18):''}</button>`).join('')}</div><div class=sh-l>ICÔNE</div><div class=igr style="--c:${col}">${ICK.map(k=>`<button class="${k===FI(o)?'on':''}" data-a=dic data-ic=${k}>${SI(k,22)}</button>`).join('')}</div><div style="height:12px"></div>`+SIT('dbk','lft','Retour'))}
  if(f.k==='dm'){const o=fo(f);if(!o)return'';const col=o.col||(f.t==='dos'?COLS[1]:GRN),n=f.t==='dos'?o.subs.reduce((t,c)=>t+tpls(c.id).length,0)+tpls(o.id).length:tpls(o.id).length;
   return sheet(`<span class="fico${f.t==='dos'?' dot':''}" style="--c:${col};width:56px;height:56px">${SI(FI(o),26)}</span><div><b>${esc(o.n)}</b><span class=mut>${f.t==='dos'?'Dossier':'Sous-dossier'} · ${pl(n,'séance')}</span></div>`,
-   sit('dtg',o.o?'fold':'unfold',o.o?'Replier':'Déplier')+(f.t==='dos'?sit('fa','folderplus','Ajouter un sous-dossier',''," data-k=sub data-par="+o.id):'')+sit('nt','plus','Ajouter une séance','',' data-id='+o.id)+sit('ren','pen','Renommer')
-   +`<div class=sh-l>COULEUR</div><div class=sws>${COLS.map(c=>`<button class="${c===col?'on':''}" style="background:${c}" data-a=dcol data-c="${c}">${c===col?SI('check',18):''}</button>`).join('')}</div><div class=sh-l>ICÔNE</div><div class=igr style="--c:${col}">${ICK.map(k=>`<button class="${k===FI(o)?'on':''}" data-a=dic data-ic=${k}>${SI(k,22)}</button>`).join('')}</div><div style="height:8px"></div>`
-   +sit('mv','move','Déplacer')+sit('dupf','copy','Dupliquer (avec contenu)')+sit('fdel','trash','Supprimer','red'))}
+   SIT('dtg',o.o?'fold':'unfold',o.o?'Replier':'Déplier')+(f.t==='dos'?SIT('fa','folderplus','Ajouter un sous-dossier',''," data-k=sub data-par="+o.id):'')+SIT('nt','plus','Ajouter une séance','',' data-id='+o.id)+SIT('ren','pen','Renommer')
+   
+   +`<button class="mi cp" data-a=dap><i>${SI(FI(o),24)}</i><span><b>Apparence</b></span></button>`
+   +SIT('mv','move','Déplacer')+SIT('dupf','copy','Dupliquer (avec contenu)')+SIT('fdel','trash','Supprimer','red'))}
  if(f.k==='ren')return`<div class=ov><div class=dlg><b>Renommer</b><input id=rnin data-fm=n placeholder="Nom" value="${esc(f.n)}" style="margin:10px 0"><div class=bar2><button data-a=fno>Annuler</button><button class=p data-a=rensave>Enregistrer</button></div></div></div>`;
  if(f.k==='mv'){const cnt=(o,dos)=>dos?(o.subs.length?pl(o.subs.length,'sous-dossier')+' · ':'')+pl(o.subs.reduce((t,c)=>t+tpls(c.id).length,0)+tpls(o.id).length,'séance'):pl(tpls(o.id).length,'séance'),row=(id,lab,ico,col,cur,sub)=>`<button class="mvr${cur?' cur':''}" style="--c:${col}" ${cur?'disabled':`data-a=mvto data-to=${id}`}><i class=mvt>${SI(ico,26)}</i><span class=mvx><b>${esc(lab)}</b><small>${sub||''}</small></span>${cur?'<em>Actuellement ici</em>':'<u>›</u>'}</button>`,ghost=(lab,ico,col,sub)=>`<div class="mvr ghost" style="--c:${col}"><i class=mvt>${SI(ico,26)}</i><span class=mvx><b>${esc(lab)}</b><small>${sub||''}</small></span></div>`;let h='',ttl='Déplacer vers…';
   const cur=f.t==='tpl'?S.seances.find(x=>x.id===f.id)?.cy:null;
@@ -1265,7 +1266,7 @@ function cRows(f){const q=norm(f.v||'').trim(),all=library(),l=all.filter(n=>!q|
 const CK=['cty','ccf','cpk','cmn'];
 function formC(f){const pur=`style="--acc:${CCOL}"`;
  if(f.k==='cty'){const sel=f.sel||'round',ok=sel==='round'||sel==='hiit'||sel==='emom'||sel==='amrap';
-  return`<div class=sov data-a=fno ${pur}><div class="sheet sh2 cflex hcf"><div class=grab></div><h2 class=ch2>Quel type de circuit ?</h2>${Object.keys(CTY).map(k=>`<button class="ctc${sel===k?' on':''}" data-a=ctsel data-t=${k}><span><b>${CTY[k][0]}</b><small>${CTY[k][1]}</small></span>${sel===k?SI('check',24):''}</button>${sel===k?`<div class=mdesc style="--c:var(--acc)"><i></i><p>${CTY[k][2]}</p></div>`:''}`).join('')}<p class=cnote>Appuie sur une carte pour voir le détail.</p><div class=cbar><button class=obtn data-a=fno>Annuler</button>${ok?'<button class=gbtn data-a=ctgo>Continuer →</button>':'<button class="gbtn off" disabled>Bientôt disponible</button>'}</div></div></div>`}
+  return`<div class=sov data-a=fno ${pur}><div class="sheet sh2 cflex hcf"><div class=grab></div><h2 class=ch2>Quel type de circuit ?</h2>${Object.keys(CTY).map(k=>`<button class="ctc${sel===k?' on':''}" data-a=ctsel data-t=${k}><span><b>${CTY[k][0]}</b><small>${CTY[k][1]}</small></span>${sel===k?SI('check',24):''}</button>${sel===k?`<div class=mdesc style="--c:var(--acc)"><i></i><p>${CTY[k][2]}</p></div>`:''}`).join('')}<div class=cbar><button class=obtn data-a=fno>Annuler</button>${ok?'<button class=gbtn data-a=ctgo>Continuer →</button>':'<button class="gbtn off" disabled>Bientôt disponible</button>'}</div></div></div>`}
  if(f.k==='ccf'){const hi=f.ct==='hiit',ed=f.edit!==undefined;
   const cd=`<div class=cl2>DÉCOMPTE AVANT DÉPART</div><div class="cchips c5">${[0,5,10,15,30].map(v=>`<button class="${f.cd===v?'on':''}" data-a=ccd data-v=${v}>${v} s</button>`).join('')}</div>`;
   const bar=`<div class=cbar><button class=obtn data-a=ccback>${ed?'Annuler':'← Type'}</button><button class=gbtn data-a=ccgo>Continuer →</button></div>`;
@@ -1282,8 +1283,8 @@ const KX=['cxm','cxl','cxf','cxe','sm','lset','xm','xn','xr','xc','xt','sty','xl
 function underF(g){const sv=FORM;FORM=g;const h=formHtml();FORM=sv;return h}
 function formCx(f){const c=cur().cg&&cur().cg[f.g];if(!c)return'';const s=cur(),am=c.ct==='amrap',xs=cgXs(s,f.g),pur='style="--acc:#a855f7"';
  if(f.k==='cxm'){const canAdd=am?(c.st!=='idle'&&c.st!=='cd'):true,canRm=am?c.c0>0:c.ct==='round'?(c.tours>1&&c.tours-1>(c.st==='done'?c.tours-1:Math.floor((c.pi||0)/c.m))):c.ct==='hiit'?(c.tours>1&&c.tours-1>(c.st==='done'?c.tours-1:hiPh(c)[Math.min(c.pi||0,hiPh(c).length-1)].t)):(c.tours>1&&(c.tours-1)*c.m>=c.k);
-  const it=(a,t,sub,o='',ok=true)=>`<button class="cxmi${o}${ok?'':' off'}" data-a=${a} data-g=${f.g} ${ok?'':'disabled'}><b>${t}</b><small>${sub}</small></button>`;
-  return`<div class=sov data-a=fno ${pur}><div class="sheet sh2"><div class=grab></div><h2>Circuit</h2>${it('cxed','Modifier le circuit','Ajuster les cibles des exercices.')}${it('cxad','Ajouter un exercice','Choisir un exercice à intégrer au circuit.')}${it('cxta','Ajouter un tour','Répéter le circuit une fois de plus.','',canAdd)}${it('cxtd','Retirer un tour','Retirer un tour du circuit.','',canRm)}${it('cxdc','Décomposer en exercices','Séparer le circuit en exercices indépendants.')}${it('cxdl','Supprimer le circuit','Les séries seront perdues.',' red')}</div></div>`}
+  const it=(a,i,t,sub,o='',ok=true)=>MI(a,i,t,sub,` data-g=${f.g}${ok?'':' disabled'}`,(o+(ok?'':' off')).trim());
+  return`<div class=sov data-a=fno ${pur}><div class="sheet sh2"><div class=grab></div><h2>Circuit</h2>${it('cxed','pen','Modifier le circuit','Ajuster les cibles des exercices.')}${it('cxad','plus','Ajouter un exercice','Choisir un exercice à intégrer au circuit.')}${it('cxta','repeat','Ajouter un tour','Répéter le circuit une fois de plus.','',canAdd)}${it('cxtd','minus','Retirer un tour','Retirer un tour du circuit.','',canRm)}${it('cxdc','layers','Décomposer en exercices','Séparer le circuit en exercices indépendants.')}${it('cxdl','trash','Supprimer le circuit','Les séries seront perdues.','red')}</div></div>`}
  const rows=xs.map(x=>{const ix=s.ex.indexOf(x),y=x.s[0]||{},bw=isBW(x.n)&&!y.c;
   return`<div class=cxlr data-id=${x.id}><button class=cxdh aria-label="Changer l’ordre">${GRIP}</button><div class=grow><b>${esc(x.n)}</b><div class=cxin>${c.ct==='hiit'?`<input inputmode=numeric data-cxe=${ix} data-cxf=wt value="${x.wt>0?x.wt:c.w}" placeholder="${c.w}"><span>s</span>`:''}${bw?'':`<input inputmode=decimal data-cxe=${ix} data-cxf=c value="${esc(y.c)}" placeholder="—"><span>${OPT(s).u}</span>`}${c.ct==='hiit'?'':`<input inputmode=numeric data-cxe=${ix} data-cxf=r value="${esc(y.r)}" placeholder="—"><span>reps</span>`}</div></div><button class=cxrm data-a=cxrm data-x=${ix} data-g=${f.g} ${xs.length<2?'disabled':''} aria-label="Retirer">${SI('trash',20)}</button></div>`}).join('');
  return`<div class=sov data-a=fno ${pur}><div class="sheet sh2"><div class=grab></div><h2>Modifier le circuit</h2><p class=sub2>Ajuster les cibles des exercices.</p><div id=cxlist>${rows}</div><button class="dash big2" data-a=cxad2 data-g=${f.g}>+ Ajouter un exercice</button><button class="gbtn big2" data-a=fno>Enregistrer</button></div></div>`}
@@ -1474,6 +1475,8 @@ A('click',ev=>{const b=ev.target.closest('[data-a]');if(!b||(b.classList.contain
    S.dos.splice(k,1,...add)}
   td();render()}};break}
  case'dtg':{const o=fo(FORM);FORM=null;o.o=!o.o;td();break}
+ case'dap':FORM.k='dap';break;
+ case'dbk':FORM.k='dm';break;
  case'dcol':{fo(FORM).col=d.c;td();break}
  case'dic':{fo(FORM).ic=d.ic;td();break}
  case'ren':{const f=FORM,t=f.k==='tm'?'tpl':f.t,o=t==='tpl'?S.seances.find(x=>x.id===f.id):fo(f);FORM=null;RN=f.id;RK=t;RNEW=false;RV=t==='tpl'?(o.nom||''):o.n;RF=true;break}
@@ -1655,5 +1658,12 @@ if(window.visualViewport){const f=()=>document.documentElement.style.setProperty
 let tm;addEventListener('scroll',()=>{clearTimeout(tm);tm=setTimeout(saveView,150)},{passive:true});
 setInterval(cgTick,250);
 applyTheme();render();scrollTo(0,Y0);sync().then(soft);
+
+(()=>{let sh=null,y0=0,dy=0,t0=0;
+document.addEventListener('touchstart',e=>{const g=e.target.closest('.sheet');if(!g||g.closest('.sov.out'))return;const r=g.getBoundingClientRect(),y=e.touches[0].clientY;if(y-r.top>52||g.scrollTop>0&&!e.target.closest('.grab'))return;sh=g;y0=y;dy=0;t0=Date.now();g.style.transition='none'},{passive:true});
+document.addEventListener('touchmove',e=>{if(!sh)return;dy=Math.max(0,e.touches[0].clientY-y0);sh.style.transform='translateY('+dy+'px)'},{passive:true});
+const end=()=>{if(!sh)return;const g=sh;sh=null;const fast=dy/(Date.now()-t0+1)>.5;if(dy>90||fast&&dy>30){const o=g.closest('.sov');g.style.transition='';g.style.transform='';o&&o.click()}else{g.style.transition='transform .2s ease-out';g.style.transform='';setTimeout(()=>{g.style.transition=''},220)}};
+document.addEventListener('touchend',end);document.addEventListener('touchcancel',end);
+})();
 </script></body></html>
  
