@@ -759,6 +759,8 @@ input[list]{-webkit-appearance:none;appearance:none}
 .mvr.ghost{opacity:.55}
 .sheet .grab{touch-action:none;cursor:grab}
 .sheet .grab::after{content:"";position:absolute;left:-60px;right:-60px;top:-12px;bottom:-16px}
+html.lock,html.lock body{overflow:hidden;overscroll-behavior:none}
+.sheet,.dpop,.dlg{overscroll-behavior:contain}
 </style></head><body><main id="app"></main><div id="timer" hidden></div><div id="mini" class="thd lvh mini2" hidden></div><div id="dlg"></div>
 <script>
 const K='muscu_v1',$=s=>document.querySelector(s);
@@ -1671,6 +1673,14 @@ let tm;addEventListener('scroll',()=>{clearTimeout(tm);tm=setTimeout(saveView,15
    setTimeout(()=>{window.NOGHOST=true;sov.style.visibility='hidden';sov.click();setTimeout(()=>{window.NOGHOST=false},600)},210)}
   else{sheet.style.transition='transform .25s cubic-bezier(.22,.9,.3,1)';sheet.style.transform='';sov.style.transition='background .25s';sov.style.background='';setTimeout(()=>{sheet.style.transition='';sov.style.transition=''},260)}};
  document.addEventListener('pointerup',end,true);document.addEventListener('pointercancel',end,true)})();
+/* Menu ouvert : le fond ne bouge plus */
+(()=>{const dlg=document.getElementById('dlg');if(!dlg)return;let y0=0;
+ const open=()=>!!dlg.querySelector('.sov,.ov');
+ new MutationObserver(()=>document.documentElement.classList.toggle('lock',open())).observe(dlg,{childList:true});
+ document.addEventListener('touchstart',e=>{y0=e.touches[0].clientY},{passive:true,capture:true});
+ document.addEventListener('touchmove',e=>{if(!open())return;const t=e.target,dy=e.touches[0].clientY-y0;let el=t&&t.closest?t:t&&t.parentElement;
+  while(el&&el!==document.body&&dlg.contains(el)){const o=getComputedStyle(el).overflowY;if((o==='auto'||o==='scroll')&&el.scrollHeight>el.clientHeight+1){const top=el.scrollTop<=0,bot=el.scrollTop+el.clientHeight>=el.scrollHeight-1;if(!((dy>0&&top)||(dy<0&&bot)))return;break}el=el.parentElement}
+  if(e.cancelable)e.preventDefault()},{passive:false,capture:true})})();
 setInterval(cgTick,250);
 applyTheme();render();scrollTo(0,Y0);sync().then(soft);
 
