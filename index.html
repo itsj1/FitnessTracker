@@ -870,6 +870,60 @@ html.lock,html.lock body{overflow:hidden;overscroll-behavior:none}
 .xnw .xbar{display:flex;gap:12px;margin-top:22px}.xnw .xbar button{flex:1;min-height:50px;border-radius:999px}
 .xnw .xbar .obtn{background:var(--card);border:1px solid var(--line);font-weight:600;font-size:17px}
 .xnw .xbar .gbtn{background:var(--acc);color:#fff;font-weight:700;font-size:17px;border:0}.xnw .xbar .gbtn:disabled{background:color-mix(in srgb,var(--ink) 9%,var(--card));color:var(--mut)}
+
+.stk{cursor:pointer}.stk>svg{color:var(--mut);flex:none}
+.psr{display:flex;align-items:center;gap:8px;margin:14px 0 14px}
+.pnv{width:40px;height:40px;border-radius:50%;padding:0;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;color:var(--mut);flex:none}.pnv:disabled{opacity:.4}
+.psg2{flex:1;display:grid;grid-template-columns:repeat(4,1fr);background:color-mix(in srgb,var(--ink) 6%,var(--card));border-radius:999px;padding:3px;border:1px solid var(--line)}
+.psg2 button{background:none;border-radius:999px;padding:9px 0;font-size:16px;color:var(--mut)}.psg2 button.on{background:var(--card);color:var(--ink);font-weight:600;box-shadow:0 1px 5px rgba(0,0,0,.12)}
+.pchs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -16px 14px;padding:0 16px}.pchs::-webkit-scrollbar{display:none}
+.pch2{flex:none;display:inline-flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:9px 14px;font-size:15px;font-weight:500;white-space:nowrap}.pch2 svg{color:#f59e0b}
+.pcal{display:grid;grid-template-columns:1fr 1fr;gap:18px 32px;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:16px 16px 14px;margin-bottom:14px}
+.pcm b{display:block;font-size:17px;font-weight:600;margin-bottom:10px}.pch{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;font-size:11px;color:var(--mut);text-align:center;margin-bottom:6px}
+.pcg{display:grid;grid-template-columns:repeat(7,1fr);gap:7px 6px}.pcg i{height:5px;border-radius:3px;background:color-mix(in srgb,var(--ink) 9%,var(--card))}.pcg i.e{background:none}.pcg i.f{opacity:.45}
+.pcg i.c1,.pleg .c1{background:color-mix(in srgb,var(--acc) 38%,var(--card))}.pcg i.c2,.pleg .c2{background:var(--acc)}.pcg i.c3,.pleg .c3{background:color-mix(in srgb,var(--acc) 70%,#000)}
+.pleg{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 8px;font-size:12.5px;color:var(--mut)}.pleg span{display:flex;align-items:center;gap:5px;white-space:nowrap}.pleg i{width:16px;height:8px;border-radius:5px;display:block;flex:none}
+.prs{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:16px 16px 12px}
+.prt{display:flex;align-items:center;gap:8px;font-size:19px;font-weight:600}.prt svg{color:var(--mut)}
+.prv{display:flex;align-items:baseline;justify-content:space-between;margin:12px 0 14px}.prv b{font:700 26px "Avenir Next Condensed","Arial Narrow",sans-serif}.prv span{display:flex;align-items:center;gap:7px;color:var(--mut);font-size:15px}.prv i{width:9px;height:9px;border-radius:50%;background:var(--mut)}
+.prtab{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line)}.prtab button{background:none;border-radius:0;padding:11px 0;font-size:17px;font-weight:600;color:var(--mut);border-bottom:3px solid transparent;margin-bottom:-1px}.prtab button.on{color:var(--acc2);border-bottom-color:var(--acc)}
+.psg{width:100%;display:block;margin-top:8px}.psg text{font-size:9.5px;fill:var(--mut)}.psb{stroke:var(--line);stroke-width:1.5}.psl{fill:none;stroke:var(--acc);stroke-width:3;stroke-linejoin:round;stroke-linecap:round}.psp2{fill:none;stroke:var(--mut);stroke-width:2;stroke-dasharray:4 4;opacity:.5}.psd{fill:var(--acc);stroke:var(--card);stroke-width:2}
+
+button.prt{background:none;border:0;padding:0;color:var(--ink);width:100%;text-align:left}
+.pdr{fill:var(--acc)}.pdg{stroke:var(--line);stroke-width:1}
+.pdt{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}
+.pdt>div{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:12px 8px;text-align:center}
+.pdt b{display:block;font:700 22px "Avenir Next Condensed","Arial Narrow",sans-serif;white-space:nowrap}
+.pdt span{display:block;margin-top:3px;font:11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:var(--mut)}
+.pdc{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:16px;margin-bottom:14px}
+.pdc h3{margin:0 0 12px;font-size:19px;font-weight:600}
+.pdb{margin:0 0 12px}.pdb:last-child{margin-bottom:0}
+.pdn{display:flex;justify-content:space-between;gap:10px;font-size:16px;margin-bottom:6px}.pdn span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.pdn b{font-weight:600;white-space:nowrap}
+.pdb i{display:block;height:8px;border-radius:4px;background:color-mix(in srgb,var(--ink) 7%,transparent);overflow:hidden}.pdb u{display:block;height:100%;border-radius:4px;background:var(--acc)}
+.pdr2{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);border-radius:0;padding:12px 0;color:var(--ink)}
+.pdr2:first-of-type{border-top:0}.pdr2 span{flex:1;min-width:0}.pdr2 b{display:block;font-size:17px;font-weight:600}.pdr2 small{color:var(--mut);font-size:14px}.pdr2 em{font-style:normal;font-weight:600}.pdr2 svg{color:var(--mut)}
+
+.pcal.cpt{grid-template-columns:repeat(3,1fr);gap:12px 18px;padding:14px 12px 12px}
+.pcal.cpt .pcm b{font-size:13px;margin-bottom:6px}.pcal.cpt .pch{gap:2px;font-size:8px;margin-bottom:4px}.pcal.cpt .pcg{gap:4px 2px}.pcal.cpt .pcg i{height:4px;border-radius:2px}
+.lve.pse{padding:48px 12px 52px}.lve.pse p{font-size:16px}
+.stk{cursor:default}
+
+.gc{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:13px 15px 14px;margin-bottom:10px;color:var(--ink)}
+.gc .r1{display:flex;align-items:center;gap:12px}.gc .ic{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;flex:none;background:color-mix(in srgb,var(--c) 14%,var(--card));color:var(--c)}
+.gc .tt{flex:1;font-size:16.5px;font-weight:600;min-width:0}.gc .pc{font:600 11.5px ui-monospace,Menlo,monospace;letter-spacing:.06em;color:var(--c)}
+.gc .tag{font:600 12px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:var(--acc2);background:color-mix(in srgb,var(--acc) 14%,var(--card));border-radius:999px;padding:5px 10px;font-size:11px}
+.gc .v{margin:12px 0 8px;font:700 27px "Avenir Next Condensed","Arial Narrow",sans-serif}.gc .v small{font:400 14.5px "Avenir Next",system-ui,sans-serif;color:var(--mut)}
+.gc .bar{height:6px;border-radius:3px;background:color-mix(in srgb,var(--ink) 8%,transparent);overflow:hidden}.gc .bar u{display:block;height:100%;border-radius:4px;background:var(--c)}
+.gc.ok .bar u{background:var(--acc)}
+.gadd{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:6px;padding:13px;border-radius:20px;border:1.5px dashed var(--line);background:var(--card);color:var(--acc2);font-weight:600;font-size:16px}
+.xnw .eqw{display:flex;flex-wrap:wrap;gap:10px}
+.xnw .xbar .gdng{flex:none;width:34%;background:color-mix(in srgb,var(--red) 12%,var(--card));color:var(--red);font-weight:600;font-size:17px;border:0}
+.pdh+.gc{margin-top:16px}
+.xnw .xin::placeholder{font-weight:400;color:var(--mut);opacity:.6}
+
+.gwr{position:relative;margin-bottom:10px;overflow:hidden;border-radius:20px}.gwr .gc{margin-bottom:0;position:relative;z-index:1;touch-action:pan-y;transition:transform .2s ease}.gwr .gc.sw1{transition:none}.gwr.swo .gc{transform:translateX(-70px)}
+.gsw{position:absolute;right:0;top:0;bottom:0;width:70px;padding:0;border-radius:0;background:none;display:grid;place-items:center;color:var(--red)}.gwr:not(.swo) .gsw{pointer-events:none}
+.pdh+.gwr{margin-top:16px}
 </style></head><body><main id="app"></main><div id="timer" hidden></div><div id="mini" class="thd lvh mini2" hidden></div><div id="dlg"></div>
 <script>
 const K='muscu_v1',$=s=>document.querySelector(s);
@@ -1158,7 +1212,7 @@ const seView=()=>`<header><h1 class=tt>Séances</h1><button class="pill rnd" dat
  ${S.dos.map(d=>{const col=d.col||COLS[1],nb=d.subs.reduce((t,c)=>t+tpls(c.id).length,0)+tpls(d.id).length;return`<div data-row=dos data-id=${d.id} data-par=0><div class=line style="--c:${col}"><span class=hd>${GRIP}</span><span class=chev data-a=tgo data-k=dos data-id=${d.id}>${d.o?'▾':'▸'}</span><span class="fico dot">${SI(FI(d),22)}</span><div class=grow>${RN===d.id&&RK==='dos'?rnInput('Nom du dossier'):`<b>${esc(d.n)}</b>`}<div class=mut>${pl(d.subs.length,'dossier')} · ${pl(nb,'séance')}</div></div><button class=ib data-a=fm data-k=dos data-id=${d.id}>⋯</button><button class=ib data-a=ns data-par=${d.id}>+</button></div>${d.o?`<div class=kids>`+d.subs.map(c=>cyRow(d,c)).join('')+tpls(d.id).map(t=>tplCard(t,{col})).join('')+`<div class=qadd><button data-a=ns data-par=${d.id}>${SI('folderplus',18)} SOUS-DOSSIER</button><button data-a=nt data-id=${d.id}>${SI('plus',18)} SÉANCE</button></div></div>`:''}</div>`}).join('')||(tpls('root').length?'':'<div class=lve><h3>Aucun dossier</h3><p>Appuie sur « Nouveau » pour créer un dossier.</p></div>')}
  ${tpls('root').length?`<div class=row2 style="margin-top:18px"><span class=h2>À LA RACINE</span></div><div class=rootk>${tpls('root').map(t=>tplCard(t,{col:GRN})).join('')}</div>`:''}`;
 const SIT=(a,i,t,cls,at)=>MI(a,i,t,'',at||'',((cls==='go'?'gr ':'')+(cls==='red'?'red ':'')+'cp').trim());
-const formHtml=()=>{const f=FORM;if(f.k==='xty')return typSheet();if(f.k==='xnw')return xnwSheet(f);const XH=formX(f);if(XH!==null)return XH;
+const formHtml=()=>{const f=FORM;if(f.k==='xty')return typSheet();if(f.k==='gty'||f.k==='gnw'||f.k==='ged')return gSheet(f);if(f.k==='xnw')return xnwSheet(f);const XH=formX(f);if(XH!==null)return XH;
  if(f.k==='tm'){const t=S.seances.find(x=>x.id===f.id);if(!t)return'';return sheet(`<span class=sh-bar style="--c:${subCol(t.cy)}"></span><div><b>${esc(t.nom||'Séance sans nom')}</b><span class=mut>Séance · ${pl(exCount(t),'exo')}</span></div>`,SIT('go','play','Démarrer','go',` data-id=${t.id}`)+SIT('tmo','edit','Modifier')+SIT('ren','pen','Renommer')+SIT('mv','move','Déplacer')+SIT('tmdup','copy','Dupliquer')+SIT('tmd','trash','Supprimer','red'))}
  if(f.k==='dap'){const o=fo(f);if(!o)return'';const col=o.col||(f.t==='dos'?COLS[1]:GRN);return sh2('Apparence',esc(o.n),`<div class=sh-l>COULEUR</div><div class=sws>${COLS.map(c=>`<button class="${c===col?'on':''}" style="background:${c}" data-a=dcol data-c="${c}">${c===col?SI('check',18):''}</button>`).join('')}</div><div class=sh-l>ICÔNE</div><div class=igr style="--c:${col}">${ICK.map(k=>`<button class="${k===FI(o)?'on':''}" data-a=dic data-ic=${k}>${SI(k,22)}</button>`).join('')}</div><div style="height:12px"></div>`+SIT('dbk','lft','Retour'))}
  if(f.k==='dm'){const o=fo(f);if(!o)return'';const col=o.col||(f.t==='dos'?COLS[1]:GRN),n=f.t==='dos'?o.subs.reduce((t,c)=>t+tpls(c.id).length,0)+tpls(o.id).length:tpls(o.id).length;
@@ -1285,15 +1339,96 @@ const pgTile=(c,i,z=19)=>`<i class=pti style="--c:${c}">${SI(i,z)}</i>`;
 function progView(){const st=pgStreak(),g=pgGroup(),H=exHist(),ex=Object.keys(H).length,pm=today().slice(0,7),prs=[];
  Object.values(H).forEach(m=>m.prs.filter(p=>p.d.startsWith(pm)).forEach(p=>prs.push({n:m.n,c:p.c})));prs.sort((a,b)=>b.c-a.c);
  return`<div class=pgw><h1 class=tt>Progrès</h1>
- <div class=stk><span class="bdg${st.n?'':' off'}">${SI('flame',14)}<b>${st.n}</b></span><div class=tx><b>${st.n?st.n+' semaine'+(st.n>1?'s':'')+' d’affilée':'Lance ta série'}</b><small>${st.k?st.k+' séance'+(st.k>1?'s':'')+' cette semaine':'Aucune séance cette semaine'}</small></div><div class=wk>${st.bars.map(o=>`<i class="${o?'on':''}"></i>`).join('')}</div></div>
+ <div class=stk><span class="bdg${st.n?'':' off'}">${SI('flame',14)}<b>${st.n}</b></span><div class=tx><b>${st.n?st.n+' semaine'+(st.n>1?'s':'')+' d’affilée':'Lance ta série'}</b><small>${st.k?st.k+' séance'+(st.k>1?'s':'')+' cette semaine':'Aucune séance cette semaine'}</small></div><div class=wk>${st.bars.map(o=>`<i class="${o?'on':''}"></i>`).join('')}</div>${SI('chev',15)}</div>
  <div class=psh><h2>Mes séances</h2><button class=pal>Tout voir ${SI('chev',14)}</button></div>
- ${g?`<div class=psc><div class=r1><i class=sq style="background:${g.col}"></i><span class=nm>${esc(g.nom)}</span><span class=cn>${g.n}×</span><span class=ar>${SI('arr',15)}</span><span class=ch>${SI('chev',17)}</span></div><div class=chs>${g.ds.map(([d,t])=>`<span>${pgd(d)}<i></i><b>${fmt(t)} kg</b></span>`).join('')}</div></div>`:'<div class="psc emp">Aucune séance terminée pour l’instant.</div>'}
- <div class=pg2><div class=pmc><div class=h>${pgTile('var(--acc)','trend',15)}<b>Performance</b>${SI('chev',14)}</div><div class=bd2><svg class=psp viewBox="0 0 100 36" preserveAspectRatio="none"><polyline points="${pgSpark()}" fill=none stroke=currentColor stroke-width=3 stroke-linecap=round stroke-linejoin=round vector-effect="non-scaling-stroke"/></svg><div class=lb>30 J</div></div></div>
+ ${g?`<div class=psc><div class=r1><i class=sq style="background:${g.col}"></i><span class=nm>${esc(g.nom)}</span><span class=cn>${g.n}×</span><span class=ar>${SI('arr',15)}</span><span class=ch>${SI('chev',17)}</span></div><div class=chs>${g.ds.map(([d,t])=>`<span>${pgd(d)}<i></i><b>${fmt(t)} kg</b></span>`).join('')}</div></div>`:'<div class="lve pse"><h3>Pas encore de stats</h3><p>Enchaîne quelques séances et tes courbes,<br>séances, records, tendances apparaîtront ici.</p></div>'}
+ <div class=pg2><div class=pmc data-a=pst style="cursor:pointer"><div class=h>${pgTile('var(--acc)','trend',15)}<b>Performance</b>${SI('chev',14)}</div><div class=bd2><svg class=psp viewBox="0 0 100 36" preserveAspectRatio="none"><polyline points="${pgSpark()}" fill=none stroke=currentColor stroke-width=3 stroke-linecap=round stroke-linejoin=round vector-effect="non-scaling-stroke"/></svg><div class=lb>30 J</div></div></div>
  <div class=pmc><div class=h>${pgTile('#14b8d4','ruler',15)}<b>Mesures</b>${SI('chev',14)}</div><div class=bd2><i class=dsh></i><span class=em>Ajoute ton poids</span></div></div></div>
- <div class=pls><button class=plr data-a=pobj>${pgTile('#f59e0b','target')}<span class=tx><span class=t1><b>Objectifs</b><span class=bg style="--c:#f59e0b">À définir</span></span><small>Définis ton premier objectif</small></span>${SI('chev',17)}</button>
+ <div class=pls><button class=plr data-a=pobj>${pgTile('#f59e0b','target')}<span class=tx><span class=t1><b>Objectifs</b>${(S.goals||[]).length?`<span class=bg style="--c:#f59e0b">${(S.goals||[]).filter(g=>g.tg>0&&gProg(g)>=g.tg).length}/${(S.goals||[]).length}</span>`:'<span class=bg style="--c:#f59e0b">À définir</span>'}</span><small>${(S.goals||[]).length?pl((S.goals||[]).length,'objectif')+' en cours':'Définis ton premier objectif'}</small></span>${SI('chev',17)}</button>
  <button class=plr data-a=pexo>${pgTile('var(--acc)','dumbbell')}<span class=tx><span class=t1><b>Exercices</b></span><small>${ex?ex+' suivi'+(ex>1?'s':'')+' · progression par exo':'Progression par exercice'}</small></span>${SI('chev',17)}</button>
  <button class=plr>${pgTile('#f5a524','star')}<span class=tx><span class=t1><b>Records</b>${prs.length?`<span class=bg style="--c:#f5a524">${prs.length} PR</span>`:''}</span><small>${prs.length?'ce mois · '+esc(prs[0].n)+' '+fmt(prs[0].c)+' kg':'Aucun record ce mois'}</small></span>${SI('chev',17)}</button></div></div>`+tabbar()}
-const pobjView=()=>`<div class=pgw><div class=pdh><button class=cbtn data-a=pback aria-label="Retour">${SI('back',19)}</button><div><h1>Objectifs</h1><small>Aucun objectif</small></div></div><div class=pem><h2>Aucun objectif</h2><p>Définis un objectif pour suivre ta progression.</p><button class=pgo>Ajouter un objectif</button></div></div>`;
+let PS={r:'30J',o:0,t:'vol'};
+const PSR={'30J':30,'3M':91,'6M':182,'1A':365},PST=[['vol','Volume'],['rep','Reps'],['dur','Durée']];
+function psWin(){const n=PSR[PS.r],e=new Date();e.setHours(0,0,0,0);e.setDate(e.getDate()-PS.o*n);const b=new Date(e);b.setDate(b.getDate()-n+1);return{n,b,e}}
+function psSer(b,n,t){const M={};pgDone().forEach(x=>{const st=stats(x);M[x.d]=(M[x.d]||0)+(t==='vol'?st.t:t==='rep'?st.r:(x.t0&&x.end?Math.max(0,x.end-x.t0-(x.pz||0))/60000:0))});const d=new Date(b),a=[];let c=0;for(let i=0;i<n;i++){c+=M[dstr(d)]||0;a.push(c);d.setDate(d.getDate()+1)}return a}
+const psFmt=(v,t)=>t==='vol'?fmt(Math.round(v))+' kg':t==='rep'?fmt(Math.round(v))+(Math.round(v)>1?' reps':' rep'):v<60?Math.round(v)+' min':Math.floor(v/60)+' h '+pad2(Math.round(v%60));
+const psTick=(v,t)=>t==='vol'?(v>=1000?(Math.round(v/100)/10)+'k':String(Math.round(v*10)/10)):t==='rep'?String(Math.round(v*10)/10):(v>=60?(Math.round(v/6)/10)+' h':v<10?String(Math.round(v*10)/10):String(Math.round(v)));
+const psNice=mx=>{const e=Math.pow(10,Math.floor(Math.log10(Math.max(mx,1e-9))));for(const k of[1,2,2.5,5,10]){const st=k*e;if(st*4>=mx)return st*4}return mx};
+function psXT(w){const f=(d,o)=>d.toLocaleDateString('fr-FR',o).replace('.',''),at=i=>{const d=new Date(w.b);d.setDate(d.getDate()+i);return d},n=w.n;let o=[];
+ if(PS.r==='30J'||PS.r==='3M'){[0,.25,.5,.75,1].forEach(q=>{const i=Math.round((n-1)*q);o.push({i,d:at(i),t:cap(f(at(i),{day:'numeric',month:'short'}))})})}
+ else{for(let i=0;i<n;i++){const d=at(i);if(d.getDate()===1||i===0&&false)o.push({i,d,t:PS.r==='1A'?cap(f(d,{month:'short'})).charAt(0):cap(f(d,{month:'short'}))})}if(o.length&&o[0].i>n*.08&&PS.r==='6M')o.unshift({i:0,d:at(0),t:''})}
+ return o}
+function psChart(cur,prev,t){const W=318,H=200,L=30,R=12,T=12,B=26,top=psNice(Math.max(1,...cur,...prev)),n=cur.length,X=i=>L+(W-L-R)*i/(n-1),Y=v=>T+(H-T-B)*(1-v/top);
+ const path=a=>a.map((v,i)=>(i?'L':'M')+X(i).toFixed(1)+' '+Y(v).toFixed(1)).join(' ');
+ const ticks=[0,1,2,3,4].map(i=>{const v=top*(4-i)/4;return`<text x=${L-7} y=${(Y(v)+3).toFixed(1)} text-anchor=end>${psTick(v,t)}</text>`}).join('');
+ const w=psWin(),xt=psXT(w).map((o,k,a)=>`<text x=${X(o.i).toFixed(1)} y=${H-7} text-anchor=${o.i===0?'start':o.i>=n-1?'end':'middle'}>${o.t}</text>`).join('');
+ return`<svg class=psg viewBox="0 0 ${W} ${H}"><defs><linearGradient id=psgr x1=0 y1=0 x2=0 y2=1><stop offset=0 stop-color="var(--acc)" stop-opacity=".32"/><stop offset=1 stop-color="var(--acc)" stop-opacity=".02"/></linearGradient></defs>${ticks}<line x1=${L} x2=${W-R} y1=${Y(0)} y2=${Y(0)} class=psb />
+ <path d="${path(prev)}" class=psp2 /><path d="${path(cur)} L${X(n-1).toFixed(1)} ${Y(0)} L${L} ${Y(0)}Z" fill="url(#psgr)"/><path d="${path(cur)}" class=psl /><circle cx=${X(n-1).toFixed(1)} cy=${Y(cur[n-1]).toFixed(1)} r=5 class=psd />${xt}</svg>`}
+function psCal(y,m,C,e){const first=new Date(y,m,1),off=(first.getDay()+6)%7,dim=new Date(y,m+1,0).getDate(),tds=today();let h=`<div class=pcm><b>${first.toLocaleDateString('fr-FR',{month:'short',year:'numeric'})}</b><div class=pch>${'LMMJVSD'.split('').map(x=>`<span>${x}</span>`).join('')}</div><div class=pcg>`;
+ for(let i=0;i<off;i++)h+='<i class=e></i>';for(let d=1;d<=dim;d++){const k=y+'-'+pad2(m+1)+'-'+pad2(d),c=C[k]||0;h+=`<i class="${c?'c'+Math.min(c,3):''}${k>tds||k<dstr(psWin().b)||k>dstr(psWin().e)?' f':''}"></i>`}return h+'</div></div>'}
+function pstatView(){const w=psWin(),n=w.n,tt=PS.t,cur=psSer(w.b,n,tt),pb=new Date(w.b);pb.setDate(pb.getDate()-n);const prev=psSer(pb,n,tt),D=pgDone(),C={};D.forEach(x=>C[x.d]=(C[x.d]||0)+1);
+ const fd=d=>d.toLocaleDateString('fr-FR',{day:'numeric',month:'short'}),sub=fd(w.b)+' – '+fd(w.e)+(PS.r==='1A'||PS.r==='6M'?' '+w.e.getFullYear():'');
+ const inW=D.filter(x=>x.d>=dstr(w.b)&&x.d<=dstr(w.e)),best=inW.reduce((m,x)=>stats(x).t>(m?stats(m).t:0)?x:m,null);
+ const chips=[best&&stats(best).t>0?`<span class=pch2>${SI('bolt',16)} Record : plus gros entraînement (${fmt(Math.round(stats(best).t))} kg)</span>`:'',`<span class=pch2>${inW.length?pl(inW.length,'entraînement'):'Aucun entraînement'}</span>`].filter(Boolean).join('');
+ const ms=[];for(let d=new Date(w.b.getFullYear(),w.b.getMonth(),1);d<=w.e;d=new Date(d.getFullYear(),d.getMonth()+1,1))ms.push(d);if(ms.length<2)ms.unshift(new Date(w.b.getFullYear(),w.b.getMonth()-1,1));
+ return`<div class=pgw><div class=pdh><button class=cbtn data-a=pback aria-label="Retour">${SI('back',19)}</button><div><h1>Statistiques</h1><small>${sub}</small></div></div>
+ <div class=psr><button class=pnv data-a=pso data-d=1 aria-label="Période précédente">${SI('back',16)}</button><div class=psg2>${Object.keys(PSR).map(k=>`<button class="${PS.r===k?'on':''}" data-a=psr data-v=${k}>${k}</button>`).join('')}</div><button class=pnv data-a=pso data-d=-1 ${PS.o?'':'disabled'} aria-label="Période suivante">${SI('chev',16)}</button></div>
+ <div class=pchs>${chips}</div>
+ <div class="pcal${ms.length>4?' cpt':''}">${ms.map(d=>psCal(d.getFullYear(),d.getMonth(),C)).join('')}<div class=pleg><span><i class=c1></i>1 entraînement</span><span><i class=c2></i>2 entraînements</span><span><i class=c3></i>3+ entraînements</span></div></div>
+ <div class=prs><button class=prt data-a=pdet>Résumé d'activité ${SI('chev',16)}</button><div class=prv><b>${psFmt(cur[n-1],tt)}</b><span><i></i>Précédent : ${psFmt(prev[n-1],tt)}</span></div>
+ <div class=prtab>${PST.map(([k,l])=>`<button class="${tt===k?'on':''}" data-a=pstt data-v=${k}>${l}</button>`).join('')}</div>${psChart(cur,prev,tt)}</div></div>`}
+/* ---------- Détail d'une statistique (Volume / Reps / Durée) ---------- */
+const pdDur=x=>x.t0&&x.end?Math.max(0,x.end-x.t0-(x.pz||0))/60000:0;
+const pdVal=(x,t)=>t==='vol'?stats(x).t:t==='rep'?stats(x).r:pdDur(x);
+function pdBars(t){const w=psWin(),all=pgDone(),M={};const kf=PS.r==='1A'?d=>d.slice(0,7):PS.r==='30J'?d=>d:d=>monday(d);
+ const keys=[];const d0=new Date(w.b);for(let i=0;i<w.n;i++){const k=kf(dstr(d0));if(!keys.includes(k))keys.push(k);d0.setDate(d0.getDate()+1)}
+ all.forEach(x=>{const k=kf(x.d);if(keys.includes(k))M[k]=(M[k]||0)+pdVal(x,t)});
+ const a=keys.map(k=>M[k]||0),top=psNice(Math.max(1,...a)),W=318,H=190,L=30,R=8,T=12,B=26,bw=(W-L-R)/a.length,Y=v=>T+(H-T-B)*(1-v/top);
+ const ticks=[0,1,2,3,4].map(i=>{const v=top*(4-i)/4;return`<text x=${L-7} y=${(Y(v)+3).toFixed(1)} text-anchor=end>${psTick(v,t)}</text><line x1=${L} x2=${W-R} y1=${Y(v).toFixed(1)} y2=${Y(v).toFixed(1)} class=pdg />`}).join('');
+ const bars=a.map((v,i)=>v>0?`<rect x=${(L+i*bw+bw*.18).toFixed(1)} y=${Y(v).toFixed(1)} width=${(bw*.64).toFixed(1)} height=${(Y(0)-Y(v)).toFixed(1)} rx=${Math.min(4,bw*.3).toFixed(1)} class=pdr />`:'').join('');
+ const xt=psXT(w).map(o=>{if(!o.t)return'';const ix=keys.indexOf(kf(dstr(o.d)));if(ix<0)return'';const x=L+ix*bw+bw/2;return`<text x=${x.toFixed(1)} y=${H-7} text-anchor=${ix===0?'start':ix===keys.length-1?'end':'middle'}>${o.t}</text>`}).join('');
+ return`<svg class=psg viewBox="0 0 ${W} ${H}">${ticks}${bars}${xt}</svg>`}
+function pdetView(){const t=PS.t,w=psWin(),sub=(()=>{const f=d=>d.toLocaleDateString('fr-FR',{day:'numeric',month:'short'});return f(w.b)+' – '+f(w.e)})(),
+ a=dstr(w.b),z=dstr(w.e),D=pgDone().filter(x=>x.d>=a&&x.d<=z),vals=D.map(x=>pdVal(x,t)),tot=vals.reduce((p,c)=>p+c,0),nb=D.length,avg=nb?tot/nb:0,mxi=vals.indexOf(Math.max(0,...vals)),
+ pb=new Date(w.b);pb.setDate(pb.getDate()-w.n);const pa=dstr(pb),pz=new Date(w.b);pz.setDate(pz.getDate()-1);const prevTot=pgDone().filter(x=>x.d>=pa&&x.d<=dstr(pz)).reduce((p,x)=>p+pdVal(x,t),0);
+ const nse=D.reduce((n,x)=>n+x.ex.reduce((m,e)=>m+e.s.filter(y=>dvOk(x,y)).length,0),0);
+ const tile=(l,v)=>`<div><b>${v}</b><span>${l}</span></div>`;
+ const tiles=t==='vol'?[tile('TOTAL',psFmt(tot,t)),tile('MOY. / SÉANCE',psFmt(avg,t)),tile('MEILLEURE',nb?psFmt(vals[mxi],t):'–')]:t==='rep'?[tile('TOTAL',psFmt(tot,t)),tile('MOY. / SÉANCE',psFmt(avg,t)),tile('SÉRIES',String(nse))]:[tile('TOTAL',psFmt(tot,t)),tile('MOY. / SÉANCE',nb?psFmt(avg,t):'–'),tile('PLUS LONGUE',nb?psFmt(vals[mxi],t):'–')];
+ const rank=(M,fm)=>{const e=Object.entries(M).sort((x,y)=>y[1]-x[1]).slice(0,6),mx=e.length?e[0][1]:1;return e.length?e.map(([k,v])=>`<div class=pdb><div class=pdn><span>${esc(k)}</span><b>${fm(v)}</b></div><i><u style="width:${Math.max(4,Math.round(v/mx*100))}%"></u></i></div>`).join(''):'<p class=mut style="margin:6px 0">Aucune donnée sur cette période.</p>'};
+ let lists='';
+ if(t==='dur'){const G={};D.forEach(x=>{const tp=S.seances.find(y=>y.id===x.from),k=(tp&&tp.nom)||x.nom||'Entraînement libre';G[k]=(G[k]||0)+pdDur(x)});
+  lists=`<div class=pdc><h3>Par séance</h3>${rank(G,v=>psFmt(v,t))}</div><div class=pdc><h3>Entraînements</h3>${D.length?D.slice().reverse().slice(0,8).map(x=>{const tp=S.seances.find(y=>y.id===x.from);return`<button class=pdr2 data-a=open data-id=${x.id}><span><b>${esc((tp&&tp.nom)||x.nom||'Entraînement libre')}</b><small>${pgd(x.d)}</small></span><em>${pdDur(x)?psFmt(pdDur(x),t):'–'}</em>${SI('chev',15)}</button>`}).join(''):'<p class=mut style="margin:6px 0">Aucun entraînement sur cette période.</p>'}</div>`}
+ else{const MU={},EX={};D.forEach(x=>x.ex.forEach(e=>{const c=x.cg&&e.g&&e.gt==='ci'?x.cg[e.g]:null;if(c&&c.ct==='hiit')return;const mk=musOf(e.n)[0],ml=mk?(MUS[mk]||mk):'Autre';e.s.forEach(y=>{if(!dvOk(x,y))return;const v=t==='vol'?y.r*(+y.c||0):+y.r;if(!(v>0))return;MU[ml]=(MU[ml]||0)+v;const n=String(e.n||'').trim()||'Exercice';EX[n]=(EX[n]||0)+v})}));
+  const fm=v=>psFmt(v,t);lists=`<div class=pdc><h3>Par muscle</h3>${rank(MU,fm)}</div><div class=pdc><h3>Par exercice</h3>${rank(EX,fm)}</div>`}
+ return`<div class=pgw><div class=pdh><button class=cbtn data-a=pdback aria-label="Retour">${SI('back',19)}</button><div><h1>${PST.find(x=>x[0]===t)[1]}</h1><small>${sub}</small></div></div>
+ <div class=psr><button class=pnv data-a=pso data-d=1 aria-label="Période précédente">${SI('back',16)}</button><div class=psg2>${Object.keys(PSR).map(k=>`<button class="${PS.r===k?'on':''}" data-a=psr data-v=${k}>${k}</button>`).join('')}</div><button class=pnv data-a=pso data-d=-1 ${PS.o?'':'disabled'} aria-label="Période suivante">${SI('chev',16)}</button></div>
+ <div class=prs><div class=prtab>${PST.map(([k,l])=>`<button class="${t===k?'on':''}" data-a=pstt data-v=${k}>${l}</button>`).join('')}</div><div class=prv><b>${psFmt(tot,t)}</b><span><i></i>Précédent : ${psFmt(prevTot,t)}</span></div>${pdBars(t)}</div>
+ <div class=pdt>${tiles.join('')}</div>${lists}</div>`}
+/* ---------- Objectifs ---------- */
+const GT={seances:{n:'Entraînements par semaine',d:'Tiens un rythme d’entraînement régulier.',chip:'Séances',ic:'dumbbell',c:'#22c55e',u:'',fix:1,df:3},chain:{n:'Série de semaines',d:'Enchaîne les semaines sans casser la chaîne.',chip:'Enchaînement',ic:'flame',c:'#f97316',u:'sem.',fix:1,df:4,ul:'SEMAINES'},
+ pr:{n:'Nouveaux records',d:'Bats un certain nombre de PR sur la période.',chip:'Nouveaux PR',ic:'star',c:'#f59e0b',u:'',df:3},vol:{n:'Volume soulevé',d:'Cumule un tonnage cible sur la période.',chip:'Volume',ic:'trend',c:'#14b8d4',u:'kg',df:20000,ul:'KG'},
+ bw:{n:'Poids du corps',d:'Vise un poids cible et suis ta progression.',chip:'Poids du corps',ic:'trophy',c:'#14b8d4',u:'kg',df:75,ul:'KG'},fat:{n:'Masse grasse',d:'Vise un taux de masse grasse cible.',chip:'Masse grasse',ic:'drop',c:'#8b5cf6',u:'%',df:15,ul:'%'}};
+const GORD=['vol','pr','bw','fat'],GPER=['semaine','mois','année'];
+const gRange=per=>{const t=today(),y=t.slice(0,4);if(per==='semaine'){const m=monday(t),e=new Date(m+'T00:00');e.setDate(e.getDate()+6);return[m,dstr(e)]}if(per==='mois')return[t.slice(0,7)+'-01',t.slice(0,7)+'-31'];return[y+'-01-01',y+'-12-31']};
+function gProg(g){if(g.ty==='chain')return pgStreak().n;if(g.ty==='bw'||g.ty==='fat')return 0;const [a,z]=gRange(g.ty==='seances'?'semaine':g.per),I=pgDone().filter(x=>x.d>=a&&x.d<=z);
+ if(g.ty==='seances')return I.length;if(g.ty==='vol')return Math.round(I.reduce((n,x)=>n+stats(x).t,0));let n=0;Object.values(exHist()).forEach(m=>m.prs.forEach(p=>{if(p.d>=a&&p.d<=z)n++}));return n}
+const gTitle=g=>g.lab||({seances:'Séances / semaine',chain:'Série de semaines',pr:'Nouveaux PR / '+g.per,vol:'Volume / '+g.per,bw:'Poids du corps / '+g.per,fat:'Masse grasse / '+g.per})[g.ty];
+const gCard=g=>{const T=GT[g.ty],cu=gProg(g),ok=g.tg>0&&cu>=g.tg,pc=g.tg>0?Math.min(100,Math.round(cu/g.tg*100)):0;
+ return`<div class=gwr><button class="gc${ok?' ok':''}" style="--c:${T.c}" data-a=gedit data-id=${g.id}><div class=r1><i class=ic>${SI(T.ic,22)}</i><b class=tt>${esc(gTitle(g))}</b>${ok?'<span class=tag>ATTEINT</span>':`<span class=pc>${pc}%</span>`}</div><div class=v>${fmt(cu)}<small> / ${fmt(g.tg)}${T.u?' '+T.u:''}</small></div><div class=bar><u style="width:${ok?100:Math.max(pc,pc?3:0)}%"></u></div></button><button class=gsw data-a=gdsw data-id=${g.id} aria-label="Supprimer l’objectif"><span class=swb>${SI('trash',20)}</span></button></div>`};
+const pobjView=()=>{const G=S.goals||[],ok=G.filter(g=>g.tg>0&&gProg(g)>=g.tg).length;
+ return`<div class=pgw><div class=pdh><button class=cbtn data-a=pback aria-label="Retour">${SI('back',19)}</button><div><h1>Objectifs</h1><small>${G.length?ok+' / '+G.length+' atteint'+(ok>1?'s':''):'Aucun objectif'}</small></div></div>`+
+ (G.length?G.map(gCard).join('')+`<button class=gadd data-a=gadd>${SI('plus',20)} Ajouter un objectif</button>`:`<div class=pem><h2>Aucun objectif</h2><p>Définis un objectif pour suivre ta progression.</p><button class=pgo data-a=gadd>Ajouter un objectif</button></div>`)+`</div>`};
+function gSheet(f){
+ if(f.k==='gty'){const sec=(l,a)=>(l?`<div class=sh-l>${l}</div>`:'')+a.map(k=>`<button class="mi dm" data-a=gpick data-t=${k}><span><b>${GT[k].n}</b><small>${GT[k].d}</small></span></button>`).join('');
+  return sh2('Nouvel objectif','Choisis le type d’objectif.',sec('FORCE',['pr'])+sec('VOLUME',['vol'])+sec('COMPOSITION',['bw','fat']))}
+ const T=GT[f.ty],ed=f.k==='ged',ok=+String(f.tg).replace(',','.')>0,
+  chips=(arr,a,cur)=>`<div class="eqw">${arr.map(([v,l])=>`<button class="eqc${cur===v?' on':''}" data-a=${a} data-v="${v}">${l}</button>`).join('')}</div>`;
+ return`<div class=sov data-a=fno><div class="sheet sh2 xnw"><div class=grab></div><h2>${ed?'Modifier l’objectif':T.n}</h2>
+ ${ed?`<div class=fl>TYPE</div>${chips(GORD.map(k=>[k,GT[k].chip]),'gty2',f.ty)}`:''}
+ <div class=fl>CIBLE${T.ul?' ('+T.ul+')':''}</div><input class=xin inputmode=decimal data-fm=gt value="${esc(String(f.tg))}" autocomplete=off>
+ ${T.fix?'':`<div class=fl>${ed?'PÉRIODE':'FRÉQUENCE'}</div>${chips(GPER.map(v=>[v,v]),'gper',f.per)}`}
+ ${ed?`<div class=fl>LABEL (OPTIONNEL)</div><input class=xin data-fm=gl placeholder="ex. : 5×5 développé couché à 100 kg" value="${esc(f.lab||'')}" autocomplete=off>`:''}
+ <div class=xbar>${ed?`<button class=gdng data-a=gdel>Supprimer</button>`:''}<button class=gbtn id=gok data-a=${ed?'gsave':'gnok'} ${ok?'':'disabled'}>${ed?'Enregistrer':'Créer'}</button></div></div></div>`}
 const PXR={cardio:/cardio|course|running|runner|v[ée]lo|bike|rameur|rower|tapis|corde [àa] sauter|marche|elliptique|skierg/i,uni:/unilat|une? (jambe|bras)|single|bulgar|split squat/i};
 function pexoList(){const H=exHist(),q=norm(PQ).trim(),fv=S.fav||[];return library().filter(n=>(!q||norm(n).includes(q))&&(PF==='all'||(PF==='fav'&&fv.includes(n))||(PF==='cardio'&&PXR.cardio.test(n))||(PF==='uni'&&PXR.uni.test(n))||(PF==='perso'&&!CAT[n]))).sort((a,b)=>{const x=H[a]&&H[a].last?H[a].last.d:'',y=H[b]&&H[b].last?H[b].last.d:'';return x===y?a.localeCompare(b,'fr'):x<y?1:-1})}
 function pxRow(n,H){const cu=S.cust&&S.cust[n],m=H[n],inst=m?m.inst:{n},eq=cu&&cu.eq||/dips|push-?up|pull-?up|chin-?up|traction|pompe/i.test(n)?'Poids du corps':({g:'Machine guidée',l:'Poids libre',p:'Poulie',s:'Smith machine'}[mode(inst)]||'Poids libre'),f=ent({n}).f,mu=cu&&cu.mu?mlab(cu.mu):(f&&f.join(', '))||(musOf(n).map(k=>MUS[k])[0])||'',fav=(S.fav||[]).includes(n),
@@ -1341,6 +1476,8 @@ function draw(){
  a.style.cssText=cs&&cs.cy?`--acc:${subCol(cs.cy)};--ok:${subCol(cs.cy)}`:'';
  if(V.p==='cfg')return a.innerHTML=cfgView();
  if(V.p==='pobj')return a.innerHTML=pobjView();
+ if(V.p==='pstat')return a.innerHTML=pstatView();
+ if(V.p==='pdet')return a.innerHTML=pdetView();
  if(V.p==='pexo')return a.innerHTML=pexoView();
  if(V.p==='det'&&cur())return a.innerHTML=detView(cur());
  if(V.p==='live'&&cur())return a.innerHTML=liveView(cur());
@@ -1584,6 +1721,7 @@ A('input',ev=>{const t=ev.target,d=t.dataset;
  if(d.cxd!==undefined&&FORM&&FORM.k==='cxe'){FORM[d.cxd]=t.value;return}
  if(d.cp!==undefined&&FORM&&FORM.k==='cpk'){FORM.pick[+d.cp][d.cf]=t.value;return}
  if(d.fm==='cq'&&FORM&&FORM.k==='cpk'){FORM.v=t.value;const l=$('#clist');if(l)l.innerHTML=cRows(FORM);return}
+ if(FORM&&['gnw','ged'].includes(FORM.k)&&(d.fm==='gt'||d.fm==='gl')){if(d.fm==='gt'){FORM.tg=t.value;const b=$('#gok');if(b)b.disabled=!(+String(t.value).replace(',','.')>0)}else FORM.lab=t.value;return}
  if(FORM&&FORM.k==='xnw'&&(d.fm==='xn'||d.fm==='xi')){if(d.fm==='xn'){FORM.n=t.value;if(FORM.err){FORM.err='';const p=document.querySelector('#dlg .xerr');if(p)p.remove()}const b=$('#xnok');if(b)b.disabled=!(t.value.trim()&&FORM.mu)}else FORM.ins=t.value;return}
  if(d.fm&&FORM){if(FORM.k==='xl'){FORM.v=t.value;const l=$('#xlist');if(l)l.innerHTML=libRows(FORM.v,FORM.pick,FORM.m!=='rep');return}FORM[d.fm==='n'?'n':'v']=t.value;return}
  if(d.c){S.cfg[d.c]=t.value.trim();return save()}
@@ -1679,7 +1817,21 @@ A('click',ev=>{const b=ev.target.closest('[data-a]');if(!b||(b.classList.contain
  case'nt':FORM=null;mk(d.id);break;
  case'go':FORM=null;startFrom(d.id);break;
  case'pobj':V={p:'pobj'};TOP=1;break;
+ case'gadd':FORM={k:'gty'};break;
+ case'gpick':FORM={k:'gnw',ty:d.t,tg:String(GT[d.t].df),per:'mois'};break;
+ case'gper':FORM.per=d.v;break;
+ case'gty2':FORM.ty=d.v;FORM.tg=String(GT[d.v].df);break;
+ case'gnok':{const f=FORM,v=+String(f.tg).replace(',','.');if(!(v>0))return;S.goals=S.goals||[];S.goals.push({id:uid(),ty:f.ty,tg:v,per:f.per||'mois',lab:''});FORM=null;save();break}
+ case'gedit':{const g=(S.goals||[]).find(x=>x.id===d.id);if(!g)return;FORM={k:'ged',id:g.id,ty:g.ty,tg:String(g.tg),per:g.per||'mois',lab:g.lab||''};break}
+ case'gsave':{const f=FORM,g=(S.goals||[]).find(x=>x.id===f.id),v=+String(f.tg).replace(',','.');if(!g||!(v>0))return;Object.assign(g,{ty:f.ty,tg:v,per:f.per,lab:(f.lab||'').trim()});FORM=null;save();break}
+ case'gdel':case'gdsw':{const id=d.a==='gdsw'?d.id:FORM.id;FORM={k:'cf',t:'Supprimer cet objectif ?',m:'Action irréversible.',fn:()=>{S.goals=(S.goals||[]).filter(x=>x.id!==id);save();render()}};break}
  case'pexo':V={p:'pexo'};PF='all';PQ='';TOP=1;break;
+ case'pst':V={p:'pstat'};PS.o=0;TOP=1;break;
+ case'psr':PS.r=d.v;PS.o=0;break;
+ case'pso':PS.o=Math.max(0,PS.o+(+d.d));break;
+ case'pstt':PS.t=d.v;break;
+ case'pdet':V={p:'pdet'};TOP=1;break;
+ case'pdback':V={p:'pstat'};TOP=1;break;
  case'pback':V={p:'home'};TAB='prog';TOP=1;break;
  case'pflt':PF=d.v;break;
  case'pfav':{S.fav=S.fav||[];const n=d.n,i=S.fav.indexOf(n);if(i<0)S.fav.push(n);else S.fav.splice(i,1);save();break}
@@ -1896,5 +2048,12 @@ setInterval(cgTick,250);
 applyTheme();render();scrollTo(0,Y0);sync().then(soft);
 
 
+
+(()=>{let G=null,SK=0;const W=70;
+document.addEventListener('pointerdown',e=>{const c=e.target.closest('.gwr .gc');if(!c)return;const w=c.parentElement;G={c,w,x0:e.clientX,y0:e.clientY,base:w.classList.contains('swo')?-W:0,mode:null,cur:null}});
+document.addEventListener('pointermove',e=>{if(!G)return;const dx=e.clientX-G.x0,dy=e.clientY-G.y0;if(!G.mode){if(Math.abs(dx)<8&&Math.abs(dy)<8)return;if(Math.abs(dx)<=Math.abs(dy)){G=null;return}G.mode='s';G.c.classList.add('sw1');document.querySelectorAll('.gwr.swo').forEach(o=>{if(o!==G.w)o.classList.remove('swo')})}
+ const x=Math.max(-W,Math.min(0,G.base+dx));G.cur=x;G.c.style.transform='translateX('+x+'px)'});
+const end=()=>{if(!G)return;const g=G;G=null;if(g.mode){SK=1;setTimeout(()=>SK=0,120);const open=(g.cur??g.base)<-W/2;g.c.classList.remove('sw1');g.c.style.transform='';g.w.classList.toggle('swo',open)}};
+document.addEventListener('pointerup',end);document.addEventListener('pointercancel',end);
+document.addEventListener('click',e=>{const c=e.target.closest('.gwr .gc');if(c&&(SK||c.parentElement.classList.contains('swo'))){e.stopPropagation();e.preventDefault();if(!SK)c.parentElement.classList.remove('swo')}},true)})();
 </script></body></html>
- 
