@@ -793,13 +793,13 @@ html.lock,html.lock body{overflow:hidden;overscroll-behavior:none}
 .psc.emp{color:var(--mut);text-align:center;padding:18px 14px;font-size:14px}
 .psc .r1{display:flex;align-items:center;gap:9px}
 .psc .sq{width:10px;height:10px;border-radius:3px;flex:none}
-.psc .nm{font:700 20px/1.2 "Avenir Next Condensed","Arial Narrow","Helvetica Neue",sans-serif;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.psc .nm{font:700 17px/1.2 "Avenir Next Condensed","Arial Narrow","Helvetica Neue",sans-serif;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .psc .cn{font:13px ui-monospace,Menlo,monospace;color:var(--mut);flex:none}
 .psc .ar{color:var(--mut);flex:none;display:flex}.psc .ch{margin-left:auto;color:var(--mut);flex:none;display:flex}
 .psc .chs{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0 19px}
-.psc .chs span{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:6px 10px;font-size:13px;color:var(--mut)}
+.psc .chs span{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:4px 8px;font-size:12px;color:var(--mut)}
 .psc .chs i{width:4px;height:4px;border-radius:50%;background:color-mix(in srgb,var(--ink) 22%,var(--card))}
-.psc .chs b{font:700 15px/1 "Avenir Next Condensed","Arial Narrow","Helvetica Neue",sans-serif;color:var(--ink)}
+.psc .chs b{font:600 13px/1 "Avenir Next Condensed","Arial Narrow","Helvetica Neue",sans-serif;color:var(--ink)}
 .pg2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;margin:16px 0}
 .pmc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:11px 10px 11px 12px;min-height:104px;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.04)}
 .pmc .h{display:flex;align-items:center;gap:7px}.pmc .h .pti{width:26px;height:26px;border-radius:9px}.pmc .h b{font-weight:600;font-size:13.5px;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pmc .h>svg{color:var(--mut);flex:none}
@@ -822,6 +822,43 @@ html.lock,html.lock body{overflow:hidden;overscroll-behavior:none}
 .pdh .cbtn{width:40px;height:40px}
 .pdh h1{margin:0;font:700 22px/1.1 "Avenir Next Condensed","Arial Narrow","Helvetica Neue",sans-serif}
 .pdh small{display:block;color:var(--mut);font-size:13px}
+.pss-seg{display:grid;grid-template-columns:repeat(3,1fr);background:color-mix(in srgb,var(--ink) 6%,var(--card));border:1px solid var(--line);border-radius:999px;padding:3px;margin:12px 40px}
+.pss-seg button{background:none;border-radius:999px;padding:6px 0;font-size:13px;font-weight:500;color:var(--mut)}
+.pss-seg button.on{background:var(--card);color:var(--ink);font-weight:600;box-shadow:0 1px 5px rgba(0,0,0,.12)}
+.pss-v .psr{gap:8px;margin:12px 0}
+.pss-v .pnv{width:32px;height:32px}
+.pss-v .psg2 button{padding:6px 0;font-size:13px}
+.gth{--acc:var(--red);--acc2:var(--red)}
+.ath{--acc:#f5a524;--acc2:#c98400}
+:root[data-theme=dark] .ath,:root:not([data-theme=light]) .ath{--acc2:#f7b94a}
+.ath .hxb u,.ath .asf b{color:var(--acc2)}
+.ath .ahero{background:linear-gradient(110deg,color-mix(in srgb,var(--acc) 76%,#000),var(--acc) 60%,color-mix(in srgb,var(--acc) 80%,#fff));box-shadow:0 10px 28px color-mix(in srgb,var(--acc) 28%,transparent)}
+.pss-hit{fill:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.pss-sel{pointer-events:none}
+.pss-vl{stroke:var(--acc);stroke-width:1.5;stroke-dasharray:3 4;opacity:.6}
+.pss-ring{fill:none;stroke:var(--acc);stroke-width:2;opacity:.45}
+.psg .pss-tt rect{fill:var(--ink)}
+.psg .pss-tt text{fill:var(--bg);text-anchor:middle}
+.psg .pss-tt .t1{font-size:11px;font-weight:700}
+.psg .pss-tt .t2{font-size:9px;opacity:.75}
+.pss-card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:12px 10px 10px}
+.pss-gl{stroke:var(--line);stroke-width:1;stroke-dasharray:4 6}
+.pss-cap{text-align:center;font:11px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:var(--mut);margin:10px 0 0}
+.pss-emp{fill:var(--mut);font-size:11px}
+.pss-h{display:flex;align-items:baseline;justify-content:space-between;margin:24px 2px 10px;font:13px ui-monospace,Menlo,monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+.pss-h button{background:none;border-radius:0;padding:0;font:600 16px "Avenir Next",system-ui,sans-serif;letter-spacing:0;text-transform:none;color:var(--acc2)}
+.pss-list{background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden}
+.pss-sum{display:flex;align-items:center;gap:14px;padding:16px 18px 10px;color:var(--mut);font-size:17px;line-height:1.3}
+.pss-sum b{font:700 54px/1 "Avenir Next Condensed","Arial Narrow",sans-serif;color:#8b6cf0}
+.pss-pr{display:flex;align-items:center;gap:14px;padding:12px 18px;border-top:1px solid var(--line)}
+.pss-pr .pti{width:42px;height:42px;border-radius:12px}
+.pss-pr .tx{flex:1;min-width:0}.pss-pr .tx b{display:block;font-size:17px;font-weight:600}.pss-pr .tx small{font:12px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:var(--mut);text-transform:uppercase}
+.pss-pr .vl{text-align:right;flex:none}.pss-pr .vl b{display:block;font:700 19px "Avenir Next Condensed","Arial Narrow",sans-serif}.pss-pr .vl b em{font-style:normal;font-size:15px;margin-left:4px}.pss-pr .vl small{color:var(--mut);font-size:15px}
+.pss-ex{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 18px;border-top:1px solid var(--line)}.pss-ex:first-child{border-top:0}.pss-ex b{flex:1;min-width:0;font-size:17px;font-weight:600}.pss-ex small{flex:none;max-width:45%;text-align:right;color:var(--mut);font-size:13px;line-height:1.25}
+.pss-hi{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);border-radius:0;padding:18px;color:var(--ink)}.pss-hi:first-child{border-top:0}
+.pss-hi .d{flex:1;font-size:17px;font-weight:600}.pss-hi .st{display:flex;flex-direction:column;align-items:flex-end;gap:3px;font:14px ui-monospace,Menlo,monospace;color:var(--mut);font-variant-numeric:tabular-nums;text-align:right}.pss-hi svg{color:var(--mut);flex:none}
+.pss-none{padding:16px 18px;color:var(--mut);font-size:15px}
+
 .pem{text-align:center;margin-top:20vh}
 .pem h2{margin:0 0 10px;font:800 24px/1.15 var(--fc);color:var(--ink)}
 .pem p{margin:0 auto 18px;max-width:none;padding:0 12px;color:var(--mut);font:400 17px/1.4 "Avenir Next",system-ui,sans-serif}
@@ -882,7 +919,7 @@ html.lock,html.lock body{overflow:hidden;overscroll-behavior:none}
 .xnw .xbar .obtn{background:var(--card);border:1px solid var(--line);font-weight:600;font-size:17px}
 .xnw .xbar .gbtn{background:var(--acc);color:#fff;font-weight:700;font-size:17px;border:0}.xnw .xbar .gbtn:disabled{background:color-mix(in srgb,var(--ink) 9%,var(--card));color:var(--mut)}
 
-.stk{cursor:pointer}.stk>svg{color:var(--mut);flex:none}
+.stk{cursor:default}.stk>svg{color:var(--mut);flex:none}
 .psr{display:flex;align-items:center;gap:8px;margin:14px 0 14px}
 .pnv{width:40px;height:40px;border-radius:50%;padding:0;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;color:var(--mut);flex:none}.pnv:disabled{opacity:.4}
 .psg2{flex:1;display:grid;grid-template-columns:repeat(4,1fr);background:color-mix(in srgb,var(--ink) 6%,var(--card));border-radius:999px;padding:3px;border:1px solid var(--line)}
@@ -920,7 +957,7 @@ button.prt{background:none;border:0;padding:0;color:var(--ink);width:100%;text-a
 .stk{cursor:default}
 
 .gc{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:13px 15px 14px;margin-bottom:10px;color:var(--ink)}
-.gc .r1{display:flex;align-items:center;gap:12px}.gc .ic{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;flex:none;background:color-mix(in srgb,var(--c) 14%,var(--card));color:var(--c)}
+.gc .r1{display:flex;align-items:center;gap:12px}.gc .ic{width:38px;height:38px;padding:0;font-size:inherit;line-height:0;border-radius:12px;display:grid;place-items:center;flex:none;background:color-mix(in srgb,var(--c) 14%,var(--card));color:var(--c)}
 .gc .tt{flex:1;font-size:16.5px;font-weight:600;min-width:0}.gc .pc{font:600 11.5px ui-monospace,Menlo,monospace;letter-spacing:.06em;color:var(--c)}
 .gc .tag{font:600 12px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:var(--acc2);background:color-mix(in srgb,var(--acc) 14%,var(--card));border-radius:999px;padding:5px 10px;font-size:11px}
 .gc .v{margin:12px 0 8px;font:700 27px "Avenir Next Condensed","Arial Narrow",sans-serif}.gc .v small{font:400 14.5px "Avenir Next",system-ui,sans-serif;color:var(--mut)}
@@ -972,9 +1009,9 @@ button.prt{background:none;border:0;padding:0;color:var(--ink);width:100%;text-a
 .acd .kk{font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.16em;color:var(--mut)}
 .acd .row{display:flex;justify-content:space-between;align-items:center;gap:12px}
 .acd .ct{display:block;margin-top:6px;font:600 17px "Avenir Next",system-ui,sans-serif}
-.acd .bigp{font:800 34px/1 var(--fc);flex:none;white-space:nowrap}
+.acd .bigp{font:600 28px/1 var(--fc);flex:none;white-space:nowrap}
 .acd .row>div{min-width:0}.acd .row .kk,.acd .row .ct{white-space:nowrap}
-.acd .big2{margin-top:6px;font:800 34px/1 var(--fc)}.acd .big2 span{font-size:22px}
+.acd .big2{margin-top:6px;font:600 28px/1 var(--fc)}.acd .big2 span{font-size:18px}
 .acd .eq{margin:6px 0 0;color:var(--mut);font:400 15px "Avenir Next",system-ui,sans-serif}
 .apb{height:7px;border-radius:99px;background:color-mix(in srgb,var(--ink) 9%,var(--card));overflow:hidden}.apb i{display:block;height:100%;border-radius:99px;background:var(--cc,var(--acc))}
 .ash{display:flex;align-items:center;gap:12px;margin:22px 2px 10px}.ash .pti{width:42px;height:42px;border-radius:14px}
@@ -997,13 +1034,13 @@ button.prt{background:none;border:0;padding:0;color:var(--ink);width:100%;text-a
 .hx.big{width:80px;height:92px}.hx.big b{font-size:38px}.hx.big.lk{width:116px;height:132px}.hx.big.lk b svg{stroke-width:2.2}
 .dt{display:inline-block;width:.2em;height:.2em;border-radius:50%;background:currentColor;vertical-align:.24em;margin:0 .3em}
 .bdgp .bnx.lk{margin-top:0}
-.ash2{margin:26px 2px 2px;font:800 24px var(--fc)}
-.asx{display:flex;align-items:center;gap:13px;margin-top:10px;padding:14px;border-radius:26px;background:var(--card);border:2px solid color-mix(in srgb,#8b6cf0 26%,transparent)}
-.asi{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;flex:none;color:#8b6cf0;background:color-mix(in srgb,#8b6cf0 10%,var(--card));border:1px solid color-mix(in srgb,#8b6cf0 14%,transparent)}
-.asx .tx{min-width:0}.asx small{display:block;font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.16em;color:#8b6cf0}
-.asx b{display:block;margin:3px 0 2px;font:800 21px/1.1 var(--fc)}.asx p{margin:0;color:var(--mut);font:400 14px/1.35 "Avenir Next",system-ui,sans-serif}
-.asd{display:flex;align-items:center;gap:13px;margin-top:18px;padding:16px 16px;border-radius:26px;border:2px dashed color-mix(in srgb,#8b6cf0 26%,transparent);background:color-mix(in srgb,#8b6cf0 5%,var(--bg))}
-.asi2{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;flex:none;color:#8b6cf0;background:color-mix(in srgb,#8b6cf0 12%,var(--card))}
+.ash2{margin:26px 2px 2px;font:700 22px var(--fc)}
+.asx{display:flex;align-items:center;gap:13px;margin-top:10px;padding:14px;border-radius:26px;background:var(--card);border:2px solid color-mix(in srgb,var(--acc) 26%,transparent)}
+.asi{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;flex:none;color:var(--acc);background:color-mix(in srgb,var(--acc) 10%,var(--card));border:1px solid color-mix(in srgb,var(--acc) 14%,transparent)}
+.asx .tx{min-width:0}.asx small{display:block;font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.16em;color:var(--acc)}
+.asx b{display:block;margin:3px 0 2px;font:700 18px/1.15 var(--fc)}.asx p{margin:0;color:var(--mut);font:400 14px/1.35 "Avenir Next",system-ui,sans-serif}
+.asd{display:flex;align-items:center;gap:13px;margin-top:18px;padding:16px 16px;border-radius:26px;border:2px dashed color-mix(in srgb,var(--acc) 26%,transparent);background:color-mix(in srgb,var(--acc) 5%,var(--bg))}
+.asi2{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;flex:none;color:var(--acc);background:color-mix(in srgb,var(--acc) 12%,var(--card))}
 .asd b{display:block;font:600 17px "Avenir Next",system-ui,sans-serif}.asd p{margin:3px 0 0;color:var(--mut);font:400 14px "Avenir Next",system-ui,sans-serif}
 .dpop.bdgp{position:relative;max-width:min(400px,100%);text-align:center;padding:28px 20px 22px;border-radius:34px;background:radial-gradient(70% 50% at 50% 24%,color-mix(in srgb,var(--bc) 16%,transparent),transparent 78%),var(--bg)}
 .bdgp .bx{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:var(--card);display:grid;place-items:center;color:var(--ink);padding:0;box-shadow:0 1px 4px rgba(0,0,0,.08)}
@@ -1354,7 +1391,7 @@ let ASK=null;
 const ask=(msg,fn,lab)=>{ASK={msg,fn,lab};render()};
 /* Transition d'écran : l'édition arrive par la droite ; en la quittant elle repart vers la droite */
 let LASTP=null;
-const PGD={det:1,live:1,pstat:1,pmes:1,pobj:1,pexo:1,pach:1,pdet:2,pmall:2};
+const PGD={det:1,live:1,pstat:1,pmes:1,pobj:1,pexo:1,pach:1,pdet:2,pmall:2,psess:1};
 function vtDir(a,b){if(a===null)return null;if(a!=='edit'&&b==='edit')return'fwd';if(a==='edit'&&b!=='edit')return'back';const da=PGD[a]||0,db=PGD[b]||0;if(a!==b&&da!==db&&(a==='home'||da)&&(b==='home'||db))return db>da?'lfwd':'lback';return null}
 function render(){const k=vtDir(LASTP,V.p);LASTP=V.p;
  if(k&&document.startViewTransition&&!matchMedia('(prefers-reduced-motion: reduce)').matches){const h=document.documentElement;h.dataset.vt=k;try{const t=document.startViewTransition(()=>renderNow());t.finished.finally(()=>{delete h.dataset.vt})}catch{delete h.dataset.vt;renderNow()}}else{renderNow();if(k==='lfwd'||k==='lback'){const ap=document.getElementById('app');if(ap&&!matchMedia('(prefers-reduced-motion: reduce)').matches){ap.classList.remove('vtl','vtb');void ap.offsetWidth;ap.classList.add(k==='lfwd'?'vtb':'vtl');setTimeout(()=>ap.classList.remove('vtl','vtb'),380)}}}}
@@ -1441,18 +1478,18 @@ function pgStreak(){const D=pgDone(),W=new Set(D.map(s=>monday(s.d))),m0=monday(
  let n=0;d=new Date(m0+'T00:00');if(!W.has(m0))d.setDate(d.getDate()-7);while(W.has(dstr(d))){n++;d.setDate(d.getDate()-7)}
  return{n,bars,k:D.filter(s=>monday(s.d)===m0).length}}
 function pgGroup(){const D=pgDone();if(!D.length)return null;const key=s=>s.from||('n:'+(s.nom||'')),last=D[D.length-1],k=key(last),G=D.filter(s=>key(s)===k),tpl=S.seances.find(x=>x.id===last.from),T={};G.forEach(s=>{T[s.d]=(T[s.d]||0)+stats(s).t});
- return{nom:(tpl&&tpl.nom)||last.nom||'Entraînement libre',col:colOf(last),n:G.length,ds:Object.keys(T).sort().reverse().slice(0,3).map(d=>[d,T[d]])}}
+ return{k,nom:(tpl&&tpl.nom)||last.nom||'Entraînement libre',col:colOf(last),n:G.length,ds:Object.keys(T).sort().reverse().slice(0,3).map(d=>[d,T[d]])}}
 function exHist(){const M={};pgDone().forEach(s=>s.ex.forEach(e=>{const n=String(e.n||'').trim();if(!n)return;const m=M[n]||(M[n]={n,pr:0,last:null,inst:e,prs:[]});m.inst=e;let best=null;e.s.forEach(x=>{if(x.t==='E'||!(x.r>0)||!(x.ok||!(s.from||s.free)))return;const c=+x.c||0;if(!best||c>best.c||(c===best.c&&+x.r>best.r))best={c,r:+x.r}});if(!best)return;m.last={d:s.d,c:best.c,r:best.r};if(best.c>m.pr){m.prs.push({d:s.d,c:best.c,id:s.id});m.pr=best.c}}));return M}
 function pgSpark(){const V={};pgDone().forEach(s=>V[s.d]=(V[s.d]||0)+stats(s).t);const d=new Date();d.setDate(d.getDate()-29);let t=0;const a=[];for(let i=0;i<30;i++){t+=V[dstr(d)]||0;a.push(t);d.setDate(d.getDate()+1)}const mx=Math.max(...a,1);return a.map((v,i)=>(i*100/29).toFixed(1)+','+(34-v/mx*32).toFixed(1)).join(' ')}
 const pgTile=(c,i,z=19)=>`<i class=pti style="--c:${c}">${SI(i,z)}</i>`;
 /* ===== Succès ===== */
-const ACH_T=[['Bronze','#cd7f32'],['Argent','#a7adb4'],['Or','#f2b01e'],['Platine','#7fa8cc'],['Diamant','#3fc1ea']];
+const ACH_T=[['Bronze','var(--acc)'],['Argent','var(--acc)'],['Or','var(--acc)'],['Platine','var(--acc)'],['Diamant','var(--acc)']];
 const ACH_C=[
-{k:'vol',n:'Volume',col:'#14b8d4',ic:'dumbbell',th:[1000,10000,50000,250000,1500000],d:['1 tonne déplacée. Le compteur tourne.','10 tonnes soulevées. Ça commence à peser.','50 tonnes au compteur. Du solide.','250 tonnes. Une vraie machine.','1 500 tonnes. Légende du fer.']},
+{k:'vol',n:'Volume',col:'var(--acc)',ic:'dumbbell',th:[1000,10000,50000,250000,1500000],d:['1 tonne déplacée. Le compteur tourne.','10 tonnes soulevées. Ça commence à peser.','50 tonnes au compteur. Du solide.','250 tonnes. Une vraie machine.','1 500 tonnes. Légende du fer.']},
 {k:'con',n:'Constance',col:'var(--acc)',ic:'check',th:[10,50,200,600,1000],d:['10 entraînements. Le rythme s’installe.','50 entraînements. L’habitude est prise.','200 entraînements. Niveau élite.','600 entraînements. Une discipline de fer.','1 000 entraînements. Légendaire.']},
-{k:'rec',n:'Records',col:'#f59e0b',ic:'star',th:[1,10,25,100,150],d:['Ton premier record personnel.','10 exercices avec un record.','25 exercices avec un record.','100 exercices avec un record.','150 exercices avec un record. Un vrai collectionneur.']},
-{k:'pro',n:'Progression',col:'#8b6cf0',ic:'trend',th:[10,50,200,500,1500],d:['10 records battus. Tu progresses.','50 records battus. La courbe monte.','200 records battus. Rien ne t’arrête.','500 records battus. Machine à progresser.','1 500 records battus. Hors norme.']},
-{k:'str',n:'Enchaînement',col:'#f26b21',ic:'flame',th:[2,4,12,52,104],d:['2 semaines d’affilée. La série démarre.','4 semaines d’affilée. Un mois sans lâcher.','12 semaines d’affilée. Un trimestre de régularité.','52 semaines d’affilée. Une année entière.','104 semaines d’affilée. Deux ans sans relâche.']}];
+{k:'rec',n:'Records',col:'var(--acc)',ic:'star',th:[1,10,25,100,150],d:['Ton premier record personnel.','10 exercices avec un record.','25 exercices avec un record.','100 exercices avec un record.','150 exercices avec un record. Un vrai collectionneur.']},
+{k:'pro',n:'Progression',col:'var(--acc)',ic:'trend',th:[10,50,200,500,1500],d:['10 records battus. Tu progresses.','50 records battus. La courbe monte.','200 records battus. Rien ne t’arrête.','500 records battus. Machine à progresser.','1 500 records battus. Hors norme.']},
+{k:'str',n:'Enchaînement',col:'var(--acc)',ic:'flame',th:[2,4,12,52,104],d:['2 semaines d’affilée. La série démarre.','4 semaines d’affilée. Un mois sans lâcher.','12 semaines d’affilée. Un trimestre de régularité.','52 semaines d’affilée. Une année entière.','104 semaines d’affilée. Deux ans sans relâche.']}];
 const ACH_DT='<i class=dt></i>';
 const ACH_HEX='<svg viewBox="0 0 46 52"><polygon points="23,2 43,13.5 43,38.5 23,50 3,38.5 3,13.5" stroke-linejoin="round"/></svg>';
 const achN=n=>Math.round(n).toLocaleString('fr-FR');
@@ -1500,7 +1537,7 @@ function pachView(){
   <div class=asc style="--cc:${c.col}"><div class=asr>${c.tiers.map(x=>`<button class="hxb${x.on?' on':''}" data-a=bdg data-c=${c.k} data-i=${x.i} style="--bc:${x.col}"><span class="hx ${x.on?'on':x.i===c.cur?'cur':'off'}">${ACH_HEX}<b>${x.on?SI('check',18):x.name[0]}</b></span><em>${x.name}</em>${x.i===c.cur?'<u>EN COURS</u>':''}</button>`).join('')}</div>
   <div class=asf><span>${nx?'Prochain : '+nx.name+' · '+achLab(c.k,nx.th):'Tous les paliers sont débloqués'}</span><b>${c.pct} %</b></div><div class=apb><i style="width:${c.pct>0?Math.max(3,c.pct):0}%"></i></div></div>`};
  const sc=AD.sec.filter(x=>x.date).sort((a,b)=>a.date<b.date?1:-1),rest=AD.sec.length-sc.length;
- return`<div class=pgw><div class=pdh><button class=cbtn data-a=pback aria-label="Retour">${SI('back',19)}</button><div><h1>Succès</h1><small>${AD.got} / ${AD.tot} paliers</small></div></div>
+ return`<div class="pgw ath"><div class=pdh><button class=cbtn data-a=pback aria-label="Retour">${SI('back',19)}</button><div><h1>Succès</h1><small>${AD.got} / ${AD.tot} paliers</small></div></div>
  <div class=ahero><span class=rg>${SI('flame',40)}</span><div><small>SÉRIE EN COURS</small><div class=nb><b>${AD.st}</b><span>${wd(AD.st)}</span></div><p>Meilleure : ${AD.best} ${wd(AD.best)}</p></div></div>
  <div class=acd><div class=row><div><div class=kk>COMPLÉTION GLOBALE</div><b class=ct>${AD.got} / ${AD.tot} paliers</b></div><span class=bigp>${pc} %</span></div><div class=apb style="--cc:var(--acc);margin-top:14px"><i style="width:${pc>0?Math.max(3,pc):0}%"></i></div></div>
  <div class=acd><div class=kk>TONNAGE SOULEVÉ</div><div class=big2>${achN(t)} <span>kg</span></div><p class=eq>${n>=1?'soit '+n+' '+(n>1?eq[2]:eq[1]):'Chaque kilo compte.'}</p></div>
@@ -1511,23 +1548,24 @@ function pachView(){
 function bdgPop(f){
  const AD=achData(),c=AD.cats.find(x=>x.k===f.c);if(!c)return'';
  const t=c.tiers[f.i],nx=c.tiers[f.i+1],pct=Math.min(100,Math.round(c.val/t.th*100)),rem=Math.max(0,Math.ceil(t.th-c.val));
- return`<div class="sov pop" data-a=fno><div class="dpop bdgp" style="--bc:${t.col}"><button class=bx data-a=fno aria-label="Fermer">${SI('close',20)}</button>
+ return`<div class="sov pop ath" data-a=fno><div class="dpop bdgp" style="--bc:${t.col}"><button class=bx data-a=fno aria-label="Fermer">${SI('close',20)}</button>
  <span class="hx big ${t.on?'on':'lk'}">${ACH_HEX}<b>${t.on?t.name[0]:SI('lock',54)}</b></span>
  <div class="bk${t.on?'':' lo'}">${c.n.toUpperCase()}${ACH_DT}${t.name.toUpperCase()}</div><h3>${c.n}${ACH_DT}${t.name}</h3><p>${c.d[f.i]}</p>
  <div class=apb style="--cc:${t.col}"><i style="width:${pct>0?Math.max(3,pct):0}%"></i></div><div class=bc>${achN(c.val)} / ${achN(t.th)} ${achUl(c.k,t.th).toUpperCase()}</div>
  ${t.on?`<div class="bst ok">Débloqué${t.date?' le '+achD(t.date):''}</div>${nx?`<div class=bnx>Prochain palier : ${c.n} · ${nx.name}</div>`:'<div class=bnx>Palier maximum atteint</div>'}`:`<div class="bnx lk">À ${achN(rem)} ${achUl(c.k,rem)} du déblocage</div>`}
  </div></div>`}
-function progView(){const st=pgStreak(),g=pgGroup(),H=exHist(),ex=Object.keys(H).length,pm=today().slice(0,7),prs=[];
+function progView(){const AD0=achData(),AL=AD0.cats.flatMap(c=>c.tiers.filter(t=>t.on&&t.date).map(t=>({c,t}))).sort((a,b)=>a.t.date<b.t.date?1:a.t.date>b.t.date?-1:b.t.i-a.t.i)[0],st=pgStreak(),g=pgGroup(),H=exHist(),ex=Object.keys(H).length,pm=today().slice(0,7),prs=[];
  Object.values(H).forEach(m=>m.prs.filter(p=>p.d.startsWith(pm)).forEach(p=>prs.push({n:m.n,c:p.c})));prs.sort((a,b)=>b.c-a.c);
  return`<div class=pgw><h1 class=tt>Progrès</h1>
- <div class=stk data-a=pach style="cursor:pointer"><span class="bdg${st.n?'':' off'}" style="animation-delay:-${Date.now()%1300}ms">${SI('flame',14)}<b>${st.n}</b></span><div class=tx><b>${st.n?st.n+' semaine'+(st.n>1?'s':'')+' d’affilée':'Lance ta série'}</b><small>${st.k?st.k+' séance'+(st.k>1?'s':'')+' cette semaine':'Aucune séance cette semaine'}</small></div><div class=wk>${st.bars.map(o=>`<i class="${o?'on':''}"></i>`).join('')}</div>${SI('chev',15)}</div>
+ <div class=stk><span class="bdg${st.n?'':' off'}" style="animation-delay:-${Date.now()%1300}ms">${SI('flame',14)}<b>${st.n}</b></span><div class=tx><b>${st.n?st.n+' semaine'+(st.n>1?'s':'')+' d’affilée':'Lance ta série'}</b><small>${st.k?st.k+' séance'+(st.k>1?'s':'')+' cette semaine':'Aucune séance cette semaine'}</small></div><div class=wk>${st.bars.map(o=>`<i class="${o?'on':''}"></i>`).join('')}</div></div>
  <div class=psh><h2>Mes séances</h2><button class=pal>Tout voir ${SI('chev',14)}</button></div>
- ${g?`<div class=psc><div class=r1><i class=sq style="background:${g.col}"></i><span class=nm>${esc(g.nom)}</span><span class=cn>${g.n}×</span><span class=ar>${SI('arr',15)}</span><span class=ch>${SI('chev',17)}</span></div><div class=chs>${g.ds.map(([d,t])=>`<span>${pgd(d)}<i></i><b>${fmt(t)} kg</b></span>`).join('')}</div></div>`:'<div class="lve pse"><h3>Pas encore de stats</h3><p>Enchaîne quelques séances et tes courbes,<br>séances, records, tendances apparaîtront ici.</p></div>'}
+ ${g?`<div class=psc data-a=psess data-k="${esc(g.k)}" style="cursor:pointer"><div class=r1><i class=sq style="background:${g.col}"></i><span class=nm>${esc(g.nom)}</span><span class=cn>${g.n}×</span><span class=ar>${SI('arr',15)}</span><span class=ch>${SI('chev',17)}</span></div><div class=chs>${g.ds.map(([d,t])=>`<span>${pgd(d)}<i></i><b>${fmt(t)} kg</b></span>`).join('')}</div></div>`:'<div class="lve pse"><h3>Pas encore de stats</h3><p>Enchaîne quelques séances et tes courbes,<br>séances, records, tendances apparaîtront ici.</p></div>'}
  <div class=pg2><div class=pmc data-a=pst style="cursor:pointer"><div class=h>${pgTile('var(--acc)','trend',15)}<b>Performance</b>${SI('chev',14)}</div><div class=bd2><svg class=psp viewBox="0 0 100 36" preserveAspectRatio="none"><polyline points="${pgSpark()}" fill=none stroke=currentColor stroke-width=3 stroke-linecap=round stroke-linejoin=round vector-effect="non-scaling-stroke"/></svg><div class=lb>30 J</div></div></div>
  <div class=pmc data-a=pmes style="cursor:pointer"><div class=h>${pgTile('#14b8d4','ruler',15)}<b>Mesures</b>${SI('chev',14)}</div><div class=bd2>${mzLast('w')?`<b style="font:700 24px 'Avenir Next Condensed','Arial Narrow',sans-serif">${fmt(mzLast('w'))} <small style="font:400 13px sans-serif;color:var(--mut)">kg</small></b>`:'<i class=dsh></i><span class=em>Ajoute ton poids</span>'}</div></div></div>
- <div class=pls><button class=plr data-a=pobj>${pgTile('#f59e0b','target')}<span class=tx><span class=t1><b>Objectifs</b>${(S.goals||[]).length?`<span class=bg style="--c:#f59e0b">${(S.goals||[]).filter(g=>g.tg>0&&gProg(g)>=g.tg).length}/${(S.goals||[]).length}</span>`:'<span class=bg style="--c:#f59e0b">À définir</span>'}</span><small>${(S.goals||[]).length?pl((S.goals||[]).length,'objectif')+' en cours':'Définis ton premier objectif'}</small></span>${SI('chev',17)}</button>
+ <div class=pls><button class=plr data-a=pobj>${pgTile('var(--red)','target')}<span class=tx><span class=t1><b>Objectifs</b>${(S.goals||[]).length?`<span class=bg style="--c:var(--red)">${(S.goals||[]).filter(g=>g.tg>0&&gProg(g)>=g.tg).length}/${(S.goals||[]).length}</span>`:'<span class=bg style="--c:var(--red)">À définir</span>'}</span><small>${(S.goals||[]).length?pl((S.goals||[]).length,'objectif')+' en cours':'Définis ton premier objectif'}</small></span>${SI('chev',17)}</button>
  <button class=plr data-a=pexo>${pgTile('var(--acc)','dumbbell')}<span class=tx><span class=t1><b>Exercices</b></span><small>${ex?ex+' suivi'+(ex>1?'s':'')+' · progression par exo':'Progression par exercice'}</small></span>${SI('chev',17)}</button>
- <button class=plr>${pgTile('#f5a524','star')}<span class=tx><span class=t1><b>Records</b>${prs.length?`<span class=bg style="--c:#f5a524">${prs.length} PR</span>`:''}</span><small>${prs.length?'ce mois · '+esc(prs[0].n)+' '+fmt(prs[0].c)+' kg':'Aucun record ce mois'}</small></span>${SI('chev',17)}</button></div></div>`+tabbar()}
+ <button class=plr>${pgTile('#8b6cf0','star')}<span class=tx><span class=t1><b>Records</b>${prs.length?`<span class=bg style="--c:#8b6cf0">${prs.length} PR</span>`:''}</span><small>${prs.length?'ce mois · '+esc(prs[0].n)+' '+fmt(prs[0].c)+' kg':'Aucun record ce mois'}</small></span>${SI('chev',17)}</button>
+ <button class=plr data-a=pach>${pgTile('#f5a524','trophy')}<span class=tx><span class=t1><b>Succès</b><span class=bg style="--c:#f5a524">${AD0.got} / ${AD0.tot}</span></span><small>${AL?esc(AL.c.n)+' · '+esc(AL.t.name)+' débloqué':'Aucun succès débloqué'}</small></span>${SI('chev',17)}</button></div></div>`+tabbar()}
 let PS={r:'30J',o:0,t:'vol'};
 const PSR={'30J':30,'3M':91,'6M':182,'1A':365},PST=[['vol','Volume'],['rep','Reps'],['dur','Durée']];
 function psWin(){const n=PSR[PS.r],e=new Date();e.setHours(0,0,0,0);e.setDate(e.getDate()-PS.o*n);const b=new Date(e);b.setDate(b.getDate()-n+1);return{n,b,e}}
@@ -1585,6 +1623,50 @@ function pdetView(){const t=PS.t,w=psWin(),sub=(()=>{const f=d=>d.toLocaleDateSt
  <div class=psr><button class=pnv data-a=pso data-d=1 aria-label="Période précédente">${SI('back',16)}</button><div class=psg2>${Object.keys(PSR).map(k=>`<button class="${PS.r===k?'on':''}" data-a=psr data-v=${k}>${k}</button>`).join('')}</div><button class=pnv data-a=pso data-d=-1 ${PS.o?'':'disabled'} aria-label="Période suivante">${SI('chev',16)}</button></div>
  <div class=prs><div class=prtab>${PST.map(([k,l])=>`<button class="${t===k?'on':''}" data-a=pstt data-v=${k}>${l}</button>`).join('')}</div><div class=prv><b>${psFmt(tot,t)}</b><span><i></i>Précédent : ${psFmt(prevTot,t)}</span></div>${pdBars(t)}</div>
  <div class=pdt>${tiles.join('')}</div>${lists}</div>`}
+/* ---------- Détail d'une séance (Progrès → Mes séances) ---------- */
+let PSALL=false;
+const PSSK=s=>s.from||('n:'+(s.nom||''));
+const PSST=[['vol','Volume'],['dur','Durée'],['rep','Reps']];
+function pssChart(D,t){const w=psWin(),a=dstr(w.b),z=dstr(w.e),W=318,H=200,L=34,R=12,T=12,B=26,n=w.n,M={};
+ D.forEach(x=>{if(x.d>=a&&x.d<=z)M[x.d]=(M[x.d]||0)+pdVal(x,t)});
+ const ks=Object.keys(M).sort(),top=psNice(Math.max(1,...ks.map(k=>M[k]))),X=i=>L+(W-L-R)*i/(n-1),Y=v=>T+(H-T-B)*(1-v/top),ix=d=>Math.round((new Date(d+'T00:00')-w.b)/864e5);
+ const grid=[0,1,2,3,4].map(i=>{const v=top*(4-i)/4;return`<text x=${L-7} y=${(Y(v)+3).toFixed(1)} text-anchor=end>${psTick(v,t)}</text>`+(i<4?`<line x1=${L} x2=${W-R} y1=${Y(v).toFixed(1)} y2=${Y(v).toFixed(1)} class=pss-gl />`:`<line x1=${L} x2=${W-R} y1=${Y(0)} y2=${Y(0)} class=psb />`)}).join('');
+ const xt=psXT(w).map(o=>`<text x=${X(o.i).toFixed(1)} y=${H-7} text-anchor=${o.i===0?'start':o.i>=n-1?'end':'middle'}>${o.t}</text>`).join('');
+ const pts=ks.map(k=>[X(ix(k)),Y(M[k])]);
+ const line=pts.length>1?`<polyline points="${pts.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ')}" class=psl />`:'';
+ const dots=pts.map(p=>`<circle cx=${p[0].toFixed(1)} cy=${p[1].toFixed(1)} r=5 class=psd />`).join('');
+ const hits=ks.map((k,i)=>`<circle cx=${pts[i][0].toFixed(1)} cy=${pts[i][1].toFixed(1)} r=14 class=pss-hit data-k=${k} data-x=${pts[i][0].toFixed(1)} data-y=${pts[i][1].toFixed(1)} data-v="${psFmt(M[k],t)}" data-d="${new Date(k+'T00:00').toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'short'})}" role=button aria-label="${psFmt(M[k],t)}" />`).join('');
+ const emp=ks.length?'':`<text x=${W/2} y=${H/2-6} text-anchor=middle class=pss-emp>Aucun entraînement sur cette période</text>`;
+ return`<svg class=psg viewBox="0 0 ${W} ${H}" data-y0=${Y(0).toFixed(1)}>${grid}${line}${dots}${xt}${emp}${hits}<g id=pssg class=pss-sel></g></svg>`}
+document.addEventListener('click',ev=>{const c=ev.target.closest&&ev.target.closest('.pss-card');if(!c)return;const svg=c.querySelector('svg'),g=svg&&svg.querySelector('#pssg');if(!g)return;
+ const h=ev.target.closest('.pss-hit');if(!h||g.dataset.k===h.dataset.k){g.innerHTML='';g.dataset.k='';return}
+ const W=318,x=+h.dataset.x,y=+h.dataset.y;g.dataset.k=h.dataset.k;
+ g.innerHTML=`<line x1=${x} x2=${x} y1=${y} y2=${svg.dataset.y0} class=pss-vl /><circle cx=${x} cy=${y} r=9 class=pss-ring /><circle cx=${x} cy=${y} r=5 class=psd /><g class=pss-tt><rect rx=8 /><text class=t1 x=0 y=0></text><text class=t2 x=0 y=0></text></g>`;
+ const tt=g.querySelector('.pss-tt'),a=tt.querySelector('.t1'),b=tt.querySelector('.t2');a.textContent=h.dataset.v;b.textContent=h.dataset.d;
+ const bw=Math.max(a.getBBox().width,b.getBBox().width)+18,bh=32,rx=Math.min(Math.max(x-bw/2,2),W-2-bw);let ry=y-bh-12;if(ry<2)ry=y+12;
+ const r=tt.querySelector('rect');r.setAttribute('x',rx);r.setAttribute('y',ry);r.setAttribute('width',bw);r.setAttribute('height',bh);
+ a.setAttribute('x',rx+bw/2);a.setAttribute('y',ry+14);b.setAttribute('x',rx+bw/2);b.setAttribute('y',ry+26)});
+function psessView(){const t=PS.t,all=pgDone().filter(x=>PSSK(x)===V.k);
+ if(!all.length)return`<div class=pgw><div class=pdh><button class=cbtn data-a=pback aria-label="Retour">${SI('back',19)}</button><div><h1>Séance</h1><small>Aucun entraînement</small></div></div></div>`;
+ const last=all[all.length-1],tpl=S.seances.find(x=>x.id===last.from),nom=(tpl&&tpl.nom)||last.nom||'Entraînement libre',w=psWin(),
+ fd=d=>d.toLocaleDateString('fr-FR',{day:'numeric',month:'short'});
+ const ids=new Set(all.map(x=>x.id)),byId={};all.forEach(x=>byId[x.id]=x);
+ const prs=[];Object.values(exHist()).forEach(m=>m.prs.forEach(p=>{if(!ids.has(p.id))return;const ss=byId[p.id],e=ss.ex.find(y=>String(y.n||'').trim()===m.n);let r=0;if(e)e.s.forEach(y=>{if(dvOk(ss,y)&&(+y.c||0)===p.c&&+y.r>r)r=+y.r});prs.push({n:m.n,d:p.d,c:p.c,r})}));
+ prs.sort((a,b)=>a.d<b.d?1:a.d>b.d?-1:b.c-a.c);
+ const prRows=prs.slice(0,5).map(p=>`<div class=pss-pr>${pgTile('#8b6cf0','star',20)}<div class=tx><b>${esc(p.n)}</b><small>${pgd(p.d)}</small></div><div class=vl><b>${fmt(Math.round(p.c*(1+p.r/30)))} kg<em>e1RM</em></b><small>${fmt(p.c)} kg × ${p.r}</small></div></div>`).join('');
+ const seen={},exs=[];all.slice().reverse().forEach(x=>x.ex.forEach(e=>{const n=String(e.n||'').trim();if(!n)return;if(!seen[n]){seen[n]={n,i:SM(e)};exs.push(seen[n])}else if(!seen[n].i)seen[n].i=SM(e)}));
+ const hist=all.slice().reverse(),hs=PSALL?hist:hist.slice(0,5);
+ return`<div class="pgw pss-v"><div class=pdh><button class=cbtn data-a=pback aria-label="Retour">${SI('back',19)}</button><div><h1>${esc(nom)}</h1><small>${pl(all.length,'entraînement')}</small></div></div>
+ <div class=pss-seg>${PSST.map(([k,l])=>`<button class="${t===k?'on':''}" data-a=pstt data-v=${k}>${l}</button>`).join('')}</div>
+ <div class=pss-card>${pssChart(all,t)}</div><div class=pss-cap>1 POINT = 1 ENTRAÎNEMENT</div>
+ <div class=psr><button class=pnv data-a=pso data-d=1 aria-label="Période précédente">${SI('back',16)}</button><div class=psg2>${Object.keys(PSR).map(k=>`<button class="${PS.r===k?'on':''}" data-a=psr data-v=${k}>${k}</button>`).join('')}</div><button class=pnv data-a=pso data-d=-1 ${PS.o?'':'disabled'} aria-label="Période suivante">${SI('chev',16)}</button></div>
+ <div class=pss-h><span>PRs dans cette séance</span></div>
+ <div class=pss-list>${prs.length?`<div class=pss-sum><b>${prs.length}</b><span>${prs.length>1?'records battus':'record battu'}<br>dans ${esc(nom)}</span></div>${prRows}`:'<div class=pss-none>Aucun record battu pour le moment.</div>'}</div>
+ <div class=pss-h><span>Exercices de la séance</span></div>
+ <div class=pss-list>${exs.length?exs.map(o=>`<div class=pss-ex><b>${esc(o.n)}</b>${o.i?`<small>${esc(o.i)}</small>`:''}</div>`).join(''):'<div class=pss-none>Aucun exercice.</div>'}</div>
+ <div class=pss-h><span>Historique</span>${hist.length>5?`<button data-a=psall>${PSALL?'Réduire':'Tout voir'}</button>`:''}</div>
+ <div class=pss-list>${hs.map(x=>{const du=pdDur(x),dt=new Date(x.d+'T00:00').toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'short'});return`<button class=pss-hi data-a=open data-id=${x.id}><span class=d>${dt}</span><span class=st><span>${fmt(Math.round(stats(x).t))} kg</span><span>${du?psFmt(du,'dur'):'0 min'}</span></span>${SI('chev',16)}</button>`}).join('')}</div>
+ <div style="height:40px"></div></div>`}
 /* ---------- Mesures (suivi corporel) ---------- */
 const MZS={w:{n:'Poids',u:'kg',c:'#15a05a',mk:'c'},f:{n:'Masse grasse',u:'%',c:'#4f6fd8',mk:'s'},h:{n:'Taille',u:'cm',c:'#b7791f',mk:'t'}};
 (()=>{const P=['#e0559b','#8b5cf6','#14b8d4','#f97316','#ef4444','#0d9488','#a16207','#64748b','#84cc16','#d946ef','#0ea5e9','#f43f5e','#10b981'],M=['c','t','s'];
@@ -1652,11 +1734,12 @@ function gProg(g){if(g.ty==='chain')return pgStreak().n;if(g.ty==='bw'||g.ty==='
  if(g.ty==='seances')return I.length;if(g.ty==='vol')return Math.round(I.reduce((n,x)=>n+stats(x).t,0));let n=0;Object.values(exHist()).forEach(m=>m.prs.forEach(p=>{if(p.d>=a&&p.d<=z)n++}));return n}
 const gTitle=g=>g.lab||({seances:'Séances / semaine',chain:'Série de semaines',pr:'Nouveaux PR / '+g.per,vol:'Volume / '+g.per,bw:'Poids du corps / '+g.per,fat:'Masse grasse / '+g.per})[g.ty];
 const gCard=g=>{const T=GT[g.ty],cu=gProg(g),ok=g.tg>0&&cu>=g.tg,pc=g.tg>0?Math.min(100,Math.round(cu/g.tg*100)):0;
- return`<div class=gwr><button class="gc${ok?' ok':''}" style="--c:${T.c}" data-a=gedit data-id=${g.id}><div class=r1><i class=ic>${SI(T.ic,22)}</i><b class=tt>${esc(gTitle(g))}</b>${ok?'<span class=tag>ATTEINT</span>':`<span class=pc>${pc}%</span>`}</div><div class=v>${fmt(cu)}<small> / ${fmt(g.tg)}${T.u?' '+T.u:''}</small></div><div class=bar><u style="width:${ok?100:Math.max(pc,pc?3:0)}%"></u></div></button><button class=gsw data-a=gdsw data-id=${g.id} aria-label="Supprimer l’objectif"><span class=swb>${SI('trash',20)}</span></button></div>`};
+ return`<div class=gwr><button class="gc${ok?' ok':''}" style="--c:var(--red)" data-a=gedit data-id=${g.id}><div class=r1><i class=ic>${SI(T.ic,22)}</i><b class=tt>${esc(gTitle(g))}</b>${ok?'<span class=tag>ATTEINT</span>':`<span class=pc>${pc}%</span>`}</div><div class=v>${fmt(cu)}<small> / ${fmt(g.tg)}${T.u?' '+T.u:''}</small></div><div class=bar><u style="width:${ok?100:Math.max(pc,pc?3:0)}%"></u></div></button><button class=gsw data-a=gdsw data-id=${g.id} aria-label="Supprimer l’objectif"><span class=swb>${SI('trash',20)}</span></button></div>`};
 const pobjView=()=>{const G=S.goals||[],ok=G.filter(g=>g.tg>0&&gProg(g)>=g.tg).length;
- return`<div class=pgw><div class=pdh><button class=cbtn data-a=pback aria-label="Retour">${SI('back',19)}</button><div><h1>Objectifs</h1><small>${G.length?ok+' / '+G.length+' atteint'+(ok>1?'s':''):'Aucun objectif'}</small></div></div>`+
+ return`<div class="pgw gth"><div class=pdh><button class=cbtn data-a=pback aria-label="Retour">${SI('back',19)}</button><div><h1>Objectifs</h1><small>${G.length?ok+' / '+G.length+' atteint'+(ok>1?'s':''):'Aucun objectif'}</small></div></div>`+
  (G.length?G.map(gCard).join('')+`<button class=gadd data-a=gadd>${SI('plus',20)} Ajouter un objectif</button>`:`<div class=pem><h2>Aucun objectif</h2><p>Définis un objectif pour suivre ta progression.</p><button class=pgo data-a=gadd>Ajouter un objectif</button></div>`)+`</div>`};
-function gSheet(f){
+function gSheet(f){return gSheet0(f).replace('<div class=sov ','<div class="sov gth" ')}
+function gSheet0(f){
  if(f.k==='gty'){const sec=(l,a)=>(l?`<div class=sh-l>${l}</div>`:'')+a.map(k=>`<button class="mi dm" data-a=gpick data-t=${k}><span><b>${GT[k].n}</b><small>${GT[k].d}</small></span></button>`).join('');
   return sh2('Nouvel objectif','Choisis le type d’objectif.',sec('FORCE',['pr'])+sec('VOLUME',['vol'])+sec('COMPOSITION',['bw','fat']))}
  const T=GT[f.ty],ed=f.k==='ged',ok=+String(f.tg).replace(',','.')>0,
@@ -1719,6 +1802,7 @@ function draw(){
  if(V.p==='pmall')return a.innerHTML=pmallView();
  if(V.p==='pstat')return a.innerHTML=pstatView();
  if(V.p==='pdet')return a.innerHTML=pdetView();
+ if(V.p==='psess')return a.innerHTML=psessView();
  if(V.p==='pexo')return a.innerHTML=pexoView();
  if(V.p==='det'&&cur())return a.innerHTML=detView(cur());
  if(V.p==='live'&&cur())return a.innerHTML=liveView(cur());
@@ -2071,6 +2155,8 @@ A('click',ev=>{const b=ev.target.closest('[data-a]');if(!b||(b.classList.contain
  case'gdel':case'gdsw':{const id=d.a==='gdsw'?d.id:FORM.id;FORM={k:'cf',t:'Supprimer cet objectif ?',m:'Action irréversible.',fn:()=>{S.goals=(S.goals||[]).filter(x=>x.id!==id);save();render()}};break}
  case'pexo':V={p:'pexo'};PF='all';PQ='';TOP=1;break;
  case'pst':V={p:'pstat'};PS.o=0;TOP=1;break;
+ case'psess':V={p:'psess',k:d.k};PS.o=0;PSALL=false;TOP=1;break;
+ case'psall':PSALL=!PSALL;break;
  case'psr':PS.r=d.v;PS.o=0;break;
  case'pso':PS.o=Math.max(0,PS.o+(+d.d));break;
  case'pstt':PS.t=d.v;break;
