@@ -205,6 +205,8 @@ label.ck input{width:auto}
 .lstats>div:first-child{background:color-mix(in srgb,var(--acc) 16%,transparent);border-radius:10px 0 0 10px}
 #mini{position:fixed;left:12px;top:calc(8px + env(safe-area-inset-top));width:min(calc(100vw - 24px),420px);z-index:7;touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab;margin:0;box-shadow:0 8px 24px rgba(0,0,0,.25)}
 #mini[hidden]{display:none}
+#mini{transition:transform .28s cubic-bezier(.22,.9,.3,1)}#mini.mv{transition:none}#mini.hl{transform:translateX(calc(-100% - 24px));pointer-events:none}#mini.hr{transform:translateX(calc(100% + 24px));pointer-events:none}
+#minitab{touch-action:none;cursor:grab;position:fixed;z-index:7;width:30px;height:54px;padding:0;display:grid;place-items:center;background:var(--card);color:var(--ink);border:0;box-shadow:0 1px 6px rgba(0,0,0,.18)}#minitab[hidden]{display:none}#minitab.l{left:0;border-radius:0 16px 16px 0}#minitab.r{right:0;border-radius:16px 0 0 16px}#minitab.l svg{transform:rotate(-90deg)}#minitab.r svg{transform:rotate(90deg)}
 #mini.mv{cursor:grabbing;opacity:.92}
 #mini.lvh{padding:10px 12px 12px}
 #mini .lt{font-size:24px}
@@ -816,7 +818,7 @@ html.lock,html.lock body{overflow:hidden;overscroll-behavior:none}
 .plr .tx{flex:1;min-width:0}.plr .tx b{font-weight:600;font-size:16px;line-height:1.2}
 .plr .tx small{display:block;font-size:13px;color:var(--mut);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .plr .t1{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
-.plr .bg{font:700 14px "Avenir Next Condensed","Arial Narrow","Helvetica Neue",sans-serif;color:var(--c);flex:none}
+.plr .bg{font:700 14px "Avenir Next Condensed","Arial Narrow","Helvetica Neue",sans-serif;color:var(--c);flex:none;white-space:nowrap}
 .plr>svg{color:var(--mut);flex:none}
 .pdh{display:flex;align-items:center;gap:12px;padding:12px 0 0}
 .pdh .cbtn{width:40px;height:40px}
@@ -830,9 +832,54 @@ html.lock,html.lock body{overflow:hidden;overscroll-behavior:none}
 .pss-v .psg2 button{padding:6px 0;font-size:13px}
 .gth{--acc:var(--red);--acc2:var(--red)}
 .ath{--acc:#f5a524;--acc2:#c98400}
-:root[data-theme=dark] .ath,:root:not([data-theme=light]) .ath{--acc2:#f7b94a}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .ath{--acc2:#f7b94a}}
+:root[data-theme=dark] .ath{--acc2:#f7b94a}
 .ath .hxb u,.ath .asf b{color:var(--acc2)}
 .ath .ahero{background:linear-gradient(110deg,color-mix(in srgb,var(--acc) 76%,#000),var(--acc) 60%,color-mix(in srgb,var(--acc) 80%,#fff));box-shadow:0 10px 28px color-mix(in srgb,var(--acc) 28%,transparent)}
+.rth{--acc:#8b6cf0;--acc2:#7556e0}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .rth{--acc2:#a995f5}}
+:root[data-theme=dark] .rth{--acc2:#a995f5}
+.rcs{margin-top:14px;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:14px 14px 14px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.rcs .top{display:flex;align-items:baseline;justify-content:space-between;gap:9px;padding:0 2px}
+.rcs .top .l{display:flex;align-items:baseline;gap:9px;min-width:0}
+.rcs .top b{font:800 42px/1 var(--fc);color:var(--acc)}
+.rcs .top .l span{font:500 16px "Avenir Next",system-ui,sans-serif;color:var(--mut)}
+.rcs .kk{flex:none;font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.16em;color:var(--mut);white-space:nowrap}
+.rb3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rb3 button{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-width:0;min-height:72px;padding:10px 6px;border-radius:16px;background:var(--bg);border:1px solid var(--line);color:var(--ink)}
+.rb3{margin-top:14px}.rb3 b{font:700 18px/1.15 var(--fc)}.rb3 b.no{color:var(--mut)}
+.rb3 em{font:500 9px/1.25 ui-monospace,Menlo,monospace;font-style:normal;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);text-align:center;max-width:100%;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;word-break:break-word}
+.rb3 .pe{position:absolute;top:6px;right:6px;color:var(--mut);opacity:.55}
+.rseg{display:grid;grid-template-columns:repeat(4,1fr);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:3px;margin:12px 0 2px}
+.rseg button{background:none;border-radius:999px;padding:7px 0;font-size:13.5px;font-weight:500;color:var(--mut)}
+.rseg button.on{background:var(--ink);color:var(--bg);font-weight:600}
+.rth .pxf button.on{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.rcx{display:flex;align-items:center;gap:11px;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:10px 12px;margin:8px 0;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.rcx .pti{width:38px;height:38px;border-radius:12px}
+.rcx .tx{flex:1;min-width:0}.rcx .tx b{display:block;font:700 16px/1.2 "Avenir Next Condensed","Arial Narrow",sans-serif}
+.rcx .tx small{display:block;margin-top:3px;font:500 10.5px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:var(--mut);text-transform:uppercase}
+.rcx .nw{flex:none;font:600 9px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:var(--acc2);background:color-mix(in srgb,var(--acc) 14%,var(--card));border-radius:8px;padding:4px 7px}
+.rcx .vl{flex:none;white-space:nowrap;font:700 15px var(--fc)}
+.rcx>svg{color:var(--mut);flex:none}
+.rscr{margin-top:6px;max-height:536px;overflow-y:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.rscr::-webkit-scrollbar{display:none}
+.rscr .rcx:first-child{margin-top:0}
+.rscr .rcx:last-child{margin-bottom:0}
+.rhd{font:12px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:var(--mut);margin:22px 4px 6px}
+.rtl{padding:0 2px}
+.rtr{position:relative;display:flex;align-items:center;gap:12px;padding:11px 0}
+.rtr i{position:relative;z-index:1;flex:none;width:11px;height:11px;margin-left:2px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 4px color-mix(in srgb,var(--acc) 18%,transparent)}
+.rtr:not(:last-child)::before{content:"";position:absolute;left:6.5px;top:calc(50% + 6px);height:100%;width:2px;background:color-mix(in srgb,var(--ink) 9%,transparent)}
+.rtr .d{flex:none;width:54px;font:500 11px ui-monospace,Menlo,monospace;letter-spacing:.06em;color:var(--mut);text-transform:uppercase}
+.rtr .n{flex:1;min-width:0;font:500 15px "Avenir Next",system-ui,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rtr .vl{flex:none;font:700 17px var(--fc)}
+.rem{margin:18px 4px;color:var(--mut);font:400 15px/1.4 "Avenir Next",system-ui,sans-serif;text-align:center}
+.rdg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:4px 0 6px}
+.rdg div{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:10px 12px}
+.rdg small{display:block;font:600 10px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:var(--mut)}
+.rdg b{display:block;margin:5px 0 2px;font:700 19px/1 var(--fc)}
+.rdg em{font:400 12px "Avenir Next",system-ui,sans-serif;font-style:normal;color:var(--mut)}
+.b3x{display:block;margin:0 0 4px auto;background:none;padding:4px 6px;color:var(--red);font-weight:600;font-size:14px}
 .pss-hit{fill:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .pss-sel{pointer-events:none}
 .pss-vl{stroke:var(--acc);stroke-width:1.5;stroke-dasharray:3 4;opacity:.6}
@@ -963,7 +1010,12 @@ button.prt{background:none;border:0;padding:0;color:var(--ink);width:100%;text-a
 .gc .v{margin:12px 0 8px;font:700 27px "Avenir Next Condensed","Arial Narrow",sans-serif}.gc .v small{font:400 14.5px "Avenir Next",system-ui,sans-serif;color:var(--mut)}
 .gc .bar{height:6px;border-radius:3px;background:color-mix(in srgb,var(--ink) 8%,transparent);overflow:hidden}.gc .bar u{display:block;height:100%;border-radius:4px;background:var(--c)}
 .gc.ok .bar u{background:var(--acc)}
+.gc{cursor:pointer}.gc .tb{flex:1;min-width:0}.gc .tb .tt{display:block;flex:none;margin:0;line-height:1.25;font:inherit;font-size:16.5px;font-weight:600}.gc .tb .gcd,.gc .tb .gcm{display:block;margin:2px 0 0;white-space:nowrap}.gwr .gc{padding:8px 15px 12px}.gc .gdots{flex:none;align-self:center;line-height:1;font-size:18px}.gc .v2{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:12px 0 8px}.gc .v2 .v{margin:0}.gc .v2 .pc,.gc .v2 .tag{flex:none}
 .gadd{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:6px;padding:13px;border-radius:20px;border:1.5px dashed var(--line);background:var(--card);color:var(--acc2);font-weight:600;font-size:16px}
+.gdr{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.gdb{display:block;width:100%;text-align:left;border:1px solid var(--line);background:color-mix(in srgb,var(--ink) 2.5%,var(--card));border-radius:20px;padding:13px 16px;color:var(--ink)}.gdb b{display:block;font:600 19px var(--fc)}button.gdb:active{opacity:.7}.gcm{margin:6px 0 0 50px;color:var(--mut);font-size:13.5px}.gcd{margin:6px 0 0 50px;color:var(--mut);font:12.5px ui-monospace,Menlo,monospace;letter-spacing:.04em}
+.gdr small{display:block;margin:0 0 6px 2px;font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:var(--mut)}
+.gdr input{width:100%}
 .xnw .eqw{display:flex;flex-wrap:wrap;gap:10px}
 .xnw .xbar .gdng{flex:none;width:34%;background:color-mix(in srgb,var(--red) 12%,var(--card));color:var(--red);font-weight:600;font-size:17px;border:0}
 .pdh+.gc{margin-top:16px}
@@ -984,7 +1036,7 @@ button.prt{background:none;border:0;padding:0;color:var(--ink);width:100%;text-a
 .mzl .n{display:flex;align-items:center;gap:10px;font-size:16px}.mzl .n b{font-weight:500}.mzl .v{margin:8px 0 0 2px;font-size:15px}
 .mzall{display:flex;align-items:center;justify-content:space-between;width:100%;margin-top:14px;padding:16px 18px;border-radius:20px;background:var(--card);border:1px solid var(--line);font-size:17px;font-weight:600;color:var(--ink)}.mzall svg{color:var(--mut)}
 .mzr{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:13px 16px;margin-top:10px;color:var(--ink)}.pdh+.mzr{margin-top:16px}
-.mzr b{font-size:16px;white-space:nowrap}.mzr span{flex:1;display:flex;flex-wrap:wrap;gap:4px 10px;justify-content:flex-end}.mzr em{font-style:normal;font-size:13px;color:var(--mut)}.mzr em i{font-style:normal;color:var(--ink);font-weight:600}.mzr svg{color:var(--mut);flex:none}
+.mzr b{font-size:16px;white-space:nowrap}.mzr span{flex:1;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 0;justify-content:flex-end}.mzr em+em::before{content:'·';margin:0 8px;color:var(--mut)}.mzr em{font-style:normal;font-size:13px;color:var(--mut);white-space:nowrap}.mzr em i{font-style:normal;color:var(--ink);font-weight:600;font-size:15px;margin-left:3px}.mzr svg{color:var(--mut);flex:none}
 
 .xnw .mzhd{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.xnw .mzhd h2{margin-bottom:6px}.mzcx{background:none;padding:8px 2px;color:var(--mut);font-size:17px}
 .mzdt{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--line);background:color-mix(in srgb,var(--ink) 2.5%,var(--card));border-radius:20px;padding:15px 18px}.mzdt small{display:block;font:12.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:var(--mut);margin-bottom:4px}.mzdt b{font:600 19px var(--fc)}.mzdt button{background:none;color:var(--acc2);font-weight:600;font-size:17px;padding:6px 0 6px 10px}
@@ -1065,6 +1117,7 @@ input.padon{box-shadow:0 0 0 2px var(--acc);border-radius:8px}
 @keyframes vtFL{from{transform:translateX(-100%)}to{transform:none}}@keyframes vtFR{from{transform:translateX(100%)}to{transform:none}}
 #app.vtl{animation:vtFL .34s cubic-bezier(.3,.7,.2,1)}#app.vtb{animation:vtFR .34s cubic-bezier(.3,.7,.2,1)}
 body:has(#app.vtl),body:has(#app.vtb){overflow-x:hidden}
+.gth .eqw{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;gap:8px;margin:0 -22px;padding:2px 22px}.gth .eqw::-webkit-scrollbar{display:none}.gth .eqw .eqc{padding:6px 13px;font-size:14px;white-space:nowrap}
 </style></head><body><main id="app"></main><div id="timer" hidden></div><div id="mini" class="thd lvh mini2" hidden></div><div id="dlg"></div>
 <script>
 const K='muscu_v1',$=s=>document.querySelector(s);
@@ -1150,17 +1203,23 @@ function upLive(){const s=cur();if(s&&V.p==='live'){const t=lvTot(s),a=$('#lvt')
 /* Mini-fenêtre de séance en cours : réduite en haut, déplaçable, un tap la rouvre */
 const runS=()=>live().filter(x=>(x.from||x.free)&&!x.end).sort((a,b)=>(b.t0||b.u)-(a.t0||a.u))[0];
 let MID=null,MP=null,MD=null;try{MP=JSON.parse(localStorage.getItem(K+'_mini'))}catch{}
-function clampMini(m){if(!MP)return;const w=m.offsetWidth,h=m.offsetHeight;MP.x=Math.min(Math.max(0,MP.x),Math.max(0,innerWidth-w));MP.y=Math.min(Math.max(0,MP.y),Math.max(0,innerHeight-h));m.style.left=MP.x+'px';m.style.top=MP.y+'px'}
-function upMini(){const m=$('#mini');if(!m)return;const s=runS();if(!s||V.p==='live'){m.hidden=true;MID=null;return}
+function clampMini(m,loose){if(!MP)return;const w=m.offsetWidth,h=m.offsetHeight;MP.x=loose?Math.min(Math.max(-w,MP.x),innerWidth):Math.min(Math.max(0,MP.x),Math.max(0,innerWidth-w));MP.y=Math.min(Math.max(0,MP.y),Math.max(0,innerHeight-h));m.style.left=MP.x+'px';m.style.top=MP.y+'px'}
+let MTAB=null;
+function miniTab(){if(!MTAB){MTAB=document.createElement('button');MTAB.id='minitab';MTAB.hidden=true;MTAB.setAttribute('aria-label','Afficher la séance en cours');MTAB.innerHTML=CHEV;let td=null;const sv=()=>{try{localStorage.setItem(K+'_mini',JSON.stringify(MP))}catch{}};
+ MTAB.addEventListener('pointerdown',e=>{td={sy:e.clientY,t:MTAB.getBoundingClientRect().top,mv:false};try{MTAB.setPointerCapture(e.pointerId)}catch{}});
+ MTAB.addEventListener('pointermove',e=>{if(!td)return;const dy=e.clientY-td.sy;if(!td.mv&&Math.abs(dy)<6)return;td.mv=true;MTAB.style.top=Math.max(8,Math.min(innerHeight-62,td.t+dy))+'px'});
+ MTAB.addEventListener('pointerup',()=>{if(!td)return;const d=td;td=null;if(!MP)MP={x:12,y:8};const t=parseFloat(MTAB.style.top)||d.t;if(d.mv){MP.ty=t;sv();return}const m=$('#mini');MP.y=Math.max(0,Math.min(innerHeight-(m?m.offsetHeight:140),t-10));delete MP.h;sv();upMini()});
+ MTAB.addEventListener('pointercancel',()=>{td=null});document.body.appendChild(MTAB)}return MTAB}
+function upMini(){const m=$('#mini');if(!m)return;const s=runS(),tab=miniTab();if(!s||V.p==='live'){m.hidden=true;tab.hidden=true;MID=null;return}
  MID=s.id;const t=lvTot(s);m.hidden=false;
  const pz=!!s.pa,pct=t.n?t.d/t.n*100:0;m.classList.toggle('paused',pz);
  m.innerHTML=`<div class=thr><span class=cbtn style="transform:rotate(180deg)">${CHEV}</span><div class=grow><div class=tk><i class=dot style="animation-delay:-${Date.now()%1400}ms"></i>${pz?'EN PAUSE':'LIVE · MAINTENANT'}</div><div class=lt>${esc(s.free?'Entraînement libre'+(s.nom?' · '+s.nom:''):(s.nom||'Séance'))}</div></div><button class=cbtn data-a=lm data-id=${s.id} aria-label="Options">${DOTS}</button></div><div class=lvs3><div class=lvtm><span>TEMPS</span><div class=lvtr><b>${clk(elapsed(s))}</b><i class=lpz>${pz?SI('play',20):PAUSE_I}</i></div></div><div><span>VOLUME</span><b>${fmt(t.v)} <small>${OPT(s).u}</small></b></div><div><span>SÉRIES</span><b>${t.d} / ${t.n}</b></div><i class=lvbar style="width:${pct}%"></i></div>`;
- clampMini(m)}
+ clampMini(m);const hs=MP&&MP.h;m.classList.toggle('hl',hs==='l');m.classList.toggle('hr',hs==='r');tab.hidden=!hs;if(hs){tab.className=hs;tab.style.top=Math.max(8,Math.min(innerHeight-62,MP.ty!=null?MP.ty:m.getBoundingClientRect().top+10))+'px'}}
 (()=>{const m=document.getElementById('mini');
  m.addEventListener('pointerdown',ev=>{if(ev.target.closest('[data-a]'))return;const r=m.getBoundingClientRect();MD={sx:ev.clientX,sy:ev.clientY,x:r.left,y:r.top,mv:false};m.setPointerCapture(ev.pointerId)});
- m.addEventListener('pointermove',ev=>{if(!MD)return;const dx=ev.clientX-MD.sx,dy=ev.clientY-MD.sy;if(!MD.mv&&Math.abs(dx)+Math.abs(dy)<8)return;MD.mv=true;m.classList.add('mv');MP={x:MD.x+dx,y:MD.y+dy};clampMini(m)});
+ m.addEventListener('pointermove',ev=>{if(!MD)return;const dx=ev.clientX-MD.sx,dy=ev.clientY-MD.sy;if(!MD.mv&&Math.abs(dx)+Math.abs(dy)<8)return;MD.mv=true;m.classList.add('mv');MP={x:MD.x+dx,y:MD.y+dy};clampMini(m,true)});
  const end=()=>{if(!MD)return;const d=MD;MD=null;m.classList.remove('mv');
-  if(d.mv){try{localStorage.setItem(K+'_mini',JSON.stringify(MP))}catch{}}
+  if(d.mv){const w=m.offsetWidth;if(MP.x<-w*.3){MP.h='l';MP.x=0}else if(MP.x>innerWidth-w+w*.3){MP.h='r';MP.x=Math.max(0,innerWidth-w)}try{localStorage.setItem(K+'_mini',JSON.stringify(MP))}catch{}clampMini(m);upMini()}
   else if(MID){V={p:'live',id:MID};render();scrollTo(0,0)}};
  m.addEventListener('pointerup',end);m.addEventListener('pointercancel',()=>{MD=null;m.classList.remove('mv')});
  addEventListener('resize',()=>clampMini(m))})();
@@ -1354,7 +1413,8 @@ const seView=()=>`<header><h1 class=tt>Séances</h1><button class="pill rnd" dat
  ${S.dos.map(d=>{const col=d.col||COLS[1],nb=d.subs.reduce((t,c)=>t+tpls(c.id).length,0)+tpls(d.id).length;return`<div data-row=dos data-id=${d.id} data-par=0><div class=line style="--c:${col}"><span class=hd>${GRIP}</span><span class=chev data-a=tgo data-k=dos data-id=${d.id}>${d.o?'▾':'▸'}</span><span class="fico dot">${SI(FI(d),22)}</span><div class=grow>${RN===d.id&&RK==='dos'?rnInput('Nom du dossier'):`<b>${esc(d.n)}</b>`}<div class=mut>${pl(d.subs.length,'dossier')} · ${pl(nb,'séance')}</div></div><button class=ib data-a=fm data-k=dos data-id=${d.id}>⋯</button><button class=ib data-a=ns data-par=${d.id}>+</button></div>${d.o?`<div class=kids>`+d.subs.map(c=>cyRow(d,c)).join('')+tpls(d.id).map(t=>tplCard(t,{col})).join('')+`<div class=qadd><button data-a=ns data-par=${d.id}>${SI('folderplus',18)} SOUS-DOSSIER</button><button data-a=nt data-id=${d.id}>${SI('plus',18)} SÉANCE</button></div></div>`:''}</div>`}).join('')||(tpls('root').length?'':'<div class=lve><h3>Aucun dossier</h3><p>Appuie sur « Nouveau » pour créer un dossier.</p></div>')}
  ${tpls('root').length?`<div class=row2 style="margin-top:18px"><span class=h2>À LA RACINE</span></div><div class=rootk>${tpls('root').map(t=>tplCard(t,{col:GRN})).join('')}</div>`:''}`;
 const SIT=(a,i,t,cls,at)=>MI(a,i,t,'',at||'',((cls==='go'?'gr ':'')+(cls==='red'?'red ':'')+'cp').trim());
-const formHtml=()=>{const f=FORM;if(f.k==='xty')return typSheet();if(f.k==='gty'||f.k==='gnw'||f.k==='ged')return gSheet(f);if(['mrl','mpn','mkb','mdt'].includes(f.k))return mzSheet(f);if(f.k==='xnw')return xnwSheet(f);const XH=formX(f);if(XH!==null)return XH;
+const formHtml=()=>{const f=FORM;if(f.k==='xty')return typSheet();if(f.k==='b3'||f.k==='rcd')return rSheet(f);if(f.k==='gty'||f.k==='gnw'||f.k==='ged'||f.k==='gcur'||f.k==='gsv')return gSheet(f);if(['mrl','mpn','mkb','mdt'].includes(f.k))return mzSheet(f);if(f.k==='xnw')return xnwSheet(f);const XH=formX(f);if(XH!==null)return XH;
+ if(f.k==='gm'){const g=(S.goals||[]).find(x=>x.id===f.id);if(!g)return'';const at=` data-id=${g.id}`;return sheet(`<span class=sh-bar style="--c:var(--red)"></span><div><b>${esc(gTitle(g))}</b><span class=mut>Objectif</span></div>`,SIT('gmod','edit','Modifier','',at)+((g.ty==='bw'||g.ty==='fat')?SIT('gav','plus','Ajouter une valeur','',at):''))}
  if(f.k==='tm'){const t=S.seances.find(x=>x.id===f.id);if(!t)return'';return sheet(`<span class=sh-bar style="--c:${subCol(t.cy)}"></span><div><b>${esc(t.nom||'Séance sans nom')}</b><span class=mut>Séance · ${pl(exCount(t),'exo')}</span></div>`,SIT('go','play','Démarrer','go',` data-id=${t.id}`)+SIT('tmo','edit','Modifier')+SIT('ren','pen','Renommer')+SIT('mv','move','Déplacer')+SIT('tmdup','copy','Dupliquer')+SIT('tmd','trash','Supprimer','red'))}
  if(f.k==='dap'){const o=fo(f);if(!o)return'';const col=o.col||(f.t==='dos'?COLS[1]:GRN);return sh2('Apparence',esc(o.n),`<div class=sh-l>COULEUR</div><div class=sws>${COLS.map(c=>`<button class="${c===col?'on':''}" style="background:${c}" data-a=dcol data-c="${c}">${c===col?SI('check',18):''}</button>`).join('')}</div><div class=sh-l>ICÔNE</div><div class=igr style="--c:${col}">${ICK.map(k=>`<button class="${k===FI(o)?'on':''}" data-a=dic data-ic=${k}>${SI(k,22)}</button>`).join('')}</div><div style="height:12px"></div>`+SIT('dbk','lft','Retour'))}
  if(f.k==='dm'){const o=fo(f);if(!o)return'';const col=o.col||(f.t==='dos'?COLS[1]:GRN),n=f.t==='dos'?o.subs.reduce((t,c)=>t+tpls(c.id).length,0)+tpls(o.id).length:tpls(o.id).length;
@@ -1385,13 +1445,24 @@ function mk(cy){const t={id:uid(),nom:'Nouvelle séance',d:today(),com:'',ex:[],
 function reorderX(d){const s=S.seances.find(x=>x.id===d.p);if(!s)return;const U=[];s.ex.forEach(e=>{const g=e.gt==='ci'&&e.g;if(g){const u=U.find(y=>y.id===g);if(u){u.it.push(e);return}U.push({id:g,it:[e]});return}U.push({id:e.id,it:[e]})});
  const i=U.findIndex(u=>u.id===d.id),j=U.findIndex(u=>u.id===d.t);if(i<0||j<0)return;const[x]=U.splice(i,1);U.splice(j,0,x);s.ex=U.flatMap(u=>u.it);touch(s)}
 function reorder(d){if(d.k==='xo'||d.k==='xg')return reorderX(d);const arr=d.k==='xo'?S.seances.find(x=>x.id===d.p).ex:d.k==='dos'?S.dos:d.k==='sub'?S.dos.find(x=>x.id===d.p).subs:S.seances;const i=arr.findIndex(x=>x.id===d.id),j=arr.findIndex(x=>x.id===d.t);if(i<0||j<0)return;const[x]=arr.splice(i,1);arr.splice(j,0,x);d.k==='xo'?touch(S.seances.find(x=>x.id===d.p)):d.k==='tpl'?touch(x):td()}
+/* Infobulle au toucher d'un point de graphique */
+document.addEventListener('click',e=>{const pt=e.target.closest&&e.target.closest('.ptp'),old=document.querySelectorAll('svg .tip,svg .tipr');
+ const same=pt&&pt.dataset.on==='1';old.forEach(n=>n.remove());document.querySelectorAll('.ptp[data-on]').forEach(n=>n.removeAttribute('data-on'));
+ if(!pt||same)return;const svg=pt.ownerSVGElement,NS='http://www.w3.org/2000/svg',W=svg.viewBox.baseVal.width,cx=+pt.getAttribute('cx'),cy=+pt.getAttribute('cy'),t=pt.dataset.t,sb=pt.dataset.s,w=Math.max(t.length*7.2,sb.length*5.6)+18,h=38;
+ let x=Math.min(Math.max(cx-w/2,2),W-w-2),y=cy-h-12;if(y<2)y=cy+14;pt.dataset.on='1';
+ const mk=(n,a)=>{const el=document.createElementNS(NS,n);for(const k in a)el.setAttribute(k,a[k]);return el};
+ const ring=mk('circle',{class:'tipr',cx,cy,r:7,fill:'none',style:'stroke:'+(pt.dataset.c||'var(--red)')+';stroke-width:2'}),g=mk('g',{class:'tip','pointer-events':'none'});
+ g.appendChild(mk('rect',{x,y,width:w,height:h,rx:10,style:'fill:var(--ink)'}));
+ const a=mk('text',{x:x+w/2,y:y+16,'text-anchor':'middle',style:'fill:var(--card)','font-size':13,'font-weight':700});a.textContent=t;
+ const b=mk('text',{x:x+w/2,y:y+31,'text-anchor':'middle',style:'fill:var(--card)','font-size':10,opacity:.8});b.textContent=sb;
+ g.appendChild(a);g.appendChild(b);svg.appendChild(ring);svg.appendChild(g)});
 const VK=K+'_view';
 function saveView(){try{localStorage.setItem(VK,JSON.stringify({...V,y:Math.round(scrollY)}))}catch{}}
 let ASK=null;
 const ask=(msg,fn,lab)=>{ASK={msg,fn,lab};render()};
 /* Transition d'écran : l'édition arrive par la droite ; en la quittant elle repart vers la droite */
 let LASTP=null;
-const PGD={det:1,live:1,pstat:1,pmes:1,pobj:1,pexo:1,pach:1,pdet:2,pmall:2,psess:1};
+const PGD={det:1,live:1,pstat:1,pmes:1,pobj:1,pexo:1,prec:1,pach:1,pdet:2,pmall:2,psess:1,pgoal:2};
 function vtDir(a,b){if(a===null)return null;if(a!=='edit'&&b==='edit')return'fwd';if(a==='edit'&&b!=='edit')return'back';const da=PGD[a]||0,db=PGD[b]||0;if(a!==b&&da!==db&&(a==='home'||da)&&(b==='home'||db))return db>da?'lfwd':'lback';return null}
 function render(){const k=vtDir(LASTP,V.p);LASTP=V.p;
  if(k&&document.startViewTransition&&!matchMedia('(prefers-reduced-motion: reduce)').matches){const h=document.documentElement;h.dataset.vt=k;try{const t=document.startViewTransition(()=>renderNow());t.finished.finally(()=>{delete h.dataset.vt})}catch{delete h.dataset.vt;renderNow()}}else{renderNow();if(k==='lfwd'||k==='lback'){const ap=document.getElementById('app');if(ap&&!matchMedia('(prefers-reduced-motion: reduce)').matches){ap.classList.remove('vtl','vtb');void ap.offsetWidth;ap.classList.add(k==='lfwd'?'vtb':'vtl');setTimeout(()=>ap.classList.remove('vtl','vtb'),380)}}}}
@@ -1554,18 +1625,67 @@ function bdgPop(f){
  <div class=apb style="--cc:${t.col}"><i style="width:${pct>0?Math.max(3,pct):0}%"></i></div><div class=bc>${achN(c.val)} / ${achN(t.th)} ${achUl(c.k,t.th).toUpperCase()}</div>
  ${t.on?`<div class="bst ok">Débloqué${t.date?' le '+achD(t.date):''}</div>${nx?`<div class=bnx>Prochain palier : ${c.n} · ${nx.name}</div>`:'<div class=bnx>Palier maximum atteint</div>'}`:`<div class="bnx lk">À ${achN(rem)} ${achUl(c.k,rem)} du déblocage</div>`}
  </div></div>`}
+/* ===== Records ===== */
+const RGR=[['pecs','Pecs',['pecs']],['dos','Dos',['lats','trap','lomb']],['jambes','Jambes',['quads','cal','fess','isch','add']],['epaules','Épaules',['delt']],['bras','Bras',['biceps','triceps','avbras']],['abdos','Abdos',['abs','obl']]];
+const RMT=[['orm','1RM'],['w','Poids'],['r','Reps'],['v','Volume']];
+const B3R=[/soulev.*terre|deadlift/i,/d[ée]velopp[ée].*couch|bench/i,/squat/i];
+let RM='w',RG='all',RQ='';
+const rGrp=n=>{for(const k of musOf(n)){const g=RGR.find(x=>x[2].includes(k));if(g)return g}return null};
+const rVal=(m,v)=>m==='r'?v+' reps':fmt(m==='w'?v:Math.round(v))+' kg';
+const rDate=d=>new Date(d+'T00:00').toLocaleDateString('fr-FR',{day:'numeric',month:'short'}).toUpperCase();
+function recData(){
+ const M={},ev=[];
+ pgDone().forEach(s=>s.ex.forEach(e=>{
+  const n=String(e.n||'').trim();if(!n)return;
+  const m=M[n]||(M[n]={n,b:{},mw:0,m0:0});
+  let bc=-1,br=0,vol=0,bo=0,mr=0,bor=0;
+  e.s.forEach(x=>{if(x.t==='E'||!(x.r>0)||!(x.ok||!(s.from||s.free)))return;const c=+x.c||0,r=+x.r;vol+=c*r;if(r>mr)mr=r;if(c>bc||(c===bc&&r>br)){bc=c;br=r}const e1=c>0?(r===1?c:c*(1+r/30)):0;if(e1>bo){bo=e1;bor=r}});
+  if(bc<0)return;
+  const up=(k,v,extra)=>{if(v>0&&(!m.b[k]||v>m.b[k].v))m.b[k]={v,d:s.d,...extra}};
+  up('orm',bo,{r:bor});up('w',bc,{r:br});up('r',mr);up('v',vol);
+  if(bc>0){if(bc>m.mw){m.mw=bc;ev.push({n,d:s.d,t:'w',v:bc})}}else if(mr>m.m0){m.m0=mr;ev.push({n,d:s.d,t:'r',v:mr})}
+ }));
+ ev.sort((a,b)=>a.d<b.d?1:a.d>b.d?-1:0);
+ const pm=today().slice(0,7);
+ return{ex:Object.values(M).filter(m=>Object.keys(m.b).length),ev,month:ev.filter(x=>x.d.startsWith(pm)).length,by:M}}
+function b3Get(R){if(S.big3&&S.big3.length===3)return S.big3;const L=library();return B3R.map(r=>L.filter(n=>r.test(n)).sort((a,b)=>a.length-b.length)[0]||null)}
+const rRows=R=>{const q=norm(RQ).trim(),td=new Date(today()+'T00:00'),
+ l=R.ex.filter(m=>m.b[RM]&&(RM!=='orm'||m.b.orm.r===1)&&(RG==='all'||(rGrp(m.n)||[])[0]===RG)&&(!q||norm(m.n).includes(q))).sort((a,b)=>a.b[RM].d<b.b[RM].d?1:a.b[RM].d>b.b[RM].d?-1:a.n.localeCompare(b.n,'fr'));
+ if(!l.length)return R.ex.length?`<div class=lve><h3>Aucun record ne correspond</h3><p>Essaie un autre type de filtre.</p></div>`:`<div class=lve><h3>Pas encore d’entraînement</h3><p>Termine une séance pour voir tes records ici.</p></div>`;
+ const last={};R.ev.forEach(e=>{if(!last[e.n])last[e.n]=e.d});
+ return l.map(m=>{const x=m.b[RM],g=rGrp(m.n),nw=last[m.n]&&(td-new Date(last[m.n]+'T00:00'))/864e5<=7;
+  return`<button class=rcx data-a=rcd data-n="${esc(m.n)}">${pgTile('var(--acc)','star',17)}<span class=tx><b>${esc(m.n)}</b><small>${[g?g[1]:'',rDate(x.d)].filter(Boolean).join(' · ')}</small></span>${nw?'<span class=nw>NOUVEAU</span>':''}<span class=vl>${rVal(RM,x.v)}</span>${SI('chev',16)}</button>`}).join('')};
+function precView(){
+ const R=recData(),b3=b3Get(R),tl=R.ev.slice(0,8),
+ tile=(n,i)=>{const m=n&&R.by[n],w=m&&m.b.w,rr=m&&m.b.r,v=w?(w.r>0?w.r+' × ':'')+fmt(w.v)+' kg':rr?rr.v+' reps':null;return`<button data-a=rb3 data-i=${i}>${SI('pen',11).replace('<svg ','<svg class=pe ')}<b${v?'':' class=no'}>${v||'–'}</b><em>${n?esc(n):'Choisir'}</em></button>`};
+ return`<div class="pgw rth"><div class=pdh><button class=cbtn data-a=pback aria-label="Retour">${SI('back',19)}</button><div><h1>Records</h1><small>Tous tes records personnels</small></div></div>
+ <div class=rcs><div class=top><div class=l><b>${R.month}</b><span>PR ce mois-ci</span></div><div class=kk>BIG 3 · ALL-TIME</div></div><div class=rb3>${b3.map(tile).join('')}</div></div>
+ <div class=rseg>${RMT.map(([k,t])=>`<button class="${RM===k?'on':''}" data-a=rmt data-v=${k}>${t}</button>`).join('')}</div>
+ <label class=pxs>${SI('search',18)}<input data-rq placeholder="Rechercher un exercice" value="${esc(RQ)}" autocomplete=off></label>
+ <div class=pxf>${[['all','Tout'],...RGR.map(g=>[g[0],g[1]])].map(([k,t])=>`<button class="${RG===k?'on':''}" data-a=rgp data-v=${k}>${t}</button>`).join('')}</div>
+ <div id=rlist class=rscr>${rRows(R)}</div>
+ <div class=rhd>PR RÉCENTS</div>${tl.length?`<div class=rtl>${tl.map(e=>`<div class=rtr><i></i><span class=d>${rDate(e.d)}</span><span class=n>${esc(e.n)}</span><span class=vl>${rVal(e.t,e.v)}</span></div>`).join('')}</div>`:'<div class=rem>Aucun PR pour l’instant.</div>'}
+ <div style="height:40px"></div></div>`}
+const b3Rows=f=>{const R=recData(),q=norm(f.q||'').trim(),cur=b3Get(R)[f.i],L=library().filter(n=>!q||norm(n).includes(q)).sort((a,b)=>(!!R.by[b])-(!!R.by[a])||a.localeCompare(b,'fr'));
+ return L.slice(0,60).map(n=>`<button class="mi cp${n===cur?' cur':''}" data-a=rb3p data-n="${esc(n)}"><span><b>${esc(n)}</b><small>${esc(exSub(n))}</small></span>${n===cur?SI('check',20):''}</button>`).join('')+(L.length>60?`<p class=sub2 style="text-align:center">Affine la recherche pour voir les ${L.length-60} autres.</p>`:'')||'<p class=sub2>Aucun exercice trouvé.</p>'};
+const b3Sheet=f=>{const cur=b3Get(recData())[f.i];return sh2('Big 3','Choisis l’exercice à afficher à cette place.',`<label class=pxs>${SI('search',18)}<input data-b3q placeholder="Rechercher un exercice" value="${esc(f.q||'')}" autocomplete=off></label>${cur?'<button class=b3x data-a=rb3x>Retirer de cette place</button>':''}<div id=b3l>${b3Rows(f)}</div>`)};
+const rcdSheet=f=>{const R=recData(),m=R.by[f.n];if(!m)return'';
+ const st=RMT.filter(([k])=>m.b[k]).map(([k,t])=>`<div><small>${t.toUpperCase()}</small><b>${rVal(k,m.b[k].v)}</b><em>${rDate(m.b[k].d)}</em></div>`).join(''),
+ hist=R.ev.filter(e=>e.n===f.n).slice(0,10).map(e=>`<div class=rtr><i></i><span class=d>${rDate(e.d)}</span><span class=n>${e.t==='w'?'Nouveau record':'Plus de reps'}</span><span class=vl>${rVal(e.t,e.v)}</span></div>`).join('');
+ return sh2(esc(f.n),esc(exSub(f.n)),`<div class=rdg>${st}</div>${hist?`<div class=sh-l>HISTORIQUE DES PR</div><div class=rtl>${hist}</div>`:''}`)};
+const rSheet=f=>(f.k==='b3'?b3Sheet(f):rcdSheet(f)).replace('<div class=sov ','<div class="sov rth" ');
 function progView(){const AD0=achData(),AL=AD0.cats.flatMap(c=>c.tiers.filter(t=>t.on&&t.date).map(t=>({c,t}))).sort((a,b)=>a.t.date<b.t.date?1:a.t.date>b.t.date?-1:b.t.i-a.t.i)[0],st=pgStreak(),g=pgGroup(),H=exHist(),ex=Object.keys(H).length,pm=today().slice(0,7),prs=[];
- Object.values(H).forEach(m=>m.prs.filter(p=>p.d.startsWith(pm)).forEach(p=>prs.push({n:m.n,c:p.c})));prs.sort((a,b)=>b.c-a.c);
+ Object.values(H).forEach(m=>m.prs.filter(p=>p.d.startsWith(pm)).forEach(p=>prs.push({n:m.n,c:p.c})));prs.length=0;recData().ev.filter(e=>e.d.startsWith(pm)).forEach(e=>prs.push({n:e.n,c:e.v,u:e.t==='r'?'reps':'kg'}));
  return`<div class=pgw><h1 class=tt>Progrès</h1>
  <div class=stk><span class="bdg${st.n?'':' off'}" style="animation-delay:-${Date.now()%1300}ms">${SI('flame',14)}<b>${st.n}</b></span><div class=tx><b>${st.n?st.n+' semaine'+(st.n>1?'s':'')+' d’affilée':'Lance ta série'}</b><small>${st.k?st.k+' séance'+(st.k>1?'s':'')+' cette semaine':'Aucune séance cette semaine'}</small></div><div class=wk>${st.bars.map(o=>`<i class="${o?'on':''}"></i>`).join('')}</div></div>
  <div class=psh><h2>Mes séances</h2><button class=pal>Tout voir ${SI('chev',14)}</button></div>
  ${g?`<div class=psc data-a=psess data-k="${esc(g.k)}" style="cursor:pointer"><div class=r1><i class=sq style="background:${g.col}"></i><span class=nm>${esc(g.nom)}</span><span class=cn>${g.n}×</span><span class=ar>${SI('arr',15)}</span><span class=ch>${SI('chev',17)}</span></div><div class=chs>${g.ds.map(([d,t])=>`<span>${pgd(d)}<i></i><b>${fmt(t)} kg</b></span>`).join('')}</div></div>`:'<div class="lve pse"><h3>Pas encore de stats</h3><p>Enchaîne quelques séances et tes courbes,<br>séances, records, tendances apparaîtront ici.</p></div>'}
  <div class=pg2><div class=pmc data-a=pst style="cursor:pointer"><div class=h>${pgTile('var(--acc)','trend',15)}<b>Performance</b>${SI('chev',14)}</div><div class=bd2><svg class=psp viewBox="0 0 100 36" preserveAspectRatio="none"><polyline points="${pgSpark()}" fill=none stroke=currentColor stroke-width=3 stroke-linecap=round stroke-linejoin=round vector-effect="non-scaling-stroke"/></svg><div class=lb>30 J</div></div></div>
  <div class=pmc data-a=pmes style="cursor:pointer"><div class=h>${pgTile('#14b8d4','ruler',15)}<b>Mesures</b>${SI('chev',14)}</div><div class=bd2>${mzLast('w')?`<b style="font:700 24px 'Avenir Next Condensed','Arial Narrow',sans-serif">${fmt(mzLast('w'))} <small style="font:400 13px sans-serif;color:var(--mut)">kg</small></b>`:'<i class=dsh></i><span class=em>Ajoute ton poids</span>'}</div></div></div>
- <div class=pls><button class=plr data-a=pobj>${pgTile('var(--red)','target')}<span class=tx><span class=t1><b>Objectifs</b>${(S.goals||[]).length?`<span class=bg style="--c:var(--red)">${(S.goals||[]).filter(g=>g.tg>0&&gProg(g)>=g.tg).length}/${(S.goals||[]).length}</span>`:'<span class=bg style="--c:var(--red)">À définir</span>'}</span><small>${(S.goals||[]).length?pl((S.goals||[]).length,'objectif')+' en cours':'Définis ton premier objectif'}</small></span>${SI('chev',17)}</button>
+ <div class=pls><button class=plr data-a=pobj>${pgTile('var(--red)','target')}<span class=tx><b>Objectifs</b><small>${(S.goals||[]).length?pl((S.goals||[]).length,'objectif')+' en cours':'Définis ton premier objectif'}</small></span><span class=bg style="--c:var(--red)">${(S.goals||[]).length?(S.goals||[]).filter(g=>gDone(g).ok).length+' / '+(S.goals||[]).length:'À définir'}</span>${SI('chev',17)}</button>
  <button class=plr data-a=pexo>${pgTile('var(--acc)','dumbbell')}<span class=tx><span class=t1><b>Exercices</b></span><small>${ex?ex+' suivi'+(ex>1?'s':'')+' · progression par exo':'Progression par exercice'}</small></span>${SI('chev',17)}</button>
- <button class=plr>${pgTile('#8b6cf0','star')}<span class=tx><span class=t1><b>Records</b>${prs.length?`<span class=bg style="--c:#8b6cf0">${prs.length} PR</span>`:''}</span><small>${prs.length?'ce mois · '+esc(prs[0].n)+' '+fmt(prs[0].c)+' kg':'Aucun record ce mois'}</small></span>${SI('chev',17)}</button>
- <button class=plr data-a=pach>${pgTile('#f5a524','trophy')}<span class=tx><span class=t1><b>Succès</b><span class=bg style="--c:#f5a524">${AD0.got} / ${AD0.tot}</span></span><small>${AL?esc(AL.c.n)+' · '+esc(AL.t.name)+' débloqué':'Aucun succès débloqué'}</small></span>${SI('chev',17)}</button></div></div>`+tabbar()}
+ <button class=plr data-a=prec>${pgTile('#8b6cf0','star')}<span class=tx><span class=t1><b>Records</b>${prs.length?`<span class=bg style="--c:#8b6cf0">${prs.length} PR</span>`:''}</span><small>${prs.length?'ce mois · '+esc(prs[0].n)+' '+fmt(prs[0].c)+' '+prs[0].u:'Aucun record ce mois'}</small></span>${SI('chev',17)}</button>
+ <button class=plr data-a=pach>${pgTile('#f5a524','trophy')}<span class=tx><b>Succès</b><small>${AL?esc(AL.c.n)+' · '+esc(AL.t.name)+' débloqué':'Aucun succès débloqué'}</small></span><span class=bg style="--c:#f5a524">${AD0.got} / ${AD0.tot}</span>${SI('chev',17)}</button></div></div>`+tabbar()}
 let PS={r:'30J',o:0,t:'vol'};
 const PSR={'30J':30,'3M':91,'6M':182,'1A':365},PST=[['vol','Volume'],['rep','Reps'],['dur','Durée']];
 function psWin(){const n=PSR[PS.r],e=new Date();e.setHours(0,0,0,0);e.setDate(e.getDate()-PS.o*n);const b=new Date(e);b.setDate(b.getDate()-n+1);return{n,b,e}}
@@ -1684,10 +1804,10 @@ const mzFd=d=>new Date(d+'T00:00').toLocaleDateString('fr-FR',{day:'numeric',mon
 function mzWin(){const e=new Date();e.setHours(0,0,0,0);const p=MZP.find(x=>x[0]===MZR);let b=new Date(e);if(p[2])b.setDate(b.getDate()-p[2]+1);else{const a=mzAll();b=a.length?new Date(a[0].d+'T00:00'):new Date(e);if(e-b<29*864e5){b=new Date(e);b.setDate(b.getDate()-29)}}return{b,e}}
 const mzMark=(m,x,y,c)=>m==='c'?`<circle cx=${x.toFixed(1)} cy=${y.toFixed(1)} r=3.4 fill="${c}"/>`:m==='t'?`<path d="M${(x-4).toFixed(1)} ${(y+3.4).toFixed(1)}L${x.toFixed(1)} ${(y-4).toFixed(1)}L${(x+4).toFixed(1)} ${(y+3.4).toFixed(1)}Z" fill="${c}"/>`:`<rect x=${(x-3.2).toFixed(1)} y=${(y-3.2).toFixed(1)} width=6.4 height=6.4 rx=1 fill="${c}"/>`;
 function mzChart(){const w=mzWin(),a=dstr(w.b),z=dstr(w.e),W=330,H=250,L=44,R=10,T=10,B=30,span=Math.max(1,(w.e-w.b)/864e5),X=d=>L+(W-L-R)*((new Date(d+'T00:00')-w.b)/864e5)/span;
- const ser=mzPin().map(k=>{const pts=mzAll().filter(x=>x.d>=a&&x.d<=z&&x[k]>0);if(!pts.length)return{k,pts:[]};const b0=pts[0][k];return{k,pts:pts.map(x=>({d:x.d,v:(x[k]-b0)/b0*100}))}});
+ const ser=mzPin().map(k=>{const pts=mzAll().filter(x=>x.d>=a&&x.d<=z&&x[k]>0);if(!pts.length)return{k,pts:[]};const b0=pts[0][k];return{k,pts:pts.map(x=>({d:x.d,v:(x[k]-b0)/b0*100,raw:x[k]}))}});
  const am=Math.max(0,...ser.flatMap(x=>x.pts.map(p=>Math.abs(p.v)))),st=[.5,1,2,5,10,20,50].find(q=>q*3>=am)||50,mx=st*3,Y=v=>T+(H-T-B)*(1-(v+mx)/(2*mx)),f1=v=>(v<0?'−':'')+(Math.abs(v)).toFixed(1).replace('.',',')+' %';
  const grid=[3,2,1,0,-1,-2,-3].map(i=>{const v=i*st;return`<line x1=${L} x2=${W-R} y1=${Y(v).toFixed(1)} y2=${Y(v).toFixed(1)} class="${i?'mzg':'mzg z'}"/><text x=${L-8} y=${(Y(v)+3.5).toFixed(1)} text-anchor=end>${f1(v)}</text>`}).join('');
- const lines=ser.map(x=>{const c=MZS[x.k].c;return(x.pts.length>1?`<polyline points="${x.pts.map(p=>X(p.d).toFixed(1)+','+Y(p.v).toFixed(1)).join(' ')}" fill=none stroke="${c}" stroke-width=2.2 stroke-linejoin=round stroke-linecap=round />`:'')+x.pts.map(p=>mzMark(MZS[x.k].mk,X(p.d),Y(p.v),c)).join('')}).join('');
+ const lines=ser.map(x=>{const c=MZS[x.k].c;return(x.pts.length>1?`<polyline points="${x.pts.map(p=>X(p.d).toFixed(1)+','+Y(p.v).toFixed(1)).join(' ')}" fill=none stroke="${c}" stroke-width=2.2 stroke-linejoin=round stroke-linecap=round />`:'')+x.pts.map(p=>mzMark(MZS[x.k].mk,X(p.d),Y(p.v),c)+`<circle class=ptp cx=${X(p.d).toFixed(1)} cy=${Y(p.v).toFixed(1)} r=14 fill=transparent style="pointer-events:all;cursor:pointer" data-t="${fmt(p.raw)} ${MZS[x.k].u}" data-s="${MZS[x.k].n} · ${mzDfull(p.d)}" data-c="${c}" />`).join('')}).join('');
  const xl=[0,.5,1].map((q,i)=>{const d=new Date(+w.b+(w.e-w.b)*q);return`<text x=${(L+(W-L-R)*q).toFixed(1)} y=${H-8} text-anchor=${i?i===2?'end':'middle':'start'}>${d.toLocaleDateString('fr-FR',{day:'numeric',month:'short'})}</text>`}).join('');
  return`<svg class=mzc viewBox="0 0 ${W} ${H}">${grid}${lines}${xl}</svg>`}
 function pmesView(){const pin=mzPin();
@@ -1700,19 +1820,51 @@ function pmesView(){const pin=mzPin();
  <p class=mzt>Variation relative (%)</p>${mzChart()}<p class=mzn>0 % = première valeur relevée dans la période</p>
  ${pin.length?`<div class=mzlg>${leg}</div>`:''}</div>
  <button class=mzall data-a=pmall><span>Toutes mes mesures</span>${SI('chev',18)}</button></div>`}
+/* ---------- Page d'un objectif (poids / masse grasse) ---------- */
+function pgoalChart(g){let L=30;const k=gKey(g),T=GT[g.ty],r=gRangeD(g),b=new Date(r[0]+'T00:00'),e=new Date(r[1]+'T00:00'),W=330,H=250,R=4,TP=14,B=30,span=Math.max(1,(e-b)/864e5),c='var(--red)',
+ X=d=>L+(W-L-R)*Math.min(1,Math.max(0,(new Date(d+'T00:00')-b)/864e5/span)),
+ bm=g.ty==='bw'||g.ty==='fat',pts=[];
+ if(bm){mzAll().filter(x=>x.d>=r[0]&&x.d<=r[1]&&x[k]>0).forEach(x=>pts.push({d:x.d,v:x[k]}));
+  if(g.sv>0&&g.sd&&g.sd>=r[0]&&g.sd<=r[1]&&!pts.some(x=>x.d===g.sd)){pts.push({d:g.sd,v:g.sv});pts.sort((a,b)=>a.d<b.d?-1:1)}}
+ else{const day={};if(g.ty==='vol')pgDone().filter(x=>x.d>=r[0]&&x.d<=r[1]).forEach(x=>{day[x.d]=(day[x.d]||0)+stats(x).t});else Object.values(exHist()).forEach(m=>m.prs.forEach(q=>{if(q.d>=r[0]&&q.d<=r[1])day[q.d]=(day[q.d]||0)+1}));
+  let cum=0;Object.keys(day).sort().forEach(d=>{cum+=day[d];pts.push({d,v:Math.round(cum)})})}
+ if(!bm&&!pts.length)return'';
+ const vals=pts.map(x=>x.v).concat(g.tg>0?[g.tg]:[]);if(!vals.length)return'';
+ let lo=Math.min(...vals),hi=Math.max(...vals);if(bm){const pad=Math.max((hi-lo)*.2,1);lo-=pad;hi+=pad}else{lo=0;hi=hi*1.08}
+ const raw=(hi-lo)/5,mag=Math.pow(10,Math.floor(Math.log10(raw||1))),st=Math.max(bm?.5:1,[1,2,5,10].map(m=>m*mag).find(q=>q>=raw)),y0=Math.floor(lo/st)*st,y1=Math.ceil(hi/st)*st,Y=v=>TP+(H-TP-B)*(1-(v-y0)/(y1-y0)),f1=v=>fmt(Math.round(v*10)/10);
+ const ticks=[];for(let v=y0;v<=y1+1e-9;v+=st)ticks.push(v);
+ L=Math.max(...ticks.map(v=>f1(v).length))*6+13;
+ const grid=ticks.map(v=>`<line x1=${L} x2=${W-R} y1=${Y(v).toFixed(1)} y2=${Y(v).toFixed(1)} class=mzg /><text x=${L-8} y=${(Y(v)+3.5).toFixed(1)} text-anchor=end>${f1(v)}</text>`).join('');
+ const tl=g.tg>0?`<line x1=${L} x2=${W-R} y1=${Y(g.tg).toFixed(1)} y2=${Y(g.tg).toFixed(1)} stroke="${c}" stroke-width=1.6 stroke-dasharray="5 4" opacity=.7 />`:'';
+  const pl0=bm?pts:[{d:r[0],v:0}].concat(pts);
+ const line=(pl0.length>1?`<polyline points="${pl0.map(p=>X(p.d).toFixed(1)+','+Y(p.v).toFixed(1)).join(' ')}" fill=none stroke="${c}" stroke-width=2.2 stroke-linejoin=round stroke-linecap=round />`:'')+pts.map(p=>mzMark('c',X(p.d),Y(p.v),c)+`<circle class=ptp cx=${X(p.d).toFixed(1)} cy=${Y(p.v).toFixed(1)} r=14 fill=transparent style="pointer-events:all;cursor:pointer" data-t="${f1(p.v)}${T.u?' '+T.u:' PR'}" data-s="${mzDfull(p.d)}" data-c="${c}" />`).join('');
+ const xl=[0,.5,1].map((q,i)=>{const d=new Date(+b+(e-b)*q);return`<text x=${(L+(W-L-R)*q).toFixed(1)} y=${H-8} text-anchor=${i?i===2?'end':'middle':'start'}>${d.toLocaleDateString('fr-FR',{day:'numeric',month:'short'})}</text>`}).join('');
+ return`<svg class=mzc viewBox="0 0 ${W} ${H}">${grid}${tl}${line}${xl}</svg>`}
+function pgoalView(){const g=(S.goals||[]).find(x=>x.id===V.id);if(!g)return pobjView();
+ const T=GT[g.ty],bm=g.ty==='bw'||g.ty==='fat',{cu,pc,ok,sv}=gDone(g),r=gRangeD(g),ch=pgoalChart(g),u=T.u?' '+T.u:'',rest=Math.max(0,(g.tg||0)-cu),
+ mk=(dash)=>`<svg width=26 height=10 viewBox="0 0 26 10"><line x1=0 y1=5 x2=26 y2=5 stroke="var(--red)" stroke-width=2.2${dash?' stroke-dasharray="4 3"':''} />${dash?'':'<circle cx=13 cy=5 r=3.4 fill="var(--red)"/>'}</svg>`,
+ it=(m,l,v)=>`<div class=mzl><div class=n>${m||''}<b>${l}</b></div><div class=v>${v}</div></div>`,
+ leg=bm?it('','Départ',sv?fmt(sv)+u:'<span class=mut>—</span>')+it(mk(false),'Actuel',cu?fmt(cu)+u:'<span class=mut>—</span>')+it(mk(true),'Cible',fmt(g.tg)+u)
+  :it(mk(false),'Actuel',fmt(cu)+u)+it(mk(true),'Cible',fmt(g.tg)+u)+it('','Restant',fmt(rest)+u);
+ return`<div class="pgw gth"><div class=pdh><button class=cbtn data-a=pgback aria-label="Retour">${SI('back',19)}</button><div><h1>${esc(gTitle(g))}</h1><small>${gFr(r[0])} → ${gFr(r[1])}</small></div></div>
+ ${bm?`<button class=mzadd data-a=mrl>${SI('plus',20)} Ajouter une mesure</button>`:''}
+ <div class=mzcard${bm?'':' style="margin-top:16px"'}><div class=mzh><div><h2>Évolution</h2><small>${ok?'Objectif atteint':pc+' % de l’objectif'}</small></div><button class=mzmod data-a=gedit data-id=${g.id}>Modifier</button></div>
+ <p class=mzt style="margin-top:14px">${bm?`${T.n} (${T.u})`:g.ty==='vol'?'Volume cumulé (kg)':'Nouveaux PR cumulés'}</p>${ch||`<p class=mzn style="margin:18px 4px">${bm?'Aucune mesure sur cette période. Ajoute une mesure pour voir la courbe.':g.ty==='vol'?'Aucune séance sur cette période.':'Aucun record battu sur cette période.'}</p>`}
+ <div class=mzlg style="grid-template-columns:repeat(3,1fr)">${leg}</div></div></div>`}
 function pmallView(){const A=mzAll().reverse();
  return`<div class=pgw><div class=pdh><button class=cbtn data-a=pmback aria-label="Retour">${SI('back',19)}</button><div><h1>Toutes mes mesures</h1><small>${A.length?pl(A.length,'relevé'):'Aucun relevé'}</small></div></div>
- ${A.length?A.map(x=>`<button class=mzr data-a=mrl data-id=${x.id}><b>${mzFd(x.d)} ${x.d.slice(0,4)}</b><span>${MZA.filter(k=>x[k]>0).map(k=>`<em>${MZS[k].n} <i>${fmt(x[k])} ${MZS[k].u}</i></em>`).join('')}</span>${SI('chev',16)}</button>`).join(''):`<div class=pem><h2>Aucun relevé</h2><p>Ajoute ton premier relevé pour suivre ton évolution.</p><button class=pgo data-a=mrl>Ajouter un relevé</button></div>`}</div>`}
+ ${A.length?A.map(x=>`<button class=mzr data-a=mrl data-id=${x.id}><b>${mzFd(x.d)} ${x.d.slice(0,4)}</b><span>${['w','f',...MZA.filter(k=>!MZT.includes(k))].filter(k=>x[k]>0).map(k=>`<em>${MZS[k].n} <i>${fmt(x[k])} ${MZS[k].u}</i></em>`).join('')}</span>${SI('chev',16)}</button>`).join(''):`<div class=pem><h2>Aucun relevé</h2><p>Ajoute ton premier relevé pour suivre ton évolution.</p><button class=pgo data-a=mrl>Ajouter un relevé</button></div>`}</div>`}
+const mzBk=b=>['gnw','ged'].includes(b.k)?gSheet(b):mzSheet(b);
 function mzSheet(f){
  if(f.k==='mpn')return sh2('Mesures épinglées','Choisis les courbes affichées dans Évolution.',`<div class=mzpl>${MZA.map(k=>`<button class="mi ck" data-a=mtg data-v=${k}><span class="cb${f.pin.includes(k)?' on':''}">${f.pin.includes(k)?SI('check',18):''}</span><b>${MZS[k].n}</b></button>`).join('')}</div><div class=xbar id=mpbar style="display:${f.pin.length?'flex':'none'};margin-top:16px"><button data-a=mpok style="flex:1;background:var(--acc);color:#fff;border-radius:999px;min-height:50px;font-weight:700;font-size:17px">Terminé</button></div>`);
  if(f.k==='mkb'){const T=MZS[f.key],L=mzLastR(f.key),has=f.s!=='';
-  return mzSheet(f.back)+`<div class=sov data-a=fno style="background:rgba(0,0,0,.28)"><div class="sheet sh2 xnw"><div class=grab></div><h2>${T.n}</h2><p class=sub2>${L?'Dernière : '+fmt(L[f.key])+' '+T.u+' · '+L.d.split('-').reverse().join('/'):'Aucune valeur précédente'}</p>
+  return mzBk(f.back)+`<div class=sov data-a=fno style="background:rgba(0,0,0,.28)"><div class="sheet sh2 xnw"><div class=grab></div><h2>${f.ttl||T.n}</h2><p class=sub2>${L?'Dernière : '+fmt(L[f.key])+' '+T.u+' · '+L.d.split('-').reverse().join('/'):'Aucune valeur précédente'}</p>
   <div class=mkv><b class="${has?'':'e'}">${has?f.s:'0'}</b><span>${T.u}</span></div>
   <div class=mkg>${['1','2','3','4','5','6','7','8','9'].map(n=>`<button data-a=mkp data-v=${n}>${n}</button>`).join('')}<button data-a=mkp data-v=",">,</button><button data-a=mkp data-v=0>0</button><button data-a=mkd aria-label="Supprimer le dernier caractère"><svg width=28 height=28 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=1.8 stroke-linecap=round stroke-linejoin=round><path d="M9 5h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-6-7z"/><path d="M13 9.5l5 5M18 9.5l-5 5"/></svg></button></div>
   <div class=xbar><button class=obtn data-a=fno>Annuler</button><button class=gbtn data-a=mkok>Valider</button></div></div></div>`}
  if(f.k==='mdt'){const dim=mzDim(f.y,f.m);
   const col=(c,a,i)=>`<div class=mzw data-c=${c} data-i=${i}><div class=mzwp>${a.map((t,j)=>`<div class=mzwi data-a=mwj data-c=${c} data-j=${j}>${t}</div>`).join('')}</div></div>`;
-  return mzSheet(f.back)+`<div class=sov data-a=fno style="background:rgba(0,0,0,.28)"><div class="sheet sh2 xnw"><div class=grab></div><h2>Date du relevé</h2><p class=sub2>Fais défiler le jour, le mois et l’année.</p>
+  return mzBk(f.back)+`<div class=sov data-a=fno style="background:rgba(0,0,0,.28)"><div class="sheet sh2 xnw"><div class=grab></div><h2>${f.ttl||'Date du relevé'}</h2><p class=sub2>Fais défiler le jour, le mois et l’année.</p>
   <div class=mzwb><i class=mzwh></i>${col('d',Array.from({length:dim},(_,i)=>i+1),f.d-1)}${col('m',MZMO.map(cap),f.m-1)}${col('y',Array.from({length:MZY1-MZY0+1},(_,i)=>MZY0+i),f.y-MZY0)}</div>
   <div class=xbar><button class=obtn data-a=fno>Annuler</button><button class=gbtn data-a=mdok>Confirmer</button></div></div></div>`}
  const ed=!!f.id,v=f.v,nb=MZA.filter(k=>String(v[k]).trim()!=='').length,
@@ -1728,27 +1880,41 @@ function mzSheet(f){
 const GT={seances:{n:'Entraînements par semaine',d:'Tiens un rythme d’entraînement régulier.',chip:'Séances',ic:'dumbbell',c:'#22c55e',u:'',fix:1,df:3},chain:{n:'Série de semaines',d:'Enchaîne les semaines sans casser la chaîne.',chip:'Enchaînement',ic:'flame',c:'#f97316',u:'sem.',fix:1,df:4,ul:'SEMAINES'},
  pr:{n:'Nouveaux records',d:'Bats un certain nombre de PR sur la période.',chip:'Nouveaux PR',ic:'star',c:'#f59e0b',u:'',df:3},vol:{n:'Volume soulevé',d:'Cumule un tonnage cible sur la période.',chip:'Volume',ic:'trend',c:'#14b8d4',u:'kg',df:20000,ul:'KG'},
  bw:{n:'Poids du corps',d:'Vise un poids cible et suis ta progression.',chip:'Poids du corps',ic:'trophy',c:'#14b8d4',u:'kg',df:75,ul:'KG'},fat:{n:'Masse grasse',d:'Vise un taux de masse grasse cible.',chip:'Masse grasse',ic:'drop',c:'#8b5cf6',u:'%',df:15,ul:'%'}};
-const GORD=['vol','pr','bw','fat'],GPER=['semaine','mois','année'];
-const gRange=per=>{const t=today(),y=t.slice(0,4);if(per==='semaine'){const m=monday(t),e=new Date(m+'T00:00');e.setDate(e.getDate()+6);return[m,dstr(e)]}if(per==='mois')return[t.slice(0,7)+'-01',t.slice(0,7)+'-31'];return[y+'-01-01',y+'-12-31']};
-function gProg(g){if(g.ty==='chain')return pgStreak().n;if(g.ty==='bw'||g.ty==='fat')return 0;const [a,z]=gRange(g.ty==='seances'?'semaine':g.per),I=pgDone().filter(x=>x.d>=a&&x.d<=z);
+const GORD=['vol','pr','bw','fat'],GPER=['semaine','mois','année','perso'];
+const gpr=d=>new Date((d||today())+'T00:00').toLocaleDateString('fr-FR',{day:'numeric',month:'short'});
+const gRange=g=>{const per=g.ty==='seances'?'semaine':g.per,t=today(),y=t.slice(0,4);if(g.ty!=='seances'&&g.from&&g.to)return[g.from,g.to];if(per==='perso')return[g.from||t,g.to||t];if(per==='semaine'){const m=monday(t),e=new Date(m+'T00:00');e.setDate(e.getDate()+6);return[m,dstr(e)]}if(per==='mois')return[t.slice(0,7)+'-01',t.slice(0,7)+'-31'];return[y+'-01-01',y+'-12-31']};
+function gProg(g){if(g.ty==='chain')return pgStreak().n;if(g.ty==='bw'||g.ty==='fat')return 0;const [a,z]=gRange(g),I=pgDone().filter(x=>x.d>=a&&x.d<=z);
  if(g.ty==='seances')return I.length;if(g.ty==='vol')return Math.round(I.reduce((n,x)=>n+stats(x).t,0));let n=0;Object.values(exHist()).forEach(m=>m.prs.forEach(p=>{if(p.d>=a&&p.d<=z)n++}));return n}
-const gTitle=g=>g.lab||({seances:'Séances / semaine',chain:'Série de semaines',pr:'Nouveaux PR / '+g.per,vol:'Volume / '+g.per,bw:'Poids du corps / '+g.per,fat:'Masse grasse / '+g.per})[g.ty];
-const gCard=g=>{const T=GT[g.ty],cu=gProg(g),ok=g.tg>0&&cu>=g.tg,pc=g.tg>0?Math.min(100,Math.round(cu/g.tg*100)):0;
- return`<div class=gwr><button class="gc${ok?' ok':''}" style="--c:var(--red)" data-a=gedit data-id=${g.id}><div class=r1><i class=ic>${SI(T.ic,22)}</i><b class=tt>${esc(gTitle(g))}</b>${ok?'<span class=tag>ATTEINT</span>':`<span class=pc>${pc}%</span>`}</div><div class=v>${fmt(cu)}<small> / ${fmt(g.tg)}${T.u?' '+T.u:''}</small></div><div class=bar><u style="width:${ok?100:Math.max(pc,pc?3:0)}%"></u></div></button><button class=gsw data-a=gdsw data-id=${g.id} aria-label="Supprimer l’objectif"><span class=swb>${SI('trash',20)}</span></button></div>`};
-const pobjView=()=>{const G=S.goals||[],ok=G.filter(g=>g.tg>0&&gProg(g)>=g.tg).length;
+const gCalc=(per,st)=>{const a=st||today(),e=new Date(a+'T00:00'),dy=e.getDate();if(per==='semaine')e.setDate(dy+7);else if(per==='mois'){e.setMonth(e.getMonth()+1);if(e.getDate()!==dy)e.setDate(0)}else if(per==='année'){e.setFullYear(e.getFullYear()+1);if(e.getDate()!==dy)e.setDate(0)}else e.setDate(dy+7);return[a,dstr(e)]};
+const gFr=d=>d.split('-').reverse().join('/');
+const gKey=g=>g.ty==='bw'?'w':'f';
+const gRangeD=g=>{const r=gRange(g).slice();if(!g.from&&g.per==='mois'&&g.ty!=='seances'){const [y,m]=today().split('-').map(Number);r[1]=y+'-'+pad2(m)+'-'+pad2(mzDim(y,m))}return r};
+const mzPut=(k,v,d)=>{S.meas=S.meas||[];const ex=S.meas.find(y=>y.d===d);if(ex)ex[k]=v;else S.meas.push({id:uid(),d,[k]:v})};
+function gDone(g){if(g.ty==='bw'||g.ty==='fat'){const k=gKey(g),cu=mzLast(k)||0,fr=mzAll().find(x=>x[k]>0),sv=g.sv>0?g.sv:(fr?fr[k]:0);let pc=0,ok=false;if(cu>0&&g.tg>0){const dn=(sv||cu)>g.tg;ok=dn?cu<=g.tg:cu>=g.tg;pc=ok?100:(sv&&sv!==g.tg?Math.max(0,Math.min(100,Math.round((sv-cu)/(sv-g.tg)*100))):0)}return{cu,pc,ok,sv}}const cu=gProg(g),ok=g.tg>0&&cu>=g.tg;return{cu,ok,pc:g.tg>0?Math.min(100,Math.round(cu/g.tg*100)):0}}
+const gPerLab=g=>g.per==='perso'?gpr(g.from)+' – '+gpr(g.to):cap(g.per);
+const gTitle=g=>({seances:'Séances / semaine',chain:'Série de semaines',pr:'Nouveaux PR · '+gPerLab(g),vol:'Volume · '+gPerLab(g),bw:'Poids du corps · '+gPerLab(g),fat:'Masse grasse · '+gPerLab(g)})[g.ty];
+const gCard=g=>{const T=GT[g.ty],{cu,ok,pc}=gDone(g);
+ return`<div class=gwr><div class="gc${ok?' ok':''}" role=button style="--c:var(--red)" data-a=${['bw','fat','vol','pr'].includes(g.ty)?'gopen':'gedit'} data-id=${g.id}><div class=r1><i class=ic>${SI(T.ic,22)}</i><div class=tb><b class=tt>${esc(gTitle(g))}</b>${T.fix?'':(()=>{const r=gRangeD(g);return`<div class=gcd>${gFr(r[0])} → ${gFr(r[1])}</div>`})()}${g.lab?`<div class=gcm>${esc(g.lab)}</div>`:''}</div><button class="ib gdots" data-a=gm data-id=${g.id} aria-label="Options">⋯</button></div><div class=v2><div class=v>${fmt(cu)}<small> / ${fmt(g.tg)}${T.u?' '+T.u:''}</small></div>${ok?'<span class=tag>ATTEINT</span>':`<span class=pc>${pc}%</span>`}</div><div class=bar><u style="width:${ok?100:Math.max(pc,pc?3:0)}%"></u></div></div><button class=gsw data-a=gdsw data-id=${g.id} aria-label="Supprimer l’objectif"><span class=swb>${SI('trash',20)}</span></button></div>`};
+const pobjView=()=>{const G=S.goals||[],ok=G.filter(g=>gDone(g).ok).length;
  return`<div class="pgw gth"><div class=pdh><button class=cbtn data-a=pback aria-label="Retour">${SI('back',19)}</button><div><h1>Objectifs</h1><small>${G.length?ok+' / '+G.length+' atteint'+(ok>1?'s':''):'Aucun objectif'}</small></div></div>`+
  (G.length?G.map(gCard).join('')+`<button class=gadd data-a=gadd>${SI('plus',20)} Ajouter un objectif</button>`:`<div class=pem><h2>Aucun objectif</h2><p>Définis un objectif pour suivre ta progression.</p><button class=pgo data-a=gadd>Ajouter un objectif</button></div>`)+`</div>`};
 function gSheet(f){return gSheet0(f).replace('<div class=sov ','<div class="sov gth" ')}
 function gSheet0(f){
+ if(f.k==='gsv'){const b=f.back,T=GT[b.ty];return gSheet0(b)+`<div class="sov pop" data-a=fno><div class=dpop><h3>Enregistrer dans Mesures ?</h3><p>Ajouter ${esc(String(b.sv))} ${T.u} à tes mesures, aujourd’hui (${mzDfull(today())}) ?</p><button class=dbt data-a=gsvy>Enregistrer</button><button class=dbt data-a=gsvn>Ne pas enregistrer</button></div></div>`}
+ if(f.k==='gcur'){const b=f.back,k=b.ty==='bw'?'w':'f',T=GT[b.ty],A=mzAll().filter(x=>x[k]>0).reverse().slice(0,30);
+  return gSheet0(b)+`<div class=sov data-a=fno style="background:rgba(0,0,0,.28)"><div class="sheet sh2 xnw"><div class=grab></div><h2>${b.ty==='bw'?'Poids actuel':'Masse grasse actuelle'}</h2><p class=sub2>Saisis une valeur ou choisis une mesure déjà enregistrée.</p>
+  <button class="mi dm" data-a=gcman><span><b>Saisir manuellement</b><small>Ajoutée à tes mesures, aujourd’hui</small></span></button>
+  ${A.length?`<div class=fl>MESURES ENREGISTRÉES</div>${A.map(x=>`<button class="mi dm" data-a=gcpick data-id=${x.id}><span><b>${fmt(x[k])} ${T.u}</b><small>${mzDfull(x.d)}</small></span></button>`).join('')}`:''}
+  ${parseFloat(String(b.sv||'').replace(',','.'))>0?`<button class=gdng data-a=gcclr style="margin-top:6px">Effacer</button>`:''}</div></div>`}
  if(f.k==='gty'){const sec=(l,a)=>(l?`<div class=sh-l>${l}</div>`:'')+a.map(k=>`<button class="mi dm" data-a=gpick data-t=${k}><span><b>${GT[k].n}</b><small>${GT[k].d}</small></span></button>`).join('');
   return sh2('Nouvel objectif','Choisis le type d’objectif.',sec('FORCE',['pr'])+sec('VOLUME',['vol'])+sec('COMPOSITION',['bw','fat']))}
- const T=GT[f.ty],ed=f.k==='ged',ok=+String(f.tg).replace(',','.')>0,
+ const T=GT[f.ty],ed=f.k==='ged',ok=+String(f.tg).replace(',','.')>0,bm=f.ty==='bw'||f.ty==='fat',sv=parseFloat(String(f.sv||'').replace(',','.'))||0,sd=f.sd||today(),cu=bm?mzLast(f.ty==='bw'?'w':'f'):0,rg=gRangeD(f),
   chips=(arr,a,cur)=>`<div class="eqw">${arr.map(([v,l])=>`<button class="eqc${cur===v?' on':''}" data-a=${a} data-v="${v}">${l}</button>`).join('')}</div>`;
  return`<div class=sov data-a=fno><div class="sheet sh2 xnw"><div class=grab></div><h2>${ed?'Modifier l’objectif':T.n}</h2>
  ${ed?`<div class=fl>TYPE</div>${chips(GORD.map(k=>[k,GT[k].chip]),'gty2',f.ty)}`:''}
- <div class=fl>CIBLE${T.ul?' ('+T.ul+')':''}</div><input class=xin inputmode=decimal data-fm=gt value="${esc(String(f.tg))}" autocomplete=off>
- ${T.fix?'':`<div class=fl>${ed?'PÉRIODE':'FRÉQUENCE'}</div>${chips(GPER.map(v=>[v,v]),'gper',f.per)}`}
- ${ed?`<div class=fl>LABEL (OPTIONNEL)</div><input class=xin data-fm=gl placeholder="ex. : 5×5 développé couché à 100 kg" value="${esc(f.lab||'')}" autocomplete=off>`:''}
+ ${bm?`<div class=gdr><button class=gdb data-a=gcur><small>${f.ty==='bw'?'POIDS ACTUEL':'ACTUELLE'}</small><b>${sv>0?fmt(sv)+' '+T.u:'—'}</b></button><button class=gdb data-a=gkp data-f=tg><small>${f.ty==='bw'?'POIDS CIBLE':'CIBLE'}</small><b>${String(f.tg).trim()?esc(String(f.tg))+' '+T.u:'—'}</b></button></div>`:`<div class=fl>CIBLE${T.ul?' ('+T.ul+')':''}</div><input class=xin inputmode=decimal data-fm=gt value="${esc(String(f.tg))}" autocomplete=off>`}
+ ${T.fix?'':`<div class=fl>${ed?'PÉRIODE':'FRÉQUENCE'}</div>${chips(GPER.map(v=>[v,v==='perso'?'Dates précises':v]),'gper',f.per)}<div class=gdr><button class=gdb data-a=gdt data-f=from><small>DU</small><b>${gpr(rg[0])} ${rg[0].slice(0,4)}</b></button><button class=gdb data-a=gdt data-f=to><small>AU</small><b>${gpr(rg[1])} ${rg[1].slice(0,4)}</b></button></div>`}
+ <div class=fl>COMMENTAIRE (OPTIONNEL)</div><input class=xin data-fm=gl placeholder="Ajouter un commentaire" value="${esc(f.lab||'')}" autocomplete=off>
  <div class=xbar>${ed?`<button class=gdng data-a=gdel>Supprimer</button>`:''}<button class=gbtn id=gok data-a=${ed?'gsave':'gnok'} ${ok?'':'disabled'}>${ed?'Enregistrer':'Créer'}</button></div></div></div>`}
 const PXR={cardio:/cardio|course|running|runner|v[ée]lo|bike|rameur|rower|tapis|corde [àa] sauter|marche|elliptique|skierg/i,uni:/unilat|une? (jambe|bras)|single|bulgar|split squat/i};
 function pexoList(){const H=exHist(),q=norm(PQ).trim(),fv=S.fav||[];return library().filter(n=>(!q||norm(n).includes(q))&&(PF==='all'||(PF==='fav'&&fv.includes(n))||(PF==='cardio'&&PXR.cardio.test(n))||(PF==='uni'&&PXR.uni.test(n))||(PF==='perso'&&!CAT[n]))).sort((a,b)=>{const x=H[a]&&H[a].last?H[a].last.d:'',y=H[b]&&H[b].last?H[b].last.d:'';return x===y?a.localeCompare(b,'fr'):x<y?1:-1})}
@@ -1800,10 +1966,12 @@ function draw(){
  if(V.p==='pobj')return a.innerHTML=pobjView();
  if(V.p==='pmes')return a.innerHTML=pmesView();
  if(V.p==='pmall')return a.innerHTML=pmallView();
+ if(V.p==='pgoal')return a.innerHTML=pgoalView();
  if(V.p==='pstat')return a.innerHTML=pstatView();
  if(V.p==='pdet')return a.innerHTML=pdetView();
  if(V.p==='psess')return a.innerHTML=psessView();
  if(V.p==='pexo')return a.innerHTML=pexoView();
+ if(V.p==='prec')return a.innerHTML=precView();
  if(V.p==='det'&&cur())return a.innerHTML=detView(cur());
  if(V.p==='live'&&cur())return a.innerHTML=liveView(cur());
  if(V.p==='edit')return a.innerHTML=editView(cur());
@@ -1846,7 +2014,7 @@ function editView(s){if(s.tpl)return tplView(s);const tp=false;
 const STY={T:['Normale','Série de travail classique.'],E:['Échauffement','Charge légère : seul le poids est renseigné.'],D:['Drop set','Baisse de charge sans repos : seul le poids est renseigné.'],C:['Cluster','Mini-blocs séparés par un repos court (à venir).'],A:['AMRAP','Maximum de répétitions : « MAX ».'],F:['Échec','Jusqu’à l’échec : répétitions non modifiables.']};
 const STC={T:'var(--mut)',E:'#f59e0b',D:'#ef4444',C:'#a855f7',A:'#22c55e',F:'#e63946'};
 const STD={T:'Série de travail classique, comptée dans le volume.',E:'Charge légère pour préparer le mouvement, exclue du volume et des PR.',D:'À l’échec, réduis la charge et enchaîne sans repos pour prolonger la série.',C:'Fractionne tes reps avec de courtes pauses de 10 à 30 secondes pour garder une charge lourde.',A:'As many reps as possible : réalise un maximum de répétitions propres, jusqu’à l’échec.',F:'Poursuis jusqu’à l’échec musculaire, quand tu ne peux plus réaliser une répétition propre.'};
-const OPT=s=>Object.assign({u:'kg',rep:90,wu:false,wn:3,tp:true,snd:false,csnd:true,pv:'exo'},s&&s.opt||{});
+const OPT=s=>Object.assign({u:'kg',rep:90,wu:false,wn:3,tp:true,snd:false,csnd:true,art:false,pv:'exo'},s&&s.opt||{});
 function applyOpt(x,s){if(!s||!(s.tpl||s.free||s.from))return;const o=OPT(s);x.rep=o.rep;x.repTxt=o.rep?clk(o.rep):'';
  x.s=x.s.filter(y=>y.t!=='E');if(!x.s.length)x.s=[{t:'T',r:'',c:'',ok:false}];
  for(let i=0;i<(o.wu?o.wn:0);i++)x.s.unshift({t:'E',r:'',c:'',ok:false})}
@@ -1958,7 +2126,7 @@ function formX(f){
   return`<div class=sov data-a=fno><div class="sheet sh2 lsetp"><div class=grab></div><h2>Réglages de l’entraînement</h2><p class=sub2>${esc(s.nom||'Séance')}</p>`
    +`<div class=opl>CHARGES &amp; POIDS</div><div class=seg2>${['kg','lb'].map(u=>`<button class="${o.u===u?'on':''}" data-a=ou data-u=${u}>${u.toUpperCase()}</button>`).join('')}</div>`
    +`<div class=opl>REPOS PAR DÉFAUT</div><div class=stp2><button data-a=orp data-d=-15 aria-label="Moins">${SI('minus',24)}</button><b>${o.rep?o.rep+' s':'Aucun'}</b><button data-a=orp data-d=15 aria-label="Plus">${SI('plus',24)}</button></div>`
-   +`<div class=opl>COMPORTEMENT</div><div class=ocard><div class=orow><span><b>Tempo affiché</b><small>Affiche le tempo cible sur chaque série.</small></span>${tg('otp',o.tp,'Tempo affiché')}</div><div class=orow><span><b>Sons du circuit</b><small>Un signal sonore à la fin de chaque chrono du circuit.</small></span>${tg('ocs',o.csnd,'Sons du circuit')}</div></div>`
+   +`<div class=opl>COMPORTEMENT</div><div class=ocard><div class=orow><span><b>Chrono de repos automatique</b><small>Lance le chrono de repos quand tu valides une série.</small></span>${tg('oar',o.art,'Chrono de repos automatique')}</div><div class=orow><span><b>Tempo affiché</b><small>Affiche le tempo cible sur chaque série.</small></span>${tg('otp',o.tp,'Tempo affiché')}</div><div class=orow><span><b>Sons du circuit</b><small>Un signal sonore à la fin de chaque chrono du circuit.</small></span>${tg('ocs',o.csnd,'Sons du circuit')}</div></div>`
    +`<div class=opl>ÉCHAUFFEMENT</div><div class=ocard><div class=orow><span><b>Échauffement progressif</b><small>Ajoute des paliers avant la première série lourde.</small></span>${tg('owt',o.wu,'Échauffement progressif')}</div><div class="orow${o.wu?'':' off'}"><b>Paliers</b><div class="stp2 sm"><button data-a=ows data-d=-1 aria-label="Moins">${SI('minus',22)}</button><b>${o.wn}</b><button data-a=ows data-d=1 aria-label="Plus">${SI('plus',22)}</button></div></div></div>`
    +`<div class=opl>VALEURS PRÉCÉDENTES</div><div class="seg2 seg3">${[['seance','MÊME SÉANCE'],['exo','MÊME EXERCICE'],['non','NON']].map(([v,l])=>`<button class="${o.pv===v?'on':''}" data-a=opv data-v=${v}>${l}</button>`).join('')}</div><p class=hint2>« Non » masque les performances précédentes.</p>`
    +`<div class=lsep></div><div class=ocard><button class="orow lrow g" data-a=fin2><b>Terminer l’entraînement</b></button><button class="orow lrow r" data-a=lab><b>Abandonner l’entraînement</b></button></div></div></div>`}
@@ -2042,12 +2210,16 @@ A('keydown',ev=>{if(ev.key==='Enter'&&FORM&&ev.target.dataset&&ev.target.dataset
  if(ev.target.dataset&&ev.target.dataset.rn!==undefined){if(ev.key==='Enter'){ev.preventDefault();rnEnd(true)}else if(ev.key==='Escape')rnEnd(false)}});
 A('input',ev=>{const t=ev.target,d=t.dataset;
  if(d.pq!==undefined){PQ=t.value;const l=pexoList(),n=$('#pxn'),b=$('#pxlist');if(n)n.textContent=pxLab()+' · '+l.length;if(b)b.innerHTML=pxHtml(l);return}
+ if(d.rq!==undefined){RQ=t.value;const b=$('#rlist');if(b)b.innerHTML=rRows(recData());return}
+ if(d.b3q!==undefined&&FORM&&FORM.k==='b3'){FORM.q=t.value;const b=$('#b3l');if(b)b.innerHTML=b3Rows(FORM);return}
  if(d.cxe!==undefined){const s=cur(),e=s&&s.ex[+d.cxe];if(e&&d.cxf==='wt'){const v=parseInt(t.value,10);e.wt=v>0?Math.min(v,3600):0;save();return}if(e){(d.cxs!==undefined?[e.s[+d.cxs]].filter(Boolean):e.s).forEach(x=>{x[d.cxf]=t.value.replace(',','.')});save();upLive()}return}
  if(d.rn!==undefined){RV=t.value;return}
  if(d.cxd!==undefined&&FORM&&FORM.k==='cxe'){FORM[d.cxd]=t.value;return}
  if(d.cp!==undefined&&FORM&&FORM.k==='cpk'){FORM.pick[+d.cp][d.cf]=t.value;return}
  if(d.fm==='cq'&&FORM&&FORM.k==='cpk'){FORM.v=t.value;const l=$('#clist');if(l)l.innerHTML=cRows(FORM);return}
  if(FORM&&['gnw','ged'].includes(FORM.k)&&(d.fm==='gt'||d.fm==='gl')){if(d.fm==='gt'){FORM.tg=t.value;const b=$('#gok');if(b)b.disabled=!(+String(t.value).replace(',','.')>0)}else FORM.lab=t.value;return}
+ if(FORM&&['gnw','ged'].includes(FORM.k)&&t.dataset.gfrom!==undefined){FORM.from=t.value;if(FORM.to&&FORM.to<t.value)FORM.to=t.value;render();return}
+ if(FORM&&['gnw','ged'].includes(FORM.k)&&t.dataset.gto!==undefined){FORM.to=t.value;if(FORM.from&&FORM.from>t.value)FORM.from=t.value;render();return}
  if(FORM&&FORM.k==='xnw'&&(d.fm==='xn'||d.fm==='xi')){if(d.fm==='xn'){FORM.n=t.value;if(FORM.err){FORM.err='';const p=document.querySelector('#dlg .xerr');if(p)p.remove()}const b=$('#xnok');if(b)b.disabled=!(t.value.trim()&&FORM.mu)}else FORM.ins=t.value;return}
  if(d.fm&&FORM){if(FORM.k==='xl'){FORM.v=t.value;const l=$('#xlist');if(l)l.innerHTML=libRows(FORM.v,FORM.pick,FORM.m!=='rep');return}FORM[d.fm==='n'?'n':'v']=t.value;return}
  if(d.c){S.cfg[d.c]=t.value.trim();return save()}
@@ -2103,7 +2275,7 @@ A('click',ev=>{const b=ev.target.closest('[data-a]');if(!b||(b.classList.contain
  case'fa':{FORM=null;if(d.k==='dos'){const o={id:uid(),n:'Nouveau dossier',ic:'folder',col:COLS[1],o:true,subs:[]};S.dos.push(o);td();RN=o.id;RK='dos';RV=o.n}else{const p=S.dos.find(x=>x.id===d.par);if(!p)break;const o={id:uid(),n:'Nouveau sous-dossier',ic:'folder',col:COLS[2],o:true};p.subs.push(o);p.o=true;td();RN=o.id;RK='sub';RV=o.n}RNEW=true;RF=true;break}
  case'fm':FORM={k:'dm',t:d.k,id:d.id,par:d.par};break;
  case'fic':FORM.ic=d.ic;break;
- case'fno':if(FORM&&['mkb','mdt'].includes(FORM.k)){FORM=FORM.back;break}FORM=FORM&&['xty','xnw'].includes(FORM.k)&&(FORM.ret||(FORM.keep&&FORM.keep.ret))||null;break;
+ case'fno':if(FORM&&['mkb','mdt','gcur','gsv'].includes(FORM.k)){FORM=FORM.back;break}FORM=FORM&&['xty','xnw'].includes(FORM.k)&&(FORM.ret||(FORM.keep&&FORM.keep.ret))||null;break;
  case'ps':{const n={id:uid(),nom:'',d:today(),com:'',ex:[],u:Date.now(),tpl:true,cy:'root',fresh:true,draft:true};S.seances.push(n);save();V={p:'edit',id:n.id};TAB='seances';RF=true;break}
  case'runpick':FORM=null;startFrom(d.id);break;
  case'free':{const n={id:uid(),nom:'',d:today(),com:'',ex:[],u:Date.now(),free:true,t0:Date.now()};S.seances.push(n);save();V={p:'live',id:n.id};TOP=1;break}
@@ -2146,14 +2318,32 @@ A('click',ev=>{const b=ev.target.closest('[data-a]');if(!b||(b.classList.contain
  case'pach':V={p:'pach'};TOP=1;break;
  case'bdg':FORM={k:'bdg',c:d.c,i:+d.i};break;
  case'gadd':FORM={k:'gty'};break;
- case'gpick':FORM={k:'gnw',ty:d.t,tg:String(GT[d.t].df),per:'mois'};break;
- case'gper':FORM.per=d.v;break;
- case'gty2':FORM.ty=d.v;FORM.tg=String(GT[d.v].df);break;
- case'gnok':{const f=FORM,v=+String(f.tg).replace(',','.');if(!(v>0))return;S.goals=S.goals||[];S.goals.push({id:uid(),ty:f.ty,tg:v,per:f.per||'mois',lab:''});FORM=null;save();break}
- case'gedit':{const g=(S.goals||[]).find(x=>x.id===d.id);if(!g)return;FORM={k:'ged',id:g.id,ty:g.ty,tg:String(g.tg),per:g.per||'mois',lab:g.lab||''};break}
- case'gsave':{const f=FORM,g=(S.goals||[]).find(x=>x.id===f.id),v=+String(f.tg).replace(',','.');if(!g||!(v>0))return;Object.assign(g,{ty:f.ty,tg:v,per:f.per,lab:(f.lab||'').trim()});FORM=null;save();break}
+ case'gpick':FORM={k:'gnw',ty:d.t,tg:['bw','fat'].includes(d.t)?'':String(GT[d.t].df),per:'mois',from:gCalc('mois')[0],to:gCalc('mois')[1],lab:'',sv:'',sd:today(),svx:0};break;
+ case'gcur':{const sc=$('#dlg .xnw');FORM.sc=sc?sc.scrollTop:0;FORM={k:'gcur',back:FORM};break}
+ case'gcman':{const b=FORM.back;b.sd=today();FORM={k:'mkb',back:b,key:b.ty==='bw'?'w':'f',fld:'sv',manual:1,s:'',ttl:b.ty==='bw'?'Poids actuel':'Masse grasse actuelle'};break}
+ case'gcpick':{const b=FORM.back,k=b.ty==='bw'?'w':'f',x=(S.meas||[]).find(y=>y.id===d.id);if(x){b.sv=String(x[k]).replace('.',',');b.sd=x.d;b.svx=0}FORM=b;break}
+ case'gsvy':{const b=FORM.back;b.svx=1;b.sd=today();FORM=b;break}
+ case'gsvn':{const b=FORM.back;b.svx=0;b.sd=today();FORM=b;break}
+ case'gcclr':{const b=FORM.back;b.sv='';b.svx=0;FORM=b;break}
+ case'gkp':{const f=FORM,T=GT[f.ty],sc=$('#dlg .xnw');f.sc=sc?sc.scrollTop:0;FORM={k:'mkb',back:f,key:f.ty==='bw'?'w':'f',fld:d.f,s:String(f[d.f]||''),ttl:d.f==='tg'?(f.ty==='bw'?'Poids cible':'Masse grasse cible'):(f.ty==='bw'?'Poids de départ':'Masse grasse de départ')};break}
+ case'gdt':{const f=FORM;if(f.per!=='perso'&&d.f!=='sd'){const r=gRangeD(f);f.per='perso';f.from=r[0];f.to=r[1]}const sc=$('#dlg .xnw');f.sc=sc?sc.scrollTop:0;const [y,m,j]=(f[d.f]||today()).split('-').map(Number);FORM={k:'mdt',back:f,y,m,d:j,fld:d.f,ttl:d.f==='from'?'Date de début':d.f==='to'?'Date de fin':'Date de départ'};break}
+ case'gper':{const f=FORM;f.per=d.v;if(d.v!=='perso'||!f.from){const r=gCalc(d.v);f.from=r[0];f.to=r[1]}break}
+ case'gty2':FORM.ty=d.v;FORM.tg=['bw','fat'].includes(d.v)?'':String(GT[d.v].df);FORM.sv='';FORM.svx=0;break;
+ case'gnok':{const f=FORM,v=+String(f.tg).replace(',','.');if(!(v>0))return;S.goals=S.goals||[];const bm=f.ty==='bw'||f.ty==='fat',sv=parseFloat(String(f.sv||'').replace(',','.'))||0,sd=f.sd||today();if(bm&&sv>0&&f.svx)mzPut(f.ty==='bw'?'w':'f',sv,sd);S.goals.push({id:uid(),ty:f.ty,tg:v,per:f.per||'mois',from:f.from,to:f.to,lab:(f.lab||'').trim(),sv:bm&&sv>0?sv:undefined,sd:bm&&sv>0?sd:undefined});FORM=null;save();break}
+ case'gm':FORM={k:'gm',id:d.id};break;
+ case'gav':{const v={};MZA.forEach(k=>v[k]='');FORM={k:'mrl',id:null,d:today(),v,oth:false};break}
+ case'gmod':d.id=FORM.id;
+ case'gedit':{const g=(S.goals||[]).find(x=>x.id===d.id);if(!g)return;const rr=gRangeD(g);FORM={k:'ged',id:g.id,ty:g.ty,tg:String(g.tg).replace('.',','),per:g.per||'mois',lab:g.lab||'',from:g.from||rr[0],to:g.to||rr[1],sv:g.sv?String(g.sv).replace('.',','):'',sd:g.sd||today(),svx:0};break}
+ case'gsave':{const f=FORM,g=(S.goals||[]).find(x=>x.id===f.id),v=+String(f.tg).replace(',','.');if(!g||!(v>0))return;const bm=f.ty==='bw'||f.ty==='fat',sv=parseFloat(String(f.sv||'').replace(',','.'))||0,sd=f.sd||today();if(bm&&sv>0&&f.svx)mzPut(f.ty==='bw'?'w':'f',sv,sd);Object.assign(g,{ty:f.ty,tg:v,per:f.per,from:f.from,to:f.to,lab:(f.lab||'').trim(),sv:bm&&sv>0?sv:undefined,sd:bm&&sv>0?sd:undefined});FORM=null;save();break}
  case'gdel':case'gdsw':{const id=d.a==='gdsw'?d.id:FORM.id;FORM={k:'cf',t:'Supprimer cet objectif ?',m:'Action irréversible.',fn:()=>{S.goals=(S.goals||[]).filter(x=>x.id!==id);save();render()}};break}
  case'pexo':V={p:'pexo'};PF='all';PQ='';TOP=1;break;
+ case'prec':V={p:'prec'};RM='w';RG='all';RQ='';TOP=1;break;
+ case'rmt':RM=d.v;break;
+ case'rgp':RG=d.v;break;
+ case'rb3':FORM={k:'b3',i:+d.i,q:''};break;
+ case'rb3p':{const i=FORM.i,a=b3Get(recData()).slice(),j=a.indexOf(d.n);if(j>=0&&j!==i)a[j]=a[i];a[i]=d.n;S.big3=a;FORM=null;save();break}
+ case'rb3x':{const a=b3Get(recData()).slice();a[FORM.i]=null;S.big3=a;FORM=null;save();break}
+ case'rcd':FORM={k:'rcd',n:d.n};break;
  case'pst':V={p:'pstat'};PS.o=0;TOP=1;break;
  case'psess':V={p:'psess',k:d.k};PS.o=0;PSALL=false;TOP=1;break;
  case'psall':PSALL=!PSALL;break;
@@ -2163,6 +2353,8 @@ A('click',ev=>{const b=ev.target.closest('[data-a]');if(!b||(b.classList.contain
  case'pdet':V={p:'pdet'};TOP=1;break;
  case'pdback':V={p:'pstat'};TOP=1;break;
  case'pmes':V={p:'pmes'};TOP=1;break;
+ case'gopen':V={p:'pgoal',id:d.id};TOP=1;break;
+ case'pgback':V={p:'pobj'};TOP=1;break;
  case'pmall':V={p:'pmall'};TOP=1;break;
  case'pmback':V={p:'pmes'};TOP=1;break;
  case'mzr':MZR=d.v;break;
@@ -2175,10 +2367,10 @@ A('click',ev=>{const b=ev.target.closest('[data-a]');if(!b||(b.classList.contain
  case'mfd':{const sc=$('#dlg .xnw');FORM.sc=sc?sc.scrollTop:0;FORM={k:'mkb',back:FORM,key:d.v,s:FORM.v[d.v]||''};break}
  case'mkp':{const f=FORM,v=d.v;let t=f.s;if(v===','){if(t.includes(','))return;t=(t||'0')+','}else{if(t==='0')t='';if(t.replace(',','').length>=5)return;const q=t.split(',');if(q[1]!==undefined&&q[1].length>=2)return;t+=v}f.s=t;break}
  case'mkd':FORM.s=FORM.s.slice(0,-1);if(FORM.s==='0')FORM.s='';break;
- case'mkok':{const b=FORM.back;b.v[FORM.key]=FORM.s.replace(/,$/,'');FORM=b;break}
+ case'mkok':{const b=FORM.back,val=FORM.s.replace(/,$/,'');if(FORM.fld){b[FORM.fld]=val;if(FORM.fld==='sv'){b.svx=FORM.manual?0:1;if(FORM.manual&&parseFloat(val.replace(',','.'))>0){FORM={k:'gsv',back:b};break}}}else b.v[FORM.key]=val;FORM=b;break}
  case'mdt':{const sc=$('#dlg .xnw');FORM.sc=sc?sc.scrollTop:0;const [y,m,j]=FORM.d.split('-').map(Number);FORM={k:'mdt',back:FORM,y,m,d:j};break}
  case'mwj':{const w=document.querySelector('#dlg .mzw[data-c='+d.c+']');if(w)w.scrollTo({top:d.j*44,behavior:'smooth'});return}
- case'mdok':{const f=FORM,b=f.back,dim=mzDim(f.y,f.m);let k=f.y+'-'+pad2(f.m)+'-'+pad2(Math.min(f.d,dim));b.d=k;FORM=b;break}
+ case'mdok':{const f=FORM,b=f.back,dim=mzDim(f.y,f.m);let k=f.y+'-'+pad2(f.m)+'-'+pad2(Math.min(f.d,dim));if(f.fld){b[f.fld]=k;if(f.fld==='from'&&b.to&&b.to<k)b.to=k;if(f.fld==='to'&&b.from&&b.from>k)b.from=k;if(f.fld==='sd'&&parseFloat(String(b.sv||'').replace(',','.'))>0)b.svx=1}else b.d=k;FORM=b;break}
  case'msave':{const f=FORM,vals={};MZA.forEach(k=>{const n=parseFloat(String(f.v[k]).replace(',','.'));if(n>0)vals[k]=n});if(!Object.keys(vals).length)return;S.meas=S.meas||[];const dd=f.d||today(),ex=S.meas.find(y=>y.d===dd&&y.id!==f.id);
   if(f.id){const r=S.meas.find(y=>y.id===f.id);if(ex){Object.assign(ex,vals);S.meas=S.meas.filter(y=>y.id!==f.id)}else{MZA.forEach(k=>delete r[k]);Object.assign(r,{d:dd},vals)}}else if(ex)Object.assign(ex,vals);else S.meas.push({id:uid(),d:dd,...vals});
   FORM=null;save();break}
@@ -2203,6 +2395,7 @@ A('click',ev=>{const b=ev.target.closest('[data-a]');if(!b||(b.classList.contain
  case'xo':XO.has(e.id)?XO.delete(e.id):XO.add(e.id);break;
  case'sm':FORM={k:'sm'};break;
  case'ou':{const o=OPT(s);if(o.u!==d.u)s.ex.forEach(x=>{if(x.ci)x.items.forEach(it=>{it.kg=cvu(it.kg,o.u,d.u)});else x.s.forEach(y=>{y.c=cvu(y.c,o.u,d.u)})});s.opt={...o,u:d.u};touch(s);break}
+ case'oar':{const o=OPT(s);s.opt={...o,art:!o.art};touch(s);break}
  case'otp':{const o=OPT(s);s.opt={...o,tp:!o.tp};touch(s);break}
  case'ocs':{const o=OPT(s);s.opt={...o,csnd:!o.csnd};touch(s);break}
  case'opv':{s.opt={...OPT(s),pv:d.v};touch(s);break}
@@ -2327,7 +2520,7 @@ A('click',ev=>{const b=ev.target.closest('[data-a]');if(!b||(b.classList.contain
  case'ds':e.s.splice(+d.s,1);if(!e.s.length)e.s.push({t:'T',r:'',c:'',ok:false});touch(s);break;
  case'type':{const x=e.s[+d.s];x.t=x.t==='T'?'E':'T';touch(s);break}
  case'tech':e.tech=d.t;touch(s);break;
- case'ok':{const x=e.s[+d.s];x.ok=!x.ok;if(x.ok)x.at=Date.now();else delete x.at;touch(s);if(x.ok&&e.rep>0&&!done(s)&&!s.tpl){const nx=s.ex[s.ex.indexOf(e)+1];if(!(e.g&&e.gt==='ss'&&nx&&nx.g===e.g))rest(e.rep,s.from?!!OPT(s).snd:true,rdNext(s,e,+d.s))}break}
+ case'ok':{const x=e.s[+d.s];x.ok=!x.ok;if(x.ok)x.at=Date.now();else delete x.at;touch(s);if(x.ok&&e.rep>0&&OPT(s).art&&!done(s)&&!s.tpl){const nx=s.ex[s.ex.indexOf(e)+1];if(!(e.g&&e.gt==='ss'&&nx&&nx.g===e.g))rest(e.rep,s.from?!!OPT(s).snd:true,rdNext(s,e,+d.s))}break}
  case'dup':{const n=JSON.parse(JSON.stringify(s));n.id=uid();n.d=today();n.u=Date.now();n.ex.forEach(x=>{x.id=uid();x.prev=x.s.map(y=>({r:y.r,c:y.c}));x.s.forEach(y=>{y.r='';y.c='';y.ok=false})});S.seances.push(n);save();V={p:'edit',id:n.id};break}
  case'ds2':FORM={k:'cf',t:'Supprimer cette séance ?',m:'Action irréversible.',fn:()=>{s.del=true;touch(s);V={p:'home'};render();sync().then(soft)}};break;
  case'st':clearInterval(T);$('#timer').hidden=true;return;
