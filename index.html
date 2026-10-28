@@ -724,8 +724,8 @@ html[data-vt=lback]::view-transition-new(root){animation:vtInL .32s cubic-bezier
 .dh{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:14px;padding:10px 0;margin:0 -12px;padding-left:12px;padding-right:12px;background:linear-gradient(var(--bg) 75%,transparent)}
 .dh .cbtn{width:42px;height:42px}.dh h1{flex:1;margin:0;font:700 25px/1.1 "Avenir Next Condensed","Arial Narrow",sans-serif;letter-spacing:-.01em}
 .dd{margin-top:14px;font:600 13px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:var(--dc)}
-.dt{display:flex;align-items:center;gap:12px;margin:8px 0 14px}.dt>i{flex:none;width:6px;align-self:stretch;border-radius:3px;background:var(--dc)}
-.dt b{display:block;font:700 34px/1.05 "Avenir Next Condensed","Arial Narrow",sans-serif}.dt span{color:var(--mut);font-size:15px}
+.dnm{display:flex;align-items:center;gap:12px;margin:6px 0 14px}.dnm>i:first-child{flex:none;width:6px;align-self:stretch;border-radius:3px;background:var(--dc)}
+.dnm b{display:block;font:700 26px/1.1 "Avenir Next Condensed","Arial Narrow",sans-serif}.dnm .grow span{display:block;margin-top:2px;color:var(--mut);font-size:15px}.dnm .dpr{flex:none;align-self:flex-start;margin-top:4px}
 .dpr{font:600 12px ui-monospace,Menlo,monospace;letter-spacing:.08em;font-style:normal;color:#d19a00;background:rgba(245,180,0,.14);border:1px solid rgba(245,180,0,.3);border-radius:999px;padding:7px 12px;white-space:nowrap}
 .dlk{display:inline-flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:11px 16px;font:600 16px "Avenir Next",system-ui,sans-serif;color:var(--ink);margin-bottom:14px}
 .dlk u{width:11px;height:11px;border-radius:4px;background:var(--dc)}.dlk span{color:var(--mut)}
@@ -734,15 +734,15 @@ html[data-vt=lback]::view-transition-new(root){animation:vtInL .32s cubic-bezier
 .dst span{display:block;margin-top:8px;font:12px ui-monospace,Menlo,monospace;letter-spacing:.12em;color:var(--mut)}
 .dst .r1 b{white-space:nowrap}.dst .r1{display:grid;grid-template-columns:repeat(3,1fr);text-align:center;padding:0 0 18px;border-bottom:1px solid var(--line);margin:0 4px}.dst .pv b{color:var(--p,#a855f7)}
 .dst .r2{display:grid;grid-template-columns:repeat(2,1fr);margin-top:14px;text-align:center}.dst .r2>div+div{border-left:1px solid var(--line)}.dst .r2 b{font-size:24px}.dst .r2 span{font-size:11px}
-.dmc{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:18px 16px;margin-top:22px}
-.dmh{display:flex;justify-content:space-between;align-items:baseline}.dmh h2{margin:0;font:700 22px "Avenir Next",system-ui,sans-serif}.dmh span{font-size:14px;color:var(--mut)}
-.dbs{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:14px;text-align:center}.dbs span{display:block;font:12px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:var(--mut);margin-top:6px}
-.bd{width:100%;height:340px}
+.dmc{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:13px 14px;margin-top:16px}
+.dmh{display:flex;justify-content:space-between;align-items:baseline}.dmh h2{margin:0;font:700 18px "Avenir Next",system-ui,sans-serif}.dmh span{font-size:12px;color:var(--mut)}
+.dbs{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:8px;text-align:center}.dbs span{display:block;font:11px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:var(--mut);margin-top:2px}
+.bd{width:100%;height:210px}
 .bo{fill:color-mix(in srgb,var(--ink) 22%,var(--card))}
 .bi{fill:var(--card)}
 .mz{fill:color-mix(in srgb,var(--ink) 7.5%,var(--card))}.mx{fill:color-mix(in srgb,var(--ink) 12%,var(--card))}
 .mz.on{fill:var(--dc)}
-.dlg2{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:14px;font-size:14px;color:var(--mut)}.dlg2 i{width:110px;height:8px;border-radius:4px;background:linear-gradient(90deg,color-mix(in srgb,var(--dc) 55%,var(--card)),var(--dc))}
+.dlg2{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:8px;font-size:12px;color:var(--mut)}.dlg2 i{width:90px;height:8px;border-radius:4px;background:linear-gradient(90deg,color-mix(in srgb,var(--dc) 55%,var(--card)),var(--dc))}
 .dml{margin-top:14px;display:grid;gap:6px}.dml div{display:flex;justify-content:space-between;color:var(--mut);font-size:15px}.dml b{font-weight:600;color:var(--ink)}
 .dsec{display:flex;align-items:center;gap:10px;margin:26px 6px 10px;font:600 14px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:var(--mut)}
 .drc{background:rgba(245,180,0,.1);border:1px solid rgba(245,180,0,.28);border-radius:22px;padding:6px 18px}.drc div{display:flex;justify-content:space-between;align-items:center;padding:14px 0}.drc div+div{border-top:1px solid rgba(245,180,0,.25)}
@@ -1533,7 +1533,7 @@ function detView(s){
   return`<div class=dxc><div class=dxh><i>${i+1}</i><b>${esc(e.n||'Exercice')}</b></div><div class=dxt><span>SÉRIE</span><span>POIDS × RÉPS</span></div>${e.s.map((x,j)=>{const tg=x.t&&x.t!=='T'&&STY[x.t]?`<em style="--c:${STC[x.t]}">${STY[x.t][0]}</em>`:'';const v=(x.c!==''&&x.c!=null?fmt(+x.c)+' kg':'')+(x.r!==''&&x.r!=null?(x.c!==''&&x.c!=null?' × ':'')+x.r+(x.c!==''&&x.c!=null?'':' reps'):'');return`<div class="dxr${x.ok||!(s.from||s.free)?'':' off'}"><b>${j+1}</b><span>${v||'–'}</span>${tg}</div>`}).join('')}</div>`}).join('');
  return`<div class=dv style="--dc:${col}"><div class=dh><button class=cbtn data-a=dback aria-label="Retour"><svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M15 5l-7 7 7 7"/></svg></button><h1>Détail de l’entraînement</h1><button class=cbtn data-a=dxm aria-label="Options">${DOTS}</button></div>
  <div class=dd>${esc(jour(s.d).replace(/\.$/,'')).toUpperCase()} · ${hm(t0)}${s.t0&&s.end?' → '+hm(s.end):''}</div>
- <div class=dt><i></i><div class=grow><b>${esc(nm)}</b><span>${pl(s.ex.length,'exercice')}</span></div></div>
+ <div class=dnm><i></i><div class=grow><b>${esc(nm)}</b><span>${pl(s.ex.length,'exercice')}</span></div>${Object.values(exHist()).some(m=>m.prs.some(q=>q.id===s.id))?'<i class=dpr>NOUVEAU PR</i>':''}</div>
  ${tpl?`<button class=dlk data-a=dtpl data-id=${tpl.id}><u></u>Voir la séance ${esc(tpl.nom||'')}<span>›</span></button>`:''}
  <div class=dst><div class=r1><div><b>${ms>0?mmss(ms):'–'}</b><span>DURÉE</span></div><div><b>${fmt(st.t)}<small> kg</small></b><span>VOLUME</span></div><div><b>${nser(s)}<small> / ${tot}</small></b><span>SÉRIES</span></div></div>
  <div class=r2><div><b>${ms>0&&st.t?fmt(st.t/(ms/60000))+'<small> kg/min</small>':'–'}</b><span>DENSITÉ</span></div><div><b>${rp}</b><span>REPOS MOYEN</span></div></div></div>
