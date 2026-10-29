@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Muscu">
 <meta name="theme-color" content="#1b2a2f">
@@ -1013,6 +1013,7 @@ button.prt{background:none;border:0;padding:0;color:var(--ink);width:100%;text-a
 .gc{cursor:pointer}.gc .tb{flex:1;min-width:0}.gc .tb .tt{display:block;flex:none;margin:0;line-height:1.25;font:inherit;font-size:16.5px;font-weight:600}.gc .tb .gcd,.gc .tb .gcm{display:block;margin:2px 0 0;white-space:nowrap}.gwr .gc{padding:8px 15px 12px}.gc .gdots{flex:none;align-self:center;line-height:1;font-size:18px}.gc .v2{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:12px 0 8px}.gc .v2 .v{margin:0}.gc .v2 .pc,.gc .v2 .tag{flex:none}
 .gadd{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:6px;padding:13px;border-radius:20px;border:1.5px dashed var(--line);background:var(--card);color:var(--acc2);font-weight:600;font-size:16px}
 .gdr{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.gnone{margin:10px 0 6px;padding:18px 16px;border:1px dashed var(--line);border-radius:20px;text-align:center;color:var(--mut);font-size:15px}
 .gdb{display:block;width:100%;text-align:left;border:1px solid var(--line);background:color-mix(in srgb,var(--ink) 2.5%,var(--card));border-radius:20px;padding:13px 16px;color:var(--ink)}.gdb b{display:block;font:600 19px var(--fc)}button.gdb:active{opacity:.7}.gcm{margin:6px 0 0 50px;color:var(--mut);font-size:13.5px}.gcd{margin:6px 0 0 50px;color:var(--mut);font:12.5px ui-monospace,Menlo,monospace;letter-spacing:.04em}
 .gdr small{display:block;margin:0 0 6px 2px;font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:var(--mut)}
 .gdr input{width:100%}
@@ -1129,7 +1130,10 @@ body:has(#app.vtl),body:has(#app.vtb){overflow-x:hidden}
 .fl2{font:13px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:var(--mut);margin:22px 0 10px 2px}
 .scs{display:grid;grid-template-columns:70px 1fr 70px;align-items:center;height:58px;border:1px solid var(--line);border-radius:22px;background:color-mix(in srgb,var(--ink) 2.5%,var(--card))}.scs b{text-align:center;font:800 28px var(--fc)}.scs button{background:none;height:100%;font:600 30px var(--fc);color:var(--ink)}
 .scpr{display:flex;gap:12px;flex-wrap:wrap}.scpr button{min-width:70px;height:44px;border-radius:999px;border:1px solid var(--line);background:var(--card);font:700 18px var(--fc);color:var(--ink);padding:0 20px}.scpr button.on{background:var(--acc);border-color:var(--acc);color:#fff}
-</style></head><body><main id="app"></main><div id="timer" hidden></div><div id="mini" class="thd lvh mini2" hidden></div><div id="dlg"></div>
+*{touch-action:manipulation}html{-webkit-text-size-adjust:100%}</style></head><body><script>
+['gesturestart','gesturechange','gestureend'].forEach(e=>document.addEventListener(e,ev=>ev.preventDefault(),{passive:false}));
+let _lt=0;document.addEventListener('touchend',ev=>{const n=Date.now();if(n-_lt<350&&!/^(INPUT|TEXTAREA|SELECT)$/.test((ev.target||{}).tagName||''))ev.preventDefault();_lt=n},{passive:false});
+</script><main id="app"></main><div id="timer" hidden></div><div id="mini" class="thd lvh mini2" hidden></div><div id="dlg"></div>
 <script>
 const K='muscu_v1',$=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -1916,7 +1920,7 @@ function gSheet0(f){
  if(f.k==='gcur'){const b=f.back,k=b.ty==='bw'?'w':'f',T=GT[b.ty],A=mzAll().filter(x=>x[k]>0).reverse().slice(0,30);
   return gSheet0(b)+`<div class=sov data-a=fno style="background:rgba(0,0,0,.28)"><div class="sheet sh2 xnw"><div class=grab></div><h2>${b.ty==='bw'?'Poids actuel':'Masse grasse actuelle'}</h2><p class=sub2>Saisis une valeur ou choisis une mesure déjà enregistrée.</p>
   <button class="mi dm" data-a=gcman><span><b>Saisir manuellement</b><small>Ajoutée à tes mesures, aujourd’hui</small></span></button>
-  ${A.length?`<div class=fl>MESURES ENREGISTRÉES</div>${A.map(x=>`<button class="mi dm" data-a=gcpick data-id=${x.id}><span><b>${fmt(x[k])} ${T.u}</b><small>${mzDfull(x.d)}</small></span></button>`).join('')}`:''}
+  <div class=fl>MESURES ENREGISTRÉES</div>${A.length?A.map(x=>`<button class="mi dm" data-a=gcpick data-id=${x.id}><span><b>${fmt(x[k])} ${T.u}</b><small>${mzDfull(x.d)}</small></span></button>`).join(''):`<div class=gnone>Aucune valeur enregistrée</div>`}
   ${parseFloat(String(b.sv||'').replace(',','.'))>0?`<button class=gdng data-a=gcclr style="margin-top:6px">Effacer</button>`:''}</div></div>`}
  if(f.k==='gty'){const sec=(l,a)=>(l?`<div class=sh-l>${l}</div>`:'')+a.map(k=>`<button class="mi dm" data-a=gpick data-t=${k}><span><b>${GT[k].n}</b><small>${GT[k].d}</small></span></button>`).join('');
   return sh2('Nouvel objectif','Choisis le type d’objectif.',sec('FORCE',['pr'])+sec('VOLUME',['vol'])+sec('COMPOSITION',['bw','fat']))}
