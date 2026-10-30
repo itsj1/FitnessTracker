@@ -152,25 +152,25 @@ label.ck input{width:auto}
 .ah .av{width:40px;height:40px;border-radius:50%;background:var(--acc);color:#fff;font-size:19px;box-shadow:0 2px 8px rgba(0,0,0,.18);flex:none;margin-left:4px}
 .cal{display:grid;grid-template-columns:repeat(7,1fr);row-gap:0;text-align:center}
 .cal .wd{font:12px ui-monospace,Menlo,monospace;color:var(--mut);padding:10px 0 4px}
-.cd{background:none;padding:4px 0 2px;border-radius:12px;display:flex;flex-direction:column;align-items:center;gap:4px;min-height:46px;font-size:20px;font-weight:500}
+.cd{background:none;padding:2px 0;border-radius:12px;display:flex;flex-direction:column;align-items:center;gap:2px;min-height:46px;font-size:20px;font-weight:500}
 .cd i{width:6px;height:6px;border-radius:50%;background:transparent;display:block}
 .cd.has i{background:var(--acc)}
 .cd.o{color:var(--mut)}.cd.o span{opacity:.55}.cd.o.has i{opacity:.45}
 .cd.tod span{color:var(--acc);font-weight:800}
-.cd.sel{background:color-mix(in srgb,var(--acc) 16%,transparent)}
-.sc{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;width:max-content;gap:8px;margin:12px auto 4px}
+.cd>span{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;line-height:1}.cd.sel{background:none}.cd.sel>span{background:color-mix(in srgb,var(--acc) 16%,transparent)}
+.sc{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;width:max-content;gap:8px;margin:12px auto 30px}
 .sc div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 12px;min-width:104px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
 .sc b{display:block;font:700 22px/1 "Avenir Next Condensed","Arial Narrow","Helvetica Neue",sans-serif;margin-bottom:4px}
 .sc span{font:10px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:var(--mut);text-transform:uppercase}
 .lh2{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
 .lh2 button{background:none;color:var(--acc);font-weight:600;padding:4px 0}
 .dgh{display:flex;justify-content:space-between;align-items:baseline;margin:22px 2px 6px;scroll-margin-top:12px}
-.dgh b{font:700 17px "Avenir Next Condensed","Arial Narrow","Helvetica Neue",sans-serif;text-transform:uppercase}
+.dgh b{font:700 15px "Avenir Next Condensed","Arial Narrow","Helvetica Neue",sans-serif;text-transform:uppercase}
 .dgh span{font:13px ui-monospace,Menlo,monospace;color:var(--mut)}
 .ac{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:8px 0;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.04)}
 .ac>i{align-self:stretch;width:5px;border-radius:3px;background:var(--c);flex:none}
 .ac.sel{background:color-mix(in srgb,var(--acc) 14%,var(--card))}
-.ac b{font:700 20px/1.2 "Avenir Next Condensed","Arial Narrow","Helvetica Neue",sans-serif}
+.ac b{font:700 17px/1.2 "Avenir Next Condensed","Arial Narrow","Helvetica Neue",sans-serif}
 .ac .tm{font:600 14px ui-monospace,Menlo,monospace;letter-spacing:.03em}
 .ac .en{font:700 12px ui-monospace,Menlo,monospace;letter-spacing:.06em;color:var(--acc)}
 .ac .me{margin-top:3px;line-height:1.5}
@@ -1130,7 +1130,30 @@ body:has(#app.vtl),body:has(#app.vtb){overflow-x:hidden}
 .fl2{font:13px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:var(--mut);margin:22px 0 10px 2px}
 .scs{display:grid;grid-template-columns:70px 1fr 70px;align-items:center;height:58px;border:1px solid var(--line);border-radius:22px;background:color-mix(in srgb,var(--ink) 2.5%,var(--card))}.scs b{text-align:center;font:800 28px var(--fc)}.scs button{background:none;height:100%;font:600 30px var(--fc);color:var(--ink)}
 .scpr{display:flex;gap:12px;flex-wrap:wrap}.scpr button{min-width:70px;height:44px;border-radius:999px;border:1px solid var(--line);background:var(--card);font:700 18px var(--fc);color:var(--ink);padding:0 20px}.scpr button.on{background:var(--acc);border-color:var(--acc);color:#fff}
-*{touch-action:manipulation}html{-webkit-text-size-adjust:100%}</style></head><body><script>
+*{touch-action:manipulation}html{-webkit-text-size-adjust:100%}.rxh{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0 0}
+.rxb{min-width:0;border-radius:24px;padding:14px 16px;background:color-mix(in srgb,var(--acc) 8%,var(--card));border:1px solid color-mix(in srgb,var(--acc) 26%,transparent)}
+.rxb.e{background:color-mix(in srgb,var(--acc) 16%,var(--card));border-color:color-mix(in srgb,var(--acc) 40%,transparent)}
+.rxb small{display:block;font:600 10px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:var(--acc2)}
+.rxb b{display:block;margin:8px 0 6px;font:800 32px/1.05 var(--fc);color:var(--ink)}
+.rxb b u{text-decoration:none;font:500 14px "Avenir Next",system-ui,sans-serif;color:var(--mut);margin-left:5px}
+.rxb em{display:block;font:400 12px/1.3 "Avenir Next",system-ui,sans-serif;font-style:normal;color:var(--mut)}
+.rxc{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:14px -12px 0;padding:2px 12px}
+.rxc::-webkit-scrollbar{display:none}
+.rxc button{flex:none;display:flex;align-items:center;gap:8px;border-radius:999px;padding:10px 16px;font:500 14px "Avenir Next",system-ui,sans-serif;background:var(--card);border:1px solid var(--line);color:var(--ink)}
+.rxc button i{width:9px;height:9px;border-radius:50%;background:var(--acc)}
+.rxc button.on{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.rxg{margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:12px 10px 8px}
+.rxg svg{display:block;width:100%;height:auto}
+.rxg .no{height:210px;display:grid;place-items:center;text-align:center;padding:0 24px;color:var(--mut);font:400 15px/1.4 "Avenir Next",system-ui,sans-serif;background:var(--bg);border-radius:18px}
+.rxp{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:4px;margin:12px 0 0}
+.rxp button{background:none;border-radius:14px;padding:9px 0;font-size:13.5px;font-weight:500;color:var(--mut)}
+.rxp button.on{background:var(--acc);color:#fff;font-weight:600}
+.rxd{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rxd>div{min-width:0;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px 16px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.rxd small{display:block;font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:var(--mut)}
+.rxd b{display:block;margin:8px 0 6px;font:800 22px/1.05 var(--fc);color:var(--acc)}
+.rxd em{display:block;font:400 13px/1.3 "Avenir Next",system-ui,sans-serif;font-style:normal;color:var(--mut)}
+</style></head><body><script>
 ['gesturestart','gesturechange','gestureend'].forEach(e=>document.addEventListener(e,ev=>ev.preventDefault(),{passive:false}));
 let _lt=0;document.addEventListener('touchend',ev=>{const n=Date.now();if(n-_lt<350&&!/^(INPUT|TEXTAREA|SELECT)$/.test((ev.target||{}).tagName||''))ev.preventDefault();_lt=n},{passive:false});
 </script><main id="app"></main><div id="timer" hidden></div><div id="mini" class="thd lvh mini2" hidden></div><div id="dlg"></div>
@@ -1521,7 +1544,6 @@ function actView(){PRSX={};Object.values(exHist()).forEach(m=>m.prs.forEach(p=>{
  return`<div class=ah><button class=nv data-a=mprev aria-label="Mois précédent">‹</button><div class=mt><b>${cap(mn)}</b><span>${MO.y}</span></div><button class=tdy data-a=mtoday>Aujourd’hui</button><button class=nv data-a=mnext aria-label="Mois suivant">›</button><button class="pill rnd" data-a=cfg aria-label=Réglages>${SI('gear',20)}</button></div>
  <div class=cal>${['L','M','M','J','V','S','D'].map(x=>`<div class=wd>${x}</div>`).join('')}${cells}</div>
  <div class=sc><div><b>${wc}</b><span>${wl}</span></div><div><b>${mc}</b><span>${isCur?'Ce mois':mn}</span></div><div><b class=vpr>${prc}<span style="margin-left:5px">PR</span></b><span>${isCur?'Ce mois':mn}</span></div></div>
- ${L.length?`<div class=lh2><span class=h2>ENTRAÎNEMENTS</span>${SEL?'<button data-a=selcancel>Annuler</button>':'<button data-a=selmode>Sélectionner</button>'}</div>`:''}
  ${SEL?`<div class=selbar><button class=selb data-a=selall>${SEL.size===L.length?'Tout désélectionner':'Tout sélectionner'}</button><button class="selb red" data-a=seldel ${SEL.size?'':'disabled'}>${SI('trash',18)}Supprimer${SEL.size?' ('+SEL.size+')':''}</button></div>`:''}
  ${msg&&!/^Synchronis/.test(msg)?`<p class=mut>${esc(msg)}</p>`:''}
  ${days.map(dd=>{const l=g[dd].sort((a,b)=>(b.t0||b.u)-(a.t0||a.u));return`<div class=dgh id=dg-${dd}><b>${dd===T0?'Auj. · ':''}${jour(dd)}</b><span>${l.length} entraînement${l.length>1?'s':''}</span></div>${l.map(actCard).join('')}`}).join('')||(live().some(done)?`<div class=lve><h3>Aucun entraînement en ${esc(cap(mn))} ${MO.y}</h3></div>`:`<div class=lve><h3>Pas encore d’entraînement</h3><p>Démarre ton premier entraînement dans l’onglet Séances.</p></div>`)}`}
@@ -1690,6 +1712,40 @@ const rcdSheet=f=>{const R=recData(),m=R.by[f.n];if(!m)return'';
  hist=R.ev.filter(e=>e.n===f.n).slice(0,10).map(e=>`<div class=rtr><i></i><span class=d>${rDate(e.d)}</span><span class=n>${e.t==='w'?'Nouveau record':'Plus de reps'}</span><span class=vl>${rVal(e.t,e.v)}</span></div>`).join('');
  return sh2(esc(f.n),esc(exSub(f.n)),`<div class=rdg>${st}</div>${hist?`<div class=sh-l>HISTORIQUE DES PR</div><div class=rtl>${hist}</div>`:''}`)};
 const rSheet=f=>(f.k==='b3'?b3Sheet(f):rcdSheet(f)).replace('<div class=sov ','<div class="sov rth" ');
+let RX={m:'orm',p:'all'};
+const RXM=[['orm','1RM estimé','o'],['w','Charge max','w'],['v','Volume','v'],['r','Reps max','r']],RXP=[['6s','6 sem',42],['3m','3 mois',91],['6m','6 mois',182],['1a','1 an',365],['all','Tout',0]];
+const rxV=v=>String(Math.round(v*10)/10).replace('.',',')+' kg';
+function rexData(n){const ss=[];
+ pgDone().forEach(s=>s.ex.forEach(e=>{if(String(e.n||'').trim()!==n)return;
+  let bc=-1,br=0,vol=0,mr=0,mrc=0,bo=0,boc=0,bor=0,o1=0,k=0;
+  e.s.forEach(x=>{if(x.t==='E'||!(x.r>0)||!(x.ok||!(s.from||s.free)))return;const c=+x.c||0,r=+x.r;k++;vol+=c*r;if(r>mr||(r===mr&&c>mrc)){mr=r;mrc=c}if(c>bc||(c===bc&&r>br)){bc=c;br=r}const e1=c>0?(r===1?c:c*(1+r/30)):0;if(e1>bo){bo=e1;boc=c;bor=r}if(r===1&&c>o1)o1=c});
+  if(bc<0)return;ss.push({d:s.d,w:bc,wr:br,o:bo,boc,bor,o1,r:mr,rc:mrc,v:vol,k})}));
+ return ss}
+function rexChart(pts,uf,sel){const W=320,H=210,L=40,R=16,T=22,B=28,t=d=>new Date(d+'T00:00').getTime(),n=pts.length,t0=t(pts[0].d),dt=t(pts[n-1].d)-t0;
+ let lo=Math.min(...pts.map(p=>p.v)),hi=Math.max(...pts.map(p=>p.v));if(hi===lo){lo-=1;hi+=1}const pd=(hi-lo)*.18;lo=Math.max(0,lo-pd);hi+=pd;
+ const X=(p,i)=>L+(dt?(t(p.d)-t0)/dt:n>1?i/(n-1):.5)*(W-L-R),Y=p=>T+(1-(p.v-lo)/(hi-lo))*(H-T-B),lab=v=>v>=1000?fmt(v/1000)+'k':fmt(v),
+ xy=pts.map((p,i)=>[X(p,i),Y(p)]),ln=xy.map((q,i)=>(i?'L':'M')+q[0].toFixed(1)+','+q[1].toFixed(1)).join(' '),
+ ar=ln+' L'+xy[n-1][0].toFixed(1)+','+(H-B)+' L'+xy[0][0].toFixed(1)+','+(H-B)+' Z',
+ gr=[0,.5,1].map(f=>{const v=lo+(hi-lo)*f,y=T+(1-f)*(H-T-B);return`<line x1="${L}" x2="${W-R}" y1="${y.toFixed(1)}" y2="${y.toFixed(1)}" style="stroke:var(--line)" stroke-dasharray="3 4"/><text x="${L-6}" y="${(y+3.5).toFixed(1)}" text-anchor="end" style="fill:var(--mut);font:10px ui-monospace,Menlo,monospace">${lab(v)}</text>`}).join(''),
+ lt=pts[n-1],si=sel===-1?-1:sel==null||sel<0||sel>=n?n-1:sel,sp=pts[si>=0?si:n-1],sx=xy[si>=0?si:n-1][0],sy=xy[si>=0?si:n-1][1],tx=uf(sp.v),dl=rDate(sp.d),tw=Math.max(tx.length*6.8,dl.length*5.6)+18,bx=Math.min(Math.max(sx-tw/2,2),W-tw-2),by=sy>62?sy-46:sy+12;
+ return`<svg viewBox="0 0 ${W} ${H}"><defs><linearGradient id="rxgr" x1="0" x2="0" y1="0" y2="1"><stop offset="0" style="stop-color:var(--acc);stop-opacity:.28"/><stop offset="1" style="stop-color:var(--acc);stop-opacity:0"/></linearGradient></defs>${gr}<path d="${ar}" fill="url(#rxgr)"/><path d="${ln}" fill="none" style="stroke:var(--acc)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>${xy.map((q,i)=>`<circle cx="${q[0].toFixed(1)}" cy="${q[1].toFixed(1)}" r="${i===si?5.5:3.5}" style="${i===si?'fill:var(--acc);stroke:var(--card)':'fill:var(--card);stroke:var(--acc)'}" stroke-width="2"/>`).join('')}${xy.map((q,i)=>`<circle cx="${q[0].toFixed(1)}" cy="${q[1].toFixed(1)}" r="16" fill="transparent" data-a=rxs data-i=${i} style="cursor:pointer"/>`).join('')}${si<0?'':`<g style="pointer-events:none"><rect x="${bx.toFixed(1)}" y="${by.toFixed(1)}" width="${tw.toFixed(1)}" height="34" rx="9" style="fill:var(--ink)"/><text x="${(bx+tw/2).toFixed(1)}" y="${(by+14).toFixed(1)}" text-anchor="middle" style="fill:var(--bg);font:700 11px ui-monospace,Menlo,monospace">${tx}</text><text x="${(bx+tw/2).toFixed(1)}" y="${(by+27).toFixed(1)}" text-anchor="middle" style="fill:var(--bg);opacity:.7;font:9px ui-monospace,Menlo,monospace">${dl}</text></g>`}<text x="${L}" y="${H-8}" style="fill:var(--mut);font:10px ui-monospace,Menlo,monospace">${rDate(pts[0].d)}</text><text x="${W-R}" y="${H-8}" text-anchor="end" style="fill:var(--mut);font:10px ui-monospace,Menlo,monospace">${rDate(lt.d)}</text></svg>`}
+function rexView(){const n=V.n,ss=rexData(n),hd=sub=>`<div class=pdh><button class=cbtn data-a=rxback aria-label="Retour">${SI('back',19)}</button><div><h1>${esc(n)}</h1><small>${sub}</small></div></div>`;
+ if(!ss.length)return`<div class="pgw rth">${hd('Aucun entraînement')}<div class=rem>Aucune donnée pour cet exercice.</div></div>`;
+ const mx=k=>ss.reduce((a,x)=>x[k]>a[k]?x:a,ss[0]),be=mx('o'),b1=mx('o1'),bw=ss.reduce((a,x)=>x.w>a.w||(x.w===a.w&&x.wr>a.wr)?x:a,ss[0]),br=ss.reduce((a,x)=>x.r>a.r||(x.r===a.r&&x.rc>a.rc)?x:a,ss[0]),bv=mx('v'),tv=ss.reduce((t,x)=>t+x.v,0),
+ mt=RXM.find(x=>x[0]===RX.m)||RXM[0],pr=RXP.find(x=>x[0]===RX.p)||RXP[4],cut=pr[2]?new Date(today()+'T00:00').getTime()-pr[2]*864e5:0,
+ pts=ss.filter(x=>x[mt[2]]>0&&(!cut||new Date(x.d+'T00:00').getTime()>=cut)).map(x=>({d:x.d,v:x[mt[2]]}));
+ return`<div class="pgw rth">${hd(pl(ss.length,'entraînement'))}
+ <div class=rxh><div class=rxb><small>1RM RÉALISÉ</small><b>${b1.o1>0?fmt(b1.o1)+'<u>kg</u>':'–'}</b><em>${b1.o1>0?rDate(b1.d):'Aucune série à 1 rep'}</em></div>
+ <div class="rxb e"><small>1RM ESTIMÉ</small><b>${be.o>0?Math.round(be.o)+'<u>kg</u>':'–'}</b><em>${be.o>0?'Prochain 1RM · d’après '+fmt(be.boc)+' kg × '+be.bor:'Pas de charge enregistrée'}</em></div></div>
+ <div class=rxc>${RXM.map(([k,t])=>`<button class="${RX.m===k?'on':''}" data-a=rxm data-v=${k}><i></i>${t}</button>`).join('')}</div>
+ <div class=rxg${pts.length>1?' data-a=rxs data-i=-1':''}>${pts.length>1?rexChart(pts,v=>mt[0]==='v'?rxV(v):mt[0]==='r'?fmt(v)+' reps':fmt(v)+' kg',RX.s):'<div class=no>Pas assez de données pour afficher une tendance</div>'}</div>
+ <div class=rxp>${RXP.map(([k,t])=>`<button class="${RX.p===k?'on':''}" data-a=rxp data-v=${k}>${t}</button>`).join('')}</div>
+ <div class=rhd>RECORDS DÉTAILLÉS</div>
+ <div class=rxd><div><small>POIDS MAX</small><b>${fmt(bw.w)} kg</b><em>${bw.wr} rep${bw.wr>1?'s':''} · ${rDate(bw.d)}</em></div>
+ <div><small>REPS MAX</small><b>${br.r}</b><em>${br.rc>0?fmt(br.rc)+' kg · ':''}${rDate(br.d)}</em></div>
+ <div><small>VOLUME ENTRAÎNEMENT</small><b>${rxV(bv.v)}</b><em>${pl(bv.k,'série')} · ${rDate(bv.d)}</em></div>
+ <div><small>VOLUME TOTAL</small><b>${rxV(tv)}</b><em>${pl(ss.length,'entraînement')}</em></div></div>
+ <div style="height:40px"></div></div>`}
 function progView(){const AD0=achData(),AL=AD0.cats.flatMap(c=>c.tiers.filter(t=>t.on&&t.date).map(t=>({c,t}))).sort((a,b)=>a.t.date<b.t.date?1:a.t.date>b.t.date?-1:b.t.i-a.t.i)[0],st=pgStreak(),g=pgGroup(),H=exHist(),ex=Object.keys(H).length,pm=today().slice(0,7),prs=[];
  Object.values(H).forEach(m=>m.prs.filter(p=>p.d.startsWith(pm)).forEach(p=>prs.push({n:m.n,c:p.c})));prs.length=0;recData().ev.filter(e=>e.d.startsWith(pm)).forEach(e=>prs.push({n:e.n,c:e.v,u:e.t==='r'?'reps':'kg'}));
  return`<div class=pgw><h1 class=tt>Progrès</h1>
@@ -1988,6 +2044,7 @@ function draw(){
  if(V.p==='psess')return a.innerHTML=psessView();
  if(V.p==='pexo')return a.innerHTML=pexoView();
  if(V.p==='prec')return a.innerHTML=precView();
+ if(V.p==='rex')return a.innerHTML=rexView();
  if(V.p==='det'&&cur())return a.innerHTML=detView(cur());
  if(V.p==='live'&&cur())return a.innerHTML=liveView(cur());
  if(V.p==='edit')return a.innerHTML=editView(cur());
@@ -2365,7 +2422,11 @@ A('click',ev=>{const b=ev.target.closest('[data-a]');if(!b||(b.classList.contain
  case'rb3':FORM={k:'b3',i:+d.i,q:''};break;
  case'rb3p':{const i=FORM.i,a=b3Get(recData()).slice(),j=a.indexOf(d.n);if(j>=0&&j!==i)a[j]=a[i];a[i]=d.n;S.big3=a;FORM=null;save();break}
  case'rb3x':{const a=b3Get(recData()).slice();a[FORM.i]=null;S.big3=a;FORM=null;save();break}
- case'rcd':FORM={k:'rcd',n:d.n};break;
+ case'rcd':V={p:'rex',n:d.n};RX={m:'orm',p:'all',s:null};TOP=1;break;
+ case'rxback':V={p:'prec'};TOP=1;break;
+ case'rxm':RX.m=d.v;RX.s=null;break;
+ case'rxs':{const i=+d.i;RX.s=(i>=0&&RX.s===i)?-1:i;break}
+ case'rxp':RX.p=d.v;RX.s=null;break;
  case'pst':V={p:'pstat'};PS.o=0;TOP=1;break;
  case'psess':V={p:'psess',k:d.k};PS.o=0;PSALL=false;TOP=1;break;
  case'psall':PSALL=!PSALL;break;
