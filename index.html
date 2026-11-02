@@ -1530,7 +1530,7 @@ const ask=(msg,fn,lab)=>{ASK={msg,fn,lab};render()};
  document.addEventListener('click',e=>{if(sup){e.stopPropagation();e.preventDefault()}},true)})();
 /* Transition d'écran : l'édition arrive par la droite ; en la quittant elle repart vers la droite */
 let LASTP=null;
-const PGD={'det@r':3,det:1,live:1,pstat:1,pmes:1,pobj:1,pexo:1,prec:1,pach:1,pdet:2,pexd:2,pmall:2,psess:1,pgoal:2};
+const PGD={'det@r':3,det:1,live:1,pstat:1,pmes:1,pobj:1,pexo:1,prec:1,pach:1,pdet:2,pexd:2,psl:1,pmall:2,psess:2,pgoal:2};
 function vtDir(a,b){if(a===null)return null;if(a!=='edit'&&b==='edit')return'fwd';if(a==='edit'&&b!=='edit')return'back';const da=PGD[a]||0,db=PGD[b]||0;if(a!==b&&da!==db&&(a==='home'||da)&&(b==='home'||db))return db>da?'lfwd':'lback';return null}
 function render(){const nk=V.p==='det'&&V.ret?'det@r':V.p,k=vtDir(LASTP,nk);LASTP=nk;
  if(k&&document.startViewTransition&&!matchMedia('(prefers-reduced-motion: reduce)').matches){const h=document.documentElement;h.dataset.vt=k;try{const t=document.startViewTransition(()=>renderNow());t.finished.finally(()=>{delete h.dataset.vt})}catch{delete h.dataset.vt;renderNow()}}else{renderNow();if(k==='lfwd'||k==='lback'){const ap=document.getElementById('app');if(ap&&!matchMedia('(prefers-reduced-motion: reduce)').matches){ap.classList.remove('vtl','vtb');void ap.offsetWidth;ap.classList.add(k==='lfwd'?'vtb':'vtl');setTimeout(()=>ap.classList.remove('vtl','vtb'),380)}}}}
@@ -1618,6 +1618,10 @@ function pgStreak(){const D=pgDone(),W=new Set(D.map(s=>monday(s.d))),m0=monday(
  return{n,bars,k:D.filter(s=>monday(s.d)===m0).length}}
 function pgGroup(){const D=pgDone();if(!D.length)return null;const key=s=>s.from||('n:'+(s.nom||'')),last=D[D.length-1],k=key(last),G=D.filter(s=>key(s)===k),tpl=S.seances.find(x=>x.id===last.from),T={};G.forEach(s=>{T[s.d]=(T[s.d]||0)+stats(s).t});
  return{k,nom:(tpl&&tpl.nom)||last.nom||'Entraînement libre',col:colOf(last),n:G.length,ds:Object.keys(T).sort().reverse().slice(0,3).map(d=>[d,T[d]])}}
+function pgGroups(){const D=pgDone(),key=s=>s.from||('n:'+(s.nom||'')),M={};D.forEach(s=>{const k=key(s);(M[k]||(M[k]=[])).push(s)});
+ return Object.keys(M).map(k=>{const G=M[k],last=G[G.length-1],tpl=S.seances.find(x=>x.id===last.from),T={};G.forEach(s=>{T[s.d]=(T[s.d]||0)+stats(s).t});return{k,last:last.d,nom:(tpl&&tpl.nom)||last.nom||'Entraînement libre',col:colOf(last),n:G.length,ds:Object.keys(T).sort().reverse().slice(0,3).map(d=>[d,T[d]])}}).sort((a,b)=>a.last<b.last?1:a.last>b.last?-1:0)}
+const pgCard=g=>`<div class=psc data-a=psess data-k="${esc(g.k)}" data-l=1 style="cursor:pointer"><div class=r1><i class=sq style="background:${g.col}"></i><span class=nm>${esc(g.nom)}</span><span class=cn>${g.n}×</span><span class=ar>${SI('arr',15)}</span><span class=ch>${SI('chev',17)}</span></div><div class=chs>${g.ds.map(([d,t])=>`<span>${pgd(d)}<i></i><b>${fmt(t)} kg</b></span>`).join('')}</div></div>`;
+function pslView(){const L=pgGroups();return`<div class=pgw><div class=pdh><button class=cbtn data-a=pback aria-label="Retour">${SI('back',19)}</button><div><h1>Mes séances</h1><small>${L.length?pl(L.length,'séance'):'Aucune séance'}</small></div></div><div style="display:grid;gap:10px;margin-top:14px">${L.map(pgCard).join('')||'<p class=mut style="text-align:center;margin:30px 0">Aucune séance terminée.</p>'}</div><div style="height:30px"></div></div>`}
 function exHist(){const M={};pgDone().forEach(s=>s.ex.forEach(e=>{const n=String(e.n||'').trim();if(!n)return;const m=M[n]||(M[n]={n,pr:0,last:null,inst:e,prs:[]});m.inst=e;let best=null;e.s.forEach(x=>{if(x.t==='E'||!(x.r>0)||!(x.ok||!(s.from||s.free)))return;const c=+x.c||0;if(!best||c>best.c||(c===best.c&&+x.r>best.r))best={c,r:+x.r}});if(!best)return;m.last={d:s.d,c:best.c,r:best.r};if(best.c>m.pr){m.prs.push({d:s.d,c:best.c,id:s.id});m.pr=best.c}}));return M}
 function pgSpark(){const V={};pgDone().forEach(s=>V[s.d]=(V[s.d]||0)+stats(s).t);const d=new Date();d.setDate(d.getDate()-29);let t=0;const a=[];for(let i=0;i<30;i++){t+=V[dstr(d)]||0;a.push(t);d.setDate(d.getDate()+1)}const mx=Math.max(...a,1);return a.map((v,i)=>(i*100/29).toFixed(1)+','+(34-v/mx*32).toFixed(1)).join(' ')}
 const pgTile=(c,i,z=19)=>`<i class=pti style="--c:${c}">${SI(i,z)}</i>`;
@@ -1780,7 +1784,7 @@ function progView(){const AD0=achData(),AL=AD0.cats.flatMap(c=>c.tiers.filter(t=
  Object.values(H).forEach(m=>m.prs.filter(p=>p.d.startsWith(pm)).forEach(p=>prs.push({n:m.n,c:p.c})));prs.length=0;recData().ev.filter(e=>e.d.startsWith(pm)).forEach(e=>prs.push({n:e.n,c:e.v,u:e.t==='r'?'reps':'kg'}));
  return`<div class=pgw><h1 class=tt>Progrès</h1>
  <div class=stk><span class="bdg${st.n?'':' off'}" style="animation-delay:-${Date.now()%1300}ms">${SI('flame',14)}<b>${st.n}</b></span><div class=tx><b>${st.n?st.n+' semaine'+(st.n>1?'s':'')+' d’affilée':'Lance ta série'}</b><small>${st.k?st.k+' séance'+(st.k>1?'s':'')+' cette semaine':'Aucune séance cette semaine'}</small></div><div class=wk>${st.bars.map(o=>`<i class="${o?'on':''}"></i>`).join('')}</div></div>
- <div class=psh><h2>Mes séances</h2><button class=pal>Tout voir ${SI('chev',14)}</button></div>
+ <div class=psh><h2>Mes séances</h2><button class=pal data-a=psl>Tout voir ${SI('chev',14)}</button></div>
  ${g?`<div class=psc data-a=psess data-k="${esc(g.k)}" style="cursor:pointer"><div class=r1><i class=sq style="background:${g.col}"></i><span class=nm>${esc(g.nom)}</span><span class=cn>${g.n}×</span><span class=ar>${SI('arr',15)}</span><span class=ch>${SI('chev',17)}</span></div><div class=chs>${g.ds.map(([d,t])=>`<span>${pgd(d)}<i></i><b>${fmt(t)} kg</b></span>`).join('')}</div></div>`:'<div class="lve pse"><h3>Pas encore de stats</h3><p>Enchaîne quelques séances et tes courbes,<br>séances, records, tendances apparaîtront ici.</p></div>'}
  <div class=pg2><div class=pmc data-a=pst style="cursor:pointer"><div class=h>${pgTile('var(--acc)','trend',15)}<b>Performance</b>${SI('chev',14)}</div><div class=bd2><svg class=psp viewBox="0 0 100 36" preserveAspectRatio="none"><polyline points="${pgSpark()}" fill=none stroke=currentColor stroke-width=3 stroke-linecap=round stroke-linejoin=round vector-effect="non-scaling-stroke"/></svg><div class=lb>30 J</div></div></div>
  <div class=pmc data-a=pmes style="cursor:pointer"><div class=h>${pgTile('#14b8d4','ruler',15)}<b>Mesures</b>${SI('chev',14)}</div><div class=bd2>${mzLast('w')?`<b style="font:700 24px 'Avenir Next Condensed','Arial Narrow',sans-serif">${fmt(mzLast('w'))} <small style="font:400 13px sans-serif;color:var(--mut)">kg</small></b>`:'<i class=dsh></i><span class=em>Ajoute ton poids</span>'}</div></div></div>
@@ -1882,7 +1886,7 @@ function pexdView(){const n=PE.n,sb=peSub(n),G=peSets(n),all=G.flatMap(g=>g.s),h
  return`<div class="pgw pss-v"><div class=pdh><button class=cbtn data-a=pxback aria-label="Retour">${SI('back',19)}</button><div style="min-width:0"><h1>${esc(n)}</h1><small>${esc([sb.ma,sb.mu].filter(Boolean).join(' · ')||sb.t)}</small></div><button class="cbtn" style="margin-left:auto" data-a=exm aria-label="Options"><span style="font-size:22px;line-height:1;margin-top:-4px">⋯</span></button></div>
  <div class=prtab style="margin:14px 0 0">${PET.map(([k,l])=>`<button class="${PE.tab===k?'on':''}" data-a=pet data-v=${k}>${l}</button>`).join('')}</div>${body}</div>`}
 /* ---------- Détail d'une séance (Progrès → Mes séances) ---------- */
-let PSALL=false;
+let PSALL=false,PSRET='';
 const PSSK=s=>s.from||('n:'+(s.nom||''));
 const PSST=[['vol','Volume'],['dur','Durée'],['rep','Reps']];
 function pssChart(D,t){const w=psWin(),a=dstr(w.b),z=dstr(w.e),W=318,H=200,L=34,R=12,T=12,B=26,n=w.n,M={};
@@ -2109,6 +2113,7 @@ function draw(){
  if(V.p==='pstat')return a.innerHTML=pstatView();
  if(V.p==='pdet')return a.innerHTML=pdetView();
  if(V.p==='psess')return a.innerHTML=psessView();
+ if(V.p==='psl')return a.innerHTML=pslView();
  if(V.p==='pexo')return a.innerHTML=pexoView();
  if(V.p==='pexd')return a.innerHTML=pexdView();
  if(V.p==='prec')return a.innerHTML=precView();
@@ -2504,7 +2509,8 @@ A('click',ev=>{const b=ev.target.closest('[data-a]');if(!b||(b.classList.contain
  case'rxs':{const i=+d.i;RX.s=(i>=0&&RX.s===i)?-1:i;break}
  case'rxp':RX.p=d.v;RX.s=null;break;
  case'pst':V={p:'pstat'};PS.o=0;TOP=1;break;
- case'psess':V={p:'psess',k:d.k};PS.o=0;PSALL=false;TOP=1;break;
+ case'psl':V={p:'psl'};TOP=1;break;
+ case'psess':PSRET=d.l?'psl':'';V={p:'psess',k:d.k};PS.o=0;PSALL=false;TOP=1;break;
  case'psall':PSALL=!PSALL;break;
  case'psr':PS.r=d.v;PS.o=0;break;
  case'pso':PS.o=Math.max(0,PS.o+(+d.d));break;
@@ -2534,7 +2540,7 @@ A('click',ev=>{const b=ev.target.closest('[data-a]');if(!b||(b.classList.contain
   if(f.id){const r=S.meas.find(y=>y.id===f.id);if(ex){Object.assign(ex,vals);S.meas=S.meas.filter(y=>y.id!==f.id)}else{MZA.forEach(k=>delete r[k]);Object.assign(r,{d:dd},vals)}}else if(ex)Object.assign(ex,vals);else S.meas.push({id:uid(),d:dd,...vals});
   FORM=null;save();break}
  case'mdel':{const id=FORM.id;FORM={k:'cf',t:'Supprimer ce relevé ?',m:'Action irréversible.',fn:()=>{S.meas=(S.meas||[]).filter(y=>y.id!==id);save();render()}};break}
- case'pback':V={p:'home'};TAB='prog';TOP=1;break;
+ case'pback':if(V.p==='psess'&&PSRET==='psl'){V={p:'psl'};TOP=1;break}V={p:'home'};TAB='prog';TOP=1;break;
  case'pflt':PF=d.v;break;
  case'pfav':{S.fav=S.fav||[];const n=d.n,i=S.fav.indexOf(n);if(i<0)S.fav.push(n);else S.fav.splice(i,1);save();break}
  case'pnew':FORM={k:'xty'};break;
