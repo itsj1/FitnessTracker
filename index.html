@@ -978,6 +978,14 @@ html.lock,html.lock body{overflow:hidden;overscroll-behavior:none}
 .pcg{display:grid;grid-template-columns:repeat(7,1fr);gap:7px 6px}.pcg i{height:5px;border-radius:3px;background:color-mix(in srgb,var(--ink) 9%,var(--card))}.pcg i.e{background:none}.pcg i.f{opacity:.45}
 .pcg i.c1,.pleg .c1{background:color-mix(in srgb,var(--acc) 38%,var(--card))}.pcg i.c2,.pleg .c2{background:var(--acc)}.pcg i.c3,.pleg .c3{background:color-mix(in srgb,var(--acc) 70%,#000)}
 .pleg{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 8px;font-size:12.5px;color:var(--mut)}.pleg span{display:flex;align-items:center;gap:5px;white-space:nowrap}.pleg i{width:16px;height:8px;border-radius:5px;display:block;flex:none}
+.pchs{scroll-snap-type:x mandatory;scroll-padding:0 16px;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y}.pchs .pch2{scroll-snap-align:start}.pchs .pch2:last-child{scroll-snap-align:end}.pch2{cursor:pointer}.pch2.on{background:color-mix(in srgb,var(--acc) 20%,var(--card));border-color:var(--acc);color:var(--acc2)}
+.pempty{text-align:center;color:var(--mut);margin:34px 10px 38px;font-size:15px}
+.pdl{font:600 12px ui-monospace,Menlo,monospace!important;letter-spacing:.08em;color:var(--mut)}
+.pebar{display:flex;height:12px;border-radius:6px;overflow:hidden;gap:2px;margin-bottom:12px}.pebar i{display:block;min-width:4px}
+.perl{display:flex;align-items:center;gap:10px;padding:7px 0}.perl>i{width:10px;height:10px;border-radius:50%;flex:none}.perl span{flex:1}.perl b{font-weight:600;font-size:16px}.perl small{color:var(--mut);margin-left:8px;font-size:13px}.perl em{font-style:normal;font-weight:600}
+.pehl .pdr2{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:12px 14px}
+.pehs{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.pehs em{font-style:normal;font-size:14px;background:color-mix(in srgb,var(--ink) 6%,var(--card));border-radius:999px;padding:4px 10px}
+.pei{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}.pei:last-child{border-bottom:0}.pei span{color:var(--mut)}.pei b{font-weight:600;text-align:right}
 .prs{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:16px 16px 12px}
 .prt{display:flex;align-items:center;gap:8px;font-size:19px;font-weight:600}.prt svg{color:var(--mut)}
 .prv{display:flex;align-items:baseline;justify-content:space-between;margin:12px 0 14px}.prv b{font:700 26px "Avenir Next Condensed","Arial Narrow",sans-serif}.prv span{display:flex;align-items:center;gap:7px;color:var(--mut);font-size:15px}.prv i{width:9px;height:9px;border-radius:50%;background:var(--mut)}
@@ -1458,6 +1466,7 @@ const seView=()=>`<header><h1 class=tt>Séances</h1><button class="pill rnd" dat
 const SIT=(a,i,t,cls,at)=>MI(a,i,t,'',at||'',((cls==='go'?'gr ':'')+(cls==='red'?'red ':'')+'cp').trim());
 const formHtml=()=>{const f=FORM;if(f.k==='sti'){const y=STY[f.t]||STY.T,D={T:'Série de travail classique.',D:'Baisse de charge sans repos.',C:'Mini-blocs séparés par un repos court.',A:'Le plus de répétitions possible.',F:'Jusqu’à l’échec.'}[f.t]||'';return`<div class="sov pop" data-a=fno><div class=dpop><div class=stp><span class=wb style="--c:${STC[f.t]||STC.T}">${{E:'W',F:'E'}[f.t]||f.t}</span><p><b>${y[0]}</b>${D?' : '+D:''}</p></div><button class=dbt data-a=fno>OK</button></div></div>`}if(f.k==='xty')return typSheet();if(f.k==='b3'||f.k==='rcd')return rSheet(f);if(f.k==='gty'||f.k==='gnw'||f.k==='ged'||f.k==='gcur'||f.k==='gsv')return gSheet(f);if(['mrl','mpn','mkb','mdt'].includes(f.k))return mzSheet(f);if(f.k==='xnw')return xnwSheet(f);const XH=formX(f);if(XH!==null)return XH;
  if(f.k==='gm'){const g=(S.goals||[]).find(x=>x.id===f.id);if(!g)return'';const at=` data-id=${g.id}`;return sheet(`<span class=sh-bar style="--c:var(--red)"></span><div><b>${esc(gTitle(g))}</b><span class=mut>Objectif</span></div>`,SIT('gmod','edit','Modifier','',at)+((g.ty==='bw'||g.ty==='fat')?SIT('gav','plus','Ajouter une valeur','',at):''))}
+ if(f.k==='exm')return sheet(`<span class=sh-bar style="--c:var(--acc)"></span><div><b>${esc(f.n)}</b><span class=mut>Exercice</span></div>`,SIT('exed','edit','Modifier')+SIT('exdl','trash','Supprimer','red'));
  if(f.k==='tm'){const t=S.seances.find(x=>x.id===f.id);if(!t)return'';return sheet(`<span class=sh-bar style="--c:${subCol(t.cy)}"></span><div><b>${esc(t.nom||'Séance sans nom')}</b><span class=mut>Séance · ${pl(exCount(t),'exo')}</span></div>`,SIT('go','play','Démarrer','go',` data-id=${t.id}`)+SIT('tmo','edit','Modifier')+SIT('ren','pen','Renommer')+SIT('mv','move','Déplacer')+SIT('tmdup','copy','Dupliquer')+SIT('tmd','trash','Supprimer','red'))}
  if(f.k==='dap'){const o=fo(f);if(!o)return'';const col=o.col||(f.t==='dos'?COLS[1]:GRN);return sh2('Apparence',esc(o.n),`<div class=sh-l>COULEUR</div><div class=sws>${COLS.map(c=>`<button class="${c===col?'on':''}" style="background:${c}" data-a=dcol data-c="${c}">${c===col?SI('check',18):''}</button>`).join('')}</div><div class=sh-l>ICÔNE</div><div class=igr style="--c:${col}">${ICK.map(k=>`<button class="${k===FI(o)?'on':''}" data-a=dic data-ic=${k}>${SI(k,22)}</button>`).join('')}</div><div style="height:12px"></div>`+SIT('dbk','lft','Retour'))}
  if(f.k==='dm'){const o=fo(f);if(!o)return'';const col=o.col||(f.t==='dos'?COLS[1]:GRN),n=f.t==='dos'?o.subs.reduce((t,c)=>t+tpls(c.id).length,0)+tpls(o.id).length:tpls(o.id).length;
@@ -1505,7 +1514,7 @@ let ASK=null;
 const ask=(msg,fn,lab)=>{ASK={msg,fn,lab};render()};
 /* Transition d'écran : l'édition arrive par la droite ; en la quittant elle repart vers la droite */
 let LASTP=null;
-const PGD={det:1,live:1,pstat:1,pmes:1,pobj:1,pexo:1,prec:1,pach:1,pdet:2,pmall:2,psess:1,pgoal:2};
+const PGD={det:1,live:1,pstat:1,pmes:1,pobj:1,pexo:1,prec:1,pach:1,pdet:2,pexd:2,pmall:2,psess:1,pgoal:2};
 function vtDir(a,b){if(a===null)return null;if(a!=='edit'&&b==='edit')return'fwd';if(a==='edit'&&b!=='edit')return'back';const da=PGD[a]||0,db=PGD[b]||0;if(a!==b&&da!==db&&(a==='home'||da)&&(b==='home'||db))return db>da?'lfwd':'lback';return null}
 function render(){const k=vtDir(LASTP,V.p);LASTP=V.p;
  if(k&&document.startViewTransition&&!matchMedia('(prefers-reduced-motion: reduce)').matches){const h=document.documentElement;h.dataset.vt=k;try{const t=document.startViewTransition(()=>renderNow());t.finished.finally(()=>{delete h.dataset.vt})}catch{delete h.dataset.vt;renderNow()}}else{renderNow();if(k==='lfwd'||k==='lback'){const ap=document.getElementById('app');if(ap&&!matchMedia('(prefers-reduced-motion: reduce)').matches){ap.classList.remove('vtl','vtb');void ap.offsetWidth;ap.classList.add(k==='lfwd'?'vtb':'vtl');setTimeout(()=>ap.classList.remove('vtl','vtb'),380)}}}}
@@ -1820,6 +1829,42 @@ function pdetView(){const t=PS.t,w=psWin(),sub=(()=>{const f=d=>d.toLocaleDateSt
  <div class=psr><button class=pnv data-a=pso data-d=1 aria-label="Période précédente">${SI('back',16)}</button><div class=psg2>${Object.keys(PSR).map(k=>`<button class="${PS.r===k?'on':''}" data-a=psr data-v=${k}>${k}</button>`).join('')}</div><button class=pnv data-a=pso data-d=-1 ${PS.o?'':'disabled'} aria-label="Période suivante">${SI('chev',16)}</button></div>
  <div class=prs><div class=prtab>${PST.map(([k,l])=>`<button class="${t===k?'on':''}" data-a=pstt data-v=${k}>${l}</button>`).join('')}</div><div class=prv><b>${psFmt(tot,t)}</b><span><i></i>Précédent : ${psFmt(prevTot,t)}</span></div>${pdBars(t)}</div>
  <div class=pdt>${tiles.join('')}</div>${lists}</div>`}
+/* ---------- Détail d'un exercice (Progrès → Exercices → exercice) ---------- */
+let PE={n:'',tab:'st',met:'e1',r:'3M',o:0};
+const PEM=[['e1','1RM estimé'],['best','Meilleure série'],['vol','Volume'],['rep','Reps']];
+const PET=[['st','Stats'],['hi','Historique'],['in','Infos']];
+function peSets(n){const o=[];pgDone().forEach(s=>s.ex.forEach(e=>{if(String(e.n||'').trim()!==n)return;const ss=e.s.filter(y=>dvOk(s,y));if(ss.length)o.push({id:s.id,d:s.d,s:ss})}));return o}
+const peE1=y=>(+y.c>0)?y.c*(1+y.r/30):0;
+function peVal(g,m){const a=g.s;return m==='e1'?Math.max(0,...a.map(peE1)):m==='best'?Math.max(0,...a.map(y=>+y.c||0)):m==='vol'?a.reduce((p,y)=>p+y.r*(+y.c||0),0):a.reduce((p,y)=>p+(+y.r),0)}
+const peFm=(v,m)=>m==='rep'?fmt(v)+' reps':fmt(Math.round(v*10)/10)+' kg';
+function peWin(){const n=PSR[PE.r],e=new Date();e.setHours(0,0,0,0);e.setDate(e.getDate()-PE.o*n);const b=new Date(e);b.setDate(b.getDate()-n+1);return{n,b,e}}
+function peSub(n){const cu=S.cust&&S.cust[n],c=CAT[n],mu=cu&&cu.mu?mlab(cu.mu):(c&&c.f&&c.f[0])||musOf(n).map(k=>MUS[k])[0]||'',ma=cu?String(cu.eq||'').split(', ').join(' · '):c?MODES[Object.keys(c.m)[0]]||'':'',ac=cu?String(cu.ac||'').split(', ').join(' · '):c&&c.a?c.a[0]:'';return{mu,ma,ac,t:[ma,ac,mu].filter(Boolean).join(' · ')||'Exercice personnalisé'}}
+function peChart(P,w,m){const W=318,H=190,L=34,R=12,T=12,B=26,n=w.n,mx=Math.max(1,...P.map(p=>p.v)),top=psNice(mx),X=i=>L+(W-L-R)*i/(n-1),Y=v=>T+(H-T-B)*(1-v/top),ix=d=>Math.round((new Date(d+'T00:00')-w.b)/864e5);
+ const grid=[0,1,2,3,4].map(i=>{const v=top*(4-i)/4;return`<text x=${L-7} y=${(Y(v)+3).toFixed(1)} text-anchor=end>${fmt(Math.round(v))}</text>`+(i<4?`<line x1=${L} x2=${W-R} y1=${Y(v).toFixed(1)} y2=${Y(v).toFixed(1)} class=pss-gl />`:`<line x1=${L} x2=${W-R} y1=${Y(0)} y2=${Y(0)} class=psb />`)}).join('');
+ const xt=psXT(w).map(o=>`<text x=${X(o.i).toFixed(1)} y=${H-7} text-anchor=${o.i===0?'start':o.i>=n-1?'end':'middle'}>${o.t}</text>`).join('');
+ const pts=P.map(p=>[X(ix(p.d)),Y(p.v)]);
+ const hits=P.map((p,i)=>`<circle cx=${pts[i][0].toFixed(1)} cy=${pts[i][1].toFixed(1)} r=14 class=pss-hit data-k=${p.d} data-x=${pts[i][0].toFixed(1)} data-y=${pts[i][1].toFixed(1)} data-v="${peFm(p.v,m)}" data-d="${new Date(p.d+'T00:00').toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'short'})}" role=button />`).join('');
+ return`<svg class=psg viewBox="0 0 ${W} ${H}" data-y0=${Y(0).toFixed(1)}>${grid}<polyline points="${pts.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ')}" class=psl />${pts.map(p=>`<circle cx=${p[0].toFixed(1)} cy=${p[1].toFixed(1)} r=5 class=psd />`).join('')}${xt}${hits}<g id=pssg class=pss-sel></g></svg>`}
+function pexdView(){const n=PE.n,sb=peSub(n),G=peSets(n),all=G.flatMap(g=>g.s),hasKg=all.some(y=>+y.c>0),w=peWin(),a=dstr(w.b),z=dstr(w.e),m=PE.met,
+ rec=hasKg?Math.max(0,...all.map(y=>+y.c||0)):Math.max(0,...all.map(y=>+y.r)),e1=Math.max(0,...all.map(peE1)),vt=all.reduce((p,y)=>p+y.r*(+y.c||0),0),
+ tile=(l,v)=>`<div><b>${v}</b><span>${l}</span></div>`;
+ const P=G.filter(g=>g.d>=a&&g.d<=z).map(g=>({d:g.d,v:peVal(g,m)})).filter(p=>p.v>0),mm=hasKg||m==='rep'?m:'rep',cur=P.length?P[P.length-1].v:0;
+ const f=d=>d.toLocaleDateString('fr-FR',{day:'numeric',month:'short'});
+ let body='';
+ if(PE.tab==='st'){
+  const WS=all.filter(()=>true),cnt=[0,0,0];G.filter(g=>g.d>=a&&g.d<=z).forEach(g=>g.s.forEach(y=>cnt[y.r<=5?0:y.r<=12?1:2]++));const tot=cnt[0]+cnt[1]+cnt[2],pc=cnt.map(c=>tot?Math.round(c*100/tot):0),RL=[['Force','1–5 reps','#f59e0b'],['Hypertrophie','6–12 reps','#22c55e'],['Endurance','13+ reps','#3b82f6']];
+  body=`<div class=pdt>${tile('RECORD',hasKg?fmt(rec)+' kg':rec?rec+' reps':'–')}${tile('E1RM EST.',e1?fmt(Math.round(e1*10)/10)+' kg':'–')}${tile('VOLUME TOTAL',vt?fmt(Math.round(vt))+' kg':'–')}</div>
+  <div class=pchs>${PEM.map(([k,l])=>`<button class="pch2${m===k?' on':''}" data-a=pem data-v=${k}>${l}</button>`).join('')}</div>
+  <div class="prs pss-card"><div class=prv style="margin-top:0"><b>${P.length?peFm(cur,m):'–'}</b><span>${f(w.b)} – ${f(w.e)}</span></div>${P.length>1?peChart(P,w,m):'<p class=pempty>Pas assez de données pour afficher une tendance</p>'}</div>
+  <div class=psr><button class=pnv data-a=peo data-d=1 aria-label="Période précédente">${SI('back',16)}</button><div class=psg2>${Object.keys(PSR).map(k=>`<button class="${PE.r===k?'on':''}" data-a=per data-v=${k}>${k}</button>`).join('')}</div><button class=pnv data-a=peo data-d=-1 ${PE.o?'':'disabled'} aria-label="Période suivante">${SI('chev',16)}</button></div>
+  <h3 class=pdl style="margin:26px 4px 10px">RÉPARTITION DES SÉRIES</h3><div class=pdc>${tot?`<div class=pebar>${RL.map((r,i)=>pc[i]?`<i style="flex:${cnt[i]};background:${r[2]}"></i>`:'').join('')}</div>`:'<p class=mut style="margin:6px 0">Aucune série sur cette période.</p>'}${RL.map((r,i)=>`<div class=perl><i style="background:${r[2]}"></i><span><b>${r[0]}</b><small>${r[1]}</small></span><em>${pc[i]}%</em></div>`).join('')}</div>`}
+ else if(PE.tab==='hi'){
+  body=G.length?G.slice().reverse().map(g=>`<button class=pdr2 data-a=open data-id=${g.id} style="display:block;width:100%;text-align:left;margin-top:10px"><span style="display:flex;justify-content:space-between;align-items:center"><b>${jour(g.d)}</b>${SI('chev',15)}</span><span class=pehs>${g.s.map(y=>`<em>${+y.c>0?fmt(y.c)+' × '+y.r:y.r+' reps'}</em>`).join('')}</span></button>`).join(''):'<p class=mut style="text-align:center;margin:30px 0">Aucun historique pour cet exercice.</p>';
+  body=`<div class=pehl>${body}</div>`}
+ else{const cu=S.cust&&S.cust[n],ins=cu&&cu.ins,row=(l,v)=>v?`<div class=pei><span>${l}</span><b>${esc(v)}</b></div>`:'';
+  body=`<div class=pdc style="margin-top:14px">${row('Muscle',sb.mu)||''}${row('Équipement',sb.ma)}${row('Accessoires',sb.ac)}${row('Séances',G.length?String(G.length):'')}${row('Record',hasKg&&rec?fmt(rec)+' kg':'')}${ins?`<div class=pei style="display:block"><span>Instructions</span><p style="margin:6px 0 0;white-space:pre-wrap">${esc(ins)}</p></div>`:''}</div>`}
+ return`<div class="pgw pss-v"><div class=pdh><button class=cbtn data-a=pxback aria-label="Retour">${SI('back',19)}</button><div style="min-width:0"><h1>${esc(n)}</h1><small>${esc([sb.ma,sb.mu].filter(Boolean).join(' · ')||sb.t)}</small></div><button class="cbtn" style="margin-left:auto" data-a=exm aria-label="Options"><span style="font-size:22px;line-height:1;margin-top:-4px">⋯</span></button></div>
+ <div class=prtab style="margin:14px 0 0">${PET.map(([k,l])=>`<button class="${PE.tab===k?'on':''}" data-a=pet data-v=${k}>${l}</button>`).join('')}</div>${body}</div>`}
 /* ---------- Détail d'une séance (Progrès → Mes séances) ---------- */
 let PSALL=false;
 const PSSK=s=>s.from||('n:'+(s.nom||''));
@@ -1998,7 +2043,7 @@ function pexoList(){const H=exHist(),q=norm(PQ).trim(),fv=S.fav||[];return libra
 function pxRow(n,H){const cu=S.cust&&S.cust[n],m=H[n],inst=m?m.inst:{n},eq=cu&&cu.eq||/dips|push-?up|pull-?up|chin-?up|traction|pompe/i.test(n)?'Poids du corps':({g:'Machine guidée',l:'Poids libre',p:'Poulie',s:'Smith machine'}[mode(inst)]||'Poids libre'),f=ent({n}).f,mu=cu&&cu.mu?mlab(cu.mu):(f&&f.join(', '))||(musOf(n).map(k=>MUS[k])[0])||'',fav=(S.fav||[]).includes(n),
  last=m&&m.last?cap(new Date(m.last.d+'T00:00').toLocaleDateString('fr-FR',{weekday:'short'}))+' · '+(m.last.c?fmt(m.last.c)+' × '+m.last.r:m.last.r+' reps'):'',tg=[];
  if(PXR.uni.test(n))tg.push('<span class=tg2>Unilatéral</span>');if(last)tg.push(`<span class=lst>${last}</span>`);if(m&&m.pr>0)tg.push(`<span class="tg2 pr">PR ${fmt(m.pr)}</span>`);
- return`<div class=pxr><div class=pxt>${SI(PXR.cardio.test(n)?'runner':'dumbbell',25)}</div><div class=tx><b>${esc(n)}</b><small>${exSub(n)}</small>${tg.length?`<div class=tgs>${tg.join('')}</div>`:''}</div><button class="pxs2${fav?' on':''}" data-a=pfav data-n="${esc(n)}" aria-label="Favori">${SI('star',21)}</button>${SI('chev',16)}</div>`}
+ return`<div class=pxr data-a=pxd data-n="${esc(n)}"><div class=pxt>${SI(PXR.cardio.test(n)?'runner':'dumbbell',25)}</div><div class=tx><b>${esc(n)}</b><small>${exSub(n)}</small>${tg.length?`<div class=tgs>${tg.join('')}</div>`:''}</div><button class="pxs2${fav?' on':''}" data-a=pfav data-n="${esc(n)}" aria-label="Favori">${SI('star',21)}</button>${SI('chev',16)}</div>`}
 const pxLab=()=>({all:'RÉCENTS',fav:'FAVORIS',cardio:'CARDIO',uni:'UNILATÉRAL',perso:'PERSO'}[PF]);
 const pxHtml=l=>{const H=exHist();return l.map(n=>pxRow(n,H)).join('')||'<p class=mut style="text-align:center;margin:30px 0">Aucun exercice.</p>'};
 const pexoView=()=>{const l=pexoList();return`<div class=pgw><div class=pxh><button class=cbtn data-a=pback aria-label="Retour">${SI('back',19)}</button><div class=c><small>BIBLIOTHÈQUE</small><h1>Exercices</h1></div><button class=pxp data-a=pnew aria-label="Nouvel exercice">${SI('plus',20)}</button></div>
@@ -2025,15 +2070,15 @@ function mthumb(sp){const key=JSON.stringify(sp);if(MTH[key])return MTH[key];
 const mlab=id=>SUB[id]?SUB[id].n:'';
 function xnwSheet(f){const [tn]=PXT[f.ty],ok=f.n.trim()&&f.mu,op=MGR.find(g=>g.k===f.open);
  const card=(on,thumb,lab,a,at,chev)=>`<button class="mcd${on?' on':''}" data-a=${a} ${at}><span class=mth>${thumb}</span><span class=ml>${lab}${chev?SI(chev,15):''}</span>${on?`<i class=mck>${SI('check',15)}</i>`:''}</button>`;
- return`<div class=sov data-a=fno${f.ret?` style="--acc:${subCol(cur().cy)}"`:''}><div class="sheet sh2 xnw"><div class=grab></div><h2>Nouvel exercice</h2>
+ return`<div class=sov data-a=fno${f.ret?` style="--acc:${subCol(cur().cy)}"`:''}><div class="sheet sh2 xnw"><div class=grab></div><h2>${f.edit?'Modifier l’exercice':'Nouvel exercice'}</h2>
  <button class=xty2 data-a=xnty>TYPE · ${esc(tn.toUpperCase())} ${SI('pen',14)}</button>
  <div class=fl>NOM</div><input class=xin data-fm=xn placeholder="Développé incliné avec haltères" value="${esc(f.n)}" autocomplete=off>${f.err?`<p class=xerr>${f.err}</p>`:''}
  <div class=fl>MUSCLE PRINCIPAL</div><div class="hsc mrow">${MGR.map(g=>card(f.mg===g.k,mthumb(g.t||SUB[g.s[0]]),g.n,'xmg','data-g='+g.k,g.s.length>1?(f.open===g.k?'chevup':'chevdown'):'')).join('')}</div>
  ${op?`<div class=msub><div class=msh><b>${op.n} · Choisir le muscle</b><button data-a=xmc aria-label="Fermer">${SI('close',18)}</button></div><div class="hsc mrow">${op.s.map(id=>card(f.mu===id,mthumb(SUB[id]),SUB[id].n,'xms','data-m='+id,'')).join('')}</div></div>`:f.mu?`<div class=msel><span>${SI('check',18)}</span><b>${esc(mlab(f.mu))}</b><button data-a=xmmod>Modifier</button></div>`:''}
- <div class=fl>ÉQUIPEMENT</div><div class="hsc eqrow">${EQP.map(q=>`<button class="eqc${f.eq===q?' on':''}" data-a=xeq data-v="${esc(q)}">${q}</button>`).join('')}</div>
- ${f.eq==='Poulie'?`<div class=fl>ACCESSOIRE</div><div class="hsc eqrow">${ACCP.map(q=>`<button class="eqc${f.ac===q?' on':''}" data-a=xac data-v="${esc(q)}">${q}</button>`).join('')}</div>`:''}
+ <div class=fl>ÉQUIPEMENT</div><div class="hsc eqrow">${EQP.map(q=>`<button class="eqc${(Array.isArray(f.eq)?f.eq:f.eq?[f.eq]:[]).includes(q)?' on':''}" data-a=xeq data-v="${esc(q)}">${q}</button>`).join('')}</div>
+ ${(Array.isArray(f.eq)?f.eq:f.eq?[f.eq]:[]).includes('Poulie')?`<div class=fl>ACCESSOIRES</div><div class="hsc eqrow">${ACCP.map(q=>`<button class="eqc${(Array.isArray(f.ac)?f.ac:f.ac?[f.ac]:[]).includes(q)?' on':''}" data-a=xac data-v="${esc(q)}">${q}</button>`).join('')}</div>`:''}
  <div class=fl>INSTRUCTIONS (OPTIONNEL)</div><textarea class=xin data-fm=xi placeholder="Consignes, prises, tempo…" rows=4>${esc(f.ins||'')}</textarea>
- <div class=xbar><button class=obtn data-a=fno>Annuler</button><button class=gbtn id=xnok data-a=xnok ${ok?'':'disabled'}>Créer</button></div></div></div>`}
+ <div class=xbar><button class=obtn data-a=fno>Annuler</button><button class=gbtn id=xnok data-a=xnok ${ok?'':'disabled'}>${f.edit?'Enregistrer':'Créer'}</button></div></div></div>`}
 function draw(){
  const a=$('#app');
  const cs=V.p==='edit'?cur():null;
@@ -2048,6 +2093,7 @@ function draw(){
  if(V.p==='pdet')return a.innerHTML=pdetView();
  if(V.p==='psess')return a.innerHTML=psessView();
  if(V.p==='pexo')return a.innerHTML=pexoView();
+ if(V.p==='pexd')return a.innerHTML=pexdView();
  if(V.p==='prec')return a.innerHTML=precView();
  if(V.p==='rex')return a.innerHTML=rexView();
  if(V.p==='det'&&cur())return a.innerHTML=detView(cur());
@@ -2099,8 +2145,8 @@ function applyOpt(x,s){if(!s||!(s.tpl||s.free||s.from))return;const o=OPT(s);x.r
 const STS={T:'Normale',E:'Échauf.',D:'Drop set',C:'Cluster',A:'AMRAP',F:'Échec'};
 const ini=n=>{const w=String(n||'').trim().split(/\s+/).filter(Boolean);return((w.length>1?w[0][0]+w[1][0]:(w[0]||'').slice(0,2))||'?').toUpperCase()};
 const norm=t=>String(t||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-const library=()=>[...new Set([...Object.keys(CAT),...Object.keys(S.cust||{}),...S.seances.filter(x=>!x.del).flatMap(x=>x.ex.map(e=>e.n))].map(n=>String(n||'').trim()).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'fr'));
-const exSub=n=>{const cu=S.cust&&S.cust[n],c=CAT[n],mu=cu&&cu.mu?mlab(cu.mu):(c&&c.f&&c.f[0])||musOf(n).map(k=>MUS[k])[0]||'',ma=cu?(cu.eq||''):c?MODES[Object.keys(c.m)[0]]||'':'',ac=cu?(cu.ac||''):c&&c.a?c.a[0]:'';return[mu,ma,ac].filter(Boolean).join(' · ')||'Exercice personnalisé'};
+const library=()=>[...new Set([...Object.keys(CAT),...Object.keys(S.cust||{}),...S.seances.filter(x=>!x.del).flatMap(x=>x.ex.map(e=>e.n))].map(n=>String(n||'').trim()).filter(n=>n&&!(S.exh||[]).includes(n)))].sort((a,b)=>a.localeCompare(b,'fr'));
+const exSub=n=>{const cu=S.cust&&S.cust[n],c=CAT[n],mu=cu&&cu.mu?mlab(cu.mu):(c&&c.f&&c.f[0])||musOf(n).map(k=>MUS[k])[0]||'',ma=cu?String(cu.eq||'').split(', ').join(' · '):c?MODES[Object.keys(c.m)[0]]||'':'',ac=cu?String(cu.ac||'').split(', ').join(' · '):c&&c.a?c.a[0]:'';return[mu,ma,ac].filter(Boolean).join(' · ')||'Exercice personnalisé'};
 function libRows(q,pick,multi){pick=pick||[];const row=(n,th,t,sub)=>`<button class="lib${multi&&pick.includes(n)?' sel':''}" data-a=${multi?'xlt':'xlp'} data-n="${esc(n)}"><span class=th2>${th}</span><span><b>${t}</b><small>${sub}</small></span>${multi?'<i class=ck2></i>':''}</button>`;const k=norm(q).trim(),all=library(),l=all.filter(n=>!k||norm(n).includes(k));
  return l.map(n=>row(n,esc(ini(n)),esc(n),esc(exSub(n)))).join('')
  +(k&&!all.some(n=>norm(n)===k)?row(q.trim(),'+','Créer « '+esc(q.trim())+' »','Exercice personnalisé'):'')
@@ -2421,6 +2467,12 @@ A('click',ev=>{const b=ev.target.closest('[data-a]');if(!b||(b.classList.contain
  case'gsave':{const f=FORM,g=(S.goals||[]).find(x=>x.id===f.id),v=+String(f.tg).replace(',','.');if(!g||!(v>0))return;const bm=f.ty==='bw'||f.ty==='fat',sv=parseFloat(String(f.sv||'').replace(',','.'))||0,sd=f.sd||today();if(bm&&sv>0&&f.svx)mzPut(f.ty==='bw'?'w':'f',sv,sd);Object.assign(g,{ty:f.ty,tg:v,per:f.per,from:f.from,to:f.to,lab:(f.lab||'').trim(),sv:bm&&sv>0?sv:undefined,sd:bm&&sv>0?sd:undefined});FORM=null;save();break}
  case'gdel':case'gdsw':{const id=d.a==='gdsw'?d.id:FORM.id;FORM={k:'cf',t:'Supprimer cet objectif ?',m:'Action irréversible.',fn:()=>{S.goals=(S.goals||[]).filter(x=>x.id!==id);save();render()}};break}
  case'pexo':V={p:'pexo'};PF='all';PQ='';TOP=1;break;
+ case'pxd':PE={n:d.n,tab:'st',met:'e1',r:'3M',o:0};V={p:'pexd'};TOP=1;break;
+ case'pxback':V={p:'pexo'};TOP=1;break;
+ case'pet':PE.tab=d.v;break;
+ case'pem':PE.met=d.v;break;
+ case'per':PE.r=d.v;PE.o=0;break;
+ case'peo':PE.o=Math.max(0,PE.o+(+d.d));break;
  case'prec':V={p:'prec'};RM='w';RG='all';RQ='';TOP=1;break;
  case'rmt':RM=d.v;break;
  case'rgp':RG=d.v;break;
@@ -2467,6 +2519,9 @@ A('click',ev=>{const b=ev.target.closest('[data-a]');if(!b||(b.classList.contain
  case'pflt':PF=d.v;break;
  case'pfav':{S.fav=S.fav||[];const n=d.n,i=S.fav.indexOf(n);if(i<0)S.fav.push(n);else S.fav.splice(i,1);save();break}
  case'pnew':FORM={k:'xty'};break;
+ case'exm':FORM={k:'exm',n:PE.n};break;
+ case'exed':{const n=PE.n,cu=S.cust&&S.cust[n]||{},mu=cu.mu||'',g=MGR.find(x=>x.s.includes(mu));FORM={k:'xnw',ty:cu.ty||0,n,mu,mg:g?g.k:'',open:'',eq:cu.eq?String(cu.eq).split(', '):[],ac:cu.ac?String(cu.ac).split(', '):[],ins:cu.ins||'',err:'',edit:n};break}
+ case'exdl':{const n=PE.n;FORM={k:'cf',t:'Supprimer cet exercice ?',m:'Il sera retiré de la bibliothèque. L’historique des séances est conservé.',fn:()=>{S.exh=S.exh||[];if(!S.exh.includes(n))S.exh.push(n);if(S.cust)delete S.cust[n];S.fav=(S.fav||[]).filter(x=>x!==n);V={p:'pexo'};TOP=1;save();render()}};break}
  case'xcre':FORM={k:'xty',ret:FORM};break;
  case'pty':{const k=FORM&&FORM.keep;FORM=k?Object.assign(k,{ty:+d.i}):{k:'xnw',ty:+d.i,n:'',mu:'',open:'',eq:'',ins:'',err:'',ret:FORM.ret};FORM.k='xnw';break}
  case'xnty':FORM={k:'xty',keep:FORM};break;
@@ -2474,9 +2529,9 @@ A('click',ev=>{const b=ev.target.closest('[data-a]');if(!b||(b.classList.contain
  case'xms':FORM.mu=d.m;FORM.mg=FORM.open;FORM.open='';break;
  case'xmc':FORM.open='';break;
  case'xmod':case'xmmod':{const g=MGR.find(x=>x.k===FORM.mg);if(g&&g.s.length>1)FORM.open=g.k;else{FORM.mu='';FORM.mg=''}break}
- case'xeq':FORM.eq=FORM.eq===d.v?'':d.v;if(FORM.eq!=='Poulie')FORM.ac='';break;
- case'xac':FORM.ac=FORM.ac===d.v?'':d.v;break;
- case'xnok':{const f=FORM,n=f.n.trim();if(!n||!f.mu)return;if(library().some(x=>norm(x)===norm(n))){f.err='Un exercice porte déjà ce nom.';break}S.cust=S.cust||{};S.cust[n]={ty:f.ty,mu:f.mu,eq:f.eq,ac:f.eq==='Poulie'?f.ac||'':'',ins:(f.ins||'').trim(),u:Date.now()};FORM=f.ret||null;if(FORM&&FORM.k==='xl'&&FORM.m!=='rep'){FORM.pick=FORM.pick||[];FORM.pick.push(n);FORM.v=''}save();break}
+ case'xeq':{const a=Array.isArray(FORM.eq)?FORM.eq.slice():FORM.eq?[FORM.eq]:[],i=a.indexOf(d.v);i<0?a.push(d.v):a.splice(i,1);FORM.eq=a;if(!a.includes('Poulie'))FORM.ac=[];break}
+ case'xac':{const a=Array.isArray(FORM.ac)?FORM.ac.slice():FORM.ac?[FORM.ac]:[],i=a.indexOf(d.v);i<0?a.push(d.v):a.splice(i,1);FORM.ac=a;break}
+ case'xnok':{const f=FORM,n=f.n.trim();if(!n||!f.mu)return;if(library().some(x=>norm(x)===norm(n)&&!(f.edit&&norm(x)===norm(f.edit)))){f.err='Un exercice porte déjà ce nom.';break}S.cust=S.cust||{};if(f.edit&&f.edit!==n){delete S.cust[f.edit];S.seances.forEach(q=>q.ex.forEach(e=>{if(String(e.n||'').trim()===f.edit)e.n=n}));if(S.fav)S.fav=S.fav.map(x=>x===f.edit?n:x);if(V.p==='pexd')PE.n=n}if(S.exh)S.exh=S.exh.filter(x=>x!==n);S.cust[n]={ty:f.ty,mu:f.mu,eq:(Array.isArray(f.eq)?f.eq:f.eq?[f.eq]:[]).join(', '),ac:(Array.isArray(f.eq)?f.eq:f.eq?[f.eq]:[]).includes('Poulie')?(Array.isArray(f.ac)?f.ac:f.ac?[f.ac]:[]).join(', '):'',ins:(f.ins||'').trim(),u:Date.now()};FORM=f.ret||null;if(FORM&&FORM.k==='xl'&&FORM.m!=='rep'){FORM.pick=FORM.pick||[];FORM.pick.push(n);FORM.v=''}save();break}
  case'cfg':V={p:'cfg'};break;
  case'ax':{const x=newEx();applyOpt(x,s);s.ex.push(x);touch(s);break}
  case'dx':ask('Supprimer cet exercice ?',()=>{s.ex.splice(+d.e,1);touch(s)});return;
