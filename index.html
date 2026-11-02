@@ -1501,14 +1501,20 @@ function reorder(d){if(d.k==='xo'&&d.g){const s=S.seances.find(x=>x.id===d.p);if
 /* Infobulle au toucher d'un point de graphique */
 document.addEventListener('click',e=>{const pt=e.target.closest&&e.target.closest('.ptp'),old=document.querySelectorAll('svg .tip,svg .tipr');
  const same=pt&&pt.dataset.on==='1';old.forEach(n=>n.remove());document.querySelectorAll('.ptp[data-on]').forEach(n=>n.removeAttribute('data-on'));
- if(!pt||same)return;const svg=pt.ownerSVGElement,NS='http://www.w3.org/2000/svg',W=svg.viewBox.baseVal.width,cx=+pt.getAttribute('cx'),cy=+pt.getAttribute('cy'),t=pt.dataset.t,sb=pt.dataset.s,w=Math.max(t.length*7.2,sb.length*5.6)+18,h=38;
- let x=Math.min(Math.max(cx-w/2,2),W-w-2),y=cy-h-12;if(y<2)y=cy+14;pt.dataset.on='1';
+ if(!pt||same)return;const svg=pt.ownerSVGElement,NS='http://www.w3.org/2000/svg',W=svg.viewBox.baseVal.width,cx=+pt.getAttribute('cx'),cy=+pt.getAttribute('cy'),t=pt.dataset.t,sb=pt.dataset.s,LR=(pt.dataset.l||'').split('|').filter(Boolean).map(r=>r.split('~')),SH=svg.viewBox.baseVal.height,
+ w=LR.length?Math.max(sb.length*5.8,...LR.map(r=>r[1].length*5.8+r[2].length*6.6+34))+20:Math.max(t.length*7.2,sb.length*5.6)+18,h=LR.length?30+LR.length*16:38;
+ let x=Math.min(Math.max(cx-w/2,2),W-w-2),y=cy-h-12;if(y<2)y=cy+14;if(y+h>SH-2)y=Math.max(2,SH-h-2);pt.dataset.on='1';
  const mk=(n,a)=>{const el=document.createElementNS(NS,n);for(const k in a)el.setAttribute(k,a[k]);return el};
  const ring=mk('circle',{class:'tipr',cx,cy,r:7,fill:'none',style:'stroke:'+(pt.dataset.c||'var(--red)')+';stroke-width:2'}),g=mk('g',{class:'tip','pointer-events':'none'});
  g.appendChild(mk('rect',{x,y,width:w,height:h,rx:10,style:'fill:var(--ink)'}));
- const a=mk('text',{x:x+w/2,y:y+16,'text-anchor':'middle',style:'fill:var(--card)','font-size':13,'font-weight':700});a.textContent=t;
+ if(LR.length){const dt=mk('text',{x:x+10,y:y+17,style:'fill:var(--card)','font-size':10,opacity:.8});dt.textContent=sb;g.appendChild(dt);
+  LR.forEach((r,i)=>{const ry=y+36+i*16;g.appendChild(mk('circle',{cx:x+13,cy:ry-4,r:3.5,style:'fill:'+r[3]}));
+   const l=mk('text',{x:x+23,y:ry,style:'fill:var(--card)','font-size':11.5});l.textContent=r[1];g.appendChild(l);
+   const v=mk('text',{x:x+w-10,y:ry,'text-anchor':'end',style:'fill:var(--card)','font-size':12,'font-weight':700});v.textContent=r[2];g.appendChild(v)})}
+ else{const a=mk('text',{x:x+w/2,y:y+16,'text-anchor':'middle',style:'fill:var(--card)','font-size':13,'font-weight':700});a.textContent=t;
  const b=mk('text',{x:x+w/2,y:y+31,'text-anchor':'middle',style:'fill:var(--card)','font-size':10,opacity:.8});b.textContent=sb;
- g.appendChild(a);g.appendChild(b);svg.appendChild(ring);svg.appendChild(g)});
+ g.appendChild(a);g.appendChild(b)}
+ svg.appendChild(ring);svg.appendChild(g)});
 const VK=K+'_view';
 function saveView(){try{localStorage.setItem(VK,JSON.stringify({...V,y:Math.round(scrollY)}))}catch{}}
 let ASK=null;
@@ -1917,7 +1923,7 @@ function psessView(){const t=PS.t,all=pgDone().filter(x=>PSSK(x)===V.k);
  <div class=pss-h><span>Exercices de la séance</span></div>
  <div class=pss-list>${exs.length?exs.map(o=>`<div class=pss-ex><b>${esc(o.n)}</b>${o.i?`<small>${esc(o.i)}</small>`:''}</div>`).join(''):'<div class=pss-none>Aucun exercice.</div>'}</div>
  <div class=pss-h><span>Historique</span>${hist.length>5?`<button data-a=psall>${PSALL?'Réduire':'Tout voir'}</button>`:''}</div>
- <div class=pss-list>${hs.map(x=>{const du=pdDur(x),dt=new Date(x.d+'T00:00').toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'short'});return`<button class=pss-hi data-a=open data-id=${x.id}><span class=d>${dt}</span><span class=st><span>${fmt(Math.round(stats(x).t))} kg</span><span>${du?psFmt(du,'dur'):'0 min'}</span></span>${SI('chev',16)}</button>`}).join('')}</div>
+ <div class=pss-list>${hs.map(x=>{const du=pdDur(x),dt=new Date(x.d+'T00:00').toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'short'});return`<button class=pss-hi data-a=pssd data-id=${x.id}><span class=d>${dt}</span><span class=st><span>${fmt(Math.round(stats(x).t))} kg</span><span>${du?psFmt(du,'dur'):'0 min'}</span></span>${SI('chev',16)}</button>`}).join('')}</div>
  <div style="height:40px"></div></div>`}
 /* ---------- Mesures (suivi corporel) ---------- */
 const MZS={w:{n:'Poids',u:'kg',c:'#15a05a',mk:'c'},f:{n:'Masse grasse',u:'%',c:'#4f6fd8',mk:'s'},h:{n:'Taille',u:'cm',c:'#b7791f',mk:'t'}};
@@ -1932,6 +1938,7 @@ let MZR='1m';
 const mzAll=()=>(S.meas||[]).slice().sort((a,b)=>a.d<b.d?-1:a.d>b.d?1:0);
 const mzPin=()=>S.mpin||['w','h','f'];
 const mzLast=k=>{const a=mzAll().filter(x=>x[k]>0);return a.length?a[a.length-1][k]:null};
+const mzTip=d=>{const x=mzAll().find(y=>y.d===d);return x?['w','f',...MZO].filter(k=>x[k]>0).map(k=>'~'+MZS[k].n+'~'+fmt(x[k])+' '+MZS[k].u+'~'+MZS[k].c).join('|'):''};
 const mzFd=d=>new Date(d+'T00:00').toLocaleDateString('fr-FR',{day:'numeric',month:'short'});
 function mzWin(){const e=new Date();e.setHours(0,0,0,0);const p=MZP.find(x=>x[0]===MZR);let b=new Date(e);if(p[2])b.setDate(b.getDate()-p[2]+1);else{const a=mzAll();b=a.length?new Date(a[0].d+'T00:00'):new Date(e);if(e-b<29*864e5){b=new Date(e);b.setDate(b.getDate()-29)}}return{b,e}}
 const mzMark=(m,x,y,c)=>m==='c'?`<circle cx=${x.toFixed(1)} cy=${y.toFixed(1)} r=3.4 fill="${c}"/>`:m==='t'?`<path d="M${(x-4).toFixed(1)} ${(y+3.4).toFixed(1)}L${x.toFixed(1)} ${(y-4).toFixed(1)}L${(x+4).toFixed(1)} ${(y+3.4).toFixed(1)}Z" fill="${c}"/>`:`<rect x=${(x-3.2).toFixed(1)} y=${(y-3.2).toFixed(1)} width=6.4 height=6.4 rx=1 fill="${c}"/>`;
@@ -1939,7 +1946,7 @@ function mzChart(){const w=mzWin(),a=dstr(w.b),z=dstr(w.e),W=330,H=250,L=44,R=10
  const ser=mzPin().map(k=>{const pts=mzAll().filter(x=>x.d>=a&&x.d<=z&&x[k]>0);if(!pts.length)return{k,pts:[]};const b0=pts[0][k];return{k,pts:pts.map(x=>({d:x.d,v:(x[k]-b0)/b0*100,raw:x[k]}))}});
  const am=Math.max(0,...ser.flatMap(x=>x.pts.map(p=>Math.abs(p.v)))),st=[.5,1,2,5,10,20,50].find(q=>q*3>=am)||50,mx=st*3,Y=v=>T+(H-T-B)*(1-(v+mx)/(2*mx)),f1=v=>(v<0?'−':'')+(Math.abs(v)).toFixed(1).replace('.',',')+' %';
  const grid=[3,2,1,0,-1,-2,-3].map(i=>{const v=i*st;return`<line x1=${L} x2=${W-R} y1=${Y(v).toFixed(1)} y2=${Y(v).toFixed(1)} class="${i?'mzg':'mzg z'}"/><text x=${L-8} y=${(Y(v)+3.5).toFixed(1)} text-anchor=end>${f1(v)}</text>`}).join('');
- const lines=ser.map(x=>{const c=MZS[x.k].c;return(x.pts.length>1?`<polyline points="${x.pts.map(p=>X(p.d).toFixed(1)+','+Y(p.v).toFixed(1)).join(' ')}" fill=none stroke="${c}" stroke-width=2.2 stroke-linejoin=round stroke-linecap=round />`:'')+x.pts.map(p=>mzMark(MZS[x.k].mk,X(p.d),Y(p.v),c)+`<circle class=ptp cx=${X(p.d).toFixed(1)} cy=${Y(p.v).toFixed(1)} r=14 fill=transparent style="pointer-events:all;cursor:pointer" data-t="${fmt(p.raw)} ${MZS[x.k].u}" data-s="${MZS[x.k].n} · ${mzDfull(p.d)}" data-c="${c}" />`).join('')}).join('');
+ const lines=ser.map(x=>{const c=MZS[x.k].c;return(x.pts.length>1?`<polyline points="${x.pts.map(p=>X(p.d).toFixed(1)+','+Y(p.v).toFixed(1)).join(' ')}" fill=none stroke="${c}" stroke-width=2.2 stroke-linejoin=round stroke-linecap=round />`:'')+x.pts.map(p=>mzMark(MZS[x.k].mk,X(p.d),Y(p.v),c)+`<circle class=ptp cx=${X(p.d).toFixed(1)} cy=${Y(p.v).toFixed(1)} r=14 fill=transparent style="pointer-events:all;cursor:pointer" data-t="${fmt(p.raw)} ${MZS[x.k].u}" data-s="${mzDfull(p.d)}" data-l="${esc(mzTip(p.d))}" data-c="${c}" />`).join('')}).join('');
  const xl=[0,.5,1].map((q,i)=>{const d=new Date(+w.b+(w.e-w.b)*q);return`<text x=${(L+(W-L-R)*q).toFixed(1)} y=${H-8} text-anchor=${i?i===2?'end':'middle':'start'}>${d.toLocaleDateString('fr-FR',{day:'numeric',month:'short'})}</text>`}).join('');
  return`<svg class=mzc viewBox="0 0 ${W} ${H}">${grid}${lines}${xl}</svg>`}
 function pmesView(){const pin=mzPin();
@@ -2383,7 +2390,8 @@ A('click',ev=>{const b=ev.target.closest('[data-a]');if(!b||(b.classList.contain
  case'new':{const n={id:uid(),nom:'',d:SD||today(),com:'',ex:[newEx()],u:Date.now()};S.seances.push(n);save();V={p:'edit',id:n.id};break}
  case'open':{const o=S.seances.find(x=>x.id===d.id);V={p:o&&!o.tpl?(done(o)?'det':'live'):'edit',id:d.id};TOP=1;break}
  case'pexs':V={p:'det',id:d.id,ret:'pexd'};TOP=1;break;
- case'dback':if(V.ret==='pexd'){V={p:'pexd'};TOP=1}else{V={p:'home'};TAB='act'}break;
+ case'pssd':V={p:'det',id:d.id,ret:'psess',k:V.k,sy:Math.round(scrollY)};TOP=1;break;
+ case'dback':if(V.ret==='psess'){const k=V.k,sy=V.sy||0;V={p:'psess',k};TOP=0;setTimeout(()=>window.scrollTo(0,sy),60)}else if(V.ret==='pexd'){V={p:'pexd'};TOP=1}else{V={p:'home'};TAB='act'}break;
  case'dxm':FORM={k:'dxm',id:V.id};break;
  case'sti':FORM={k:'sti',t:d.t};break;
  case'dtpl':V={p:'edit',id:d.id};TAB='seances';TOP=1;break;
