@@ -170,7 +170,7 @@ label.ck input{width:auto}
 .ac{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:8px 0;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.04)}
 .ac>i{align-self:stretch;width:5px;border-radius:3px;background:var(--c);flex:none}
 .ac.sel{background:color-mix(in srgb,var(--acc) 14%,var(--card))}
-.ac b{font:700 17px/1.2 var(--fc)}
+.ac b{font:700 17px/1 var(--fc);letter-spacing:-.01em}
 .ac .tm{font:600 14px ui-monospace,Menlo,monospace;letter-spacing:.03em}
 .ac .en{font:700 12px ui-monospace,Menlo,monospace;letter-spacing:.06em;color:var(--acc)}
 .ac .me{margin-top:3px;line-height:1.5}
@@ -725,7 +725,7 @@ html[data-vt=lback]::view-transition-new(root){animation:vtInL .32s cubic-bezier
 .dh .cbtn{width:42px;height:42px}.dh h1{flex:1;margin:0;font:700 25px/1.1 var(--fc);letter-spacing:-.01em}
 .dd{margin-top:14px;font:600 13px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:var(--dc)}
 .dnm{display:flex;align-items:center;gap:12px;margin:6px 0 14px}.dnm>i:first-child{flex:none;width:6px;align-self:stretch;border-radius:3px;background:var(--dc)}
-.dnm b{display:block;font:700 22px/1.1 var(--fc)}.dnm .grow span{display:block;margin-top:2px;color:var(--mut);font-size:15px}.dnm .dpr{flex:none;align-self:flex-start;margin-top:4px}
+.dnm b{display:block;font:700 22px/1 var(--fc);letter-spacing:-.01em}.dnm .grow span{display:block;margin-top:2px;color:var(--mut);font-size:15px}.dnm .dpr{flex:none;align-self:flex-start;margin-top:4px}
 .dpr{font:600 12px ui-monospace,Menlo,monospace;letter-spacing:.08em;font-style:normal;color:#d19a00;background:rgba(245,180,0,.14);border:1px solid rgba(245,180,0,.3);border-radius:999px;padding:7px 12px;white-space:nowrap}
 .dlk{display:inline-flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:11px 16px;font:600 16px "Avenir Next",system-ui,sans-serif;color:var(--ink);margin-bottom:14px}
 .dlk u{width:11px;height:11px;border-radius:4px;background:var(--dc)}.dlk span{color:var(--mut)}
@@ -753,7 +753,7 @@ html[data-vt=lback]::view-transition-new(root){animation:vtInL .32s cubic-bezier
 .dxt{display:grid;grid-template-columns:56px 1fr;padding:3px 13px 5px;font:11px ui-monospace,Menlo,monospace;letter-spacing:.12em;color:var(--mut)}
 .dxr{display:grid;grid-template-columns:56px 1fr auto;align-items:center;padding:0 13px;height:36px;font:600 17px var(--fc)}.dxr:nth-of-type(odd){background:color-mix(in srgb,var(--ink) 3%,var(--card))}
 .dxr b{font:inherit}.dxr.off{opacity:.45}.dxr em{font:600 12px ui-monospace,Menlo,monospace;font-style:normal;letter-spacing:.06em;color:var(--c);background:color-mix(in srgb,var(--c) 14%,var(--card));border:1px solid color-mix(in srgb,var(--c) 40%,transparent);border-radius:999px;padding:3px 9px;font-size:11px}.dxr em.pr{color:#d19a00;background:rgba(245,180,0,.15)}
-.ddl{width:100%;margin-top:14px;padding:20px;border-radius:22px;border:1px solid color-mix(in srgb,var(--red) 22%,transparent);background:color-mix(in srgb,var(--red) 10%,var(--card));color:var(--red);font:500 21px "Avenir Next",system-ui,sans-serif}
+.ddl{width:100%;margin-top:14px;padding:13px;border-radius:16px;border:1px solid color-mix(in srgb,var(--red) 22%,transparent);background:color-mix(in srgb,var(--red) 10%,var(--card));color:var(--red);font:600 16px "Avenir Next",system-ui,sans-serif}
 .mi.dm b{font-size:19px}.mi.dm::after{content:'';margin-left:auto;flex:none;width:9px;height:9px;border-right:2px solid var(--mut);border-top:2px solid var(--mut);transform:rotate(45deg)}
 .mi.gr i{background:color-mix(in srgb,var(--acc) 16%,transparent);color:var(--acc2)}.mi.gy i{background:color-mix(in srgb,var(--ink) 8%,transparent)}
 input::-webkit-calendar-picker-indicator,input::-webkit-list-button{display:none!important;opacity:0;pointer-events:none}
@@ -2247,7 +2247,7 @@ function formCx(f){const c=cur().cg&&cur().cg[f.g];if(!c)return'';const s=cur(),
   return`<div class=cxlr data-id=${x.id}><button class=cxdh aria-label="Changer l’ordre">${GRIP}</button><div class=grow><b>${esc(x.n)}</b><div class=cxin>${c.ct==='hiit'?`<input inputmode=numeric data-cxe=${ix} data-cxf=wt value="${x.wt>0?x.wt:c.w}" placeholder="${c.w}"><span>s</span>`:''}${bw?'':`<input inputmode=decimal data-cxe=${ix} data-cxf=c value="${esc(y.c)}" placeholder="—"><span>${OPT(s).u}</span>`}${c.ct==='hiit'?'':`<input inputmode=numeric data-cxe=${ix} data-cxf=r value="${esc(y.r)}" placeholder="—"><span>reps</span>`}</div></div><button class=cxrm data-a=cxrm data-x=${ix} data-g=${f.g} ${xs.length<2?'disabled':''} aria-label="Retirer">${SI('trash',20)}</button></div>`}).join('');
  return`<div class=sov data-a=fno ${pur}><div class="sheet sh2"><div class=grab></div><h2>Modifier le circuit</h2><p class=sub2>Ajuster les cibles des exercices.</p><div id=cxlist>${rows}</div><button class="dash big2" data-a=cxad2 data-g=${f.g}>+ Ajouter un exercice</button><button class="gbtn big2" data-a=fno>Enregistrer</button></div></div>`}
 function formX(f){
- if(f.k==='dxm'){const o=S.seances.find(x=>x.id===f.id);if(!o)return'';return sh2(esc(o.free?'Entraînement libre'+(o.nom?' · '+o.nom:''):(o.nom||'Séance')),'',MI('dsave','folderplus','Enregistrer comme séance','','','dm gr')+MI('dmod','pen','Modifier l’entraînement','','','dm gy')+MI('ds2','trash','Supprimer','','','dm red'))}
+ if(f.k==='dxm'){const o=S.seances.find(x=>x.id===f.id);if(!o)return'';return sheet(`<span class=sh-bar style="--c:${colOf(o)}"></span><div><b>${esc(o.free?'Entraînement libre'+(o.nom?' · '+o.nom:''):(o.nom||'Séance'))}</b><span class=mut>Séance · ${pl(o.ex.length,'exo')}</span></div>`,MI('dsave','folderplus','Enregistrer comme séance','','','gr cp')+MI('dmod','pen','Modifier l’entraînement','','','gy cp')+MI('ds2','trash','Supprimer','','','red cp'))}
  if(f.k==='cxm'||f.k==='cxl')return formCx(f);
  if(f.k==='nm')return`<div class="sov pop" data-a=fno><div class=dpop><h3>Donne un nom à ta séance</h3><p>Il faut un titre pour l’enregistrer.</p><input id=rnin class=soft data-fm=n placeholder="Nom de la séance" value="${esc(f.n)}" autocomplete=off enterkeyhint=done style="width:100%;margin:6px 0 14px;font-size:17px"><button class=dbt data-a=nmok>Enregistrer</button><button class=dbt data-a=fno>Annuler</button></div></div>`;
  if(f.k==='dp')return`<div class="sov pop" data-a=fno><div class=dpop><h3>Garder ce brouillon ?</h3><p>Tes modifications sont enregistrées sur cet appareil.</p><button class=dbt data-a=dkeep>Garder le brouillon</button><button class="dbt red" data-a=ddel>Supprimer</button><button class=dbt data-a=fno>Annuler</button></div></div>`;
