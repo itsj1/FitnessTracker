@@ -2418,7 +2418,7 @@ A('click',ev=>{const b=ev.target.closest('[data-a]');if(!b||(b.classList.contain
  case'dted':{const [y,m,j]=(s.d||today()).split('-').map(Number);FORM={k:'mdt',back:null,y,m,d:j,ttl:'Date de la séance',sess:s.id};break}
  case'ldst':{const hI=$('#ldh'),mI=$('#ldm');let h=parseInt(hI.value)||0,m=parseInt(mI.value)||0;if(d.k==='h')h+=+d.d;else m+=+d.d;if(m>59){h++;m=0}if(m<0){if(h>0){h--;m=59}else m=0}if(h<0)h=0;hI.value=h;mI.value=m;break}
  case'ldur':{const sec=elapsed(s),h=Math.floor(sec/3600),m=Math.floor(sec%3600/60);FORM={k:'ldu',id:s.id,h:s.t0&&s.end?h:0,m:s.t0&&s.end?m:0};break}
- case'lduok':{const h=Math.max(0,parseInt($('#ldh').value)||0),m=Math.max(0,Math.min(59,parseInt($('#ldm').value)||0)),D=h*3600+m*60,o=S.seances.find(x=>x.id===FORM.id);FORM=null;if(o){const en=o.end||o.u||Date.now();o.end=en;o.t0=en-D*1000-(o.pz||0);touch(o)}break}
+ case'lduok':{const h=Math.max(0,parseInt($('#ldh').value)||0),m=Math.max(0,Math.min(59,parseInt($('#ldm').value)||0)),D=h*3600+m*60,o=S.seances.find(x=>x.id===FORM.id);FORM=null;if(o){const st=o.t0||o.u||Date.now();o.t0=st;o.end=st+D*1000+(o.pz||0);touch(o)}break}
  case'dmod':FORM=null;V={p:'live',id:V.id};TOP=1;break;
  case'dsave':{const o=cur();FORM=null;if(!o)break;if(!S.dos.length){saveTpl(o,'root');break}FORM={k:'mv',t:'sv',id:o.id};break}
  case'thm':S.cfg.theme=d.v;applyTheme();save();break;
