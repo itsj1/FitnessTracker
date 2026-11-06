@@ -4,6 +4,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Muscu">
 <meta name="theme-color" content="#1b2a2f">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>Muscu</title>
 <style>
 :root{--bg:#f5f5f2;--card:#fff;--bl:#3b82f6;--ink:#0b0b0a;--mut:#6f6f6b;--acc:#00c56a;--acc2:#00a157;--mint:#c4ebd7;--ok:#00c56a;--red:#e5484d;--line:#e6e6e2;color-scheme:light}
@@ -2832,5 +2834,6 @@ document.addEventListener('click',e=>{const c=e.target.closest('.gwr .gc');if(c&
  el.addEventListener('click',e=>{if(e.target.classList.contains('npgr'))close()});
  document.addEventListener('click',ev=>{if(!P||el.contains(ev.target)||ev.target.closest(SEL_))return;ev.preventDefault();ev.stopPropagation();close()},true);
 })();
-</script></body></html>
+</script><script>if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}))</script>
+</body></html>
 
