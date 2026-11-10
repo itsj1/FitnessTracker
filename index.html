@@ -1261,7 +1261,7 @@ S.dos??=[];
 let MO=(()=>{const n=new Date();return{y:n.getFullYear(),m:n.getMonth()}})(),SD=null;
 let RN=null,RV='',RF=false,RK='',RNEW=false;/* duplication : id de la bulle en cours de nommage */
 let LASTK=null,FF=null,XO=new Set(),V={p:'home'},msg='',T=null,AC=null,SEL=null,OPEN=null,TAB='seances',FORM=null,TOP=0,DR=null;
-const save=()=>localStorage.setItem(K,JSON.stringify(S));
+let SVT=0;const save=()=>{clearTimeout(SVT);SVT=0;localStorage.setItem(K,JSON.stringify(S))},saveSoon=()=>{clearTimeout(SVT);SVT=setTimeout(save,500)};['pagehide','visibilitychange','beforeunload'].forEach(n=>addEventListener(n,()=>{if(SVT)save()}));
 const live=()=>S.seances.filter(x=>!x.del&&!x.tpl);
 const cur=()=>S.seances.find(x=>x.id===V.id);
 const touch=s=>{s.u=Date.now();save()};
@@ -2452,7 +2452,7 @@ A('input',ev=>{const t=ev.target,d=t.dataset;
  if(d.f==='cb'){const q=parseFloat(String(v).replace(',','.'));if(o.cl){o.cl.bl[+d.b]=q>0?q:0;o.r=o.cl.bl.reduce((n,y)=>n+(+y||0),0);touch(s);document.querySelectorAll('.clt').forEach(t=>{if(t.dataset.e===d.e&&t.dataset.s===d.s)t.textContent=o.r});upStats()}return}
  if(['r','c','rep'].includes(d.f)){v=v===''?'':parseFloat(v.replace(',','.'));if(v!==''&&isNaN(v))v=''}
  if(d.f==='acc'&&v==='__new')return;
- o[d.f]=v;touch(s);upStats()});
+ o[d.f]=v;s.u=Date.now();saveSoon();upStats()});
 A('change',ev=>{const t=ev.target,d=t.dataset;
  if(t.id==='imp'){t.files[0]?.text().then(x=>{const r=JSON.parse(x);const m=new Map(S.seances.map(y=>[y.id,y]));r.seances.forEach(y=>{const l=m.get(y.id);if(!l||(y.u||0)>(l.u||0))m.set(y.id,y)});S.seances=[...m.values()];save();msg='Import terminé';render()});return}
  if(!d.f||(V.p!=='edit'&&!(V.p==='live'&&fv(cur()))))return;const s=cur();
@@ -2883,6 +2883,7 @@ document.addEventListener('click',e=>{const c=e.target.closest('.gwr .gc');if(c&
   ${KEYS.slice(3,6).map(n=>`<button data-nk=${n}>${n}</button>`).join('')}<button class=nxt data-nk=next aria-label="Valeur suivante">${SI('chev',30)}</button>
   ${KEYS.slice(6,9).map(n=>`<button data-nk=${n}>${n}</button>`).join('')}
   <button data-nk=",">,</button><button data-nk=0>0</button><button class=ok data-nk=close>Terminé</button></div>`}
+ function pv(){const b=el.querySelector('.npv b');if(!b)return paint();b.textContent=P.t||'0';b.className=P.t?'':'e'}
  function mark(){document.querySelectorAll('#app .padon').forEach(x=>x.classList.remove('padon'));const i=tgt();if(i)i.classList.add('padon')}
  function reveal(){const i=tgt();if(!i)return;const H=el.offsetHeight;document.body.style.paddingBottom=H+'px';const r=i.getBoundingClientRect(),lim=innerHeight-H-18;if(r.bottom>lim)scrollBy({top:r.bottom-lim+70,behavior:'smooth'});else if(r.top<90)scrollBy({top:r.top-130,behavior:'smooth'})}
  function open(i){P={k:key(i),t:String(i.value).replace('.',','),fresh:true};paint();mark();el.classList.add('on');requestAnimationFrame(reveal)}
@@ -2896,7 +2897,7 @@ document.addEventListener('click',e=>{const c=e.target.closest('.gwr .gc');if(c&
   if(k==='del'){P.t=P.fresh?'':P.t.slice(0,-1);P.fresh=false}
   else if(k===','){if(P.fresh){P.t='';P.fresh=false}if(P.t.includes(','))return;P.t=(P.t||'0')+','}
   else{if(P.fresh){P.t='';P.fresh=false}if(P.t==='0')P.t='';if(P.t.replace(',','').length>=5)return;const q=P.t.split(',');if(q[1]!==undefined&&q[1].length>=2)return;P.t+=k}
-  put();paint()});
+  put();pv()});
  let y0=null,dy=0;el.addEventListener('touchstart',e=>{y0=e.touches[0].clientY;dy=0;el.style.transition='none'},{passive:true});
  el.addEventListener('touchmove',e=>{if(y0===null)return;dy=Math.max(0,e.touches[0].clientY-y0);if(dy>8)el.style.transform='translateY('+dy+'px)'},{passive:true});
  const rel=()=>{if(y0===null)return;const d=dy;y0=null;el.style.transition='';el.style.transform='';if(d>70)close()};el.addEventListener('touchend',rel);el.addEventListener('touchcancel',rel);
